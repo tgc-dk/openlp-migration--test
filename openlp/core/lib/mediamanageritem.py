@@ -341,6 +341,8 @@ class MediaManagerItem(QtGui.QWidget):
             self, self.onNewPrompt,
             SettingsManager.get_last_dir(self.settingsSection),
             self.onNewFileMasks)
+        # Convert QStringList containing QStrings to a Python list containing unicode strings
+        files =  [unicode(f) for f in files]
         log.info(u'New files(s) %s', unicode(files))
         if files:
             Receiver.send_message(u'cursor_busy')
