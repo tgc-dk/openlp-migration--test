@@ -130,17 +130,17 @@ class ImageMediaItem(MediaManagerItem):
         # Sort the images by its filename considering language specific
         # characters.
         images.sort(cmp=locale_compare,
-            key=lambda filename: os.path.split(filename)[1])
+            key=lambda filename: os.path.split(unicode(filename))[1])
         for imageFile in images:
-            filename = os.path.split(imageFile)[1]
+            filename = os.path.split(unicode(imageFile))[1]
             thumb = os.path.join(self.servicePath, filename)
-            if not os.path.exists(imageFile):
+            if not os.path.exists(unicode(imageFile)):
                 icon = build_icon(u':/general/general_delete.png')
             else:
-                if validate_thumb(imageFile, thumb):
+                if validate_thumb(unicode(imageFile), thumb):
                     icon = build_icon(thumb)
                 else:
-                    icon = create_thumb(imageFile, thumb)
+                    icon = create_thumb(unicode(imageFile), thumb)
             item_name = QtGui.QListWidgetItem(filename)
             item_name.setIcon(icon)
             item_name.setToolTip(imageFile)

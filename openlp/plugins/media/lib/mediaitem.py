@@ -299,21 +299,21 @@ class MediaMediaItem(MediaManagerItem):
         # Sort the media by its filename considering language specific
         # characters.
         media.sort(cmp=locale_compare,
-            key=lambda filename: os.path.split(filename)[1])
+            key=lambda filename: os.path.split(unicode(filename))[1])
         for track in media:
             track_info = QtCore.QFileInfo(track)
             if not os.path.exists(track):
-                filename = os.path.split(track)[1]
+                filename = os.path.split(unicode(track))[1]
                 item_name = QtGui.QListWidgetItem(filename)
                 item_name.setIcon(build_icon(ERROR))
                 item_name.setData(QtCore.Qt.UserRole, QtCore.QVariant(track))
             elif track_info.isFile():
-                filename = os.path.split(track)[1]
+                filename = os.path.split(unicode(track))[1]
                 item_name = QtGui.QListWidgetItem(filename)
                 item_name.setIcon(build_icon(VIDEO))
                 item_name.setData(QtCore.Qt.UserRole, QtCore.QVariant(track))
             else:
-                filename = os.path.split(track)[1]
+                filename = os.path.split(unicode(track))[1]
                 item_name = QtGui.QListWidgetItem(filename)
                 #TODO: add the appropriate Icon
                 #item_name.setIcon(build_icon(DVD_ICON))

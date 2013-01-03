@@ -175,13 +175,13 @@ class PresentationMediaItem(MediaManagerItem):
         # Sort the presentations by its filename considering language specific
         # characters.
         files.sort(cmp=locale_compare,
-            key=lambda filename: os.path.split(filename)[1])
+            key=lambda filename: os.path.split(unicode(filename))[1])
         for file in files:
             if not initialLoad:
                 self.plugin.formParent.incrementProgressBar()
             if currlist.count(file) > 0:
                 continue
-            filename = os.path.split(file)[1]
+            filename = os.path.split(unicode(file))[1]
             if not os.path.exists(file):
                 item_name = QtGui.QListWidgetItem(filename)
                 item_name.setIcon(build_icon(ERROR))
@@ -201,7 +201,7 @@ class PresentationMediaItem(MediaManagerItem):
                 controller_name = self.findControllerByType(filename)
                 if controller_name:
                     controller = self.controllers[controller_name]
-                    doc = controller.add_document(file)
+                    doc = controller.add_document(unicode(file))
                     thumb = os.path.join(doc.get_thumbnail_folder(),
                         u'icon.png')
                     preview = doc.get_thumbnail_path(1, True)
