@@ -341,6 +341,7 @@ class MediaManagerItem(QtGui.QWidget):
             self, self.onNewPrompt,
             SettingsManager.get_last_dir(self.settingsSection),
             self.onNewFileMasks)
+        files =  map(unicode, files)
         log.info(u'New files(s) %s', unicode(files))
         if files:
             Receiver.send_message(u'cursor_busy')
