@@ -37,8 +37,11 @@ import logging
 import os
 import uuid
 
+from PyQt4 import QtCore, QtGui
+
 from openlp.core.lib import build_icon, clean_tags, expand_tags, translate, \
     ImageSource
+from openlp.core.lib.settings import Settings
 
 log = logging.getLogger(__name__)
 
@@ -334,9 +337,12 @@ class ServiceItem(object):
             for slide in serviceitem[u'serviceitem'][u'data']:
                 self._raw_frames.append(slide)
         elif self.service_item_type == ServiceItemType.Image:
+            settingsSection = serviceitem[u'serviceitem'][u'header'][u'name']
+            background = QtGui.QColor(Settings().value(settingsSection
+                + u'/background color', QtCore.QVariant(u'#000000')))
             for text_image in serviceitem[u'serviceitem'][u'data']:
                 filename = os.path.join(path, text_image)
-                self.add_from_image(filename, text_image)
+                self.add_from_image(filename, text_image, background)
         elif self.service_item_type == ServiceItemType.Command:
             for text_image in serviceitem[u'serviceitem'][u'data']:
                 filename = os.path.join(path, text_image[u'title'])
