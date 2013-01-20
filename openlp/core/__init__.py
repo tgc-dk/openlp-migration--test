@@ -228,7 +228,7 @@ def set_up_logging(log_path):
     """
     Setup our logging using log_path
     """
-    check_directory_exists(log_path)
+    check_directory_exists(log_path, True)
     filename = os.path.join(log_path, u'openlp.log')
     logfile = logging.FileHandler(filename, u'w')
     logfile.setFormatter(logging.Formatter(
@@ -264,13 +264,6 @@ def main(args=None):
     # Parse command line options and deal with them.
     # Use args supplied programatically if possible.
     (options, args) = parser.parse_args(args) if args else parser.parse_args()
-    if options.portable:
-        app_path = AppLocation.get_directory(AppLocation.AppDir)
-        set_up_logging(os.path.abspath(os.path.join(app_path, u'..',
-            u'..', u'Other')))
-        log.info(u'Running portable')
-    else:
-        set_up_logging(AppLocation.get_directory(AppLocation.CacheDir))
     qt_args = []
     if options.loglevel.lower() in ['d', 'debug']:
         log.setLevel(logging.DEBUG)
@@ -295,6 +288,10 @@ def main(args=None):
         app.setApplicationName(u'OpenLPPortable')
         Settings.setDefaultFormat(Settings.IniFormat)
         # Get location OpenLPPortable.ini
+        app_path = AppLocation.get_directory(AppLocation.AppDir)
+        set_up_logging(os.path.abspath(os.path.join(app_path, u'..',
+            u'..', u'Other')))
+        log.info(u'Running portable')
         portable_settings_file = os.path.abspath(os.path.join(app_path, u'..',
             u'..', u'Data', u'OpenLP.ini'))
         # Make this our settings file
@@ -310,6 +307,7 @@ def main(args=None):
         portable_settings.setValue(u'advanced/is portable', True)
         portable_settings.sync()
     else:
+        set_up_logging(AppLocation.get_directory(AppLocation.CacheDir))
         app.setApplicationName(u'OpenLP')
     app.setApplicationVersion(get_application_version()[u'version'])
     # Instance check
