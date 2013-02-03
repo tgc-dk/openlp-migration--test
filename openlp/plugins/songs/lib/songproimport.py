@@ -109,10 +109,10 @@ class SongProImport(SongImport):
             self.finish()
             return
         if u'rtf1' in text:
-            text = strip_rtf(text, self.encoding)
-            if text is None:
+            result = strip_rtf(text, self.encoding)
+            if result is None:
                 return
-            text, self.encoding = text
+            text, self.encoding = result
             text = text.rstrip()
         if not text:
             return
