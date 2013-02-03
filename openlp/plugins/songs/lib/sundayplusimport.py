@@ -150,8 +150,14 @@ class SundayPlusImport(SongImport):
                             verse_type = HOTKEY_TO_VERSE_TYPE[value]
                     if name == 'rtf':
                         value = self.unescape(value)
-                        verse, self.encoding = strip_rtf(value, self.encoding)
-                        lines = verse.strip().split('\n')
+                        try:
+                            verse, self.encoding = strip_rtf(value, self.encoding)
+                            lines = verse.strip().split('\n')
+                        except Exception as info:
+                            if unicode(info) == u'user_canceled':
+                                return
+                            else:
+                                raise
                         # If any line inside any verse contains CCLI or
                         # only Public Domain, we treat this as special data:
                         # we remove that line and add data to specific field.

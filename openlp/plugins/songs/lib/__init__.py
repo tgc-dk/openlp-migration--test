@@ -581,7 +581,10 @@ def strip_rtf(text, default_encoding=None):
                     try:
                         encoding, default_encoding = get_encoding(font, 
                             font_table, default_encoding, failed=failed)
-                        out.append(chr(charcode).decode(encoding))
+                        if encoding:
+                            out.append(chr(charcode).decode(encoding))
+                        else:
+                            raise Exception(u'user_canceled')
                     except UnicodeDecodeError:
                         failed = True
                     else:

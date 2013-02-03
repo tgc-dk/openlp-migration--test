@@ -109,8 +109,14 @@ class SongProImport(SongImport):
             self.finish()
             return
         if u'rtf1' in text:
-            text, self.encoding = strip_rtf(text, self.encoding)
-            text = text.rstrip()
+            try:
+                text, self.encoding = strip_rtf(text, self.encoding)
+                text = text.rstrip()
+            except Exception as info:
+                if unicode(info) == u'user_canceled':
+                    return
+                else:
+                    raise
         if not text:
             return
         if tag == u'A':

@@ -180,7 +180,13 @@ class EasyWorshipSongImport(SongImport):
                         self.addAuthor(author_name.strip())
                 if words:
                     # Format the lyrics
-                    words, self.encoding = strip_rtf(words, self.encoding)
+                    try:
+                        words, self.encoding = strip_rtf(words, self.encoding)
+                    except Exception as info:
+                        if unicode(info) == u'user_canceled':
+                            return
+                        else:
+                            raise
                     verse_type = VerseType.Tags[VerseType.Verse]
                     for verse in SLIDE_BREAK_REGEX.split(words):
                         verse = verse.strip()
