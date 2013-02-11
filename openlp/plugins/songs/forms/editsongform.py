@@ -132,7 +132,6 @@ class EditSongForm(QtGui.QDialog, Ui_EditSongDialog):
         self.findVerseSplit = re.compile(u'---\[\]---\n', re.UNICODE)
         self.whitespace = re.compile(r'\W+', re.UNICODE)
 
-
     def keyPressEvent(self, event):
         """
         Reimplement the keyPressEvent to react on Return/Enter keys. When some
