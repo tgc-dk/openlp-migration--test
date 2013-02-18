@@ -101,7 +101,6 @@ class SlideController(Controller):
             u'delaySpinBox'
         ]
         self.audioList = [
-            u'songMenu',
             u'audioPauseItem',
             u'audioTimeLabel'
         ]
@@ -287,7 +286,7 @@ class SlideController(Controller):
                 text=translate('OpenLP.SlideController', 'Pause Audio'),
                 tooltip=translate('OpenLP.SlideController', 'Pause audio.'),
                 checked=False, visible=False, category=self.category,
-                context=QtCore.Qt.WindowShortcut, 
+                context=QtCore.Qt.WindowShortcut,
                 shortcuts=[], triggers=self.onAudioPauseClicked)
             self.audioMenu = QtGui.QMenu(
                 translate('OpenLP.SlideController', 'Background Audio'), self.toolbar)
@@ -319,6 +318,7 @@ class SlideController(Controller):
             self.audioTimeLabel.setObjectName(u'audioTimeLabel')
             self.toolbar.addToolbarWidget(self.audioTimeLabel)
             self.toolbar.setWidgetVisible(self.audioList, False)
+            self.toolbar.setWidgetVisible([u'songMenu'], False)
         # Screen preview area
         self.previewFrame = QtGui.QFrame(self.splitter)
         self.previewFrame.setGeometry(QtCore.QRect(0, 0, 300, 300 * self.ratio))
@@ -689,6 +689,7 @@ class SlideController(Controller):
         self.toolbar.hide()
         self.mediabar.hide()
         self.songMenu.hide()
+        self.toolbar.setWidgetVisible([u'songMenu'], False)
         self.toolbar.setWidgetVisible(self.loopList, False)
         # Reset the button
         self.playSlidesOnce.setChecked(False)
@@ -699,7 +700,7 @@ class SlideController(Controller):
             if Settings().value(
                 self.parent().songsSettingsSection + u'/display songbar',
                 QtCore.QVariant(True)).toBool() and self.slideList:
-                self.songMenu.show()
+                self.toolbar.setWidgetVisible([u'songMenu'], True)
         if item.is_capable(ItemCapabilities.CanLoop) and \
             len(item.get_frames()) > 1:
             self.toolbar.setWidgetVisible(self.loopList)
