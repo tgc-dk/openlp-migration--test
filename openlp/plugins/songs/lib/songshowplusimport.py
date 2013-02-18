@@ -195,7 +195,7 @@ class SongShowPlusImport(SongImport):
         # to the end (openlp does not have concept of part verses, so
         # just ignore any non integers on the end (including floats))
         match = re.match(u'(\D*)(\d+)', verse_name)
-        if match is not None:
+        if match:
             verse_type = match.group(1).strip()
             verse_number = match.group(2)
         else:
