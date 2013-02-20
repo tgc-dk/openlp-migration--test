@@ -310,9 +310,9 @@ class Ui_MainWindow(object):
         # Give QT Extra Hint that this is the Preferences Menu Item
         self.settingsConfigureItem.setMenuRole(QtGui.QAction.PreferencesRole)
         self.settingsImportItem = create_action(mainWindow,
-           u'settingsImportItem', category=UiStrings().Settings)
+           u'settingsImportItem', category=UiStrings().Import)
         self.settingsExportItem = create_action(mainWindow,
-           u'settingsExportItem', category=UiStrings().Settings)
+           u'settingsExportItem', category=UiStrings().Export)
         action_list.add_category(unicode(UiStrings().Help),
             CategoryOrder.standardMenu)
         self.aboutItem = create_action(mainWindow, u'aboutItem',
