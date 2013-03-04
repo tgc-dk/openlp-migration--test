@@ -958,4 +958,5 @@ class EditSongForm(QtGui.QDialog, Ui_EditSongDialog):
         except:
             log.exception(u'Problem processing song Lyrics \n%s',
                 sxml.dump_xml())
+            raise
 
