@@ -77,10 +77,9 @@ class PhononPlayer(MediaPlayer):
                     self._addToList(self.audio_extensions_list, mimetype)
                 elif mimetype.startswith(u'video/'):
                     self._addToList(self.video_extensions_list, mimetype)
-        # Work arround for http://bugs.python.org/issue9291
+        # Work around for http://bugs.python.org/issue9291
         except UnicodeDecodeError:
-            log.exception(u'UnicodeDecodeError when trying to read mime types.'
-                          ' Setting extensions to all files')
+            log.exception(u'UnicodeDecodeError when trying to read mime types. Setting extensions to all files')
             self.audio_extensions_list = [u'*']
             self.video_extensions_list = [u'*']
 
