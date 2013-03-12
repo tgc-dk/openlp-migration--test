@@ -69,13 +69,19 @@ class PhononPlayer(MediaPlayer):
         self.display_name = u'&Phonon'
         self.parent = parent
         self.additional_extensions = ADDITIONAL_EXT
-        mimetypes.init()
-        for mimetype in Phonon.BackendCapabilities.availableMimeTypes():
-            mimetype = unicode(mimetype)
-            if mimetype.startswith(u'audio/'):
-                self._addToList(self.audio_extensions_list, mimetype)
-            elif mimetype.startswith(u'video/'):
-                self._addToList(self.video_extensions_list, mimetype)
+        try:
+            mimetypes.init()
+            for mimetype in Phonon.BackendCapabilities.availableMimeTypes():
+                mimetype = unicode(mimetype)
+                if mimetype.startswith(u'audio/'):
+                    self._addToList(self.audio_extensions_list, mimetype)
+                elif mimetype.startswith(u'video/'):
+                    self._addToList(self.video_extensions_list, mimetype)
+        except UnicodeDecodeError:
+            log.exception(u'UnicodeDecodeError when trying to read mime types.'
+                          ' Setting extensions to all files')
+            self.audio_extensions_list = [u'*']
+            self.video_extensions_list = [u'*']
 
     def _addToList(self, list, mimetype):
         # Add all extensions which mimetypes provides us for supported types.
