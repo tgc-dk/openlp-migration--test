@@ -81,8 +81,8 @@ class PhononPlayer(MediaPlayer):
         except UnicodeDecodeError:
             log.exception(u'UnicodeDecodeError when trying to read mime types.'
                 'Setting extensions to all files')
-            self.audio_extensions_list = [u'*']
-            self.video_extensions_list = [u'*']
+            self.audio_extensions_list = [u'*.*']
+            self.video_extensions_list = [u'*.*']
 
     def _addToList(self, list, mimetype):
         # Add all extensions which mimetypes provides us for supported types.
