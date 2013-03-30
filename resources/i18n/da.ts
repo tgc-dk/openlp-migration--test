@@ -175,12 +175,12 @@ Vil du fortsætte alligevel?</translation>
         <translation>Bibler</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/bibles/lib/http.py" line="600"/>
+        <location filename="openlp/plugins/bibles/lib/http.py" line="601"/>
         <source>No Book Found</source>
         <translation>Ingen bog fundet</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/bibles/lib/http.py" line="600"/>
+        <location filename="openlp/plugins/bibles/lib/http.py" line="601"/>
         <source>No matching book could be found in this Bible. Check that you have spelled the name of the book correctly.</source>
         <translation>Ingen matchende bog kunne findes i denne bibel. Tjek om du har stavet bogens navn rigtigt.</translation>
     </message>
@@ -1044,38 +1044,38 @@ Det er ikke muligt at tilpasse bognavnene.</translation>
 <context>
     <name>BiblesPlugin.HTTPBible</name>
     <message>
-        <location filename="openlp/plugins/bibles/lib/http.py" line="514"/>
+        <location filename="openlp/plugins/bibles/lib/http.py" line="515"/>
         <source>Registering Bible and loading books...</source>
         <translation>Registrerer bibelen og indlæser bøger...</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/bibles/lib/http.py" line="539"/>
+        <location filename="openlp/plugins/bibles/lib/http.py" line="540"/>
         <source>Registering Language...</source>
         <translation>Registrerer sprog...</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/bibles/lib/http.py" line="555"/>
+        <location filename="openlp/plugins/bibles/lib/http.py" line="556"/>
         <source>Importing %s...</source>
         <comment>Importing &lt;book name&gt;...</comment>
         <translation>Importerer %s...</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/bibles/lib/http.py" line="722"/>
+        <location filename="openlp/plugins/bibles/lib/http.py" line="723"/>
         <source>Download Error</source>
         <translation>Hentningsfejl</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/bibles/lib/http.py" line="722"/>
+        <location filename="openlp/plugins/bibles/lib/http.py" line="723"/>
         <source>There was a problem downloading your verse selection. Please check your Internet connection, and if this error continues to occur please consider reporting a bug.</source>
         <translation>Der opstod en fejl ved hentningen af dit valg af vers. Efterse din internetforbindelse, og hvis fejlen fortsat opstår så overvej at rapportere fejlen.</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/bibles/lib/http.py" line="729"/>
+        <location filename="openlp/plugins/bibles/lib/http.py" line="730"/>
         <source>Parse Error</source>
         <translation>Fortolkningfejl</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/bibles/lib/http.py" line="729"/>
+        <location filename="openlp/plugins/bibles/lib/http.py" line="730"/>
         <source>There was a problem extracting your verse selection. If this error continues to occur please consider reporting a bug.</source>
         <translation>Der opstod et problem med at udpakke dit valg af vers. Hvis denne fejl fortsætter med at opstå, så overvej at rapportere fejlen.</translation>
     </message>
@@ -2039,13 +2039,6 @@ Skal OpenLP opgradere dem nu?</translation>
         <translation>Dette program udgives i håbet om at det vil være brugbart, men UDEN NOGEN GARANTI; endda uden den forudsatte garanti om SALGSEGNETHED eller EGNETHED TIL ET BESTEMT FORMÅL. Se herunder for flere detaljer.</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/aboutdialog.py" line="250"/>
-        <source>Copyright &#xa9; 2004-2012 %s
-Portions copyright &#xa9; 2004-2012 %s</source>
-        <translation>Ophavsret © 2004-2012 %s
-Delvis ophavsret © 2004-2012 %s</translation>
-    </message>
-    <message>
         <location filename="openlp/core/ui/aboutdialog.py" line="86"/>
         <source>OpenLP &lt;version&gt;&lt;revision&gt; - Open Source Lyrics Projection
 
@@ -2212,6 +2205,12 @@ Afsluttende tak
     os fra synd. Vi giver dette program til
    dig kvit og frit fordi han har sat os fri.</translation>
     </message>
+    <message>
+        <location filename="openlp/core/ui/aboutdialog.py" line="250"/>
+        <source>Copyright &#xa9; 2004-2013 %s
+Portions copyright &#xa9; 2004-2013 %s</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>OpenLP.AdvancedTab</name>
@@ -2271,7 +2270,7 @@ Afsluttende tak
         <translation>Billedfil:</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/advancedtab.py" line="664"/>
+        <location filename="openlp/core/ui/advancedtab.py" line="667"/>
         <source>Open File</source>
         <translation>Åbn fil</translation>
     </message>
@@ -2398,7 +2397,7 @@ See http://docs.python.org/library/datetime.html#strftime-strptime-behavior for 
         <translation>Omgå X11 vindueshåndtering</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/advancedtab.py" line="635"/>
+        <location filename="openlp/core/ui/advancedtab.py" line="638"/>
         <source>Syntax error.</source>
         <translation>Syntaksfejl.</translation>
     </message>
@@ -2453,27 +2452,27 @@ See http://docs.python.org/library/datetime.html#strftime-strptime-behavior for 
         <translation>&lt;strong&gt;ADVARSEL:&lt;/strong&gt; Den nye datamappe indeholder OpenLP datafiler.  Disse filer vil blive slettet under en kopiering.</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/advancedtab.py" line="525"/>
+        <location filename="openlp/core/ui/advancedtab.py" line="528"/>
         <source>Data Directory Error</source>
         <translation>Fejl i datamappe</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/advancedtab.py" line="677"/>
+        <location filename="openlp/core/ui/advancedtab.py" line="680"/>
         <source>Select Data Directory Location</source>
         <translation>Vælg placeringen af datamappen</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/advancedtab.py" line="690"/>
+        <location filename="openlp/core/ui/advancedtab.py" line="693"/>
         <source>Confirm Data Directory Change</source>
         <translation>Bekræft ændringen af datamappen</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/advancedtab.py" line="717"/>
+        <location filename="openlp/core/ui/advancedtab.py" line="720"/>
         <source>Reset Data Directory</source>
         <translation>Nulstil datamappe</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/advancedtab.py" line="717"/>
+        <location filename="openlp/core/ui/advancedtab.py" line="720"/>
         <source>Are you sure you want to change the location of the OpenLP data directory to the default location?
 
 This location will be used after OpenLP is closed.</source>
@@ -2482,12 +2481,12 @@ This location will be used after OpenLP is closed.</source>
 Denne placering vil blive benyttet når OpenLP lukkes.</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/advancedtab.py" line="753"/>
+        <location filename="openlp/core/ui/advancedtab.py" line="756"/>
         <source>Overwrite Existing Data</source>
         <translation>Overskriv eksisterende data</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/advancedtab.py" line="525"/>
+        <location filename="openlp/core/ui/advancedtab.py" line="528"/>
         <source>OpenLP data directory was not found
 
 %s
@@ -2508,7 +2507,7 @@ Klik &quot;Nej&quot; for at stoppe med at indlæse OpenLP, så at du kan ordne p
 Klik &quot;Ja&quot; for at nulstille datamappen til dens standardplacering.</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/advancedtab.py" line="690"/>
+        <location filename="openlp/core/ui/advancedtab.py" line="693"/>
         <source>Are you sure you want to change the location of the OpenLP data directory to:
 
 %s
@@ -2521,7 +2520,7 @@ The data directory will be changed when OpenLP is closed.</source>
 Datamappen vil blive ændret når OpenLP lukkes.</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/advancedtab.py" line="753"/>
+        <location filename="openlp/core/ui/advancedtab.py" line="756"/>
         <source>WARNING: 
 
 The location you have selected 
@@ -3232,7 +3231,7 @@ For at annullere velkomstguiden fuldstændigt (uden at starte OpenLP), så klik 
 <context>
     <name>OpenLP.MainDisplay</name>
     <message>
-        <location filename="openlp/core/ui/maindisplay.py" line="200"/>
+        <location filename="openlp/core/ui/maindisplay.py" line="203"/>
         <source>OpenLP Display</source>
         <translation>OpenLP-visning</translation>
     </message>
@@ -3544,7 +3543,7 @@ Du kan hente den seneste udgave fra http://openlp.org/.</translation>
         <translation>Hovedvisningen er mørkelagt</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/mainwindow.py" line="1277"/>
+        <location filename="openlp/core/ui/mainwindow.py" line="1283"/>
         <source>Default Theme: %s</source>
         <translation>Standard tema: %s</translation>
     </message>
@@ -3560,12 +3559,12 @@ Du kan hente den seneste udgave fra http://openlp.org/.</translation>
         <translation>Konfigurér g&amp;enveje...</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/mainwindow.py" line="1185"/>
+        <location filename="openlp/core/ui/mainwindow.py" line="1191"/>
         <source>Close OpenLP</source>
         <translation>Luk OpenLP</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/mainwindow.py" line="1185"/>
+        <location filename="openlp/core/ui/mainwindow.py" line="1191"/>
         <source>Are you sure you want to close OpenLP?</source>
         <translation>Er du sikker på at du vil lukke OpenLP?</translation>
     </message>
@@ -3639,13 +3638,13 @@ Re-running this wizard may make changes to your current OpenLP configuration and
 At køre velkomstguiden igen kan medføre ændringer i din nuværende OpenLP konfiguration og muligvis tilføje sange til din eksisterende sangliste og ændre dit standard-tema.</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/mainwindow.py" line="1438"/>
+        <location filename="openlp/core/ui/mainwindow.py" line="1444"/>
         <source>Clear List</source>
         <comment>Clear List of recent files</comment>
         <translation>Ryd liste</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/mainwindow.py" line="1438"/>
+        <location filename="openlp/core/ui/mainwindow.py" line="1444"/>
         <source>Clear the list of recent files.</source>
         <translation>Ryd liste over seneste filer.</translation>
     </message>
@@ -3698,32 +3697,32 @@ Importering af ukorrekte indstillinger kan forsage uregelmæssig opførsel eller
         <translation>Eksporterede OpenLP-indstillingsfiler (*.conf)</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/mainwindow.py" line="1025"/>
+        <location filename="openlp/core/ui/mainwindow.py" line="1031"/>
         <source>Import settings</source>
         <translation>Importér indstillinger</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/mainwindow.py" line="1025"/>
+        <location filename="openlp/core/ui/mainwindow.py" line="1031"/>
         <source>OpenLP will now close.  Imported settings will be applied the next time you start OpenLP.</source>
         <translation>OpenLP lukker nu ned.  Importerede indstillinger vil blive anvendt næste gang du starter OpenLP.</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/mainwindow.py" line="1040"/>
+        <location filename="openlp/core/ui/mainwindow.py" line="1046"/>
         <source>Export Settings File</source>
         <translation>Eksportér indstillingsfil</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/mainwindow.py" line="1040"/>
+        <location filename="openlp/core/ui/mainwindow.py" line="1046"/>
         <source>OpenLP Export Settings File (*.conf)</source>
         <translation>OpenLP-eksporteret indstillingsfil (*.conf)</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/mainwindow.py" line="1531"/>
+        <location filename="openlp/core/ui/mainwindow.py" line="1537"/>
         <source>New Data Directory Error</source>
         <translation>Fejl ved ny datamappe</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/mainwindow.py" line="999"/>
+        <location filename="openlp/core/ui/mainwindow.py" line="990"/>
         <source>The file you selected does appear to be a valid OpenLP settings file.
 
 Section [%s] is not valid 
@@ -3736,12 +3735,12 @@ Sektion [%s] er ike gyldig
 Behandlingen er blevet termineret og ingen ændringer er blevet foretaget.</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/mainwindow.py" line="1521"/>
+        <location filename="openlp/core/ui/mainwindow.py" line="1527"/>
         <source>Copying OpenLP data to new data directory location - %s - Please wait for copy to finish</source>
         <translation>Kopierer OpenLP data til en ny datamappeplacering - %s - Vent venligst til at kopieringen er færdig</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/mainwindow.py" line="1531"/>
+        <location filename="openlp/core/ui/mainwindow.py" line="1537"/>
         <source>OpenLP Data directory copy failed
 
 %s</source>
@@ -3789,64 +3788,64 @@ Database: %s</translation>
         <translation>&amp;Tilføj til valgte programpunkt</translation>
     </message>
     <message>
-        <location filename="openlp/core/lib/mediamanageritem.py" line="491"/>
+        <location filename="openlp/core/lib/mediamanageritem.py" line="492"/>
         <source>You must select one or more items to preview.</source>
         <translation>Du er nødt vælge et eller flere punkter for at forhåndsvise.</translation>
     </message>
     <message>
-        <location filename="openlp/core/lib/mediamanageritem.py" line="509"/>
+        <location filename="openlp/core/lib/mediamanageritem.py" line="510"/>
         <source>You must select one or more items to send live.</source>
         <translation>Du er nødt til at vælge et eller flere punkter for at fremvise.</translation>
     </message>
     <message>
-        <location filename="openlp/core/lib/mediamanageritem.py" line="562"/>
+        <location filename="openlp/core/lib/mediamanageritem.py" line="563"/>
         <source>You must select one or more items.</source>
         <translation>Du skal vælge et, eller flere punkter.</translation>
     </message>
     <message>
-        <location filename="openlp/core/lib/mediamanageritem.py" line="569"/>
+        <location filename="openlp/core/lib/mediamanageritem.py" line="570"/>
         <source>You must select an existing service item to add to.</source>
         <translation>Du er nødt til at vælge et eksisterende programpunkt for at tilføje.</translation>
     </message>
     <message>
-        <location filename="openlp/core/lib/mediamanageritem.py" line="578"/>
+        <location filename="openlp/core/lib/mediamanageritem.py" line="579"/>
         <source>Invalid Service Item</source>
         <translation>Ugyldigt programpunkt</translation>
     </message>
     <message>
-        <location filename="openlp/core/lib/mediamanageritem.py" line="578"/>
+        <location filename="openlp/core/lib/mediamanageritem.py" line="579"/>
         <source>You must select a %s service item.</source>
         <translation>Du er nødt til at vælge et %s programpunkt.</translation>
     </message>
     <message>
-        <location filename="openlp/core/lib/mediamanageritem.py" line="536"/>
+        <location filename="openlp/core/lib/mediamanageritem.py" line="537"/>
         <source>You must select one or more items to add.</source>
         <translation>Du er nødt til at vælge et eller flere punkter for at tilføje.</translation>
     </message>
     <message>
-        <location filename="openlp/core/lib/mediamanageritem.py" line="608"/>
+        <location filename="openlp/core/lib/mediamanageritem.py" line="609"/>
         <source>No Search Results</source>
         <translation>Ingen søgeresultater</translation>
     </message>
     <message>
-        <location filename="openlp/core/lib/mediamanageritem.py" line="364"/>
+        <location filename="openlp/core/lib/mediamanageritem.py" line="365"/>
         <source>Invalid File Type</source>
         <translation>Ugyldig filtype</translation>
     </message>
     <message>
-        <location filename="openlp/core/lib/mediamanageritem.py" line="364"/>
+        <location filename="openlp/core/lib/mediamanageritem.py" line="365"/>
         <source>Invalid File %s.
 Suffix not supported</source>
         <translation>Ugyldig fil %s.
 Endelsen er ikke understøttet</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/lib/mediaitem.py" line="166"/>
+        <location filename="openlp/plugins/songs/lib/mediaitem.py" line="129"/>
         <source>&amp;Clone</source>
         <translation>&amp;Klon</translation>
     </message>
     <message>
-        <location filename="openlp/core/lib/mediamanageritem.py" line="407"/>
+        <location filename="openlp/core/lib/mediamanageritem.py" line="408"/>
         <source>Duplicate files were found on import and were ignored.</source>
         <translation>Duplikerede filer blev fundet ved importeringen og blev ignoreret.</translation>
     </message>
@@ -4014,12 +4013,12 @@ Endelsen er ikke understøttet</translation>
 <context>
     <name>OpenLP.ServiceItem</name>
     <message>
-        <location filename="openlp/core/lib/serviceitem.py" line="484"/>
+        <location filename="openlp/core/lib/serviceitem.py" line="490"/>
         <source>&lt;strong&gt;Start&lt;/strong&gt;: %s</source>
         <translation>&lt;strong&gt;Start&lt;/strong&gt;: %s</translation>
     </message>
     <message>
-        <location filename="openlp/core/lib/serviceitem.py" line="488"/>
+        <location filename="openlp/core/lib/serviceitem.py" line="494"/>
         <source>&lt;strong&gt;Length&lt;/strong&gt;: %s</source>
         <translation>&lt;strong&gt;Varighed&lt;/strong&gt;: %s</translation>
     </message>
@@ -4410,27 +4409,27 @@ Disse filer vil blive fjernet hvis du fortsætter med at gemme.</translation>
 <context>
     <name>OpenLP.SlideController</name>
     <message>
-        <location filename="openlp/core/ui/slidecontroller.py" line="202"/>
+        <location filename="openlp/core/ui/slidecontroller.py" line="201"/>
         <source>Hide</source>
         <translation>Gem</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/slidecontroller.py" line="281"/>
+        <location filename="openlp/core/ui/slidecontroller.py" line="280"/>
         <source>Go To</source>
         <translation>Gå til</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/slidecontroller.py" line="205"/>
+        <location filename="openlp/core/ui/slidecontroller.py" line="204"/>
         <source>Blank Screen</source>
         <translation>Blank skærm</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/slidecontroller.py" line="210"/>
+        <location filename="openlp/core/ui/slidecontroller.py" line="209"/>
         <source>Blank to Theme</source>
         <translation>Vis temabaggrund</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/slidecontroller.py" line="215"/>
+        <location filename="openlp/core/ui/slidecontroller.py" line="214"/>
         <source>Show Desktop</source>
         <translation>Vis skrivebord</translation>
     </message>
@@ -4450,37 +4449,37 @@ Disse filer vil blive fjernet hvis du fortsætter med at gemme.</translation>
         <translation>Forlad punkt</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/slidecontroller.py" line="178"/>
+        <location filename="openlp/core/ui/slidecontroller.py" line="177"/>
         <source>Move to previous.</source>
         <translation>Gå til forrige.</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/slidecontroller.py" line="187"/>
+        <location filename="openlp/core/ui/slidecontroller.py" line="186"/>
         <source>Move to next.</source>
         <translation>Gå til næste.</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/slidecontroller.py" line="231"/>
+        <location filename="openlp/core/ui/slidecontroller.py" line="230"/>
         <source>Play Slides</source>
         <translation>Afspil dias</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/slidecontroller.py" line="255"/>
+        <location filename="openlp/core/ui/slidecontroller.py" line="254"/>
         <source>Delay between slides in seconds.</source>
         <translation>Forsinkelse mellem dias i sekunder.</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/slidecontroller.py" line="259"/>
+        <location filename="openlp/core/ui/slidecontroller.py" line="258"/>
         <source>Move to live.</source>
         <translation>Fremvis.</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/slidecontroller.py" line="263"/>
+        <location filename="openlp/core/ui/slidecontroller.py" line="262"/>
         <source>Add to Service.</source>
         <translation>Tilføj til program.</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/slidecontroller.py" line="268"/>
+        <location filename="openlp/core/ui/slidecontroller.py" line="267"/>
         <source>Edit and reload song preview.</source>
         <translation>Redigér og genindlæs forhåndsvisning af sang.</translation>
     </message>
@@ -4490,7 +4489,7 @@ Disse filer vil blive fjernet hvis du fortsætter med at gemme.</translation>
         <translation>Start afspilning af medie.</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/slidecontroller.py" line="285"/>
+        <location filename="openlp/core/ui/slidecontroller.py" line="284"/>
         <source>Pause audio.</source>
         <translation>Sæt lyd på pause.</translation>
     </message>
@@ -4550,32 +4549,32 @@ Disse filer vil blive fjernet hvis du fortsætter med at gemme.</translation>
         <translation>Gå til &quot;Anden&quot;</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/slidecontroller.py" line="178"/>
+        <location filename="openlp/core/ui/slidecontroller.py" line="177"/>
         <source>Previous Slide</source>
         <translation>Forrige dias</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/slidecontroller.py" line="187"/>
+        <location filename="openlp/core/ui/slidecontroller.py" line="186"/>
         <source>Next Slide</source>
         <translation>Næste dias</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/slidecontroller.py" line="285"/>
+        <location filename="openlp/core/ui/slidecontroller.py" line="284"/>
         <source>Pause Audio</source>
         <translation>Sæt lyd på pause</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/slidecontroller.py" line="292"/>
+        <location filename="openlp/core/ui/slidecontroller.py" line="291"/>
         <source>Background Audio</source>
         <translation>Baggrundslyd</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/slidecontroller.py" line="298"/>
+        <location filename="openlp/core/ui/slidecontroller.py" line="297"/>
         <source>Go to next audio track.</source>
         <translation>Gå til næste lydspor.</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/slidecontroller.py" line="305"/>
+        <location filename="openlp/core/ui/slidecontroller.py" line="304"/>
         <source>Tracks</source>
         <translation>Spor</translation>
     </message>
@@ -5827,25 +5826,25 @@ Disse filer vil blive fjernet hvis du fortsætter med at gemme.</translation>
 <context>
     <name>OpenLP.core.lib</name>
     <message>
-        <location filename="openlp/core/lib/__init__.py" line="370"/>
+        <location filename="openlp/core/lib/__init__.py" line="374"/>
         <source>%1 and %2</source>
         <comment>Locale list separator: 2 items</comment>
         <translation>%1 og %2</translation>
     </message>
     <message>
-        <location filename="openlp/core/lib/__init__.py" line="373"/>
+        <location filename="openlp/core/lib/__init__.py" line="377"/>
         <source>%1, and %2</source>
         <comment>Locale list separator: end</comment>
         <translation>%1, og %2</translation>
     </message>
     <message>
-        <location filename="openlp/core/lib/__init__.py" line="376"/>
+        <location filename="openlp/core/lib/__init__.py" line="380"/>
         <source>%1, %2</source>
         <comment>Locale list separator: middle</comment>
         <translation>%1, %2</translation>
     </message>
     <message>
-        <location filename="openlp/core/lib/__init__.py" line="378"/>
+        <location filename="openlp/core/lib/__init__.py" line="382"/>
         <source>%1, %2</source>
         <comment>Locale list separator: start</comment>
         <translation>%1, %2</translation>
@@ -6567,12 +6566,12 @@ Tegnkodningen er ansvarlig for den korrekte visning af tegn.</translation>
 <context>
     <name>SongsPlugin.EasyWorshipSongImport</name>
     <message>
-        <location filename="openlp/plugins/songs/lib/ewimport.py" line="168"/>
+        <location filename="openlp/plugins/songs/lib/ewimport.py" line="176"/>
         <source>Administered by %s</source>
         <translation>Administreret af %s</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/lib/ewimport.py" line="220"/>
+        <location filename="openlp/plugins/songs/lib/ewimport.py" line="231"/>
         <source>
 [above are Song Tags with notes imported from 
                         EasyWorship]</source>
@@ -6692,72 +6691,72 @@ Tegnkodningen er ansvarlig for den korrekte visning af tegn.</translation>
         <translation>Tema, ophavsret &amp;&amp; kommentarer</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="357"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="377"/>
         <source>Add Author</source>
         <translation>Tilføj forfatter</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="357"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="377"/>
         <source>This author does not exist, do you want to add them?</source>
         <translation>Denne forfatter eksisterer ikke. Vil du tilføje dem?</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="380"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="400"/>
         <source>This author is already in the list.</source>
         <translation>Denne forfatter er allerede på listen.</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="387"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="407"/>
         <source>You have not selected a valid author. Either select an author from the list, or type in a new author and click the &quot;Add Author to Song&quot; button to add the new author.</source>
         <translation>Du har ikke valgt en gyldig forfatter. Vælg enten en forfatter fra listen, eller indtast en ny forfatter og klik på &quot;Tilføj forfatter til sang&quot;-knappen for at tilføje den nye forfatter.</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="415"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="435"/>
         <source>Add Topic</source>
         <translation>Tilføj emne</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="415"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="435"/>
         <source>This topic does not exist, do you want to add it?</source>
         <translation>Dette emne eksisterer ikke. Vil du tilføje det?</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="436"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="456"/>
         <source>This topic is already in the list.</source>
         <translation>Dette emne er allerede på listen.</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="446"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="466"/>
         <source>You have not selected a valid topic. Either select a topic from the list, or type in a new topic and click the &quot;Add Topic to Song&quot; button to add the new topic.</source>
         <translation>Du har ikke valgt et gyldigt emne. Vælg enten et emne fra listen, eller indtast et nyt emne og klik  på &quot;Tilføj emne til sang&quot;-knappen for at tilføje det nye emne.</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="656"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="676"/>
         <source>You need to type in a song title.</source>
         <translation>Vælg først en sangtitel.</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="663"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="683"/>
         <source>You need to type in at least one verse.</source>
         <translation>Skriv mindst ét vers.</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="639"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="659"/>
         <source>The verse order is invalid. There is no verse corresponding to %s. Valid entries are %s.</source>
         <translation>Rækkefølgen af vers er ikke gyldig. Der ikke noget vers som svarer til %s. Gyldige elementer er %s.</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="681"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="701"/>
         <source>Add Book</source>
         <translation>Tilføj bog</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="681"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="701"/>
         <source>This song book does not exist, do you want to add it?</source>
         <translation>Denne sangbog eksisterer ikke. Ønsker du at tilføje den?</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="670"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="690"/>
         <source>You need to have an author for this song.</source>
         <translation>Du mangler en forfatter til denne sang.</translation>
     </message>
@@ -6782,7 +6781,7 @@ Tegnkodningen er ansvarlig for den korrekte visning af tegn.</translation>
         <translation>Fjern &amp;alt</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="733"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="753"/>
         <source>Open File(s)</source>
         <translation>Åbn fil(er)</translation>
     </message>
@@ -6792,7 +6791,7 @@ Tegnkodningen er ansvarlig for den korrekte visning af tegn.</translation>
         <translation>&lt;strong&gt;Advarsel:&lt;/strong&gt; Ikke alle versene er i brug.</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="634"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="654"/>
         <source>The verse order is invalid. There are no verses corresponding to %s. Valid entries are %s.</source>
         <translation>Denne rækkefølge af vers er ikke gyldig. Der er ikke nogen vers der svarer til %s. Gyldige elementer er %s.</translation>
     </message>
@@ -6878,7 +6877,7 @@ Tegnkodningen er ansvarlig for den korrekte visning af tegn.</translation>
         <translation>Ingen placering angivet til at gemme </translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/songexportform.py" line="278"/>
+        <location filename="openlp/plugins/songs/forms/songexportform.py" line="277"/>
         <source>Starting export...</source>
         <translation>Påbegynder eksportering...</translation>
     </message>
@@ -6888,7 +6887,7 @@ Tegnkodningen er ansvarlig for den korrekte visning af tegn.</translation>
         <translation>Du er nødt til at vælge en mappe.</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/songexportform.py" line="369"/>
+        <location filename="openlp/plugins/songs/forms/songexportform.py" line="368"/>
         <source>Select Destination Folder</source>
         <translation>Vælg en destinationsmappe</translation>
     </message>
@@ -7092,27 +7091,27 @@ Tegnkodningen er ansvarlig for den korrekte visning af tegn.</translation>
 <context>
     <name>SongsPlugin.MediaItem</name>
     <message>
-        <location filename="openlp/plugins/songs/lib/mediaitem.py" line="192"/>
+        <location filename="openlp/plugins/songs/lib/mediaitem.py" line="155"/>
         <source>Titles</source>
         <translation>Titler</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/lib/mediaitem.py" line="192"/>
+        <location filename="openlp/plugins/songs/lib/mediaitem.py" line="155"/>
         <source>Lyrics</source>
         <translation>Sangtekst</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/lib/mediaitem.py" line="557"/>
+        <location filename="openlp/plugins/songs/lib/mediaitem.py" line="520"/>
         <source>CCLI License: </source>
         <translation>CCLI Licens: </translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/lib/mediaitem.py" line="192"/>
+        <location filename="openlp/plugins/songs/lib/mediaitem.py" line="155"/>
         <source>Entire Song</source>
         <translation>Hele sang</translation>
     </message>
     <message numerus="yes">
-        <location filename="openlp/plugins/songs/lib/mediaitem.py" line="439"/>
+        <location filename="openlp/plugins/songs/lib/mediaitem.py" line="402"/>
         <source>Are you sure you want to delete the %n selected song(s)?</source>
         <translation>
             <numerusform>Er du sikker på at du vil slette den %n valgte sang?</numerusform>
@@ -7120,38 +7119,38 @@ Tegnkodningen er ansvarlig for den korrekte visning af tegn.</translation>
         </translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/lib/mediaitem.py" line="188"/>
+        <location filename="openlp/plugins/songs/lib/mediaitem.py" line="151"/>
         <source>Maintain the lists of authors, topics and books.</source>
         <translation>Vedligehold listen over forfattere, emner og bøger.</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/lib/mediaitem.py" line="484"/>
+        <location filename="openlp/plugins/songs/lib/mediaitem.py" line="447"/>
         <source>copy</source>
         <comment>For song cloning</comment>
         <translation>kopi</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/lib/mediaitem.py" line="192"/>
+        <location filename="openlp/plugins/songs/lib/mediaitem.py" line="155"/>
         <source>Search Titles...</source>
         <translation>Søg blandt titler...</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/lib/mediaitem.py" line="192"/>
+        <location filename="openlp/plugins/songs/lib/mediaitem.py" line="155"/>
         <source>Search Entire Song...</source>
         <translation>Søg hele sang...</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/lib/mediaitem.py" line="192"/>
+        <location filename="openlp/plugins/songs/lib/mediaitem.py" line="155"/>
         <source>Search Lyrics...</source>
         <translation>Søg sangtekster...</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/lib/mediaitem.py" line="192"/>
+        <location filename="openlp/plugins/songs/lib/mediaitem.py" line="155"/>
         <source>Search Authors...</source>
         <translation>Søg forfattere...</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/lib/mediaitem.py" line="192"/>
+        <location filename="openlp/plugins/songs/lib/mediaitem.py" line="155"/>
         <source>Search Song Books...</source>
         <translation>Søg sangbøger...</translation>
     </message>
@@ -7247,12 +7246,12 @@ Tegnkodningen er ansvarlig for den korrekte visning af tegn.</translation>
 <context>
     <name>SongsPlugin.SongExportForm</name>
     <message>
-        <location filename="openlp/plugins/songs/forms/songexportform.py" line="299"/>
+        <location filename="openlp/plugins/songs/forms/songexportform.py" line="298"/>
         <source>Your song export failed.</source>
         <translation>Din sangeksportering slog fejl.</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/songexportform.py" line="294"/>
+        <location filename="openlp/plugins/songs/forms/songexportform.py" line="293"/>
         <source>Finished export. To import these files use the &lt;strong&gt;OpenLyrics&lt;/strong&gt; importer.</source>
         <translation>Ekporteringen er færdig. Benyt &lt;strong&gt;OpenLyrics&lt;/strong&gt;-importøren for at importere disse filer.</translation>
     </message>
