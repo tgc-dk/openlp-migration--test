@@ -379,9 +379,7 @@ def join_url(base, *args):
     # Remove leading and trailing slash from components.
     # Also ensure QString is converted to unicode().
     args = [unicode(x).strip('/') for x in args]
-    url = urlparse.urljoin(base, '/'.join(args))
-    print url
-    return url
+    return urlparse.urljoin(base, '/'.join(args))
 
 
 def split_filename(path):
