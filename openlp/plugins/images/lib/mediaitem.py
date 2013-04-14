@@ -62,7 +62,7 @@ class ImageMediaItem(MediaManagerItem):
         self.onNewPrompt = translate('ImagePlugin.MediaItem',
             'Select Image(s)')
         file_formats = get_images_filter()
-        self.onNewFileMasks = u'%s;;%s (*.*) (*)' % (file_formats,
+        self.onNewFileMasks = u'%s;;%s (*.*)' % (file_formats,
             UiStrings().AllFiles)
         self.replaceAction.setText(UiStrings().ReplaceBG)
         self.replaceAction.setToolTip(UiStrings().ReplaceLiveBG)
