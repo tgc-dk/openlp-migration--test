@@ -608,7 +608,7 @@ class EditSongForm(QtGui.QDialog, Ui_EditSongDialog):
         for verse in verses:
             if not verse in order:
                 verses_not_used.append(verse)
-        self.warningLabel.setVisible(len(verses_not_used) > 0)
+        self.warningLabel.setVisible(len(verses_not_used) > 0 and bool(text))
 
     def __extractVerseOrder(self, verse_order):
         order = []
