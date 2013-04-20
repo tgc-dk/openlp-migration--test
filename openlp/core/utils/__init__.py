@@ -37,6 +37,7 @@ import re
 from subprocess import Popen, PIPE
 import sys
 import urllib2
+import urlparse
 
 from openlp.core.lib.settings import Settings
 
@@ -362,6 +363,23 @@ def get_images_filter():
         IMAGES_FILTER = u'%s %s %s' % (translate('OpenLP', 'Image Files'),
             visible_formats, actual_formats)
     return IMAGES_FILTER
+
+
+def join_url(base, *args):
+    """
+    Join one or more url components with the base url.
+
+    ``base``
+        Base url containing top level domain.
+        e.g. http://www.example.org
+
+    ``args``
+        url components to be appended to the base url.
+    """
+    # Remove leading and trailing slash from components.
+    # Also ensure QString is converted to unicode().
+    args = [unicode(x).strip('/') for x in args]
+    return urlparse.urljoin(base, '/'.join(args))
 
 
 def split_filename(path):
