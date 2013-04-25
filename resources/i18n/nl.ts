@@ -2209,7 +2209,8 @@ Hij ons heeft bevrijd.</translation>
         <location filename="openlp/core/ui/aboutdialog.py" line="250"/>
         <source>Copyright &#xa9; 2004-2013 %s
 Portions copyright &#xa9; 2004-2013 %s</source>
-        <translation type="unfinished"></translation>
+        <translation>Copyright © 2004-2013 %s⏎
+Gedeelten copyright © 2004-2013 %s</translation>
     </message>
 </context>
 <context>
@@ -3785,7 +3786,7 @@ Database: %s</translation>
     <message>
         <location filename="openlp/core/lib/mediamanageritem.py" line="258"/>
         <source>&amp;Add to selected Service Item</source>
-        <translation>&amp;Voeg selectie toe aan de liturgie</translation>
+        <translation>&amp;Voeg toe aan geselecteerde liturgie-item</translation>
     </message>
     <message>
         <location filename="openlp/core/lib/mediamanageritem.py" line="492"/>
@@ -4091,7 +4092,7 @@ Extensie niet ondersteund</translation>
     <message>
         <location filename="openlp/core/ui/servicemanager.py" line="291"/>
         <source>&amp;Add to Selected Item</source>
-        <translation>&amp;Voeg selectie toe</translation>
+        <translation>&amp;Voeg toe aan geselecteerd item</translation>
     </message>
     <message>
         <location filename="openlp/core/ui/servicemanager.py" line="296"/>
@@ -6509,7 +6510,7 @@ De tekstcodering is verantwoordelijk voor een correcte weergave van lettertekens
     <message>
         <location filename="openlp/plugins/songs/songsplugin.py" line="230"/>
         <source>Add the selected song to the service.</source>
-        <translation>Voeg geselecteerde lied toe aan de liturgie.</translation>
+        <translation>Voeg geselecteerd lied toe aan de liturgie.</translation>
     </message>
     <message>
         <location filename="openlp/plugins/songs/songsplugin.py" line="152"/>

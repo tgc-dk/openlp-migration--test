@@ -2043,7 +2043,7 @@ OpenLP is free church presentation software, or lyrics projection software, used
 Find out more about OpenLP: http://openlp.org/
 
 OpenLP is written and maintained by volunteers. If you would like to see more free Christian software being written, please consider volunteering by using the button below.</source>
-        <translation>OpenLP &lt;版本&gt;&lt;修订&gt; - 开源歌词演示
+        <translation>OpenLP &lt;version&gt;&lt;revision&gt; - 开源歌词演示
 
 OpenLP是一个免费的教会演示软件，或歌词演示软件，被用在教会敬拜时使用电脑和数字投影仪来展示歌词，圣经经节，视频，图片，甚至幻灯片演示(如果已安装Impress, PowerPoint或PowerPoint Viewer的话)。
 
@@ -2955,12 +2955,12 @@ To cancel the First Time Wizard completely (and not start OpenLP), click the Can
     <message>
         <location filename="openlp/core/ui/formattingtagform.py" line="128"/>
         <source>&lt;HTML here&gt;</source>
-        <translation>&lt;HTML 这里&gt;</translation>
+        <translation>&lt;HTML here&gt;</translation>
     </message>
     <message>
         <location filename="openlp/core/ui/formattingtagform.py" line="130"/>
         <source>&lt;/and here&gt;</source>
-        <translation>&lt;/和这里&gt;</translation>
+        <translation>&lt;/and here&gt;</translation>
     </message>
     <message>
         <location filename="openlp/core/ui/formattingtagform.py" line="167"/>
@@ -3847,12 +3847,12 @@ Suffix not supported</source>
     <message>
         <location filename="openlp/plugins/songs/lib/xml.py" line="733"/>
         <source>&lt;lyrics&gt; tag is missing.</source>
-        <translation>&lt;歌词&gt; 标签丢失。</translation>
+        <translation>&lt;lyrics&gt; 标签丢失。</translation>
     </message>
     <message>
         <location filename="openlp/plugins/songs/lib/xml.py" line="740"/>
         <source>&lt;verse&gt; tag is missing.</source>
-        <translation>&lt;经节&gt; 标签丢失。</translation>
+        <translation>&lt;verse&gt; 标签丢失。</translation>
     </message>
 </context>
 <context>

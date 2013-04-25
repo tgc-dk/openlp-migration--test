@@ -10,7 +10,7 @@
     <message>
         <location filename="openlp/plugins/alerts/alertsplugin.py" line="140"/>
         <source>Show an alert message.</source>
-        <translation>Menampilkan pesan peringatan.</translation>
+        <translation>Menampilkan suatu pesan peringatan.</translation>
     </message>
     <message>
         <location filename="openlp/plugins/alerts/alertsplugin.py" line="186"/>
@@ -22,13 +22,13 @@
         <location filename="openlp/plugins/alerts/alertsplugin.py" line="187"/>
         <source>Alerts</source>
         <comment>name plural</comment>
-        <translation>Peringatan</translation>
+        <translation>Peringatan-Peringatan</translation>
     </message>
     <message>
         <location filename="openlp/plugins/alerts/alertsplugin.py" line="191"/>
         <source>Alerts</source>
         <comment>container title</comment>
-        <translation>Peringatan</translation>
+        <translation>Peringatan-Peringatan</translation>
     </message>
     <message>
         <location filename="openlp/plugins/alerts/alertsplugin.py" line="175"/>

@@ -33,7 +33,7 @@
     <message>
         <location filename="openlp/plugins/alerts/alertsplugin.py" line="175"/>
         <source>&lt;strong&gt;Alerts Plugin&lt;/strong&gt;&lt;br /&gt;The alert plugin controls the displaying of nursery alerts on the display screen.</source>
-        <translation>&lt;strong&gt;Meddelelser-udvidelse&lt;/strong&gt;&lt;br /&gt;Meddelelsesudvidelsen kontrollerer visningen af beskeder fra søndagsskolen på skærmen.</translation>
+        <translation>&lt;strong&gt;Meddelelse-udvidelse&lt;/strong&gt;&lt;br /&gt;Meddelelsesudvidelsen kontrollerer visningen af beskeder fra børnekirken/søndagsskolen på skærmen.</translation>
     </message>
 </context>
 <context>
@@ -2058,7 +2058,7 @@ OpenLP er skrevet og vedligeholdt af frivillige. Hvis du ønsker at se flere gra
     <message>
         <location filename="openlp/core/ui/aboutdialog.py" line="647"/>
         <source>Volunteer</source>
-        <translation>Slut dig til os</translation>
+        <translation>Giv en hånd</translation>
     </message>
     <message>
         <location filename="openlp/core/ui/aboutdialog.py" line="156"/>
@@ -2209,7 +2209,8 @@ Afsluttende tak
         <location filename="openlp/core/ui/aboutdialog.py" line="250"/>
         <source>Copyright &#xa9; 2004-2013 %s
 Portions copyright &#xa9; 2004-2013 %s</source>
-        <translation type="unfinished"></translation>
+        <translation>Ophavsret © 2004-2013 %s
+Delvis ophavsret © 2004-2013 %s</translation>
     </message>
 </context>
 <context>
@@ -2242,7 +2243,7 @@ Portions copyright &#xa9; 2004-2013 %s</source>
     <message>
         <location filename="openlp/core/ui/advancedtab.py" line="358"/>
         <source>Enable application exit confirmation</source>
-        <translation>Benyt bekræftigelse under lukning af programmet</translation>
+        <translation>Benyt bekræftigelse før lukning af programmet</translation>
     </message>
     <message>
         <location filename="openlp/core/ui/advancedtab.py" line="394"/>
@@ -2374,7 +2375,7 @@ See http://docs.python.org/library/datetime.html#strftime-strptime-behavior for 
     <message>
         <location filename="openlp/core/ui/advancedtab.py" line="386"/>
         <source>Consult the OpenLP manual for usage.</source>
-        <translation>Se OpenLP-manualen for info om brug.</translation>
+        <translation>Se OpenLP-manualen for hjælp til brug.</translation>
     </message>
     <message>
         <location filename="openlp/core/ui/advancedtab.py" line="388"/>
@@ -2547,7 +2548,7 @@ ser ud til at indeholde OpenLP-datafiler.  Ønsker du at erstatte disse filer me
     <message>
         <location filename="openlp/core/ui/exceptiondialog.py" line="92"/>
         <source>Oops! OpenLP hit a problem, and couldn&apos;t recover. The text in the box below contains information that might be helpful to the OpenLP developers, so please e-mail it to bugs@openlp.org, along with a detailed description of what you were doing when the problem occurred.</source>
-        <translation>Ups! OpenLP stødte ind i et problem, og kunne ikke gendanne. Teksten i kassen herunder indeholder information som kan være nyttig for OpenLP-udviklerne, så send venligst en e-mail til bugs@openlp.org sammen med en detaljeret beskrivelse af, hvad du foretog dig da problemet opstod.</translation>
+        <translation>Ups! OpenLP stødte ind i et problem og kunne ikke gendanne. Teksten i kassen herunder indeholder information som kan være nyttig for OpenLP-udviklerne, så send venligst en e-mail til bugs@openlp.org sammen med en detaljeret beskrivelse af, hvad du foretog dig da problemet opstod.</translation>
     </message>
     <message>
         <location filename="openlp/core/ui/exceptiondialog.py" line="98"/>
@@ -2658,7 +2659,7 @@ Udgave: %s
 %s
 --- Biblioteksudgaver ---
 %s
-Inholdet i fejlrapporten bedes skrives på engelsk, da udviklerne er fra mange forskellige nationaliteter.</translation>
+Inholdet i fejlrapporten bedes skrives på engelsk, da udviklerne af OpenLP er fra mange forskellige nationaliteter.</translation>
     </message>
 </context>
 <context>
@@ -3077,7 +3078,7 @@ For at annullere velkomstguiden fuldstændigt (uden at starte OpenLP), så klik 
     <message>
         <location filename="openlp/core/ui/generaltab.py" line="223"/>
         <source>Display if a single screen</source>
-        <translation>Vis selv på en enkelt skærm</translation>
+        <translation>Vis også hvis der kun er en enkelt skærm</translation>
     </message>
     <message>
         <location filename="openlp/core/ui/generaltab.py" line="225"/>
@@ -3122,7 +3123,7 @@ For at annullere velkomstguiden fuldstændigt (uden at starte OpenLP), så klik 
     <message>
         <location filename="openlp/core/ui/generaltab.py" line="246"/>
         <source>CCLI Details</source>
-        <translation>CCLI detaljer</translation>
+        <translation>CCLI-detaljer</translation>
     </message>
     <message>
         <location filename="openlp/core/ui/generaltab.py" line="249"/>
@@ -4745,7 +4746,7 @@ Disse filer vil blive fjernet hvis du fortsætter med at gemme.</translation>
     <message>
         <location filename="openlp/core/ui/thememanager.py" line="801"/>
         <source>Theme %s is used in the %s plugin.</source>
-        <translation>Temaet %s bruges i tilføjelsen %s.</translation>
+        <translation>Temaet %s bruges i %s-udvidelsen.</translation>
     </message>
     <message>
         <location filename="openlp/core/ui/thememanager.py" line="380"/>
@@ -4944,7 +4945,7 @@ Disse filer vil blive fjernet hvis du fortsætter med at gemme.</translation>
     <message>
         <location filename="openlp/core/ui/themewizard.py" line="470"/>
         <source>Define the font and display characteristics for the Display text</source>
-        <translation>Definér skrifttypen og visningskarakteristik for visningsteksten</translation>
+        <translation>Bestem skrifttypen og andre detaljer for visningsteksten</translation>
     </message>
     <message>
         <location filename="openlp/core/ui/themewizard.py" line="495"/>
@@ -4964,7 +4965,7 @@ Disse filer vil blive fjernet hvis du fortsætter med at gemme.</translation>
     <message>
         <location filename="openlp/core/ui/themewizard.py" line="480"/>
         <source>&amp;Outline:</source>
-        <translation>&amp;Disposition:</translation>
+        <translation>&amp;Kant:</translation>
     </message>
     <message>
         <location filename="openlp/core/ui/themewizard.py" line="484"/>
@@ -4989,7 +4990,7 @@ Disse filer vil blive fjernet hvis du fortsætter med at gemme.</translation>
     <message>
         <location filename="openlp/core/ui/themewizard.py" line="492"/>
         <source>Define the font and display characteristics for the Footer text</source>
-        <translation>Definér skrifttypen og visningskarakteristik for teksten i sidefoden</translation>
+        <translation>Bestem skrifttypen og andre detaljer for teksten i sidefoden</translation>
     </message>
     <message>
         <location filename="openlp/core/ui/themewizard.py" line="499"/>
@@ -4999,7 +5000,7 @@ Disse filer vil blive fjernet hvis du fortsætter med at gemme.</translation>
     <message>
         <location filename="openlp/core/ui/themewizard.py" line="501"/>
         <source>Allows additional display formatting information to be defined</source>
-        <translation>Tillader yderligere indstillingsmuligheder for hvordan teksten skal vises</translation>
+        <translation>Yderligere indstillingsmuligheder for hvordan teksten skal vises</translation>
     </message>
     <message>
         <location filename="openlp/core/ui/themewizard.py" line="504"/>
@@ -5129,12 +5130,12 @@ Disse filer vil blive fjernet hvis du fortsætter med at gemme.</translation>
     <message>
         <location filename="openlp/core/ui/themewizard.py" line="555"/>
         <source>Preview and Save</source>
-        <translation>Forhåndsvis og gem</translation>
+        <translation>Gennemse og gem</translation>
     </message>
     <message>
         <location filename="openlp/core/ui/themewizard.py" line="557"/>
         <source>Preview the theme and save it.</source>
-        <translation>Forhåndsvis temaet og gem det.</translation>
+        <translation>Gennemse temaet og gem det.</translation>
     </message>
     <message>
         <location filename="openlp/core/ui/themeform.py" line="209"/>
@@ -5197,7 +5198,7 @@ Disse filer vil blive fjernet hvis du fortsætter med at gemme.</translation>
     <message>
         <location filename="openlp/core/ui/themestab.py" line="120"/>
         <source>Use the theme from each song in the database. If a song doesn&apos;t have a theme associated with it, then use the service&apos;s theme. If the service doesn&apos;t have a theme, then use the global theme.</source>
-        <translation>Benyt temaer fra hver sang i databasen. Hvis en sang ikke er forbundet med et tema, så benyt programmets tema. Hvis programmet ikke har et tema, benyt så det globale tema.</translation>
+        <translation>Benytter hver enkelte sangs individuelle tema. Hvis en sang ikke er forbundet med et tema benyttes programmets tema. Hvis programmet ikke har et tema tilknyttet, da benyttes det globale tema.</translation>
     </message>
     <message>
         <location filename="openlp/core/ui/themestab.py" line="125"/>
@@ -5207,7 +5208,7 @@ Disse filer vil blive fjernet hvis du fortsætter med at gemme.</translation>
     <message>
         <location filename="openlp/core/ui/themestab.py" line="127"/>
         <source>Use the theme from the service, overriding any of the individual songs&apos; themes. If the service doesn&apos;t have a theme, then use the global theme.</source>
-        <translation>Benyt temaet fra programmet, hvorved de individuelle sanges temaer tilsidesættes. Hvis programmet ikke har et tema, så benyt det globale tema.</translation>
+        <translation>Benytter programmets tema, hvorved de individuelle sanges temaer tilsidesættes. Hvis programmet ikke har et tema tilknyttet, da benyttes det globale tema.</translation>
     </message>
     <message>
         <location filename="openlp/core/ui/themestab.py" line="131"/>
@@ -5217,7 +5218,7 @@ Disse filer vil blive fjernet hvis du fortsætter med at gemme.</translation>
     <message>
         <location filename="openlp/core/ui/themestab.py" line="133"/>
         <source>Use the global theme, overriding any themes associated with either the service or the songs.</source>
-        <translation>Benyt det globale tema, hvormed alle temaer tilknyttet til enten programmet eller sangene tilsidesættes.</translation>
+        <translation>Benytter det globale tema, hvormed alle temaer tilknyttet enten programmet eller de individuelle sange tilsidesættes.</translation>
     </message>
     <message>
         <location filename="openlp/core/ui/themestab.py" line="43"/>
@@ -5270,7 +5271,7 @@ Disse filer vil blive fjernet hvis du fortsætter med at gemme.</translation>
     <message>
         <location filename="openlp/core/lib/ui.py" line="67"/>
         <source>CCLI number:</source>
-        <translation>CCLI nummer:</translation>
+        <translation>CCLI-nummer:</translation>
     </message>
     <message>
         <location filename="openlp/core/lib/ui.py" line="68"/>
@@ -6136,12 +6137,12 @@ Disse filer vil blive fjernet hvis du fortsætter med at gemme.</translation>
     <message>
         <location filename="openlp/plugins/remotes/lib/remotetab.py" line="116"/>
         <source>Remote URL:</source>
-        <translation>Fjern URL:</translation>
+        <translation>Fjern-URL:</translation>
     </message>
     <message>
         <location filename="openlp/plugins/remotes/lib/remotetab.py" line="118"/>
         <source>Stage view URL:</source>
-        <translation>Scenevisnings URL:</translation>
+        <translation>Scenevisning-URL:</translation>
     </message>
     <message>
         <location filename="openlp/plugins/remotes/lib/remotetab.py" line="120"/>
@@ -6288,7 +6289,7 @@ Disse filer vil blive fjernet hvis du fortsætter med at gemme.</translation>
     <message>
         <location filename="openlp/plugins/songusage/forms/songusagedetaildialog.py" line="91"/>
         <source>Select Date Range</source>
-        <translation>Vælg datoomfang</translation>
+        <translation>Angiv tidsinterval</translation>
     </message>
     <message>
         <location filename="openlp/plugins/songusage/forms/songusagedetaildialog.py" line="94"/>
@@ -6298,7 +6299,7 @@ Disse filer vil blive fjernet hvis du fortsætter med at gemme.</translation>
     <message>
         <location filename="openlp/plugins/songusage/forms/songusagedetaildialog.py" line="96"/>
         <source>Report Location</source>
-        <translation>Rapportér lokation</translation>
+        <translation>Placering af rapport</translation>
     </message>
     <message>
         <location filename="openlp/plugins/songusage/forms/songusagedetailform.py" line="80"/>
@@ -7103,7 +7104,7 @@ Tegnkodningen er ansvarlig for den korrekte visning af tegn.</translation>
     <message>
         <location filename="openlp/plugins/songs/lib/mediaitem.py" line="520"/>
         <source>CCLI License: </source>
-        <translation>CCLI Licens: </translation>
+        <translation>CCLI-licens: </translation>
     </message>
     <message>
         <location filename="openlp/plugins/songs/lib/mediaitem.py" line="155"/>

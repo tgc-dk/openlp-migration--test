@@ -2208,7 +2208,8 @@ Hlavní zásluhy
         <location filename="openlp/core/ui/aboutdialog.py" line="250"/>
         <source>Copyright &#xa9; 2004-2013 %s
 Portions copyright &#xa9; 2004-2013 %s</source>
-        <translation type="unfinished"></translation>
+        <translation>Autorská práva © 2004-2013 %s
+Částečná autorská práva © 2004-2013 %s</translation>
     </message>
 </context>
 <context>

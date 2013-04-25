@@ -2135,58 +2135,58 @@ Final Credit
     bring this software to you for free because
     He has set us free.</source>
         <translation>Projektleiter
- %s
+    %s
 
 Entwickler
- %s
+    %s
 
 Mitwirkende
- %s
+    %s
 
 Tester
- %s
+    %s
 
 Packetierer
- %s
+    %s
 
 Übersetzer
 Afrikaans (af)
- %s
+    %s
 Tschechisch (cs)
- %s
+    %s
 Dänisch (da)
- %s
+    %s
 Deutsch (de)
- %s
+    %s
 Griechisch  (el)
- %s
+    %s
 Englisch, Vereinigtes Königreich (en_GB)
- %s
+    %s
 Englisch, Südafrika (en_ZA)
- %s
+    %s
 Spanisch (es)
- %s
+    %s
 Estnisch (et)
- %s
+    %s
 Französisch (fr)
- %s
+    %s
 Ungarisch (hu)
- %s
+    %s
 Japanisch (ja)
- %s
+    %s
 Norwegisch (nb)
- %s
+    %s
 Niederländisch (nl)
- %s
+    %s
 Portugiesisch, Brasilien (pt_BR)
- %s
+    %s
 Russisch (ru)
- %s
+    %s
 Schwedisch (sv)
- %s
+    %s
 
 Dokumentation
- %s
+    %s
 
 Erstellt mit
  Python: http://www.python.org/

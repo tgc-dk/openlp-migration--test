@@ -2210,7 +2210,8 @@ omdat Hy ons vry gemaak het.</translation>
         <location filename="openlp/core/ui/aboutdialog.py" line="250"/>
         <source>Copyright &#xa9; 2004-2013 %s
 Portions copyright &#xa9; 2004-2013 %s</source>
-        <translation type="unfinished"></translation>
+        <translation>Kopiereg © 2004-2013 %s
+Gedeeltelike kopiereg © 2004-2013 %s</translation>
     </message>
 </context>
 <context>

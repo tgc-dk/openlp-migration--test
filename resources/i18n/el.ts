@@ -1368,7 +1368,9 @@ demand and thus an internet connection is required.</source>
         <source>Are you sure you want to completely delete &quot;%s&quot; Bible from OpenLP?
 
 You will need to re-import this Bible to use it again.</source>
-        <translation type="unfinished"></translation>
+        <translation>Είστε σίγουροι ότι θέλετε να διαγράψετε την &quot;%s&quot; Βίβλο από το OpenLP;
+
+Θα χρειαστεί να την κάνετε εισαγωγή εκ νέου για να την χρησιμοποιήσετε.</translation>
     </message>
 </context>
 <context>
@@ -1376,7 +1378,7 @@ You will need to re-import this Bible to use it again.</source>
     <message>
         <location filename="openlp/plugins/bibles/lib/opensong.py" line="140"/>
         <source>Incorrect Bible file type supplied. OpenSong Bibles may be compressed. You must decompress them before import.</source>
-        <translation type="unfinished"></translation>
+        <translation>Δώσατε λάθος τύπο αρχείου Βίβλου. Οι Βίβλοι τύπου OpenSong μπορεί να είναι συμπιεσμένες. Πρέπει να τις αποσυμπιέσετε πριν την εισαγωγή τους.</translation>
     </message>
 </context>
 <context>
@@ -1699,7 +1701,7 @@ Please note that verses from Web Bibles will be downloaded on demand and so an I
     <message>
         <location filename="openlp/plugins/custom/forms/editcustomslidedialog.py" line="53"/>
         <source>Edit Slide</source>
-        <translation type="unfinished"></translation>
+        <translation>Επεξεργασία Διαφάνειας</translation>
     </message>
 </context>
 <context>
@@ -2045,12 +2047,18 @@ OpenLP is free church presentation software, or lyrics projection software, used
 Find out more about OpenLP: http://openlp.org/
 
 OpenLP is written and maintained by volunteers. If you would like to see more free Christian software being written, please consider volunteering by using the button below.</source>
-        <translation type="unfinished"></translation>
+        <translation>OpenLP &lt;version&gt;&lt;revision&gt; - Πρόγραμμα Προβολής Στίχων Ανοιχτού Κώδικα
+
+Το OpenLP είναι δωρεάν λογισμικό προβολής για εκκλησίες, ή λογισμικό προβολής στίχων, που χρησιμοποιείται για την προβολή διαφανειών ύμνων, εδαφίων Βίβλου, βίντεο, εικόνων ή ακόμη και παρουσιάσεων (αν έχουν εγκατασταθεί το Impress, το PowerPoint ή το PowerPoint Viewer) κατά την λατρεία της εκκλησίας με την χρήση ενός υπολογιστή και ενός προβολέα.
+
+Ανακαλύψτε περισσότερα για το OpenLP: http://opnelp.org/
+
+Το OpenLP γράφεται και υποστηρίζεται από εθελοντές. Αν θα θέλατε να δείτε να γράφεται περισσότερο Χριστιανικό λογισμικό, παρακαλούμε σκεφτείτε να συνεισφέρετε εθελοντικά χρησιμοποιώντας το παρακάτω πλήκτρο.</translation>
     </message>
     <message>
         <location filename="openlp/core/ui/aboutdialog.py" line="647"/>
         <source>Volunteer</source>
-        <translation type="unfinished"></translation>
+        <translation>Εθελοντική Προσφορά</translation>
     </message>
     <message>
         <location filename="openlp/core/ui/aboutdialog.py" line="156"/>
@@ -2125,13 +2133,85 @@ Final Credit
     on the cross, setting us free from sin. We
     bring this software to you for free because
     He has set us free.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ηγεσία Ομάδας Εργασίας
+%s
+
+Ανάπτυξη κώδικα
+%s
+
+Συνεισφέρανε
+%s
+
+Έλεγχος
+%s
+Προετοιμασία πακέτων
+
+%s
+
+Μεταφραστές
+Afrikaans (af)
+%s
+Czeck (cs)
+%s
+Danish (da)
+%s
+German (de)
+%s
+Greek (el)
+%s
+English, United Kingdom (en_GB)
+%s
+English, South Africa (en_ZA)
+%s
+Spanish (es)
+%s
+Estonian (et)
+%s
+French (fr)
+%s
+Hungarian (hu)
+%s
+Japanese (ja)
+%s
+Norwegian Bokmål (nb)
+%s
+Dutch (nl)
+%s
+Portuguese, Brazil (pt_BR)
+%s
+Russian (ru)
+%s
+Swedish (sv)
+%s
+
+Τεκμηρίωση
+%s
+
+Χτίστηκε Με
+Python: http://www.python.org/
+Qt4: http://qt.digia.com/
+PyQt4: http://www.riverbankcomputing.co.uk/software/pyqt/intro
+Oxygen Icons: http://oxygen-icons.org/
+
+Τελική Ευχαριστία
+&quot;Επειδή, με τέτοιον τρόπο αγάπησε ο Θεός τον κόσμο, 
+ώστε έδωσε τον Υιό του τον μονογενή, για να μη χαθεί καθένας 
+ο οποίος πιστεύει σ&apos; αυτόν, 
+αλλά να έχει αιώνια ζωή.&quot; --Ιωάννης 3:16
+
+
+Τέλος, ευχαριστούμε φυσικά
+Τον Πατέρα και Δημιουργό μας που έστειλε τον Υιό Του να πεθάνει
+επάνω στον σταυρό ελευθερώνοντάς μας από την αμαρτία.
+Σας δίνουμε το λογισμικό αυτό ελεύθερα επειδή
+Αυτός μας ελευθέρωσε.</translation>
     </message>
     <message>
         <location filename="openlp/core/ui/aboutdialog.py" line="250"/>
         <source>Copyright &#xa9; 2004-2013 %s
 Portions copyright &#xa9; 2004-2013 %s</source>
-        <translation type="unfinished"></translation>
+        <translation>Πνευματικά Δικαιώματα © 2004-2013 %s
+Τμηματικά Πνευματικά Δικαιώματα © 2004-2013 %s</translation>
     </message>
 </context>
 <context>
@@ -2418,7 +2498,15 @@ This data directory was previously changed from the OpenLP default location.  If
 Click &quot;No&quot; to stop loading OpenLP. allowing you to fix the the problem.
 
 Click &quot;Yes&quot; to reset the data directory to the default location.</source>
-        <translation type="unfinished"></translation>
+        <translation>Δεν βρέθηκε ο φάκελος δεδομένων του OpenLP.
+
+%s
+
+Ο φάκελος αυτός έχει αλλαχτεί από την προκαθορισμένη από το πρόγραμμα τοποθεσία. Αν η νέα τοποθεσία ήταν σε αφαιρούμενο μέσο, το μέσο αυτό θα πρέπει να είναι διαθέσιμο.
+
+Κάντε κλικ στο &quot;Όχι&quot; για να σταματήσετε την φόρτωση του OpenLP επιτρέποντάς σας να διορθώσετε το πρόβλημα.
+
+Κάντε κλικ στο &quot;Ναι&quot; για να επαναφέρετε τον φάκελο δεδομένων στην προκαθορισμένη τοποθεσία.</translation>
     </message>
     <message>
         <location filename="openlp/core/ui/advancedtab.py" line="693"/>
@@ -2427,7 +2515,11 @@ Click &quot;Yes&quot; to reset the data directory to the default location.</sour
 %s
 
 The data directory will be changed when OpenLP is closed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Είστε σίγουροι ότι θέλετε να αλλάξετε την τοποθεσία του φακέλου δεδομένων στο:
+
+%s
+
+Ο φάκελος δεδομένων θα αλλαχτεί μόλις κλείσετε το OpenLP.</translation>
     </message>
     <message>
         <location filename="openlp/core/ui/advancedtab.py" line="756"/>
@@ -2438,7 +2530,13 @@ The location you have selected
 %s
 
 appears to contain OpenLP data files.  Do you wish to replace these files with the current data files?</source>
-        <translation type="unfinished"></translation>
+        <translation>ΠΡΟΣΟΧΗ:
+
+Η τοποθεσία που έχετε επιλέξει
+
+%s
+
+φαίνεται ότι περιέχει αρχεία δεδομένων του OpenLP. Επιθυμείτε να αντικαταστήσετε τα αρχεία ετούτα με τα τρέχοντα αρχεία δεομένων;</translation>
     </message>
 </context>
 <context>
@@ -3632,19 +3730,25 @@ Importing incorrect settings may cause erratic behaviour or OpenLP to terminate 
 Section [%s] is not valid 
 
 Processing has terminated and no changed have been made.</source>
-        <translation type="unfinished"></translation>
+        <translation>Το αρχείο που επιλέξατε φαίνεται ότι είναι έναν έγκυρο αρχείο ρυθμίσεων του OpenLP
+
+Το τμήμα [%s] δεν είναι έγκυρο
+
+Η επεξεργασία έχει τερματιστεί και δεν έχουν γίνει αλλαγές.</translation>
     </message>
     <message>
         <location filename="openlp/core/ui/mainwindow.py" line="1527"/>
         <source>Copying OpenLP data to new data directory location - %s - Please wait for copy to finish</source>
-        <translation type="unfinished"></translation>
+        <translation>Αντιγραφή των δεδομένων του OpenLP στην νέα τοποθεσία του φακέλου δεδομένων - %s - Παρακαλούμε περιμένετε να τελειώσει η αντιγραφή</translation>
     </message>
     <message>
         <location filename="openlp/core/ui/mainwindow.py" line="1537"/>
         <source>OpenLP Data directory copy failed
 
 %s</source>
-        <translation type="unfinished"></translation>
+        <translation>Η αντιγραφή του φακέλου των αρχείων δεδομένων του OpenLP έχει αποτύχει
+
+%s</translation>
     </message>
 </context>
 <context>
@@ -4206,7 +4310,7 @@ The content encoding is not UTF-8.</source>
     <message>
         <location filename="openlp/core/ui/servicemanager.py" line="507"/>
         <source>Service File(s) Missing</source>
-        <translation type="unfinished"></translation>
+        <translation>Απουσία Αρχείου Λειτουργίας</translation>
     </message>
     <message>
         <location filename="openlp/core/ui/servicemanager.py" line="509"/>
@@ -4214,7 +4318,10 @@ The content encoding is not UTF-8.</source>
 <byte value="x9"/>%s
 
 These files will be removed if you continue to save.</source>
-        <translation type="unfinished"></translation>
+        <translation>Τα ακόλουθα αρχεία στην λειτουργία λείπουν:
+&lt;byte value=&quot;x9&quot;/&gt;%s
+
+Τα αρχεία αυτά θα αφαιρεθούν αν συνεχίσετε την αποθήκευση.</translation>
     </message>
 </context>
 <context>
@@ -4756,7 +4863,7 @@ These files will be removed if you continue to save.</source>
     <message>
         <location filename="openlp/core/ui/thememanager.py" line="518"/>
         <source>Theme %s already exists. Do you want to replace it?</source>
-        <translation type="unfinished"></translation>
+        <translation>Το Θέμα %s υπάρχει ήδη. Θέλετε να το αντικαταστήσετε;</translation>
     </message>
 </context>
 <context>
@@ -5024,52 +5131,52 @@ These files will be removed if you continue to save.</source>
     <message>
         <location filename="openlp/core/ui/themewizard.py" line="555"/>
         <source>Preview and Save</source>
-        <translation type="unfinished"></translation>
+        <translation>Προεπισκόπηση και Αποθήκευση</translation>
     </message>
     <message>
         <location filename="openlp/core/ui/themewizard.py" line="557"/>
         <source>Preview the theme and save it.</source>
-        <translation type="unfinished"></translation>
+        <translation>Προεπισκόπηση του θέματος και απόθήκευσή του.</translation>
     </message>
     <message>
         <location filename="openlp/core/ui/themeform.py" line="209"/>
         <source>(approximately %d lines per slide)</source>
-        <translation type="unfinished"></translation>
+        <translation>(περίπου %d γραμμές ανά διαφάνεια)</translation>
     </message>
     <message>
         <location filename="openlp/core/ui/themeform.py" line="237"/>
         <source>Background Image Empty</source>
-        <translation type="unfinished"></translation>
+        <translation>Εικόνα Φόντου Απούσα</translation>
     </message>
     <message>
         <location filename="openlp/core/ui/themeform.py" line="237"/>
         <source>You have not selected a background image. Please select one before continuing.</source>
-        <translation type="unfinished"></translation>
+        <translation>Δεν έχετε επιλέξει εικόνα για το φόντο. Επιλέξτε μία πριν συνεχίσετε.</translation>
     </message>
     <message>
         <location filename="openlp/core/ui/themeform.py" line="541"/>
         <source>Select Image</source>
-        <translation type="unfinished"></translation>
+        <translation>Επιλογή Εικόνας</translation>
     </message>
     <message>
         <location filename="openlp/core/ui/themeform.py" line="623"/>
         <source>Theme Name Missing</source>
-        <translation type="unfinished"></translation>
+        <translation>Ονομασία Θέματος Απουσιάζει</translation>
     </message>
     <message>
         <location filename="openlp/core/ui/themeform.py" line="623"/>
         <source>There is no name for this theme. Please enter one.</source>
-        <translation type="unfinished"></translation>
+        <translation>Δεν υπάρχει ονομασία για αυτό το θέμα. Εισάγετε ένα όνομα.</translation>
     </message>
     <message>
         <location filename="openlp/core/ui/themeform.py" line="629"/>
         <source>Theme Name Invalid</source>
-        <translation type="unfinished"></translation>
+        <translation>Ακατάλληλο Όνομα Θέματος</translation>
     </message>
     <message>
         <location filename="openlp/core/ui/themeform.py" line="629"/>
         <source>Invalid theme name. Please enter one.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ακατάλληλο όνομα θέματος. Εισάγετε ένα όνομα.</translation>
     </message>
 </context>
 <context>
@@ -5715,7 +5822,7 @@ These files will be removed if you continue to save.</source>
     <message>
         <location filename="openlp/plugins/songs/songsplugin.py" line="259"/>
         <source>Importing Songs</source>
-        <translation type="unfinished"></translation>
+        <translation>Εισαγωγή Ύμνων</translation>
     </message>
 </context>
 <context>
@@ -6003,12 +6110,12 @@ These files will be removed if you continue to save.</source>
     <message>
         <location filename="openlp/plugins/remotes/lib/httpserver.py" line="313"/>
         <source>Service</source>
-        <translation type="unfinished">Λειτουργία</translation>
+        <translation>Λειτουργία</translation>
     </message>
     <message>
         <location filename="openlp/plugins/remotes/lib/httpserver.py" line="314"/>
         <source>Slides</source>
-        <translation type="unfinished"></translation>
+        <translation>Διαφάνειες</translation>
     </message>
 </context>
 <context>
@@ -6051,7 +6158,7 @@ These files will be removed if you continue to save.</source>
     <message>
         <location filename="openlp/plugins/remotes/lib/remotetab.py" line="125"/>
         <source>Scan the QR code or click &lt;a href=&quot;https://play.google.com/store/apps/details?id=org.openlp.android&quot;&gt;download&lt;/a&gt; to install the Android app from Google Play.</source>
-        <translation type="unfinished"></translation>
+        <translation>Σκανάρετε τον κώδικα QR ή κάντε κλικ στο &lt;a href=&quot;https://market.android.com/details?id=org.openlp.android&quot;&gt;download&lt;/a&gt; για να εγκαταστήσετε την εφαρμογή για Android από το Google Play.</translation>
     </message>
 </context>
 <context>
@@ -6409,7 +6516,7 @@ The encoding is responsible for the correct character representation.</source>
     <message>
         <location filename="openlp/plugins/songs/songsplugin.py" line="152"/>
         <source>Reindexing songs</source>
-        <translation type="unfinished"></translation>
+        <translation>Ανακατομή ύμνων</translation>
     </message>
 </context>
 <context>
@@ -6937,37 +7044,37 @@ The encoding is responsible for the correct character representation.</source>
     <message>
         <location filename="openlp/plugins/songs/lib/importer.py" line="322"/>
         <source>SundayPlus Song Files</source>
-        <translation type="unfinished"></translation>
+        <translation>Αρχεία Ύμνων SundayPlus</translation>
     </message>
     <message>
         <location filename="openlp/plugins/songs/lib/importer.py" line="173"/>
         <source>This importer has been disabled.</source>
-        <translation type="unfinished"></translation>
+        <translation>Το πρόγραμμα εισαγωγής έχει απενεργοποιηθεί.</translation>
     </message>
     <message>
         <location filename="openlp/plugins/songs/lib/importer.py" line="261"/>
         <source>MediaShout Database</source>
-        <translation type="unfinished"></translation>
+        <translation>Βάση Δεδομένων MediaShout</translation>
     </message>
     <message>
         <location filename="openlp/plugins/songs/lib/importer.py" line="263"/>
         <source>The MediaShout importer is only supported on Windows. It has been disabled due to a missing Python module. If you want to use this importer, you will need to install the &quot;pyodbc&quot; module.</source>
-        <translation type="unfinished"></translation>
+        <translation>Το πρόγραμμα εισαγωγής Mediashout υποστηρίζεται μόνο στα Windows. Έχει απενεργοποιηθεί λόγω μιας απούσας προσθήκης του Python. Αν θέλετε να χρησιμοποιήσετε το πρόγραμμα εισαγωγής θα χρειαστεί να εγκαταστήσετε το πρόσθετο &quot;pyodbc&quot;.</translation>
     </message>
     <message>
         <location filename="openlp/plugins/songs/lib/importer.py" line="294"/>
         <source>SongPro Text Files</source>
-        <translation type="unfinished"></translation>
+        <translation>Αρχεία Κειμένου SongPro</translation>
     </message>
     <message>
         <location filename="openlp/plugins/songs/lib/importer.py" line="296"/>
         <source>SongPro (Export File)</source>
-        <translation type="unfinished"></translation>
+        <translation>SongPro (Εξαγωγή Αρχείου)</translation>
     </message>
     <message>
         <location filename="openlp/plugins/songs/lib/importer.py" line="298"/>
         <source>In SongPro, export your songs using the File -&gt; Export menu</source>
-        <translation type="unfinished"></translation>
+        <translation>Στο SongPro, να εξάγετε τους ύμνους σας χρησιμοποιώντας το μενού File-&gt;Export</translation>
     </message>
 </context>
 <context>
@@ -7055,7 +7162,7 @@ The encoding is responsible for the correct character representation.</source>
     <message>
         <location filename="openlp/plugins/songs/lib/mediashoutimport.py" line="62"/>
         <source>Unable to open the MediaShout database.</source>
-        <translation type="unfinished"></translation>
+        <translation>Δεν ήταν δυνατό να ανοιχτή η βάση δεδομένων MediaShout.</translation>
     </message>
 </context>
 <context>
@@ -7097,22 +7204,22 @@ The encoding is responsible for the correct character representation.</source>
     <message>
         <location filename="openlp/plugins/songs/lib/powersongimport.py" line="104"/>
         <source>No %s files found.</source>
-        <translation type="unfinished"></translation>
+        <translation>Δεν βρέθηκαν αρχεία %s.</translation>
     </message>
     <message>
         <location filename="openlp/plugins/songs/lib/powersongimport.py" line="124"/>
         <source>Invalid %s file. Unexpected byte value.</source>
-        <translation type="unfinished"></translation>
+        <translation>Μη έγκυρο αρχείο %s. Μη αναμενόμενη τιμή byte.</translation>
     </message>
     <message>
         <location filename="openlp/plugins/songs/lib/powersongimport.py" line="143"/>
         <source>Invalid %s file. Missing &quot;TITLE&quot; header.</source>
-        <translation type="unfinished"></translation>
+        <translation>Μη έγκυρο αρχείο %s. Απουσία κεφαλίδας &quot;TITLE&quot;.</translation>
     </message>
     <message>
         <location filename="openlp/plugins/songs/lib/powersongimport.py" line="149"/>
         <source>Invalid %s file. Missing &quot;COPYRIGHTLINE&quot; header.</source>
-        <translation type="unfinished"></translation>
+        <translation>Μη έγκυρο αρχείο %s. Απουσία κεφαλίδας &quot;COPYRIGHTLINE&quot;.</translation>
     </message>
 </context>
 <context>
@@ -7386,17 +7493,17 @@ The encoding is responsible for the correct character representation.</source>
     <message>
         <location filename="openlp/plugins/songs/lib/zionworximport.py" line="92"/>
         <source>Line %d: %s</source>
-        <translation type="unfinished"></translation>
+        <translation>Γραμμή %d: %s</translation>
     </message>
     <message>
         <location filename="openlp/plugins/songs/lib/zionworximport.py" line="112"/>
         <source>Decoding error: %s</source>
-        <translation type="unfinished"></translation>
+        <translation>Σφάλμα αποκωδικοποίησης: %s</translation>
     </message>
     <message>
         <location filename="openlp/plugins/songs/lib/zionworximport.py" line="133"/>
         <source>Record %d</source>
-        <translation type="unfinished"></translation>
+        <translation>Εγγραφή %d</translation>
     </message>
 </context>
 </TS>
