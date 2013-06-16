@@ -349,6 +349,8 @@ class EditSongForm(QtGui.QDialog, Ui_EditSongDialog):
         self.titleEdit.setFocus(QtCore.Qt.OtherFocusReason)
         # Hide or show the preview button.
         self.previewButton.setVisible(preview)
+        # Check if all verse tags are used.
+        self.onVerseOrderTextChanged(self.verseOrderEdit.text())
 
     def tagRows(self):
         """
@@ -608,7 +610,12 @@ class EditSongForm(QtGui.QDialog, Ui_EditSongDialog):
         for verse in verses:
             if not verse in order:
                 verses_not_used.append(verse)
-        self.warningLabel.setVisible(len(verses_not_used) > 0 and bool(text))
+        label_text = u''
+        if not self.verseOrderEdit.text():
+            label_text = self.noVerseOrder
+        elif verses_not_used:
+            label_text = self.notAlllVersesUsed
+        self.warningLabel.setText(label_text)
 
     def __extractVerseOrder(self, verse_order):
         order = []
