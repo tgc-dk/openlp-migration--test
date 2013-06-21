@@ -662,7 +662,7 @@ class AdvancedTab(SettingsTab):
                 u'background-color: %s' % self.defaultColor)
 
     def onDefaultBrowseButtonClicked(self):
-        file_filters = u'%s;;%s (*.*) (*)' % (get_images_filter(),
+        file_filters = u'%s;;%s (*.*)' % (get_images_filter(),
             UiStrings().AllFiles)
         filename = QtGui.QFileDialog.getOpenFileName(self,
             translate('OpenLP.AdvancedTab', 'Open File'), '',

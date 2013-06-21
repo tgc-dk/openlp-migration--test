@@ -283,7 +283,6 @@ class Ui_EditSongDialog(object):
         self.bottomLayout.setObjectName(u'bottomLayout')
         self.warningLabel = QtGui.QLabel(editSongDialog)
         self.warningLabel.setObjectName(u'warningLabel')
-        self.warningLabel.setVisible(False)
         self.bottomLayout.addWidget(self.warningLabel)
         self.buttonBox = create_button_box(editSongDialog, u'buttonBox',
             [u'cancel', u'save'])
@@ -355,9 +354,10 @@ class Ui_EditSongDialog(object):
             translate('SongsPlugin.EditSongForm', '&Remove'))
         self.audioRemoveAllButton.setText(
             translate('SongsPlugin.EditSongForm', 'Remove &All'))
-        self.warningLabel.setText(
-            translate('SongsPlugin.EditSongForm', '<strong>Warning:</strong>'
-                ' Not all of the verses are in use.'))
+        self.notAlllVersesUsed = translate('SongsPlugin.EditSongForm', '<strong>Warning:</strong>'
+                ' Not all of the verses are in use.')
+        self.noVerseOrder = translate('SongsPlugin.EditSongForm', '<strong>Warning:</strong>'
+                ' You have not entered a verse order.')
 
 def editSongDialogComboBox(parent, name):
     """
