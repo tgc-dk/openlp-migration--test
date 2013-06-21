@@ -6798,7 +6798,7 @@ The encoding is responsible for the correct character representation.</translati
     <message>
         <location filename="openlp/plugins/songs/forms/editsongdialog.py" line="359"/>
         <source>&lt;strong&gt;Warning:&lt;/strong&gt; You have not entered a verse order.</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;strong&gt;Warning:&lt;/strong&gt; You have not entered a verse order.</translation>
     </message>
 </context>
 <context>

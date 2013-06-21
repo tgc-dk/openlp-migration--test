@@ -6779,7 +6779,7 @@ Easy Worship]</translation>
     <message>
         <location filename="openlp/plugins/songs/forms/editsongdialog.py" line="359"/>
         <source>&lt;strong&gt;Warning:&lt;/strong&gt; You have not entered a verse order.</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;strong&gt;Achtung:&lt;/strong&gt; Es wurde keine Versfolge angegeben.</translation>
     </message>
 </context>
 <context>
