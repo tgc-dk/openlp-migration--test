@@ -42,7 +42,8 @@ from PyQt4 import QtCore, QtGui
 from openlp.core.lib import translate, PluginStatus, Receiver, build_icon, \
     check_directory_exists
 from openlp.core.lib.settings import Settings
-from openlp.core.utils import get_web_page, AppLocation, get_filesystem_encoding
+from openlp.core.utils import get_web_page, AppLocation, join_url, \
+    get_filesystem_encoding
 from firsttimewizard import Ui_FirstTimeWizard, FirstTimePage
 
 log = logging.getLogger(__name__)
@@ -57,6 +58,9 @@ class ThemeScreenshotThread(QtCore.QThread):
     def run(self):
         themes = self.parent().config.get(u'themes', u'files')
         themes = themes.split(u',')
+        themes_dir = self.parent().config.get(u'themes', u'directory')
+        tmp_dir = os.path.join(unicode(gettempdir(), get_filesystem_encoding()),
+                u'openlp')
         config = self.parent().config
         for theme in themes:
             # Stop if the wizard has been cancelled.
@@ -65,9 +69,9 @@ class ThemeScreenshotThread(QtCore.QThread):
             title = config.get(u'theme_%s' % theme, u'title')
             filename = config.get(u'theme_%s' % theme, u'filename')
             screenshot = config.get(u'theme_%s' % theme, u'screenshot')
-            urllib.urlretrieve(u'%s%s' % (self.parent().web, screenshot),
-                os.path.join(unicode(gettempdir(), get_filesystem_encoding()),
-                u'openlp', screenshot))
+            urllib.urlretrieve(join_url(self.parent().baseurl,
+                themes_dir, screenshot),
+                os.path.join(tmp_dir, screenshot))
             item = QtGui.QListWidgetItem(title, self.parent().themesListWidget)
             item.setData(QtCore.Qt.UserRole, QtCore.QVariant(filename))
             item.setCheckState(QtCore.Qt.Unchecked)
@@ -85,13 +89,22 @@ class FirstTimeForm(QtGui.QWizard, Ui_FirstTimeWizard):
         QtGui.QWizard.__init__(self, parent)
         self.setupUi(self)
         self.screens = screens
-        # check to see if we have web access
-        self.web = u'http://openlp.org/files/frw/'
         self.config = SafeConfigParser()
+        # The following url should contain 'download.cfg' or redirect OpenLP
+        # to the right url of 'download.cfg' file.
+        # 'download.cfg' file contains definitions for everything that is
+        # available for download into OpenLP in FirstTimeWizard.
+        self.web = u'http://openlp.org/files/frw/'
+        # Base url for dowloading resource files (songs, themes, bibles).
+        # These files could be hosted on different places and thus the base
+        # url is defined in 'download.cfg' file.
+        self.baseurl = None
+        # Check to see if we have web access
         self.webAccess = get_web_page(u'%s%s' % (self.web, u'download.cfg'))
         if self.webAccess:
             files = self.webAccess.read()
             self.config.readfp(io.BytesIO(files))
+            self.baseurl = self.config.get(u'general', u'base url')
         self.updateScreenListCombo()
         self.downloadCancelled = False
         self.downloading = unicode(translate('OpenLP.FirstTimeWizard',
@@ -123,7 +136,7 @@ class FirstTimeForm(QtGui.QWizard, Ui_FirstTimeWizard):
         # Check if this is a re-run of the wizard.
         self.hasRunWizard = Settings().value(
             u'general/has run wizard', QtCore.QVariant(False)).toBool()
-        # Sort out internet access for downloads
+        # Sort out internet access for downloads.
         if self.webAccess:
             songs = self.config.get(u'songs', u'languages')
             songs = songs.split(u',')
@@ -280,6 +293,7 @@ class FirstTimeForm(QtGui.QWizard, Ui_FirstTimeWizard):
         Download a file given a URL.  The file is retrieved in chunks, giving
         the ability to cancel the download at any point.
         """
+        log.debug(u'Downloading %s' % url)
         block_count = 0
         block_size = 4096
         urlfile = urllib2.urlopen(url)
@@ -348,13 +362,18 @@ class FirstTimeForm(QtGui.QWizard, Ui_FirstTimeWizard):
         self.max_progress = 0
         self.finishButton.setVisible(False)
         Receiver.send_message(u'openlp_process_events')
+        # Directory name appended to base download url as the name
+        # is found in download.cfg file.
+        songs_dir = unicode(self.config.get(u'songs', u'directory'), u'utf8')
+        bibles_dir = unicode(self.config.get(u'bibles', u'directory'), u'utf8')
+        themes_dir = unicode(self.config.get(u'themes', u'directory'), u'utf8')
         # Loop through the songs list and increase for each selected item
         for i in xrange(self.songsListWidget.count()):
             Receiver.send_message(u'openlp_process_events')
             item = self.songsListWidget.item(i)
             if item.checkState() == QtCore.Qt.Checked:
                 filename = item.data(QtCore.Qt.UserRole).toString()
-                size = self._getFileSize(u'%s%s' % (self.web, filename))
+                size = self._getFileSize(join_url(self.baseurl, songs_dir, filename))
                 self.max_progress += size
         # Loop through the Bibles list and increase for each selected item
         iterator = QtGui.QTreeWidgetItemIterator(self.biblesTreeWidget)
@@ -363,7 +382,7 @@ class FirstTimeForm(QtGui.QWizard, Ui_FirstTimeWizard):
             item = iterator.value()
             if item.parent() and item.checkState(0) == QtCore.Qt.Checked:
                 filename = item.data(0, QtCore.Qt.UserRole).toString()
-                size = self._getFileSize(u'%s%s' % (self.web, filename))
+                size = self._getFileSize(join_url(self.baseurl, bibles_dir, filename))
                 self.max_progress += size
             iterator += 1
         # Loop through the themes list and increase for each selected item
@@ -372,7 +391,7 @@ class FirstTimeForm(QtGui.QWizard, Ui_FirstTimeWizard):
             item = self.themesListWidget.item(i)
             if item.checkState() == QtCore.Qt.Checked:
                 filename = item.data(QtCore.Qt.UserRole).toString()
-                size = self._getFileSize(u'%s%s' % (self.web, filename))
+                size = self._getFileSize(join_url(self.baseurl, themes_dir, filename))
                 self.max_progress += size
         if self.max_progress:
             # Add on 2 for plugins status setting plus a "finished" point.
@@ -448,6 +467,11 @@ class FirstTimeForm(QtGui.QWizard, Ui_FirstTimeWizard):
                 unicode(gettempdir(), get_filesystem_encoding()), u'openlp')
             bibles_destination = AppLocation.get_section_data_path(u'bibles')
             themes_destination = AppLocation.get_section_data_path(u'themes')
+            # Directory name appended to base download url as the name
+            # is found in download.cfg file.
+            songs_dir = unicode(self.config.get(u'songs', u'directory'), u'utf8')
+            bibles_dir = unicode(self.config.get(u'bibles', u'directory'), u'utf8')
+            themes_dir = unicode(self.config.get(u'themes', u'directory'), u'utf8')
             # Download songs
             for i in xrange(self.songsListWidget.count()):
                 item = self.songsListWidget.item(i)
@@ -457,7 +481,8 @@ class FirstTimeForm(QtGui.QWizard, Ui_FirstTimeWizard):
                     self.previous_size = 0
                     destination = os.path.join(songs_destination,
                         unicode(filename))
-                    self.urlGetFile(u'%s%s' % (self.web, filename), destination)
+                    self.urlGetFile(join_url(self.baseurl, songs_dir, filename),
+                        destination)
             # Download Bibles
             bibles_iterator = QtGui.QTreeWidgetItemIterator(
                 self.biblesTreeWidget)
@@ -467,7 +492,7 @@ class FirstTimeForm(QtGui.QWizard, Ui_FirstTimeWizard):
                     bible = unicode(item.data(0, QtCore.Qt.UserRole).toString())
                     self._incrementProgressBar(self.downloading % bible, 0)
                     self.previous_size = 0
-                    self.urlGetFile(u'%s%s' % (self.web, bible),
+                    self.urlGetFile(join_url(self.baseurl, bibles_dir, bible),
                         os.path.join(bibles_destination, bible))
                 bibles_iterator += 1
             # Download themes
@@ -477,7 +502,7 @@ class FirstTimeForm(QtGui.QWizard, Ui_FirstTimeWizard):
                     theme = unicode(item.data(QtCore.Qt.UserRole).toString())
                     self._incrementProgressBar(self.downloading % theme, 0)
                     self.previous_size = 0
-                    self.urlGetFile(u'%s%s' % (self.web, theme),
+                    self.urlGetFile(join_url(self.baseurl, themes_dir, theme),
                         os.path.join(themes_destination, theme))
         # Set Default Display
         if self.displayComboBox.currentIndex() != -1:
