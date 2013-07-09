@@ -123,11 +123,11 @@ class FormattingTagForm(QtGui.QDialog, Ui_FormattingTagDialog):
                 return
         # Add new tag to list
         tag = {
-            u'desc': translate('OpenLP.FormattingTagForm', 'New Tag'),
+            u'desc': unicode(translate('OpenLP.FormattingTagForm', 'New Tag')),
             u'start tag': u'{n}',
-            u'start html': translate('OpenLP.FormattingTagForm', '<HTML here>'),
+            u'start html': unicode(translate('OpenLP.FormattingTagForm', '<HTML here>')),
             u'end tag': u'{/n}',
-            u'end html': translate('OpenLP.FormattingTagForm', '</and here>'),
+            u'end html': unicode(translate('OpenLP.FormattingTagForm', '</and here>')),
             u'protected': False,
             u'temporary': False
         }
