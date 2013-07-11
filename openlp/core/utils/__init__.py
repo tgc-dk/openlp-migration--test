@@ -366,7 +366,7 @@ def get_images_filter():
 
 def is_not_image_file(file_name):
     """
-    Validate that the file is an image file.
+    Validate that the file is not an image file.
 
     ``file_name``
         File name to be checked.
