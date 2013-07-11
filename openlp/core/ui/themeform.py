@@ -36,7 +36,7 @@ from openlp.core.lib import Receiver, translate
 from openlp.core.lib.theme import BackgroundType, BackgroundGradientType
 from openlp.core.lib.ui import UiStrings, critical_error_message_box
 from openlp.core.ui import ThemeLayoutForm
-from openlp.core.utils import get_images_filter
+from openlp.core.utils import get_images_filter, is_not_image_file
 from themewizard import Ui_ThemeWizard
 
 log = logging.getLogger(__name__)
@@ -233,7 +233,7 @@ class ThemeForm(QtGui.QWizard, Ui_ThemeWizard):
         background_image = BackgroundType.to_string(BackgroundType.Image)
         if self.page(self.currentId()) == self.backgroundPage and \
             self.theme.background_type == background_image and \
-            self.imageFileEdit.text().isEmpty():
+            is_not_image_file(self.imageFileEdit.text()):
             QtGui.QMessageBox.critical(self,
                 translate('OpenLP.ThemeWizard', 'Background Image Empty'),
                 translate('OpenLP.ThemeWizard', 'You have not selected a '
