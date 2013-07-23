@@ -96,6 +96,7 @@ import os
 
 from lxml import etree, objectify
 
+from openlp.core.lib import translate
 from openlp.core.ui.wizard import WizardStrings
 from openlp.plugins.songs.lib import clean_song, VerseType
 from openlp.plugins.songs.lib.songimport import SongImport
@@ -115,7 +116,7 @@ class FoilPresenterImport(SongImport):
         """
         log.debug(u'initialise FoilPresenterImport')
         SongImport.__init__(self, manager, **kwargs)
-        self.FoilPresenter = FoilPresenter(self.manager)
+        self.FoilPresenter = FoilPresenter(self.manager, self)
 
     def doImport(self):
         """
@@ -202,8 +203,9 @@ class FoilPresenter(object):
         <copyright> tag.
 
     """
-    def __init__(self, manager):
+    def __init__(self, manager, importer):
         self.manager = manager
+        self.importer = importer
 
     def xml_to_song(self, xml):
         """
@@ -222,6 +224,7 @@ class FoilPresenter(object):
         song.search_lyrics = u''
         song.verse_order = u''
         song.search_title = u''
+        self.skip_song = False
         # Because "text" seems to be an reserverd word, we have to recompile it.
         xml = re.compile(u'<text>').sub(u'<text_>', xml)
         xml = re.compile(u'</text>').sub(u'</text_>', xml)
@@ -236,8 +239,9 @@ class FoilPresenter(object):
         self._process_authors(foilpresenterfolie, song)
         self._process_songbooks(foilpresenterfolie, song)
         self._process_topics(foilpresenterfolie, song)
-        clean_song(self.manager, song)
-        self.manager.save_object(song)
+        if not self.skip_song:
+            clean_song(self.manager, song)
+            self.manager.save_object(song)
 
     def _child(self, element):
         """
@@ -424,6 +428,12 @@ class FoilPresenter(object):
             VerseType.Tags[VerseType.Intro]: 1,
             VerseType.Tags[VerseType.PreChorus]: 1
         }
+        if not hasattr(foilpresenterfolie.strophen, u'strophe'):
+            self.importer.logError(self._child(foilpresenterfolie.titel),
+                unicode(translate('SongsPlugin.FoilPresenterSongImport',
+                    'Invalid Foilpresenter song file. No verses found.')))
+            self.skip_song = True
+            return
         for strophe in foilpresenterfolie.strophen.strophe:
             text = self._child(strophe.text_) if hasattr(strophe, u'text_') \
                 else u''
