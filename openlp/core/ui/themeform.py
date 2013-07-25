@@ -78,10 +78,8 @@ class ThemeForm(QtGui.QWizard, Ui_ThemeWizard):
             QtCore.SIGNAL(u'clicked()'), self.onGradientEndButtonClicked)
         QtCore.QObject.connect(self.imageBrowseButton,
             QtCore.SIGNAL(u'clicked()'), self.onImageBrowseButtonClicked)
-
         QtCore.QObject.connect(self.imageFileEdit,
             QtCore.SIGNAL(u'editingFinished()'), self.onImageFileEditEditingFinished)
-
         QtCore.QObject.connect(self.mainColorButton,
             QtCore.SIGNAL(u'clicked()'), self.onMainColorButtonClicked)
         QtCore.QObject.connect(self.outlineColorButton,
