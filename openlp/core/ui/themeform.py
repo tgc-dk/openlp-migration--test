@@ -78,6 +78,8 @@ class ThemeForm(QtGui.QWizard, Ui_ThemeWizard):
             QtCore.SIGNAL(u'clicked()'), self.onGradientEndButtonClicked)
         QtCore.QObject.connect(self.imageBrowseButton,
             QtCore.SIGNAL(u'clicked()'), self.onImageBrowseButtonClicked)
+        QtCore.QObject.connect(self.imageFileEdit,
+            QtCore.SIGNAL(u'editingFinished()'), self.onImageFileEditEditingFinished)
         QtCore.QObject.connect(self.mainColorButton,
             QtCore.SIGNAL(u'clicked()'), self.onMainColorButtonClicked)
         QtCore.QObject.connect(self.outlineColorButton,
@@ -233,7 +235,7 @@ class ThemeForm(QtGui.QWizard, Ui_ThemeWizard):
         background_image = BackgroundType.to_string(BackgroundType.Image)
         if self.page(self.currentId()) == self.backgroundPage and \
             self.theme.background_type == background_image and \
-            is_not_image_file(self.imageFileEdit.text()):
+            is_not_image_file(self.theme.background_filename):
             QtGui.QMessageBox.critical(self,
                 translate('OpenLP.ThemeWizard', 'Background Image Empty'),
                 translate('OpenLP.ThemeWizard', 'You have not selected a '
@@ -544,6 +546,12 @@ class ThemeForm(QtGui.QWizard, Ui_ThemeWizard):
         if filename:
             self.theme.background_filename = unicode(filename)
         self.setBackgroundPageValues()
+
+    def onImageFileEditEditingFinished(self):
+        """
+        Background image path edited
+        """
+        self.theme.background_filename = unicode(self.imageFileEdit.text())
 
     def onMainColorButtonClicked(self):
         self.theme.font_main_color = \
