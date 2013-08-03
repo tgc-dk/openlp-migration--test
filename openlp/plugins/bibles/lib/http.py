@@ -245,6 +245,8 @@ class BGExtract(object):
             return None
         Receiver.send_message(u'openlp_process_events')
         div = soup.find('div', 'result-text-style-normal')
+        if not div:
+            return None
         self._clean_soup(div)
         span_list = div.findAll('span', 'text')
         log.debug('Span list: %s', span_list)
