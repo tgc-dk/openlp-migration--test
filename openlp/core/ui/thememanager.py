@@ -36,7 +36,7 @@ import re
 from xml.etree.ElementTree import ElementTree, XML
 from PyQt4 import QtCore, QtGui
 
-from openlp.core.lib import OpenLPToolbar, get_text_file_string, build_icon, \
+from openlp.core.lib import FileDialog, OpenLPToolbar, get_text_file_string, build_icon, \
     Receiver, SettingsManager, translate, check_item_selected, \
     check_directory_exists, create_thumb, validate_thumb, ImageSource
 from openlp.core.lib.theme import ThemeXML, BackgroundType, VerticalType, \
@@ -420,7 +420,7 @@ class ThemeManager(QtGui.QWidget):
         attempting to extract OpenLP themes from those files. This process
         will load both OpenLP version 1 and version 2 themes.
         """
-        files = QtGui.QFileDialog.getOpenFileNames(self,
+        files = FileDialog().getOpenFileNames(self,
             translate('OpenLP.ThemeManager', 'Select Theme Import File'),
             SettingsManager.get_last_dir(self.settingsSection),
             unicode(translate('OpenLP.ThemeManager',

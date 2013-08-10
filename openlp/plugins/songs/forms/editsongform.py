@@ -34,7 +34,7 @@ import shutil
 
 from PyQt4 import QtCore, QtGui
 
-from openlp.core.lib import PluginStatus, Receiver, MediaType, translate, \
+from openlp.core.lib import FileDialog, PluginStatus, Receiver, MediaType, translate, \
     create_separated_list, check_directory_exists
 from openlp.core.lib.ui import UiStrings, set_case_insensitive_completer, \
     critical_error_message_box, find_and_set_in_combo_box
@@ -757,7 +757,7 @@ class EditSongForm(QtGui.QDialog, Ui_EditSongDialog):
         Loads file(s) from the filesystem.
         """
         filters = u'%s (*)' % UiStrings().AllFiles
-        filenames = QtGui.QFileDialog.getOpenFileNames(self,
+        filenames = FileDialog().getOpenFileNames(self,
             translate('SongsPlugin.EditSongForm', 'Open File(s)'),
             QtCore.QString(), filters)
         for filename in filenames:

@@ -150,7 +150,6 @@ class AppLocation(object):
         check_directory_exists(path)
         return path
 
-
 def _get_os_dir_path(dir_type):
     """
     Return a path based on which OS and environment we are running in.

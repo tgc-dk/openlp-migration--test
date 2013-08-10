@@ -384,6 +384,7 @@ def create_separated_list(stringlist):
 
 
 from eventreceiver import Receiver
+from filedialog import FileDialog
 from listwidgetwithdnd import ListWidgetWithDnD
 from formattingtags import FormattingTags
 from spelltextedit import SpellTextEdit
