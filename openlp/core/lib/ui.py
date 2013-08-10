@@ -82,7 +82,7 @@ class UiStrings(object):
         self.FNF = unicode(translate('OpenLP.Ui',
             'File %s not found.\nPlease try selecting it individually.'))
         self.FontSizePtUnit = translate('OpenLP.Ui', 'pt',
-            'Abbreviated font pointsize unit')ad
+            'Abbreviated font pointsize unit')
         self.Help = translate('OpenLP.Ui', 'Help')
         self.Hours = translate('OpenLP.Ui', 'h',
             'The abbreviated unit for hours')

@@ -41,9 +41,6 @@ from openlp.core.lib.ui import UiStrings
 log = logging.getLogger(__name__)
 
 class FileDialog(QtGui.QFileDialog):
-    def __init__(self):
-        QtGui.QFileDialog.__init__(self)
-
     def getOpenFileNames(self, parent, title, path, filters):
         files = QtGui.QFileDialog.getOpenFileNames(parent, title, path, filters)
         file_list = QtCore.QStringList()
