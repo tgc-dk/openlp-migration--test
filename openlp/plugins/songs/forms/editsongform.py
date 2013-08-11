@@ -757,7 +757,7 @@ class EditSongForm(QtGui.QDialog, Ui_EditSongDialog):
         Loads file(s) from the filesystem.
         """
         filters = u'%s (*)' % UiStrings().AllFiles
-        filenames = FileDialog().getOpenFileNames(self,
+        filenames = FileDialog.getOpenFileNames(self,
             translate('SongsPlugin.EditSongForm', 'Open File(s)'),
             QtCore.QString(), filters)
         for filename in filenames:

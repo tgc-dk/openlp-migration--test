@@ -420,7 +420,7 @@ class ThemeManager(QtGui.QWidget):
         attempting to extract OpenLP themes from those files. This process
         will load both OpenLP version 1 and version 2 themes.
         """
-        files = FileDialog().getOpenFileNames(self,
+        files = FileDialog.getOpenFileNames(self,
             translate('OpenLP.ThemeManager', 'Select Theme Import File'),
             SettingsManager.get_last_dir(self.settingsSection),
             unicode(translate('OpenLP.ThemeManager',
