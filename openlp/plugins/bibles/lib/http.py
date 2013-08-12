@@ -375,7 +375,7 @@ class BSExtract(object):
         content = content.findAll(u'li')
         return [
             book.contents[0].contents[0] for book in content
-            if len(book.contents[0].contents)
+                if len(book.contents[0].contents)
         ]
 
 
