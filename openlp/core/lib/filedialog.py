@@ -46,8 +46,9 @@ class FileDialog(QtGui.QFileDialog):
         files = QtGui.QFileDialog.getOpenFileNames(parent, title, path, filters)
         file_list = QtCore.QStringList()
         for file in files:
+            file = unicode(file)
             if not os.path.exists(file):
-                file = urllib.unquote(unicode(file))
+                file = urllib.unquote(file)
                 if not os.path.exists(file):
                     QtGui.QMessageBox.information(self,
                         UiStrings().FNFT,
