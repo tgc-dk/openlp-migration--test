@@ -96,7 +96,7 @@ class SundayPlusImport(SongImport):
             # Now we are looking for the name.
             if data[i:i + 1] == '#':
                 name_end = data.find(':', i + 1)
-                name = data[i + 1:name_end]
+                name = data[i + 1:name_end].upper()
                 i = name_end + 1
                 while data[i:i + 1] == ' ':
                     i += 1
@@ -122,13 +122,13 @@ class SundayPlusImport(SongImport):
                     value = data[i:end]
                 # If we are in the main group.
                 if cell == False:
-                    if name == 'title':
+                    if name == 'TITLE':
                         self.title = self.decode(self.unescape(value))
-                    elif name == 'Author':
+                    elif name == 'AUTHOR':
                         author = self.decode(self.unescape(value))
                         if len(author):
                             self.addAuthor(author)
-                    elif name == 'Copyright':
+                    elif name == 'COPYRIGHT':
                         self.copyright = self.decode(self.unescape(value))
                     elif name[0:4] == 'CELL':
                         self.parse(value, cell = name[4:])
@@ -142,13 +142,13 @@ class SundayPlusImport(SongImport):
                             if len(value) >= 2 and value[-1] in ['0', '1', '2',
                                 '3', '4', '5', '6', '7', '8', '9']:
                                 verse_type = "%s%s" % (verse_type, value[-1])
-                    elif name == 'Hotkey':
+                    elif name == 'HOTKEY':
                         # Hotkey always appears after MARKER_NAME, so it
                         # effectively overrides MARKER_NAME, if present.
                         if len(value) and \
                             value in HOTKEY_TO_VERSE_TYPE.keys():
                             verse_type = HOTKEY_TO_VERSE_TYPE[value]
-                    if name == 'rtf':
+                    if name == 'RTF':
                         value = self.unescape(value)
                         result = strip_rtf(value, self.encoding)
                         if result is None:
