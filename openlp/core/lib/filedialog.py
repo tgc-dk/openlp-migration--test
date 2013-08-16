@@ -28,17 +28,14 @@
 ###############################################################################
 
 """
-Provide a work around for a bug in QFileDialog (#1209515)
+Provide a work around for a bug in QFileDialog <https://bugs.launchpad.net/openlp/+bug/1209515>
 """
-import logging
 import os
 import urllib
 
 from PyQt4 import QtCore, QtGui
 
 from openlp.core.lib.ui import UiStrings
-
-log = logging.getLogger(__name__)
 
 class FileDialog(QtGui.QFileDialog):
     @staticmethod
@@ -50,9 +47,9 @@ class FileDialog(QtGui.QFileDialog):
             if not os.path.exists(file):
                 file = urllib.unquote(file)
                 if not os.path.exists(file):
-                    QtGui.QMessageBox.information(self,
-                        UiStrings().FNFT,
-                        UiStrings().FNF % file)
+                    QtGui.QMessageBox.information(parent,
+                        UiStrings().FileNotFound,
+                        UiStrings().FileNotFoundMessage % file)
                     continue
             file_list.append(QtCore.QString(file))
         return file_list

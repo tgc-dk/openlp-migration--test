@@ -77,9 +77,9 @@ class UiStrings(object):
         self.Error = translate('OpenLP.Ui', 'Error')
         self.Export = translate('OpenLP.Ui', 'Export')
         self.File = translate('OpenLP.Ui', 'File')
-        self.FNFT = unicode(translate('OpenLP.Ui',
+        self.FileNotFound = unicode(translate('OpenLP.Ui',
             'File Not Found'))
-        self.FNF = unicode(translate('OpenLP.Ui',
+        self.FileNotFoundMessage = unicode(translate('OpenLP.Ui',
             'File %s not found.\nPlease try selecting it individually.'))
         self.FontSizePtUnit = translate('OpenLP.Ui', 'pt',
             'Abbreviated font pointsize unit')
