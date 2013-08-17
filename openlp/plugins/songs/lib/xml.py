@@ -133,6 +133,7 @@ class SongXML(object):
             The verse's language code (ISO-639). This is not required, but
             should be added if available.
         """
+        content = self.clean_xml_string(content)
         verse = etree.Element(u'verse', type=unicode(type),
             label=unicode(number))
         if lang:
