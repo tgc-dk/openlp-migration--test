@@ -92,6 +92,27 @@ class SongXML(object):
         self.song_xml = objectify.fromstring(u'<song version="1.0" />')
         self.lyrics = etree.SubElement(self.song_xml, u'lyrics')
 
+    @staticmethod
+    def valid_xml_char_ordinal(char):
+        """
+        Control Characters we need to filter from the xml.
+        Source <http://stackoverflow.com/questions/8733233/filtering-out-certain-bytes-in-python>
+        """
+        return (
+            0x20 <= char <= 0xD7FF
+            or char in (0x9, 0xA, 0xD)
+            or 0xE000 <= char <= 0xFFFD
+            or 0x10000 <= char <= 0x10FFFF
+        )
+
+    @staticmethod
+    def clean_xml_string(xml):
+        """
+        Filter out invalid characters in xml
+        Source <http://stackoverflow.com/questions/8733233/filtering-out-certain-bytes-in-python>
+        """
+        return ''.join(char for char in xml if SongXML.valid_xml_char_ordinal(ord(char)))
+
     def add_verse_to_lyrics(self, type, number, content, lang=None):
         """
         Add a verse to the ``<lyrics>`` tag.
