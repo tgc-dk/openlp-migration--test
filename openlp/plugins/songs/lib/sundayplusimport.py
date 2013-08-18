@@ -68,7 +68,7 @@ class SundayPlusImport(SongImport):
         for filename in self.importSource:
             if self.stopImportFlag:
                 return
-            song_file = open(filename)
+            song_file = open(filename, 'rb')
             self.doImportFile(song_file)
             song_file.close()
 
