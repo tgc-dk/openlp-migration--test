@@ -44,6 +44,7 @@ import time
 if os.name == u'nt':
     from win32com.client import Dispatch
     import pywintypes
+
     # Declare an empty exception to match the exception imported from UNO
     class ErrorCodeIOException(Exception):
         pass
@@ -63,6 +64,7 @@ from presentationcontroller import PresentationController, PresentationDocument
 
 log = logging.getLogger(__name__)
 
+
 class ImpressController(PresentationController):
     """
     Class to control interactions with Impress presentations.
@@ -79,7 +81,7 @@ class ImpressController(PresentationController):
         PresentationController.__init__(self, plugin, u'Impress',
             ImpressDocument)
         self.supports = [u'odp']
-        self.alsosupports = [u'ppt', u'pps', u'pptx', u'ppsx']
+        self.alsosupports = [u'ppt', u'pps', u'pptx', u'ppsx', u'pptm']
         self.process = None
         self.desktop = None
         self.manager = None
