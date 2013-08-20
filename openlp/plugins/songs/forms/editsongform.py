@@ -47,6 +47,7 @@ from editsongdialog import Ui_EditSongDialog
 
 log = logging.getLogger(__name__)
 
+
 class EditSongForm(QtGui.QDialog, Ui_EditSongDialog):
     """
     Class to manage the editing of a song
@@ -229,6 +230,7 @@ class EditSongForm(QtGui.QDialog, Ui_EditSongDialog):
         self.loadTopics()
         self.loadBooks()
         self.loadMediaFiles()
+        self.themeComboBox.setEditText(u'')
         self.themeComboBox.setCurrentIndex(0)
         # it's a new song to preview is not possible
         self.previewButton.setVisible(False)
@@ -261,6 +263,9 @@ class EditSongForm(QtGui.QDialog, Ui_EditSongDialog):
         if self.song.theme_name:
             find_and_set_in_combo_box(
                 self.themeComboBox, unicode(self.song.theme_name))
+        else:
+            self.themeComboBox.setEditText(u'')
+            self.themeComboBox.setCurrentIndex(0)
         self.copyrightEdit.setText(
             self.song.copyright if self.song.copyright else u'')
         self.commentsEdit.setPlainText(
