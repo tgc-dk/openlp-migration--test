@@ -38,6 +38,7 @@ from presentationcontroller import PresentationController, PresentationDocument
 
 log = logging.getLogger(__name__)
 
+
 class PptviewController(PresentationController):
     """
     Class to control interactions with PowerPOint Viewer Presentations
@@ -54,7 +55,7 @@ class PptviewController(PresentationController):
         self.process = None
         PresentationController.__init__(self, plugin, u'Powerpoint Viewer',
             PptviewDocument)
-        self.supports = [u'ppt', u'pps', u'pptx', u'ppsx']
+        self.supports = [u'ppt', u'pps', u'pptx', u'ppsx', u'pptm']
 
     def check_available(self):
         """

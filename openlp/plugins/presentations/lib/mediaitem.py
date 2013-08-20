@@ -45,6 +45,7 @@ log = logging.getLogger(__name__)
 
 ERROR = QtGui.QImage(u':/general/general_delete.png')
 
+
 class PresentationMediaItem(MediaManagerItem):
     """
     This is the Presentation media manager item for Presentation Items.
@@ -88,10 +89,10 @@ class PresentationMediaItem(MediaManagerItem):
             if self.controllers[controller].enabled():
                 types = self.controllers[controller].supports + \
                     self.controllers[controller].alsosupports
-                for type in types:
-                    if fileType.find(type) == -1:
-                        fileType += u'*.%s ' % type
-                        self.plugin.serviceManager.supportedSuffixes(type)
+                for type_ in types:
+                    if fileType.find(type_) == -1:
+                        fileType += u'*.%s ' % type_
+                        self.plugin.serviceManager.supportedSuffixes(type_)
         self.onNewFileMasks = unicode(translate('PresentationPlugin.MediaItem',
             'Presentations (%s)')) % fileType
 
