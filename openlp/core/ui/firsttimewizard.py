@@ -34,7 +34,11 @@ import sys
 from openlp.core.lib import translate
 from openlp.core.lib.ui import add_welcome_page
 
+
 class FirstTimePage(object):
+    """
+    An enumeration object to make it easy for a developer to determine which page is which by index
+    """
     Welcome = 0
     Plugins = 1
     NoInternet = 2
