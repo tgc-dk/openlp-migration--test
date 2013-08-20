@@ -78,6 +78,17 @@ log = logging.getLogger(__name__)
 NAMESPACE = u'http://openlyrics.info/namespace/2009/song'
 NSMAP = '{' + NAMESPACE + '}' + '%s'
 
+def clean_xml_string(xml):
+    """
+    Filter out invalid characters in xml
+    Source <http://stackoverflow.com/questions/8733233/filtering-out-certain-bytes-in-python>
+    """
+    return ''.join(char for char in xml if
+        0x20 <= char <= 0xD7FF
+        or char in (0x9, 0xA, 0xD)
+        or 0xE000 <= char <= 0xFFFD
+        or 0x10000 <= char <= 0x10FFFF)
+
 
 class SongXML(object):
     """
@@ -112,6 +123,7 @@ class SongXML(object):
             The verse's language code (ISO-639). This is not required, but
             should be added if available.
         """
+        content = clean_xml_string(content)
         verse = etree.Element(u'verse', type=unicode(type),
             label=unicode(number))
         if lang:
