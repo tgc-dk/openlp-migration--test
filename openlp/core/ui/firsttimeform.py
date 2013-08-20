@@ -186,11 +186,19 @@ class FirstTimeForm(QtGui.QWizard, Ui_FirstTimeWizard):
         Determine the next page in the Wizard to go to.
         """
         Receiver.send_message(u'openlp_process_events')
+        # If we are currently on the plugins page
         if self.currentId() == FirstTimePage.Plugins:
+            # But we don't have Internet access
             if not self.webAccess:
                 return FirstTimePage.NoInternet
-            else:
+            # The songs plugin is enabled
+            elif self.songsCheckBox.isChecked():
                 return FirstTimePage.Songs
+            # The Bibles plugin is enabled
+            elif self.bibleCheckBox.isChecked():
+                return FirstTimePage.Bibles
+            else:
+                return FirstTimePage.Themes
         elif self.currentId() == FirstTimePage.Progress:
             return -1
         elif self.currentId() == FirstTimePage.NoInternet:
