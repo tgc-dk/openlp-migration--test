@@ -28,7 +28,8 @@
 ###############################################################################
 
 """
-Provide a work around for a bug in QFileDialog <https://bugs.launchpad.net/openlp/+bug/1209515>
+Provide a work around for a bug in QFileDialog
+<https://bugs.launchpad.net/openlp/+bug/1209515>
 """
 import os
 import urllib
@@ -38,8 +39,15 @@ from PyQt4 import QtCore, QtGui
 from openlp.core.lib.ui import UiStrings
 
 class FileDialog(QtGui.QFileDialog):
+    """
+    Subclass QFileDialog to work round a bug
+    """
     @staticmethod
     def getOpenFileNames(parent, title, path, filters):
+        """
+        Reimplement getOpenFileNames to fix the way it returns some file
+        names that url encoded when selecting multiple files/
+        """
         files = QtGui.QFileDialog.getOpenFileNames(parent, title, path, filters)
         file_list = QtCore.QStringList()
         for file in files:
