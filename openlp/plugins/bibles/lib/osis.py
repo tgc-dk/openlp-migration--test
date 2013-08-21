@@ -148,20 +148,20 @@ class OSISBible(BibleDB):
                             self.filename)
                         return False
                     book_details = BiblesResourcesDB.get_book_by_id(book_ref_id)
-                    if not db_book or db_book.name != book_details[u'name']:
-                        log.debug(u'New book: "%s"' % book_details[u'name'])
+                    custom_translator = LanguageManager.get_translator(
+                        BiblesResourcesDB.get_language_by_id(
+                            language_id)['code'])[0]
+                    book_name_localized = unicode(custom_translator.translate(
+                        'BiblesPlugin', book_details[u'name']))
+                    if not db_book or db_book.name != book_name_localized:
+                        log.debug(u'New book: "%s"' % book_name_localized)
                         db_book = self.create_book(
-                            book_details[u'name'],
+                            book_name_localized,
                             book_ref_id,
                             book_details[u'testament_id'])
                     if last_chapter == 0:
                         self.wizard.progressBar.setMaximum(chapter_count)
                     if last_chapter != chapter:
-                        custom_translator = LanguageManager.get_translator(
-                            BiblesResourcesDB.get_language_by_id(
-                                language_id)['code'])[0]
-                        book_name_localized = custom_translator.translate(
-                            'BiblesPlugin', book_details[u'name'])
                         if last_chapter != 0:
                             self.session.commit()
                         self.wizard.incrementProgressBar(unicode(translate(
