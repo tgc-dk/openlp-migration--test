@@ -148,11 +148,18 @@ class OSISBible(BibleDB):
                             self.filename)
                         return False
                     book_details = BiblesResourcesDB.get_book_by_id(book_ref_id)
-                    custom_translator = LanguageManager.get_translator(
-                        BiblesResourcesDB.get_language_by_id(
-                            language_id)['code'])[0]
-                    book_name_localized = unicode(custom_translator.translate(
-                        'BiblesPlugin', book_details[u'name']))
+                    bible_language = BiblesResourcesDB.get_language_by_id(language_id)
+                    if bible_language is not None:
+                        # The language of this bible was found, so we can
+                        # translate the name of this book
+                        custom_translator = LanguageManager.get_translator(
+                            bible_language['code'])[0]
+                        book_name_localized = unicode(custom_translator.translate(
+                            'BiblesPlugin', book_details[u'name']))
+                    else:
+                        # The language of this bible was not found, so we just
+                        # use the English name for this book
+                        book_name_localized = book_details[u'name']
                     if not db_book or db_book.name != book_name_localized:
                         log.debug(u'New book: "%s"' % book_name_localized)
                         db_book = self.create_book(
