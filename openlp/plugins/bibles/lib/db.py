@@ -872,7 +872,7 @@ class BiblesResourcesDB(QtCore.QObject, Manager):
         """
         log.debug(u'BiblesResourcesDB.get_language_by_id(%d)', language_id)
         language = BiblesResourcesDB.run_sql(u'SELECT id, name, code FROM '
-                u'language WHERE id = ?', (unicode(language_id),))
+                u'language WHERE id = ?', (language_id,))
         if language:
             return {
                 u'id': language[0][0],
