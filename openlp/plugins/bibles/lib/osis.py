@@ -34,7 +34,7 @@ import codecs
 import re
 
 from openlp.core.lib import Receiver, translate
-from openlp.core.utils import AppLocation
+from openlp.core.utils import AppLocation, LanguageManager
 from openlp.plugins.bibles.lib.db import BibleDB, BiblesResourcesDB
 
 log = logging.getLogger(__name__)
@@ -157,12 +157,17 @@ class OSISBible(BibleDB):
                     if last_chapter == 0:
                         self.wizard.progressBar.setMaximum(chapter_count)
                     if last_chapter != chapter:
+                        custom_translator = LanguageManager.get_translator(
+                            BiblesResourcesDB.get_language_by_id(
+                                language_id)['code'])[0]
+                        book_name_localized = custom_translator.translate(
+                            'BiblesPlugin', book_details[u'name'])
                         if last_chapter != 0:
                             self.session.commit()
                         self.wizard.incrementProgressBar(unicode(translate(
                             'BiblesPlugin.OsisImport', 'Importing %s %s...',
                             'Importing <book name> <chapter>...')) %
-                            (book_details[u'name'], chapter))
+                            (book_name_localized, chapter))
                         last_chapter = chapter
                     # All of this rigmarol below is because the mod2osis
                     # tool from the Sword library embeds XML in the OSIS
