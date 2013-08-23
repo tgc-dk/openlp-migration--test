@@ -34,7 +34,7 @@ import codecs
 import re
 
 from openlp.core.lib import Receiver, translate
-from openlp.core.utils import AppLocation
+from openlp.core.utils import AppLocation, LanguageManager
 from openlp.plugins.bibles.lib.db import BibleDB, BiblesResourcesDB
 
 log = logging.getLogger(__name__)
@@ -148,10 +148,22 @@ class OSISBible(BibleDB):
                             self.filename)
                         return False
                     book_details = BiblesResourcesDB.get_book_by_id(book_ref_id)
-                    if not db_book or db_book.name != book_details[u'name']:
-                        log.debug(u'New book: "%s"' % book_details[u'name'])
+                    bible_language = BiblesResourcesDB.get_language_by_id(language_id)
+                    if bible_language is not None:
+                        # The language of this bible was found, so we can
+                        # translate the name of this book
+                        custom_translator = LanguageManager.get_translator(
+                            bible_language['code'])[0]
+                        book_name_localized = unicode(custom_translator.translate(
+                            'BiblesPlugin', book_details[u'name']))
+                    else:
+                        # The language of this bible was not found, so we just
+                        # use the English name for this book
+                        book_name_localized = book_details[u'name']
+                    if not db_book or db_book.name != book_name_localized:
+                        log.debug(u'New book: "%s"' % book_name_localized)
                         db_book = self.create_book(
-                            book_details[u'name'],
+                            book_name_localized,
                             book_ref_id,
                             book_details[u'testament_id'])
                     if last_chapter == 0:
@@ -162,7 +174,7 @@ class OSISBible(BibleDB):
                         self.wizard.incrementProgressBar(unicode(translate(
                             'BiblesPlugin.OsisImport', 'Importing %s %s...',
                             'Importing <book name> <chapter>...')) %
-                            (book_details[u'name'], chapter))
+                            (book_name_localized, chapter))
                         last_chapter = chapter
                     # All of this rigmarol below is because the mod2osis
                     # tool from the Sword library embeds XML in the OSIS

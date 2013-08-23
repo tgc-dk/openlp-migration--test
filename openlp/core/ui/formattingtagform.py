@@ -109,6 +109,7 @@ class FormattingTagForm(QtGui.QDialog, Ui_FormattingTagDialog):
         has been changed.
         """
         self.savePushButton.setEnabled(True)
+        self.savePushButton.setDefault(True)
 
     def onNewClicked(self):
         """

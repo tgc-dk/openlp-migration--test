@@ -863,6 +863,26 @@ class BiblesResourcesDB(QtCore.QObject, Manager):
         return None
 
     @staticmethod
+    def get_language_by_id(language_id):
+        """
+        Return a dict containing the language id, name and code by id.
+
+        ``id``
+            The id of the language in the database.
+        """
+        log.debug(u'BiblesResourcesDB.get_language_by_id(%d)', language_id)
+        language = BiblesResourcesDB.run_sql(u'SELECT id, name, code FROM '
+                u'language WHERE id = ?', (language_id,))
+        if language:
+            return {
+                u'id': language[0][0],
+                u'name': unicode(language[0][1]),
+                u'code': unicode(language[0][2])
+            }
+        else:
+            return None
+
+    @staticmethod
     def get_language(name):
         """
         Return a dict containing the language id, name and code by name or

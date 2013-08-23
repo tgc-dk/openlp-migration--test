@@ -245,6 +245,8 @@ class BGExtract(object):
             return None
         Receiver.send_message(u'openlp_process_events')
         div = soup.find('div', 'result-text-style-normal')
+        if not div:
+            return None
         self._clean_soup(div)
         span_list = div.findAll('span', 'text')
         log.debug('Span list: %s', span_list)
@@ -375,6 +377,7 @@ class BSExtract(object):
         content = content.findAll(u'li')
         return [
             book.contents[0].contents[0] for book in content
+                if len(book.contents[0].contents)
         ]
 
 
