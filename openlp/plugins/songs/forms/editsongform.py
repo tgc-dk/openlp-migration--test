@@ -723,7 +723,6 @@ class EditSongForm(QtGui.QDialog, Ui_EditSongDialog):
                 return False
         for i in range(self.verseListWidget.rowCount()):
             item = self.verseListWidget.item(i, 0)
-            log.debug(item.text())
             tags = self.find_tags.findall(item.text())
             if self._validate_tags(tags) == False:
                 field = unicode(item.data(QtCore.Qt.UserRole).toString())
