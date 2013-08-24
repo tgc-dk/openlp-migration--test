@@ -78,16 +78,32 @@ log = logging.getLogger(__name__)
 NAMESPACE = u'http://openlyrics.info/namespace/2009/song'
 NSMAP = '{' + NAMESPACE + '}' + '%s'
 
+
+def valid_XML_char_ordinal(char):
+    """
+    Undertake the filter test.
+
+    ``char``
+        The individual character to be checked.
+    """
+    return (
+        0x20 <= char <= 0xD7FF
+        or char in (0x9, 0xA, 0xD)
+        or 0xE000 <= char <= 0xFFFD
+        or 0x10000 <= char <= 0x10FFFF
+    )
+
+
 def clean_xml_string(xml):
     """
     Filter out invalid characters in xml
     Source <http://stackoverflow.com/questions/8733233/filtering-out-certain-bytes-in-python>
+
+    ``xml``
+        The actual text to be checked.
+
     """
-    return ''.join(char for char in xml if
-        0x20 <= char <= 0xD7FF
-        or char in (0x9, 0xA, 0xD)
-        or 0xE000 <= char <= 0xFFFD
-        or 0x10000 <= char <= 0x10FFFF)
+    return ''.join(char for char in xml if valid_XML_char_ordinal(ord(char)))
 
 
 class SongXML(object):
