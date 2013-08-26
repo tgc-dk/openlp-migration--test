@@ -32,6 +32,7 @@ from PyQt4 import QtGui
 from openlp.core.lib import translate, SpellTextEdit
 from openlp.core.lib.ui import create_button_box
 
+
 class ServiceNoteForm(QtGui.QDialog):
     """
     This is the form that is used to edit the verses of the song.
