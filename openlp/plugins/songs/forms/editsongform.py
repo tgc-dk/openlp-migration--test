@@ -748,12 +748,10 @@ class EditSongForm(QtGui.QDialog, Ui_EditSongDialog):
             True if the function can't find any mismatched tags
             False if there are mismatched tags.
         """
-        if len(_tags) % 2 != 0:
-            return False
-        
         if len(_tags) == 0:
             return True
-        
+        if len(_tags) % 2 != 0:
+            return False
         for i in range(len(_tags)-1):
             if _tags[i+1] == "{/" + _tags[i][1:]:
                 del _tags[i:i+2]
