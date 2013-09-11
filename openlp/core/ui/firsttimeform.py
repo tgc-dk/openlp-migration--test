@@ -26,7 +26,9 @@
 # with this program; if not, write to the Free Software Foundation, Inc., 59  #
 # Temple Place, Suite 330, Boston, MA 02111-1307 USA                          #
 ###############################################################################
-
+"""
+The First Time Wizard
+"""
 import io
 import logging
 import os
@@ -48,6 +50,7 @@ from firsttimewizard import Ui_FirstTimeWizard, FirstTimePage
 
 log = logging.getLogger(__name__)
 
+
 class ThemeScreenshotThread(QtCore.QThread):
     """
     This thread downloads the theme screenshots.
@@ -56,6 +59,9 @@ class ThemeScreenshotThread(QtCore.QThread):
         QtCore.QThread.__init__(self, parent)
 
     def run(self):
+        """
+        Run the thread.
+        """
         themes = self.parent().config.get(u'themes', u'files')
         themes = themes.split(u',')
         themes_dir = self.parent().config.get(u'themes', u'directory')
@@ -180,15 +186,28 @@ class FirstTimeForm(QtGui.QWizard, Ui_FirstTimeWizard):
         Determine the next page in the Wizard to go to.
         """
         Receiver.send_message(u'openlp_process_events')
+        # If we are currently on the plugins page
         if self.currentId() == FirstTimePage.Plugins:
+            # But we don't have Internet access
             if not self.webAccess:
                 return FirstTimePage.NoInternet
-            else:
+            # The songs plugin is enabled
+            elif self.songsCheckBox.isChecked():
                 return FirstTimePage.Songs
+            # The Bibles plugin is enabled
+            elif self.bibleCheckBox.isChecked():
+                return FirstTimePage.Bibles
+            else:
+                return FirstTimePage.Themes
         elif self.currentId() == FirstTimePage.Progress:
             return -1
         elif self.currentId() == FirstTimePage.NoInternet:
             return FirstTimePage.Progress
+        elif self.currentId() == FirstTimePage.Songs:
+            if self.bibleCheckBox.isChecked():
+                return FirstTimePage.Bibles
+            else:
+                return FirstTimePage.Themes
         elif self.currentId() == FirstTimePage.Themes:
             Receiver.send_message(u'cursor_busy')
             Receiver.send_message(u'openlp_process_events')
@@ -395,7 +414,7 @@ class FirstTimeForm(QtGui.QWizard, Ui_FirstTimeWizard):
                 self.max_progress += size
         if self.max_progress:
             # Add on 2 for plugins status setting plus a "finished" point.
-            self.max_progress = self.max_progress + 2
+            self.max_progress += 2
             self.progressBar.setValue(0)
             self.progressBar.setMinimum(0)
             self.progressBar.setMaximum(self.max_progress)

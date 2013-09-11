@@ -30,6 +30,7 @@
 Provide HTML Tag management and Formatting Tag access class
 """
 import cPickle
+import json
 
 from PyQt4 import QtCore
 
@@ -71,8 +72,8 @@ class FormattingTags(object):
                     if isinstance(tag[element], unicode):
                         tag[element] = tag[element].encode('utf8')
         # Formatting Tags were also known as display tags.
-        Settings().setValue(u'displayTags/html_tags',
-            QtCore.QVariant(cPickle.dumps(tags) if tags else u''))
+        Settings().setValue(u'formattingTags/html_tags',
+            QtCore.QVariant(json.dumps(tags) if tags else u''))
 
     @staticmethod
     def load_tags():
@@ -167,12 +168,24 @@ class FormattingTags(object):
         FormattingTags.add_html_tags(temporary_tags)
 
         # Formatting Tags were also known as display tags.
-        user_expands = Settings().value(u'displayTags/html_tags',
+        user_expands = Settings().value(u'formattingTags/html_tags',
             QtCore.QVariant(u'')).toString()
+        json_loaded = True
+        if not user_expands:
+            user_expands = Settings().value(u'displayTags/html_tags',
+                QtCore.QVariant(u'')).toString()
+            json_loaded = False
         # cPickle only accepts str not unicode strings
         user_expands_string = str(user_expands)
         if user_expands_string:
-            user_tags = cPickle.loads(user_expands_string)
+            if json_loaded:
+                user_tags = json.loads(user_expands_string)
+            else:
+                user_tags = cPickle.loads(user_expands_string)
+                # move the formatting tags to json and remove old settings
+                Settings().setValue(u'formattingTags/html_tags',
+                    QtCore.QVariant(json.dumps(user_tags)))
+                Settings().remove(u'displayTags/html_tags')
             for tag in user_tags:
                 for element in tag:
                     if isinstance(tag[element], str):

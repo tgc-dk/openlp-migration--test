@@ -49,6 +49,9 @@ class OpenSongImport(SongImport):
     the OpenSong web site. However, it doesn't describe the <lyrics> section,
     so here's an attempt:
 
+    If the first charachter of a line is a space, then the rest of that line
+    is lyrics. If it is not a space the following applies.
+
     Verses can be expressed in one of 2 ways, either in complete verses, or by
     line grouping, i.e. grouping all line 1's of a verse together, all line 2's
     of a verse together, and so on.
@@ -171,12 +174,10 @@ class OpenSongImport(SongImport):
         else:
             lyrics = u''
         for this_line in lyrics.split(u'\n'):
-            # remove comments
-            semicolon = this_line.find(u';')
-            if semicolon >= 0:
-                this_line = this_line[:semicolon]
-            this_line = this_line.strip()
             if not this_line:
+                continue
+            # skip this line if it is a comment
+            if this_line.startswith(u';'):
                 continue
             # skip guitar chords and page and column breaks
             if this_line.startswith(u'.') or this_line.startswith(u'---') \
@@ -212,7 +213,6 @@ class OpenSongImport(SongImport):
             if this_line[0].isdigit():
                 verse_num = this_line[0]
                 this_line = this_line[1:].strip()
-                our_verse_order.append([verse_tag, verse_num, inst])
             verses.setdefault(verse_tag, {})
             verses[verse_tag].setdefault(verse_num, {})
             if inst not in verses[verse_tag][verse_num]:
@@ -222,6 +222,7 @@ class OpenSongImport(SongImport):
             this_line = self.tidyText(this_line)
             this_line = this_line.replace(u'_', u'')
             this_line = this_line.replace(u'|', u'\n')
+            this_line = this_line.strip()
             verses[verse_tag][verse_num][inst].append(this_line)
         # done parsing
         # add verses in original order

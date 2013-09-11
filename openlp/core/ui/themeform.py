@@ -36,7 +36,7 @@ from openlp.core.lib import Receiver, translate
 from openlp.core.lib.theme import BackgroundType, BackgroundGradientType
 from openlp.core.lib.ui import UiStrings, critical_error_message_box
 from openlp.core.ui import ThemeLayoutForm
-from openlp.core.utils import get_images_filter
+from openlp.core.utils import get_images_filter, is_not_image_file
 from themewizard import Ui_ThemeWizard
 
 log = logging.getLogger(__name__)
@@ -78,6 +78,8 @@ class ThemeForm(QtGui.QWizard, Ui_ThemeWizard):
             QtCore.SIGNAL(u'clicked()'), self.onGradientEndButtonClicked)
         QtCore.QObject.connect(self.imageBrowseButton,
             QtCore.SIGNAL(u'clicked()'), self.onImageBrowseButtonClicked)
+        QtCore.QObject.connect(self.imageFileEdit,
+            QtCore.SIGNAL(u'editingFinished()'), self.onImageFileEditEditingFinished)
         QtCore.QObject.connect(self.mainColorButton,
             QtCore.SIGNAL(u'clicked()'), self.onMainColorButtonClicked)
         QtCore.QObject.connect(self.outlineColorButton,
@@ -233,7 +235,7 @@ class ThemeForm(QtGui.QWizard, Ui_ThemeWizard):
         background_image = BackgroundType.to_string(BackgroundType.Image)
         if self.page(self.currentId()) == self.backgroundPage and \
             self.theme.background_type == background_image and \
-            self.imageFileEdit.text().isEmpty():
+            is_not_image_file(self.theme.background_filename):
             QtGui.QMessageBox.critical(self,
                 translate('OpenLP.ThemeWizard', 'Background Image Empty'),
                 translate('OpenLP.ThemeWizard', 'You have not selected a '
@@ -544,6 +546,12 @@ class ThemeForm(QtGui.QWizard, Ui_ThemeWizard):
         if filename:
             self.theme.background_filename = unicode(filename)
         self.setBackgroundPageValues()
+
+    def onImageFileEditEditingFinished(self):
+        """
+        Background image path edited
+        """
+        self.theme.background_filename = unicode(self.imageFileEdit.text())
 
     def onMainColorButtonClicked(self):
         self.theme.font_main_color = \

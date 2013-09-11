@@ -229,32 +229,32 @@ FLASH_HTML = u"""
 """
 
 VIDEO_EXT = [
-        u'*.3gp'
-        , u'*.3gpp'
-        , u'*.3g2'
-        , u'*.3gpp2'
-        , u'*.aac'
-        , u'*.flv'
-        , u'*.f4a'
-        , u'*.f4b'
-        , u'*.f4p'
-        , u'*.f4v'
-        , u'*.mov'
-        , u'*.m4a'
-        , u'*.m4b'
-        , u'*.m4p'
-        , u'*.m4v'
-        , u'*.mkv'
-        , u'*.mp4'
-        , u'*.ogv'
-        , u'*.webm'
-        , u'*.mpg', u'*.wmv',  u'*.mpeg', u'*.avi'
-        , u'*.swf'
+        u'*.3gp',
+        u'*.3gpp',
+        u'*.3g2',
+        u'*.3gpp2',
+        u'*.aac',
+        u'*.flv',
+        u'*.f4a',
+        u'*.f4b',
+        u'*.f4p',
+        u'*.f4v',
+        u'*.mov',
+        u'*.m4a',
+        u'*.m4b',
+        u'*.m4p',
+        u'*.m4v',
+        u'*.mkv',
+        u'*.mp4',
+        u'*.ogv',
+        u'*.webm',
+        u'*.mpg', u'*.wmv',  u'*.mpeg', u'*.avi',
+        u'*.swf'
     ]
 
 AUDIO_EXT = [
-        u'*.mp3'
-        , u'*.ogg'
+        u'*.mp3',
+        u'*.ogg'
     ]
 
 

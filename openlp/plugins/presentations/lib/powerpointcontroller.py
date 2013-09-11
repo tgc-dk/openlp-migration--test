@@ -43,6 +43,7 @@ log = logging.getLogger(__name__)
 # PPT API documentation:
 # http://msdn.microsoft.com/en-us/library/aa269321(office.10).aspx
 
+
 class PowerpointController(PresentationController):
     """
     Class to control interactions with PowerPoint Presentations
@@ -58,7 +59,7 @@ class PowerpointController(PresentationController):
         log.debug(u'Initialising')
         PresentationController.__init__(self, plugin, u'Powerpoint',
             PowerpointDocument)
-        self.supports = [u'ppt', u'pps', u'pptx', u'ppsx']
+        self.supports = [u'ppt', u'pps', u'pptx', u'ppsx', u'pptm']
         self.process = None
 
     def check_available(self):

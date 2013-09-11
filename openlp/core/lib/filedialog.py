@@ -27,41 +27,37 @@
 # Temple Place, Suite 330, Boston, MA 02111-1307 USA                          #
 ###############################################################################
 
-from PyQt4 import QtGui
+"""
+Provide a work around for a bug in QFileDialog
+<https://bugs.launchpad.net/openlp/+bug/1209515>
+"""
+import os
+import urllib
 
-from openlp.core.lib import translate, SpellTextEdit
-from openlp.core.lib.ui import create_button_box
+from PyQt4 import QtCore, QtGui
 
+from openlp.core.lib.ui import UiStrings
 
-class ServiceNoteForm(QtGui.QDialog):
+class FileDialog(QtGui.QFileDialog):
     """
-    This is the form that is used to edit the verses of the song.
+    Subclass QFileDialog to work round a bug
     """
-    def __init__(self, parent=None):
+    @staticmethod
+    def getOpenFileNames(parent, title, path, filters):
         """
-        Constructor
+        Reimplement getOpenFileNames to fix the way it returns some file
+        names that url encoded when selecting multiple files/
         """
-        QtGui.QDialog.__init__(self, parent)
-        self.setupUi()
-        self.retranslateUi()
-
-    def exec_(self):
-        self.textEdit.setFocus()
-        return QtGui.QDialog.exec_(self)
-
-    def setupUi(self):
-        self.setObjectName(u'serviceNoteEdit')
-        self.dialogLayout = QtGui.QVBoxLayout(self)
-        self.dialogLayout.setContentsMargins(8, 8, 8, 8)
-        self.dialogLayout.setSpacing(8)
-        self.dialogLayout.setObjectName(u'verticalLayout')
-        self.textEdit = SpellTextEdit(self, False)
-        self.textEdit.setObjectName(u'textEdit')
-        self.dialogLayout.addWidget(self.textEdit)
-        self.buttonBox = create_button_box(self, u'buttonBox',
-            [u'cancel', u'save'])
-        self.dialogLayout.addWidget(self.buttonBox)
-
-    def retranslateUi(self):
-        self.setWindowTitle(
-            translate('OpenLP.ServiceNoteForm', 'Service Item Notes'))
+        files = QtGui.QFileDialog.getOpenFileNames(parent, title, path, filters)
+        file_list = QtCore.QStringList()
+        for file in files:
+            file = unicode(file)
+            if not os.path.exists(file):
+                file = urllib.unquote(file)
+                if not os.path.exists(file):
+                    QtGui.QMessageBox.information(parent,
+                        UiStrings().FileNotFound,
+                        UiStrings().FileNotFoundMessage % file)
+                    continue
+            file_list.append(QtCore.QString(file))
+        return file_list

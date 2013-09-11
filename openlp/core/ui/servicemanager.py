@@ -32,6 +32,7 @@ import logging
 import os
 import shutil
 import zipfile
+import json
 from tempfile import mkstemp
 from datetime import datetime, timedelta
 
@@ -477,7 +478,7 @@ class ServiceManager(QtGui.QWidget):
         path_file_name = unicode(self.fileName())
         path, file_name = os.path.split(path_file_name)
         basename = os.path.splitext(file_name)[0]
-        service_file_name = '%s.osd' % basename
+        service_file_name = '%s.osj' % basename
         log.debug(u'ServiceManager.saveFile - %s', path_file_name)
         SettingsManager.set_last_dir(
             self.mainwindow.serviceManagerSettingsSection,
@@ -542,7 +543,7 @@ class ServiceManager(QtGui.QWidget):
             total_size += file_size
         log.debug(u'ServiceManager.saveFile - ZIP contents size is %i bytes' %
             total_size)
-        service_content = cPickle.dumps(service)
+        service_content = json.dumps(service)
         # Usual Zip file cannot exceed 2GiB, file with Zip64 cannot be
         # extracted using unzip in UNIX.
         allow_zip_64 = (total_size > 2147483648 + len(service_content))
@@ -672,12 +673,15 @@ class ServiceManager(QtGui.QWidget):
                 log.debug(u'Extract file: %s', osfile)
                 zipinfo.filename = osfile
                 zip.extract(zipinfo, self.servicePath)
-                if osfile.endswith(u'osd'):
+                if osfile.endswith(u'osd') or osfile.endswith(u'osj'):
                     p_file = os.path.join(self.servicePath, osfile)
             if 'p_file' in locals():
                 Receiver.send_message(u'cursor_busy')
                 fileTo = open(p_file, u'r')
-                items = cPickle.load(fileTo)
+                if p_file.endswith(u'osj'):
+                    items = json.load(fileTo)
+                else:
+                    items = cPickle.load(fileTo)
                 fileTo.close()
                 self.newFile()
                 self.mainwindow.displayProgressBar(len(items))
@@ -792,7 +796,7 @@ class ServiceManager(QtGui.QWidget):
             self.serviceItems[item][u'service_item'].notes)
         if self.serviceNoteForm.exec_():
             self.serviceItems[item][u'service_item'].notes = \
-                self.serviceNoteForm.textEdit.toPlainText()
+                unicode(self.serviceNoteForm.textEdit.toPlainText())
             self.repaintServiceList(item, -1)
             self.setModified()
 
