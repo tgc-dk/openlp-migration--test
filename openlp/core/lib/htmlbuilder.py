@@ -131,6 +131,8 @@ sup {
     function show_text(newtext){
         var fade_direction = 0;
         var match = /-webkit-text-fill-color:[^;\"]+/gi;
+        if (timer != null)
+            clearInterval(timer);
         /*
         QtWebkit bug with outlines and justify causing outline alignment
         problems. (Bug 859950) Surround each word with a <span> to workaround,
