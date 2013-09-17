@@ -175,8 +175,10 @@ class MainDisplay(Display):
     def setTransparency(self, enabled):
         if enabled:
             self.setAutoFillBackground(False)
+            self.setStyleSheet("QGraphicsView {background: transparent;}")
         else:
             self.setAttribute(QtCore.Qt.WA_NoSystemBackground, False)
+            self.setStyleSheet("QGraphicsView {background: white;}")
         self.setAttribute(QtCore.Qt.WA_TranslucentBackground, enabled)
         self.repaint()
 
