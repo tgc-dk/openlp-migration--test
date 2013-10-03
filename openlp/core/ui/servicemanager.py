@@ -796,7 +796,7 @@ class ServiceManager(QtGui.QWidget):
             self.serviceItems[item][u'service_item'].notes)
         if self.serviceNoteForm.exec_():
             self.serviceItems[item][u'service_item'].notes = \
-                self.serviceNoteForm.textEdit.toPlainText()
+                unicode(self.serviceNoteForm.textEdit.toPlainText())
             self.repaintServiceList(item, -1)
             self.setModified()
 
