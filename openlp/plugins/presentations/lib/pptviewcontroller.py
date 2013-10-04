@@ -29,6 +29,7 @@
 
 import os
 import logging
+import sys
 
 if os.name == u'nt':
     from ctypes import cdll
@@ -125,11 +126,13 @@ class PptviewDocument(PresentationDocument):
         renderer = self.controller.plugin.renderer
         rect = renderer.screens.current[u'size']
         rect = RECT(rect.x(), rect.y(), rect.right(), rect.bottom())
-        filepath = str(self.filepath.replace(u'/', u'\\'))
+        filepath = self.filepath.replace(u'/', u'\\')
         if not os.path.isdir(self.get_temp_folder()):
             os.makedirs(self.get_temp_folder())
-        self.pptid = self.controller.process.OpenPPT(filepath, None, rect,
-            str(self.get_temp_folder()) + '\\slide')
+        preview_path = self.get_temp_folder() + u'\\slide'
+        file_system_encoding = sys.getfilesystemencoding()
+        self.pptid = self.controller.process.OpenPPT(filepath.encode(file_system_encoding), None, rect,
+            preview_path.encode(file_system_encoding))
         if self.pptid >= 0:
             self.create_thumbnails()
             self.stop_presentation()
