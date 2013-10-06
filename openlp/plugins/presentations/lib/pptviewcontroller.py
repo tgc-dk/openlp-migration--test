@@ -126,10 +126,10 @@ class PptviewDocument(PresentationDocument):
         renderer = self.controller.plugin.renderer
         rect = renderer.screens.current[u'size']
         rect = RECT(rect.x(), rect.y(), rect.right(), rect.bottom())
-        filepath = self.filepath.replace(u'/', u'\\')
+        filepath = os.path.normpath(self.filepath)
+        preview_path = os.path.join(self.get_temp_folder(), u'slide')
         if not os.path.isdir(self.get_temp_folder()):
             os.makedirs(self.get_temp_folder())
-        preview_path = self.get_temp_folder() + u'\\slide'
         file_system_encoding = sys.getfilesystemencoding()
         self.pptid = self.controller.process.OpenPPT(filepath.encode(file_system_encoding), None, rect,
             preview_path.encode(file_system_encoding))
