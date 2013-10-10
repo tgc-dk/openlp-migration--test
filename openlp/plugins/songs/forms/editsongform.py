@@ -721,18 +721,28 @@ class EditSongForm(QtGui.QDialog, Ui_EditSongDialog):
                 self.manager.save_object(book)
             else:
                 return False
+        cnt_errors = 0
+        error_list = ''
+        verse_tag = []
+        verse_num = []
         for i in range(self.verseListWidget.rowCount()):
             item = self.verseListWidget.item(i, 0)
             tags = self.find_tags.findall(item.text())
             if self._validate_tags(tags) == False:
                 field = unicode(item.data(QtCore.Qt.UserRole).toString())
-                verse_tag = VerseType.translated_name(field[0])
-                verse_num = field[1:]
-                critical_error_message_box(
-                    message=translate('SongsPlugin.EditSongForm',
-                    'There are misplaced tags in %s %s. '
-                    'You need to fix this problem first.' % (verse_tag, verse_num)))
-                return False
+                verse_tag.append(VerseType.translated_name(field[0]))
+                verse_num.append(field[1:])
+                cnt_errors += 1;
+        if cnt_errors > 0:
+            for i in range(cnt_errors):
+                error_list += '%s %s' % (verse_tag[i], verse_num[i])
+                if i < cnt_errors-1:
+                    error_list += ', '
+            critical_error_message_box(
+                message=translate('SongsPlugin.EditSongForm',
+                'There are misplaced formatting tags in the following verses:\n\n%s\n\n'
+                'Please correct these tags before continuing.' % error_list))
+            return False
         return True
 
     def _validate_tags(self, _tags):
