@@ -90,7 +90,7 @@ class PptviewController(PresentationController):
                 u'presentations', u'lib', u'pptviewlib', u'pptviewlib.dll')
             self.process = cdll.LoadLibrary(dllpath)
             if log.isEnabledFor(logging.DEBUG):
-                self.process.SetDebug(1)
+                self.process.SetDebug(0)
 
         def kill(self):
             """
@@ -126,13 +126,18 @@ class PptviewDocument(PresentationDocument):
         renderer = self.controller.plugin.renderer
         rect = renderer.screens.current[u'size']
         rect = RECT(rect.x(), rect.y(), rect.right(), rect.bottom())
+        file_system_encoding = 'utf-16-le'
+
         filepath = os.path.normpath(self.filepath)
+
         preview_path = os.path.join(self.get_temp_folder(), u'slide')
+
         if not os.path.isdir(self.get_temp_folder()):
             os.makedirs(self.get_temp_folder())
-        file_system_encoding = sys.getfilesystemencoding()
-        self.pptid = self.controller.process.OpenPPT(filepath.encode(file_system_encoding), None, rect,
-            preview_path.encode(file_system_encoding))
+        filepath = filepath.encode(file_system_encoding)
+        preview_path = preview_path.encode(file_system_encoding)
+        self.pptid = self.controller.process.OpenPPT(filepath, None, rect,
+            preview_path)
         if self.pptid >= 0:
             self.create_thumbnails()
             self.stop_presentation()
