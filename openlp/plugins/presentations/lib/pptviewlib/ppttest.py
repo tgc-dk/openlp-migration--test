@@ -175,13 +175,7 @@ class PPTViewer(QtGui.QWidget):
             int(self.widthEdit.text()), int(self.heightEdit.text()))
         filename = os.path.normpath(unicode(self.pptEdit.text())).encode('utf-16-le')
         folder = unicode(self.folderEdit.text()).replace(u'/', u'\\')
-        #filename = str(self.pptEdit.text()).replace(u'/', u'\\')
-        #folder = str(self.folderEdit.text()).replace(u'/', u'\\')
-        print(filename)
-        print filename, folder
-        filename = u'C:\\Documents and Settings\\Phill\\Desktop\\Հայաստան.ppt'
-        preview_path = u'Z:\\Data\\presentations\\Powerpoint Viewer\\Հայաստան.ppt\\slide'
-        self.pptid = self.pptdll.OpenPPT(filename.encode('utf-16-le'), None, rect, preview_path.encode('utf-16-le'))
+        self.pptid = self.pptdll.OpenPPT(filename, None, rect, filename.encode('utf-16-le') + folder.encode('utf-16-le'))
         #self.pptid = self.pptdll.OpenPPT(filename, None, rect, filename + folder)
         print u'id: ' + unicode(self.pptid)
         if oldid >= 0:
