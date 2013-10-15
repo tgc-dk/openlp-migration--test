@@ -127,16 +127,15 @@ class PptviewDocument(PresentationDocument):
         rect = renderer.screens.current[u'size']
         rect = RECT(rect.x(), rect.y(), rect.right(), rect.bottom())
         file_system_encoding = 'utf-16-le'
-
-        filepath = os.path.normpath(self.filepath)
-
-        preview_path = os.path.join(self.get_temp_folder(), u'slide')
-
+        # Add a null char on the end otherwise we get spurious issues with
+        # the encoding.
+        file_path = os.path.normpath(self.filepath) + u'\0'
+        preview_path = os.path.join(self.get_temp_folder(), u'slide') + u'\0'
+        file_path = file_path.encode(file_system_encoding)
+        preview_path = preview_path.encode(file_system_encoding)
         if not os.path.isdir(self.get_temp_folder()):
             os.makedirs(self.get_temp_folder())
-        filepath = filepath.encode(file_system_encoding)
-        preview_path = preview_path.encode(file_system_encoding)
-        self.pptid = self.controller.process.OpenPPT(filepath, None, rect,
+        self.pptid = self.controller.process.OpenPPT(file_path, None, rect,
             preview_path)
         if self.pptid >= 0:
             self.create_thumbnails()
