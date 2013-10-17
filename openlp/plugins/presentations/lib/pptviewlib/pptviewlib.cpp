@@ -370,7 +370,7 @@ BOOL GetPPTViewerPath(wchar_t *pptViewerPath, int stringSize)
     // upset those who like to put things somewhere else
 
     // Viewer 2007 in 64bit Windows:
-    if(_access("C:\\Program Files (x86)\\Microsoft Office\\Office12\\PPTVIEW.EXE",
+    if(_waccess(L"C:\\Program Files (x86)\\Microsoft Office\\Office12\\PPTVIEW.EXE",
         0) != -1)
     {
         wcscpy_s(
@@ -380,7 +380,7 @@ BOOL GetPPTViewerPath(wchar_t *pptViewerPath, int stringSize)
         return TRUE;
     }
     // Viewer 2007 in 32bit Windows:
-    if(_access("C:\\Program Files\\Microsoft Office\\Office12\\PPTVIEW.EXE", 0)
+    if(_waccess(L"C:\\Program Files\\Microsoft Office\\Office12\\PPTVIEW.EXE", 0)
         != -1)
     {
         wcscpy_s(L"C:\\Program Files\\Microsoft Office\\Office12\\PPTVIEW.EXE",
@@ -411,17 +411,17 @@ BOOL GetPPTViewerPathFromReg(wchar_t *pptViewerPath, int stringSize)
     // PPT Viewer 2003 (recent versions)
     // PPT Viewer 2003 (older versions) 
     // PPT Viewer 97
-    if ((RegOpenKeyExA(HKEY_CLASSES_ROOT,
-        "PowerPointViewer.Show.12\\shell\\Show\\command", 0, KEY_READ, &hKey)
+    if ((RegOpenKeyExW(HKEY_CLASSES_ROOT,
+        L"PowerPointViewer.Show.12\\shell\\Show\\command", 0, KEY_READ, &hKey)
         != ERROR_SUCCESS)
-        && (RegOpenKeyExA(HKEY_CLASSES_ROOT,
-        "PowerPointViewer.Show.11\\shell\\Show\\command", 0, KEY_READ, &hKey)
+        && (RegOpenKeyExW(HKEY_CLASSES_ROOT,
+        L"PowerPointViewer.Show.11\\shell\\Show\\command", 0, KEY_READ, &hKey)
         != ERROR_SUCCESS)
-        && (RegOpenKeyExA(HKEY_CLASSES_ROOT,
-        "Applications\\PPTVIEW.EXE\\shell\\open\\command", 0, KEY_READ, &hKey)
+        && (RegOpenKeyExW(HKEY_CLASSES_ROOT,
+        L"Applications\\PPTVIEW.EXE\\shell\\open\\command", 0, KEY_READ, &hKey)
         != ERROR_SUCCESS)
-        && (RegOpenKeyExA(HKEY_CLASSES_ROOT,
-        "Applications\\PPTVIEW.EXE\\shell\\Show\\command", 0, KEY_READ, &hKey)
+        && (RegOpenKeyExW(HKEY_CLASSES_ROOT,
+        L"Applications\\PPTVIEW.EXE\\shell\\Show\\command", 0, KEY_READ, &hKey)
         != ERROR_SUCCESS))
     {
         return FALSE;

@@ -90,7 +90,7 @@ class PptviewController(PresentationController):
                 u'presentations', u'lib', u'pptviewlib', u'pptviewlib.dll')
             self.process = cdll.LoadLibrary(dllpath)
             if log.isEnabledFor(logging.DEBUG):
-                self.process.SetDebug(0)
+                self.process.SetDebug(1)
 
         def kill(self):
             """
@@ -127,12 +127,11 @@ class PptviewDocument(PresentationDocument):
         rect = renderer.screens.current[u'size']
         rect = RECT(rect.x(), rect.y(), rect.right(), rect.bottom())
         file_system_encoding = 'utf-16-le'
-        # Add a null char on the end otherwise we get spurious issues with
-        # the encoding.
-        file_path = os.path.normpath(self.filepath) + u'\0'
-        preview_path = os.path.join(self.get_temp_folder(), u'slide') + u'\0'
-        file_path = file_path.encode(file_system_encoding)
-        preview_path = preview_path.encode(file_system_encoding)
+        file_path = os.path.normpath(self.filepath)
+        preview_path = os.path.join(self.get_temp_folder(), u'slide')
+        # Ensure that the paths are null terminated
+        file_path = file_path.encode(file_system_encoding) + '\0'
+        preview_path = preview_path.encode(file_system_encoding) + '\0'
         if not os.path.isdir(self.get_temp_folder()):
             os.makedirs(self.get_temp_folder())
         self.pptid = self.controller.process.OpenPPT(file_path, None, rect,
