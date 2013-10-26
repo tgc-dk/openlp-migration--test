@@ -27,7 +27,9 @@
 # Temple Place, Suite 330, Boston, MA 02111-1307 USA                          #
 ###############################################################################
 
+import os
 import sys
+
 from PyQt4 import QtGui, QtCore
 from ctypes import *
 from ctypes.wintypes import RECT
@@ -172,9 +174,8 @@ class PPTViewer(QtGui.QWidget):
         oldid = self.pptid;
         rect = RECT(int(self.xEdit.text()), int(self.yEdit.text()),
             int(self.widthEdit.text()), int(self.heightEdit.text()))
-        filename = str(self.pptEdit.text().replace(u'/', u'\\'))
-        folder = str(self.folderEdit.text().replace(u'/', u'\\'))
-        print filename, folder
+        filename = os.path.normpath(unicode(self.pptEdit.text())).encode('utf-16-le') + '\0'
+        folder = os.path.normpath(unicode(self.folderEdit.text())).encode('utf-16-le') + '\0'
         self.pptid = self.pptdll.OpenPPT(filename, None, rect, folder)
         print u'id: ' + unicode(self.pptid)
         if oldid >= 0:
