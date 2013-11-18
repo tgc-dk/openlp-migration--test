@@ -132,6 +132,7 @@ class EditSongForm(QtGui.QDialog, Ui_EditSongDialog):
         self.audioListWidget.setAlternatingRowColors(True)
         self.findVerseSplit = re.compile(u'---\[\]---\n', re.UNICODE)
         self.whitespace = re.compile(r'\W+', re.UNICODE)
+        self.find_tags = re.compile(u'\{/?\w+\}', re.UNICODE)
 
     def keyPressEvent(self, event):
         """
@@ -720,7 +721,52 @@ class EditSongForm(QtGui.QDialog, Ui_EditSongDialog):
                 self.manager.save_object(book)
             else:
                 return False
+        cnt_errors = 0
+        error_list = ''
+        verse_tag = []
+        verse_num = []
+        for i in range(self.verseListWidget.rowCount()):
+            item = self.verseListWidget.item(i, 0)
+            tags = self.find_tags.findall(item.text())
+            if self._validate_tags(tags) == False:
+                field = unicode(item.data(QtCore.Qt.UserRole).toString())
+                verse_tag.append(VerseType.translated_name(field[0]))
+                verse_num.append(field[1:])
+                cnt_errors += 1;
+        if cnt_errors > 0:
+            for i in range(cnt_errors):
+                error_list += '%s %s' % (verse_tag[i], verse_num[i])
+                if i < cnt_errors-1:
+                    error_list += ', '
+            critical_error_message_box(
+                message=translate('SongsPlugin.EditSongForm',
+                'There are misplaced formatting tags in the following verses:\n\n%s\n\n'
+                'Please correct these tags before continuing.' % error_list))
+            return False
         return True
+
+    def _validate_tags(self, _tags):
+        """ 
+        Validates a list of tags
+        Deletes the first affiliated tag pair which is located side by side in the list
+        and call itself recursively with the shortened tag list. 
+        If there is any misplaced tag in the list, either the lenght of the tag list is not even, 
+        or the function won't find any tag pairs side by side.
+        If there is no misplaced tag, the length of the list will be zero on any recursive run.
+
+        Return:
+            True if the function can't find any mismatched tags
+            False if there are mismatched tags.
+        """
+        if len(_tags) == 0:
+            return True
+        if len(_tags) % 2 != 0:
+            return False
+        for i in range(len(_tags)-1):
+            if _tags[i+1] == "{/" + _tags[i][1:]:
+                del _tags[i:i+2]
+                return self._validate_tags(_tags)
+        return False
 
     def onCopyrightInsertButtonTriggered(self):
         text = self.copyrightEdit.text()
