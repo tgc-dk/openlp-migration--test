@@ -317,7 +317,7 @@ class ServiceItem(object):
         self.add_icon(header[u'icon'])
         self.raw_footer = header[u'footer']
         self.audit = header[u'audit']
-        self.notes = header[u'notes']
+        self.notes = unicode([u'notes'])
         self.from_plugin = header[u'from_plugin']
         self.capabilities = header[u'capabilities']
         # Added later so may not be present in older services.
