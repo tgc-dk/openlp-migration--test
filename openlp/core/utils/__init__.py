@@ -457,6 +457,7 @@ def get_web_page(url, header=None, update_openlp=False):
     # http://docs.python.org/library/urllib2.html
     if not url:
         return None
+    url = u'http://www.biblegateway.com/versions/Dette-er-Biblen-p%C3%A5-dansk-1933/'
     req = urllib2.Request(url)
     if header:
         req.add_header(header[0], header[1])
@@ -464,7 +465,11 @@ def get_web_page(url, header=None, update_openlp=False):
     log.debug(u'Downloading URL = %s' % url)
     try:
         page = urllib2.urlopen(req)
-        log.debug(u'Downloaded URL = %s' % page.geturl())
+        downloaded_url = page.geturl()
+        # Sometimes we get redirected, in this case page.geturl is encoded in utf-8
+        if not isinstance(downloaded_url, unicode):
+            downloaded_url = downloaded_url.decode('utf-8')
+        log.debug(u'Downloaded URL = %s' % downloaded_url)
     except urllib2.URLError:
         log.exception(u'The web page could not be downloaded')
     if not page:
