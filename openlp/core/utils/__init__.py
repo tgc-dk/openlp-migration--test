@@ -457,7 +457,6 @@ def get_web_page(url, header=None, update_openlp=False):
     # http://docs.python.org/library/urllib2.html
     if not url:
         return None
-    url = u'http://www.biblegateway.com/versions/Dette-er-Biblen-p%C3%A5-dansk-1933/'
     req = urllib2.Request(url)
     if header:
         req.add_header(header[0], header[1])
