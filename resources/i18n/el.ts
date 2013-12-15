@@ -3233,7 +3233,7 @@ To cancel the First Time Wizard completely (and not start OpenLP), click the Can
 <context>
     <name>OpenLP.MainDisplay</name>
     <message>
-        <location filename="openlp/core/ui/maindisplay.py" line="203"/>
+        <location filename="openlp/core/ui/maindisplay.py" line="205"/>
         <source>OpenLP Display</source>
         <translation>Προβολή του OpenLP</translation>
     </message>
@@ -6704,72 +6704,72 @@ The encoding is responsible for the correct character representation.</source>
         <translation>Θέμα, Πληροφορίες Πνευματικών Δικαιωμάτων &amp;&amp; Σχόλια</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="384"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="385"/>
         <source>Add Author</source>
         <translation>Προσθήκη Συγγραφέα</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="384"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="385"/>
         <source>This author does not exist, do you want to add them?</source>
         <translation>Αυτός ο συγγραφέας δεν υπάρχει, θέλετε να τον προσθέσετε;</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="407"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="408"/>
         <source>This author is already in the list.</source>
         <translation>Αυτός ο συγγραφέας είναι ήδη στην λίστα.</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="414"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="415"/>
         <source>You have not selected a valid author. Either select an author from the list, or type in a new author and click the &quot;Add Author to Song&quot; button to add the new author.</source>
         <translation>Δεν επιλέξατε έγκυρο συγγραφέα. Είτε επιλέξτε έναν συγγραφέα από την λίστα, είτε πληκτρολογείστε έναν νέο συγγραφέα και πιέστε &quot;Προσθήκη Συγγραφέα στον Ύμνο&quot; για να προσθέσετε τον νέο συγγραφέα.</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="442"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="443"/>
         <source>Add Topic</source>
         <translation>Προσθήκη Κατηγορίας</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="442"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="443"/>
         <source>This topic does not exist, do you want to add it?</source>
         <translation>Η κατηγορία δεν υπάρχει, θέλετε να την προσθέσετε;</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="463"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="464"/>
         <source>This topic is already in the list.</source>
         <translation>Η κατηγορία υπάρχει ήδη στην λίστα.</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="473"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="474"/>
         <source>You have not selected a valid topic. Either select a topic from the list, or type in a new topic and click the &quot;Add Topic to Song&quot; button to add the new topic.</source>
         <translation>Δεν επιλέξατε έγκυρη κατηγορία. Είτε επιλέξτε μια κατηγορία από την λίστα, είτε πληκτρολογήστε μια νέα κατηγορία και πιέστε &quot;Προσθήκη Κατηγορίας στον Ύμνο&quot; για να προσθέσετε την νέα κατηγορία.</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="688"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="689"/>
         <source>You need to type in a song title.</source>
         <translation>Πρέπει να δώσετε έναν τίτλο στον ύμνο.</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="695"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="696"/>
         <source>You need to type in at least one verse.</source>
         <translation>Πρέπει να πληκτρολογήσετε τουλάχιστον ένα εδάφιο.</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="671"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="672"/>
         <source>The verse order is invalid. There is no verse corresponding to %s. Valid entries are %s.</source>
         <translation>Η σειρά των εδαφίων δεν είναι έγκυρη. Δεν υπάρχει εδάφιο αντίστοιχο στο %s. Έγκυρες καταχωρήσεις είναι οι %s.</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="713"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="714"/>
         <source>Add Book</source>
         <translation>Προσθήκη Βιβλίου</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="713"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="714"/>
         <source>This song book does not exist, do you want to add it?</source>
         <translation>Αυτό το βιβλίο ύμνων δεν υπάρχει, θέλετε να το προσθέσετε;</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="702"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="703"/>
         <source>You need to have an author for this song.</source>
         <translation>Πρέπει να έχετε έναν συγγραφέα για αυτόν τον ύμνο.</translation>
     </message>
@@ -6794,7 +6794,7 @@ The encoding is responsible for the correct character representation.</source>
         <translation>&amp;Αφαίρεση Όλων</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="765"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="811"/>
         <source>Open File(s)</source>
         <translation>Άνοιγμα Αρχείου(-ων)</translation>
     </message>
@@ -6804,7 +6804,7 @@ The encoding is responsible for the correct character representation.</source>
         <translation>&lt;strong&gt;Προειδοποίηση:&lt;/strong&gt; Δεν χρησιμοποιούνται όλα τα εδάφια.</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="666"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="667"/>
         <source>The verse order is invalid. There are no verses corresponding to %s. Valid entries are %s.</source>
         <translation>Η σειρά εδαφίων είναι ακατάλληλη. Δεν υπάρχουν εδάφια που να αντιστοιχούν στο %s. Κατάλληλες καταχωρήσεις είναι %s.</translation>
     </message>

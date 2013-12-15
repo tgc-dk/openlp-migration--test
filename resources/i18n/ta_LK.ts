@@ -3224,7 +3224,7 @@ To cancel the First Time Wizard completely (and not start OpenLP), click the Can
 <context>
     <name>OpenLP.MainDisplay</name>
     <message>
-        <location filename="openlp/core/ui/maindisplay.py" line="203"/>
+        <location filename="openlp/core/ui/maindisplay.py" line="205"/>
         <source>OpenLP Display</source>
         <translation>OpenLP காட்சி</translation>
     </message>
@@ -6696,73 +6696,73 @@ EasyWorship]</translation>
         <translation>தீம், பதிப்புரிமை தகவல் &amp;&amp; கருத்துரைகள்</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="384"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="385"/>
         <source>Add Author</source>
         <translation>படைப்பாளர் சேர்க்கலாம்</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="384"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="385"/>
         <source>This author does not exist, do you want to add them?</source>
         <translation>இந்த நூலாசிரியர் இல்லை, நீங்கள் அவர்களை சேர்க்க வேண்டுமா?</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="407"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="408"/>
         <source>This author is already in the list.</source>
         <translation>இந்த நூலாசிரியர் பட்டியலில் ஏற்கனவே உள்ளது.</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="414"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="415"/>
         <source>You have not selected a valid author. Either select an author from the list, or type in a new author and click the &quot;Add Author to Song&quot; button to add the new author.</source>
         <translation>நீங்கள் சரியான நூலாசிரியர் தேர்ந்தெடுத்த இல்லை. அல்லது ஒரு புதிய நூலாசிரியர் பட்டியல், அல்லது வகை இருந்து ஒரு நூலாசிரியர் தேர்ந்தெடுக்கவும் மற்றும் புதிய நூலாசிரியர் சேர்க்க &quot;பாடல் என ஆசிரியர் சேர்க்கவும்&quot; பொத்தானை கிளிக் செய்யவும்.</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="442"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="443"/>
         <source>Add Topic</source>
         <translation>தலைப்பு சேர்க்கலாம்</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="442"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="443"/>
         <source>This topic does not exist, do you want to add it?</source>
         <translation>இந்த தலைப்பை இல்லை, நீங்கள் இதை சேர்க்க வேண்டுமா?</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="463"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="464"/>
         <source>This topic is already in the list.</source>
         <translation>இந்த தலைப்பை பட்டியலில் ஏற்கனவே உள்ளது.</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="473"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="474"/>
         <source>You have not selected a valid topic. Either select a topic from the list, or type in a new topic and click the &quot;Add Topic to Song&quot; button to add the new topic.</source>
         <translation>நீங்கள் சரியான தலைப்பு தேர்ந்தெடுக்கவில்லை. அல்லது ஒரு புதிய தலைப்பில் ஒரு பட்டியலில் இருந்து தலைப்பை, அல்லது வகை தேர்ந்தெடுக்கவும் மற்றும் புதிய தலைப்பை சேர்க்க &quot;பாடல் என்று தலைப்பு சேர்க்கவும்&quot; பொத்தானை கிளிக் செய்யவும்.</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="688"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="689"/>
         <source>You need to type in a song title.</source>
         <translation>நீங்கள் ஒரு பாடலான பெயர் தட்டச்சு செய்ய வேண்டும்.</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="695"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="696"/>
         <source>You need to type in at least one verse.</source>
         <translation>நீங்கள் குறைந்தது ஒரு வசனம் தட்டச்சு செய்ய வேண்டும்.</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="671"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="672"/>
         <source>The verse order is invalid. There is no verse corresponding to %s. Valid entries are %s.</source>
         <translation>வசனம் ஒழுங்கு தவறானது. தொடர்பான இல்லை வசனம் உள்ளது %s.
 சரியான உள்ளீடுகளை %s.</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="713"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="714"/>
         <source>Add Book</source>
         <translation>புத்தக சேர்க்கலாம்</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="713"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="714"/>
         <source>This song book does not exist, do you want to add it?</source>
         <translation>இந்த பாடல் புத்தகம் இல்லை, நீங்கள் இதை சேர்க்க வேண்டுமா?</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="702"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="703"/>
         <source>You need to have an author for this song.</source>
         <translation>இந்த பாடல் ஒரு நூலாசிரியர் இருக்க வேண்டும்.</translation>
     </message>
@@ -6787,7 +6787,7 @@ EasyWorship]</translation>
         <translation>அனைத்து &amp;நீக்க</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="765"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="811"/>
         <source>Open File(s)</source>
         <translation>கோப்பு (கள்) திற </translation>
     </message>
@@ -6798,7 +6798,7 @@ EasyWorship]</translation>
 வசனங்களில் எல்லா பயன்பாட்டில் இல்லை.</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="666"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="667"/>
         <source>The verse order is invalid. There are no verses corresponding to %s. Valid entries are %s.</source>
         <translation>வசனம் ஒழுங்கு தவறானது. தொடர்புடைய இல்லை வசனங்கள் உள்ளன %s.
 சரியான உள்ளீடுகளை %s.</translation>

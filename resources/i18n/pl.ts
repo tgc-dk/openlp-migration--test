@@ -1204,7 +1204,7 @@ Nie można dostosowywać i zmieniać nazw ksiąg.</translation>
     <message>
         <location filename="openlp/plugins/bibles/forms/bibleimportform.py" line="385"/>
         <source>Bibleserver</source>
-        <translation>Serwer Biblii</translation>
+        <translation>Bibleserver</translation>
     </message>
     <message>
         <location filename="openlp/plugins/bibles/forms/bibleimportform.py" line="411"/>
@@ -1412,7 +1412,7 @@ Będziesz musiał zaimportować ją ponownie, aby móc jej znowu używać.</tran
     <message>
         <location filename="openlp/plugins/bibles/forms/bibleupgradeform.py" line="265"/>
         <source>This wizard will help you to upgrade your existing Bibles from a prior version of OpenLP 2. Click the next button below to start the upgrade process.</source>
-        <translation>Ten kreator pozwoli ci na aktualizację istniejącej Biblii z poprzedniej wersji OpenLP 2. Kliknij poniższy przycisk dalej aby rozpocząć proces aktualizacji.</translation>
+        <translation>Ten kreator pozwoli ci na aktualizację istniejącej Biblii z poprzedniej wersji OpenLP 2. Kliknij dalej aby rozpocząć proces aktualizacji.</translation>
     </message>
     <message>
         <location filename="openlp/plugins/bibles/forms/bibleupgradeform.py" line="270"/>
@@ -2039,11 +2039,11 @@ Find out more about OpenLP: http://openlp.org/
 OpenLP is written and maintained by volunteers. If you would like to see more free Christian software being written, please consider volunteering by using the button below.</source>
         <translation>OpenLP &lt;version&gt;&lt;revision&gt; - Otwartoźródłowy Edytor Pieśni
 
-OpenLP jest wolnym programem przeznaczonym do projekcji pieśni lub puszczania prezentacji w kościele, umożliwia puszczenie pieśni, tekstów Biblijnych, filmów, zdjęć a nawet prezentacji (jeśli Impress, PowerPoint lub PowerPoint Viewer jest zainstalowany) na komputerze przez projektor.
+OpenLP jest darmowym programem do obsługi multimediów w kościele. Umożliwia on wyświetlanie pieśni, prezentacji, tekstów Biblijnych, filmów, zdjęć, a nawet prezentacji (jeśli Impress, PowerPoint lub PowerPoint Viewer jest zainstalowany) na projektorze.
 
 Dowiedz się więcej o OpenLP: http://openlp.org/
 
-OpenLP jest pisany i wspierany przez wolontariuszy. Jeśli chciałbyś, aby więcej wolnych, Chrześcijańskich programów było pisanych, proszę rozważ współpracę przez naciśnięcie poniższego przycisku. </translation>
+OpenLP jest pisany i wspierany przez wolontariuszy. Jeśli chciałbyś, aby powstawało więcej wolnych, Chrześcijańskich programów, proszę rozważ współpracę przez naciśnięcie poniższego przycisku. </translation>
     </message>
     <message>
         <location filename="openlp/core/ui/aboutdialog.py" line="647"/>
@@ -2694,12 +2694,12 @@ Wersja: %s
     <message>
         <location filename="openlp/core/ui/firsttimewizard.py" line="203"/>
         <source>First Time Wizard</source>
-        <translation>Kreator pierwszego razu</translation>
+        <translation>Kreator Pierwszego Uruchomienia</translation>
     </message>
     <message>
         <location filename="openlp/core/ui/firsttimewizard.py" line="205"/>
         <source>Welcome to the First Time Wizard</source>
-        <translation>Witaj w Kreatorze pierwszego razu</translation>
+        <translation>Witaj w Kreatorze Pierwszego Uruchomienia</translation>
     </message>
     <message>
         <location filename="openlp/core/ui/firsttimewizard.py" line="212"/>
@@ -2876,7 +2876,7 @@ Wersja: %s
         <source>No Internet connection was found. The First Time Wizard needs an Internet connection in order to be able to download sample songs, Bibles and themes.  Click the Finish button now to start OpenLP with initial settings and no sample data.
 
 To re-run the First Time Wizard and import this sample data at a later time, check your Internet connection and re-run this wizard by selecting &quot;Tools/Re-run First Time Wizard&quot; from OpenLP.</source>
-        <translation>Brak połączenia internetowego. Kreator pierwszego razu potrzebuje połączenia z internetem, aby móc pobierać przykładowe pieśni, Biblie i motywy. Naciśnij przycisk Zakończ, aby włączyć OpenLP z wstępnymi ustawieniami, bez przykładowych danych.
+        <translation>Brak połączenia internetowego. Kreator Pierwszego Uruchomienia potrzebuje połączenia z internetem, aby móc pobierać przykładowe pieśni, Biblie i motywy. Naciśnij przycisk Zakończ, aby włączyć OpenLP z wstępnymi ustawieniami, bez przykładowych danych.
 
 Aby uruchomić Kreator pierwszego razu i zaimportować przykładowe dane później, sprawdź połączenie internetowe i uruchom ponownie ten kreator przez zaznaczanie &quot;Narzędzie/Włącz kreator pierwszego razu&quot; w OpenLP.</translation>
     </message>
@@ -2887,7 +2887,7 @@ Aby uruchomić Kreator pierwszego razu i zaimportować przykładowe dane późni
 To cancel the First Time Wizard completely (and not start OpenLP), click the Cancel button now.</source>
         <translation>
 
-Aby anulować Kreator pierwszego uruchomienia zupełnie (i nie włączyć OpenLP), naciśnij Anuluj teraz.</translation>
+Aby anulować Pierwszego Uruchomienia zupełnie (i nie włączyć OpenLP), naciśnij Anuluj teraz.</translation>
     </message>
 </context>
 <context>
@@ -3212,13 +3212,13 @@ Aby anulować Kreator pierwszego uruchomienia zupełnie (i nie włączyć OpenLP
     <message>
         <location filename="openlp/core/utils/languagemanager.py" line="143"/>
         <source>Please restart OpenLP to use your new language setting.</source>
-        <translation>Proszę zresetować OpenLP, aby móc używać nowego języka.</translation>
+        <translation>Aby użyć nowego języka uruchom ponownie OpenLP.</translation>
     </message>
 </context>
 <context>
     <name>OpenLP.MainDisplay</name>
     <message>
-        <location filename="openlp/core/ui/maindisplay.py" line="203"/>
+        <location filename="openlp/core/ui/maindisplay.py" line="205"/>
         <source>OpenLP Display</source>
         <translation>Wyświetlacz OpenLP</translation>
     </message>
@@ -3603,24 +3603,24 @@ Możesz pobrać najnowszą wersję z http://openlp.org/.</translation>
     <message>
         <location filename="openlp/core/ui/mainwindow.py" line="529"/>
         <source>Re-run First Time Wizard</source>
-        <translation>Włącz Kreator pierwszego razu</translation>
+        <translation>Włącz Kreator Pierwszego Uruchomienia</translation>
     </message>
     <message>
         <location filename="openlp/core/ui/mainwindow.py" line="531"/>
         <source>Re-run the First Time Wizard, importing songs, Bibles and themes.</source>
-        <translation>Włączanie Kreator pierwszego razu, importowanie pieśni, Biblii i motywów.</translation>
+        <translation>Włączanie Kreator Pierwszego Uruchomienia, importowanie pieśni, Biblii i motywów.</translation>
     </message>
     <message>
         <location filename="openlp/core/ui/mainwindow.py" line="805"/>
         <source>Re-run First Time Wizard?</source>
-        <translation>Włączyć Kreator pierwszego razu?</translation>
+        <translation>Włączyć Kreator Pierwszego Uruchomienia?</translation>
     </message>
     <message>
         <location filename="openlp/core/ui/mainwindow.py" line="805"/>
         <source>Are you sure you want to re-run the First Time Wizard?
 
 Re-running this wizard may make changes to your current OpenLP configuration and possibly add songs to your existing songs list and change your default theme.</source>
-        <translation>Czy jesteś pewny otwierania po raz drugi Kreatora pierwszego razu?
+        <translation>Czy jesteś pewny, że chcesz ponownie włączyć Kreator Pierwszego Uruchomienia?
 
 Otwieranie go ponownie może spowodować zmiany w obecnej konfiguracji OpenLP, dodać pieśni do istniejącej już listy i zmienić domyślny motyw.</translation>
     </message>
@@ -5812,13 +5812,14 @@ Te pliki zostaną usunięte, jeśli kontynuujesz zapisywanie.</translation>
     <message>
         <location filename="openlp/core/lib/ui.py" line="80"/>
         <source>File Not Found</source>
-        <translation type="unfinished"></translation>
+        <translation>Nie znaleziono pliku</translation>
     </message>
     <message>
         <location filename="openlp/core/lib/ui.py" line="82"/>
         <source>File %s not found.
 Please try selecting it individually.</source>
-        <translation type="unfinished"></translation>
+        <translation>Plik %s nie został znaleziony.⏎
+Proszę zaznaczyć go ręcznie.</translation>
     </message>
 </context>
 <context>
@@ -6689,72 +6690,72 @@ Kodowanie znaków jest odpowiedzialne za ich właściwą reprezentację.</transl
         <translation>Motywy, prawa autorskie, komentarze</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="384"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="385"/>
         <source>Add Author</source>
         <translation>Dodaj autora</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="384"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="385"/>
         <source>This author does not exist, do you want to add them?</source>
         <translation>Ten autor nie istnieje, czy chcesz go dodać?</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="407"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="408"/>
         <source>This author is already in the list.</source>
         <translation>Ten autor już występuje na liście.</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="414"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="415"/>
         <source>You have not selected a valid author. Either select an author from the list, or type in a new author and click the &quot;Add Author to Song&quot; button to add the new author.</source>
         <translation>Nie wybrałeś odpowiedniego autora. Wybierz autora z listy lub wpisz nowego autora i wybierz &quot;Dodaj autora do pieśni&quot;, by dodać nowego autora.</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="442"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="443"/>
         <source>Add Topic</source>
         <translation>Dodaj temat</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="442"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="443"/>
         <source>This topic does not exist, do you want to add it?</source>
         <translation>Ten temat nie istnieje, czy chcesz go dodać?</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="463"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="464"/>
         <source>This topic is already in the list.</source>
         <translation>Ten temat już istnieje.</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="473"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="474"/>
         <source>You have not selected a valid topic. Either select a topic from the list, or type in a new topic and click the &quot;Add Topic to Song&quot; button to add the new topic.</source>
         <translation>Nie wybrałeś odpowiedniego tematu. Wybierz autora z listy lub wpisz nowy temat i wybierz &quot;Dodaj temat pieśni&quot;, by dodać nowy temat.</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="688"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="689"/>
         <source>You need to type in a song title.</source>
         <translation>Musisz podać tytuł pieśni.</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="695"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="696"/>
         <source>You need to type in at least one verse.</source>
         <translation>Musisz wpisać przynajmniej jedną zwrotkę.</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="671"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="672"/>
         <source>The verse order is invalid. There is no verse corresponding to %s. Valid entries are %s.</source>
         <translation>Kolejność zwrotek jest niewłaściwa. Nie ma zwrotki odpowiadającej %s. Właściwe zwrotki to: %s.</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="713"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="714"/>
         <source>Add Book</source>
         <translation>Dodaj śpiewnik</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="713"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="714"/>
         <source>This song book does not exist, do you want to add it?</source>
         <translation>Ten śpiewnik nie istnieje, czy chcesz go dodać?</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="702"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="703"/>
         <source>You need to have an author for this song.</source>
         <translation>Musisz wpisać autora pieśni.</translation>
     </message>
@@ -6779,7 +6780,7 @@ Kodowanie znaków jest odpowiedzialne za ich właściwą reprezentację.</transl
         <translation>Usuń &amp;wszystko</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="765"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="811"/>
         <source>Open File(s)</source>
         <translation>Otwórz plik(i)</translation>
     </message>
@@ -6789,14 +6790,14 @@ Kodowanie znaków jest odpowiedzialne za ich właściwą reprezentację.</transl
         <translation>&lt;strong&gt;Uwaga:&lt;/strong&gt; Nie wszystkie zwrotki są w użyciu.</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="666"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="667"/>
         <source>The verse order is invalid. There are no verses corresponding to %s. Valid entries are %s.</source>
         <translation>Kolejność zwrotek jest niewłaściwa. Nie ma zwrotki odpowiadającej %s. Właściwe zwrotki to: %s.</translation>
     </message>
     <message>
         <location filename="openlp/plugins/songs/forms/editsongdialog.py" line="359"/>
         <source>&lt;strong&gt;Warning:&lt;/strong&gt; You have not entered a verse order.</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;strong&gt;Uwaga:&lt;/strong&gt;Nie ustaliłeś kolejności zwrotek.</translation>
     </message>
 </context>
 <context>
@@ -6910,7 +6911,7 @@ Kodowanie znaków jest odpowiedzialne za ich właściwą reprezentację.</transl
     <message>
         <location filename="openlp/plugins/songs/lib/foilpresenterimport.py" line="432"/>
         <source>Invalid Foilpresenter song file. No verses found.</source>
-        <translation type="unfinished"></translation>
+        <translation>Niewłaściwy plik Foilpresenter. Nie znaleziono żadnych zwrotek.</translation>
     </message>
 </context>
 <context>
