@@ -293,7 +293,7 @@ class BiblesTab(SettingsTab):
             translate('BiblesPlugin.BiblesTab', 'English'))
 
     def onBibleThemeComboBoxChanged(self):
-        self.bible_theme = self.bibleThemeComboBox.currentText()
+        self.bible_theme = unicode(self.bibleThemeComboBox.currentText())
 
     def onDisplayStyleComboBoxChanged(self):
         self.display_style = self.displayStyleComboBox.currentIndex()
