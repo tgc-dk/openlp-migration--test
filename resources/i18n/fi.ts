@@ -3198,7 +3198,7 @@ Keskeyttääksesi ensiasennuksen ohjatun toiminnon kokonaan (eikä käynnistetä
 <context>
     <name>OpenLP.MainDisplay</name>
     <message>
-        <location filename="openlp/core/ui/maindisplay.py" line="203"/>
+        <location filename="openlp/core/ui/maindisplay.py" line="205"/>
         <source>OpenLP Display</source>
         <translation>OpenLP Näyttö</translation>
     </message>
@@ -5792,13 +5792,14 @@ Nämä tiedostot poistetaan jos jatkat tallentamalla.</translation>
     <message>
         <location filename="openlp/core/lib/ui.py" line="80"/>
         <source>File Not Found</source>
-        <translation type="unfinished"></translation>
+        <translation>Tiedostoa ei löydy</translation>
     </message>
     <message>
         <location filename="openlp/core/lib/ui.py" line="82"/>
         <source>File %s not found.
 Please try selecting it individually.</source>
-        <translation type="unfinished"></translation>
+        <translation>Tiedostoa %s ei löydy.
+Ole hyvä ja yritä valita se erikseen.</translation>
     </message>
 </context>
 <context>
@@ -6669,72 +6670,72 @@ EasyWorshipistä]</translation>
         <translation>Teema, tekijäinoikeudet &amp;&amp; kommentit</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="384"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="385"/>
         <source>Add Author</source>
         <translation>Lisää tekijä</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="384"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="385"/>
         <source>This author does not exist, do you want to add them?</source>
         <translation>Tätä tekijää ei ole olemassa, haluatko lisätä sen?</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="407"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="408"/>
         <source>This author is already in the list.</source>
         <translation>Tämä tekijä on jo luettelossa.</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="414"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="415"/>
         <source>You have not selected a valid author. Either select an author from the list, or type in a new author and click the &quot;Add Author to Song&quot; button to add the new author.</source>
         <translation>Sinun pitää valita kelvollinen tekijä. Valitse tekijä joko luettelosta tai kirjoita uusi tekijä ja paina &quot;Lisää tekijä lauluun&quot; -painiketta.</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="442"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="443"/>
         <source>Add Topic</source>
         <translation>Lisää aihe</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="442"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="443"/>
         <source>This topic does not exist, do you want to add it?</source>
         <translation>Tätä aihetta ei ole olemassa, tahdotko sinä lisätä sen?</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="463"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="464"/>
         <source>This topic is already in the list.</source>
         <translation>Tämä aihe on jo luettelossa.</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="473"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="474"/>
         <source>You have not selected a valid topic. Either select a topic from the list, or type in a new topic and click the &quot;Add Topic to Song&quot; button to add the new topic.</source>
         <translation>Et ole valinnut kelvollista aihetta. Valitse joko aihe luettelosta tai syötä uusi aihe ja paina &quot;Lisää aihe laululle&quot; -painiketta.</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="688"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="689"/>
         <source>You need to type in a song title.</source>
         <translation>Sinun tulee antaa laululle otsikko.</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="695"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="696"/>
         <source>You need to type in at least one verse.</source>
         <translation>Sinun pitää syöttää ainakin yksi jae.</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="671"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="672"/>
         <source>The verse order is invalid. There is no verse corresponding to %s. Valid entries are %s.</source>
         <translation>Jaejärjestys ei ole kelvollinen. Ei ole jaetta, joka vastaa %s -viitettä. Kelvolliset viitteet ovat %s.</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="713"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="714"/>
         <source>Add Book</source>
         <translation>Lisää kirja</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="713"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="714"/>
         <source>This song book does not exist, do you want to add it?</source>
         <translation>Tätä laulukirjaa ei ole vielä olemassa, tahdotko lisätä sen?</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="702"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="703"/>
         <source>You need to have an author for this song.</source>
         <translation>Sinun pitää määritellä tekijä tälle laululle.</translation>
     </message>
@@ -6759,7 +6760,7 @@ EasyWorshipistä]</translation>
         <translation>Poista &amp;Kaikki</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="765"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="811"/>
         <source>Open File(s)</source>
         <translation>Avaa tiedosto(t)</translation>
     </message>
@@ -6769,7 +6770,7 @@ EasyWorshipistä]</translation>
         <translation>&lt;strong&gt;Varoitus:&lt;/strong&gt; Kaikki jakeista eivät ole käytössä.</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="666"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="667"/>
         <source>The verse order is invalid. There are no verses corresponding to %s. Valid entries are %s.</source>
         <translation>Jakeiden järjestys on virheellinen. Ei ole vastaavaa jaetta %s:lle. Kelvolliset kohdat ovat %s.</translation>
     </message>
@@ -6890,7 +6891,7 @@ EasyWorshipistä]</translation>
     <message>
         <location filename="openlp/plugins/songs/lib/foilpresenterimport.py" line="432"/>
         <source>Invalid Foilpresenter song file. No verses found.</source>
-        <translation type="unfinished"></translation>
+        <translation>Virheellinen Foilpresenter -laulutiedosto. Jakeita ei löydy.</translation>
     </message>
 </context>
 <context>

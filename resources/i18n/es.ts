@@ -66,7 +66,7 @@
     <message>
         <location filename="openlp/plugins/alerts/forms/alertdialog.py" line="101"/>
         <source>Display &amp;&amp; Cl&amp;ose</source>
-        <translation>M&amp;ostrar &amp;&amp; Cerrar</translation>
+        <translation>M&amp;ostrar y Cerrar</translation>
     </message>
     <message>
         <location filename="openlp/plugins/alerts/forms/alertform.py" line="111"/>
@@ -222,7 +222,7 @@ Do you want to continue anyway?</source>
     <message>
         <location filename="openlp/plugins/bibles/bibleplugin.py" line="149"/>
         <source>&lt;strong&gt;Bible Plugin&lt;/strong&gt;&lt;br /&gt;The Bible plugin provides the ability to display Bible verses from different sources during the service.</source>
-        <translation>&lt;strong&gt;Complemento de Biblias&lt;/strong&gt;&lt;br /&gt;El complemento de Biblias proporciona la capacidad de mostrar versículos de diversas fuentes, durante el servicio.</translation>
+        <translation>&lt;strong&gt;Complemento de Biblias&lt;/strong&gt;&lt;br /&gt;El complemento de Biblias permite mostrar versículos de diversas fuentes durante el servicio.</translation>
     </message>
     <message>
         <location filename="openlp/plugins/bibles/bibleplugin.py" line="126"/>
@@ -1559,7 +1559,7 @@ Note que los versículos se descargarán según sea necesario, por lo que debe c
     <message>
         <location filename="openlp/plugins/custom/customplugin.py" line="59"/>
         <source>&lt;strong&gt;Custom Slide Plugin&lt;/strong&gt;&lt;br /&gt;The custom slide plugin provides the ability to set up custom text slides that can be displayed on the screen the same way songs are. This plugin provides greater freedom over the songs plugin.</source>
-        <translation>&lt;strong&gt;Diapositivas&lt;/strong&gt;&lt;br /&gt;Este complemento le permite mostrar diapositivas de texto, de igual manera que se muestran las canciones. Ofrece una mayor libertad que el complemento de canciones.</translation>
+        <translation>&lt;strong&gt;Complemento de Diapositivas&lt;/strong&gt;&lt;br /&gt;Este complemento le permite mostrar diapositivas de texto, de igual manera que se muestran las canciones. Ofrece una mayor libertad que el complemento de canciones.</translation>
     </message>
     <message>
         <location filename="openlp/plugins/custom/customplugin.py" line="100"/>
@@ -2058,7 +2058,7 @@ OpenLP es desarrollado y mantenido por voluntarios. Si desea apoyar la creación
     <message>
         <location filename="openlp/core/ui/aboutdialog.py" line="647"/>
         <source>Volunteer</source>
-        <translation>Ofrecerse</translation>
+        <translation>Contribuir</translation>
     </message>
     <message>
         <location filename="openlp/core/ui/aboutdialog.py" line="156"/>
@@ -2233,7 +2233,7 @@ Portions copyright © 2004-2013 %s</translation>
     <message>
         <location filename="openlp/core/ui/advancedtab.py" line="352"/>
         <source>Double-click to send items straight to live</source>
-        <translation>Doble click para proyectar directamente</translation>
+        <translation>Doble clic para proyectar directamente</translation>
     </message>
     <message>
         <location filename="openlp/core/ui/advancedtab.py" line="356"/>
@@ -2288,7 +2288,7 @@ Portions copyright © 2004-2013 %s</translation>
     <message>
         <location filename="openlp/core/ui/advancedtab.py" line="402"/>
         <source>Click to select a color.</source>
-        <translation>Click para seleccionar color.</translation>
+        <translation>Clic para seleccionar color.</translation>
     </message>
     <message>
         <location filename="openlp/core/ui/advancedtab.py" line="406"/>
@@ -2893,7 +2893,7 @@ Version: %s
 To re-run the First Time Wizard and import this sample data at a later time, check your Internet connection and re-run this wizard by selecting &quot;Tools/Re-run First Time Wizard&quot; from OpenLP.</source>
         <translation>No se cuenta con una conexión a Internet. El Asistente Inicial requiere de una conexión a Internet para descargar canciones, Biblias y temas de muestra. Presione Finalizar para iniciar el programa con las preferencias predeterminadas y sin material de muestra.
 
-Para abrir posteriormente este asistente e importar dicho material, revise su conexión a Internet y seleccione desde el menú &quot;Herramientas/Abrir Asistente Inicial&quot; en OpenLP.</translation>
+Para abrir posteriormente este asistente e importar dicho material, revise su conexión a Internet y seleccione desde el menú &quot;Herramientas/Abrir el Asistente Inicial&quot; en OpenLP.</translation>
     </message>
     <message>
         <location filename="openlp/core/ui/firsttimewizard.py" line="248"/>
@@ -3233,7 +3233,7 @@ Para detener el Asistente Inicial (y no iniciar OpenLP), presione Cancelar ahora
 <context>
     <name>OpenLP.MainDisplay</name>
     <message>
-        <location filename="openlp/core/ui/maindisplay.py" line="203"/>
+        <location filename="openlp/core/ui/maindisplay.py" line="205"/>
         <source>OpenLP Display</source>
         <translation>Pantalla de OpenLP</translation>
     </message>
@@ -3373,7 +3373,7 @@ Para detener el Asistente Inicial (y no iniciar OpenLP), presione Cancelar ahora
     <message>
         <location filename="openlp/core/ui/mainwindow.py" line="469"/>
         <source>Toggle the visibility of the media manager.</source>
-        <translation>Alernar la visibilidad del gestor de medios.</translation>
+        <translation>Alternar la visibilidad del gestor de medios.</translation>
     </message>
     <message>
         <location filename="openlp/core/ui/mainwindow.py" line="471"/>
@@ -3388,7 +3388,7 @@ Para detener el Asistente Inicial (y no iniciar OpenLP), presione Cancelar ahora
     <message>
         <location filename="openlp/core/ui/mainwindow.py" line="475"/>
         <source>Toggle the visibility of the theme manager.</source>
-        <translation>Alernar la visibilidad del gestor de temas.</translation>
+        <translation>Alternar la visibilidad del gestor de temas.</translation>
     </message>
     <message>
         <location filename="openlp/core/ui/mainwindow.py" line="477"/>
@@ -3403,7 +3403,7 @@ Para detener el Asistente Inicial (y no iniciar OpenLP), presione Cancelar ahora
     <message>
         <location filename="openlp/core/ui/mainwindow.py" line="481"/>
         <source>Toggle the visibility of the service manager.</source>
-        <translation>Alernar la visibilidad del gestor del servicio.</translation>
+        <translation>Alternar la visibilidad del gestor del servicio.</translation>
     </message>
     <message>
         <location filename="openlp/core/ui/mainwindow.py" line="483"/>
@@ -3418,7 +3418,7 @@ Para detener el Asistente Inicial (y no iniciar OpenLP), presione Cancelar ahora
     <message>
         <location filename="openlp/core/ui/mainwindow.py" line="487"/>
         <source>Toggle the visibility of the preview panel.</source>
-        <translation>Alernar la visibilidad del panel de vista previa.</translation>
+        <translation>Alternar la visibilidad del panel de vista previa.</translation>
     </message>
     <message>
         <location filename="openlp/core/ui/mainwindow.py" line="489"/>
@@ -3453,7 +3453,7 @@ Para detener el Asistente Inicial (y no iniciar OpenLP), presione Cancelar ahora
     <message>
         <location filename="openlp/core/ui/mainwindow.py" line="503"/>
         <source>&amp;About</source>
-        <translation>&amp;Acerca de</translation>
+        <translation>&amp;Acerca de...</translation>
     </message>
     <message>
         <location filename="openlp/core/ui/mainwindow.py" line="504"/>
@@ -3463,7 +3463,7 @@ Para detener el Asistente Inicial (y no iniciar OpenLP), presione Cancelar ahora
     <message>
         <location filename="openlp/core/ui/mainwindow.py" line="509"/>
         <source>&amp;Online Help</source>
-        <translation>Ayuda En &amp;Línea</translation>
+        <translation>Ayuda en &amp;Línea</translation>
     </message>
     <message>
         <location filename="openlp/core/ui/mainwindow.py" line="511"/>
@@ -3513,12 +3513,12 @@ Para detener el Asistente Inicial (y no iniciar OpenLP), presione Cancelar ahora
     <message>
         <location filename="openlp/core/ui/mainwindow.py" line="546"/>
         <source>&amp;Live</source>
-        <translation>En &amp;vivo</translation>
+        <translation>En &amp;Vivo</translation>
     </message>
     <message>
         <location filename="openlp/core/ui/mainwindow.py" line="547"/>
         <source>Set the view mode to Live.</source>
-        <translation>Modo de visualización.en Vivo.</translation>
+        <translation>Modo de visualización En Vivo.</translation>
     </message>
     <message>
         <location filename="openlp/core/ui/mainwindow.py" line="738"/>
@@ -3573,7 +3573,7 @@ Puede descargar la última versión desde http://openlp.org/.</translation>
     <message>
         <location filename="openlp/core/ui/mainwindow.py" line="525"/>
         <source>Open &amp;Data Folder...</source>
-        <translation>Abrir Carpeta de &amp;Datos...</translation>
+        <translation>Abrir la Carpeta de &amp;Datos...</translation>
     </message>
     <message>
         <location filename="openlp/core/ui/mainwindow.py" line="527"/>
@@ -3618,7 +3618,7 @@ Puede descargar la última versión desde http://openlp.org/.</translation>
     <message>
         <location filename="openlp/core/ui/mainwindow.py" line="529"/>
         <source>Re-run First Time Wizard</source>
-        <translation>Abrir Asistente Inicial</translation>
+        <translation>Abrir el Asistente Inicial</translation>
     </message>
     <message>
         <location filename="openlp/core/ui/mainwindow.py" line="531"/>
@@ -3628,7 +3628,7 @@ Puede descargar la última versión desde http://openlp.org/.</translation>
     <message>
         <location filename="openlp/core/ui/mainwindow.py" line="805"/>
         <source>Re-run First Time Wizard?</source>
-        <translation>¿Abrir Asistente Inicial?</translation>
+        <translation>¿Abrir el Asistente Inicial?</translation>
     </message>
     <message>
         <location filename="openlp/core/ui/mainwindow.py" line="805"/>
@@ -5318,7 +5318,7 @@ Si continua, el archivo(s) será removido al guardar.</translation>
     <message>
         <location filename="openlp/core/lib/ui.py" line="96"/>
         <source>Live</source>
-        <translation>En vivo</translation>
+        <translation>En Vivo</translation>
     </message>
     <message>
         <location filename="openlp/core/lib/ui.py" line="97"/>
@@ -5387,7 +5387,7 @@ Si continua, el archivo(s) será removido al guardar.</translation>
     <message>
         <location filename="openlp/core/lib/ui.py" line="119"/>
         <source>Preview</source>
-        <translation>Vista previa</translation>
+        <translation>Vista Previa</translation>
     </message>
     <message>
         <location filename="openlp/core/lib/ui.py" line="121"/>
@@ -5408,7 +5408,7 @@ Si continua, el archivo(s) será removido al guardar.</translation>
     <message>
         <location filename="openlp/core/lib/ui.py" line="127"/>
         <source>Save &amp;&amp; Preview</source>
-        <translation>Guardar &amp;&amp; Previsualizar</translation>
+        <translation>Guardar y Previsualizar</translation>
     </message>
     <message>
         <location filename="openlp/core/lib/ui.py" line="128"/>
@@ -5869,7 +5869,7 @@ Por favor intente seleccionarlo individualmente.</translation>
     <message>
         <location filename="openlp/plugins/presentations/presentationplugin.py" line="145"/>
         <source>&lt;strong&gt;Presentation Plugin&lt;/strong&gt;&lt;br /&gt;The presentation plugin provides the ability to show presentations using a number of different programs. The choice of available presentation programs is available to the user in a drop down box.</source>
-        <translation>&lt;strong&gt;Complemento de Presentaciones&lt;/strong&gt;&lt;br /&gt;El complemento de presentaciones permite mostrar presentaciones, usando diversos programas. La selección del programa se realiza por medio de una casilla de selección.</translation>
+        <translation>&lt;strong&gt;Complemento de Presentaciones&lt;/strong&gt;&lt;br /&gt;El complemento de presentaciones permite mostrar presentaciones usando diversos programas. La elección del programa se realiza por medio de una casilla de selección.</translation>
     </message>
     <message>
         <location filename="openlp/plugins/presentations/presentationplugin.py" line="158"/>
@@ -6213,7 +6213,7 @@ Por favor intente seleccionarlo individualmente.</translation>
     <message>
         <location filename="openlp/plugins/songusage/songusageplugin.py" line="237"/>
         <source>&lt;strong&gt;SongUsage Plugin&lt;/strong&gt;&lt;br /&gt;This plugin tracks the usage of songs in services.</source>
-        <translation>&lt;strong&gt;Historial&lt;/strong&gt;&lt;br /&gt;Este complemento mantiene un registro del número de veces que se usa una canción en los servicios.</translation>
+        <translation>&lt;strong&gt;Complemento de Historial&lt;/strong&gt;&lt;br /&gt;Este complemento mantiene un registro del número de veces que se usa una canción en los servicios.</translation>
     </message>
     <message>
         <location filename="openlp/plugins/songusage/songusageplugin.py" line="248"/>
@@ -6642,7 +6642,7 @@ La codificación se encarga de la correcta representación de caracteres.</trans
     <message>
         <location filename="openlp/plugins/songs/forms/editsongdialog.py" line="309"/>
         <source>Title &amp;&amp; Lyrics</source>
-        <translation>Título &amp;&amp; Letra</translation>
+        <translation>Título y Letra</translation>
     </message>
     <message>
         <location filename="openlp/plugins/songs/forms/editsongdialog.py" line="313"/>
@@ -6702,75 +6702,75 @@ La codificación se encarga de la correcta representación de caracteres.</trans
     <message>
         <location filename="openlp/plugins/songs/forms/editsongdialog.py" line="342"/>
         <source>Theme, Copyright Info &amp;&amp; Comments</source>
-        <translation>Tema, Derechos de Autor &amp;&amp; Comentarios</translation>
+        <translation>Tema, Derechos de Autor y Comentarios</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="384"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="385"/>
         <source>Add Author</source>
         <translation>Agregar Autor</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="384"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="385"/>
         <source>This author does not exist, do you want to add them?</source>
         <translation>Este autor no existe, ¿desea agregarlo?</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="407"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="408"/>
         <source>This author is already in the list.</source>
         <translation>Este autor ya esta en la lista.</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="414"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="415"/>
         <source>You have not selected a valid author. Either select an author from the list, or type in a new author and click the &quot;Add Author to Song&quot; button to add the new author.</source>
         <translation>No ha seleccionado un autor válido. Seleccione un autor de la lista o ingrese un nombre nuevo y presione el botón &quot;Agregar Autor a Canción&quot; para agregar el autor nuevo.</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="442"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="443"/>
         <source>Add Topic</source>
         <translation>Agregar Categoría</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="442"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="443"/>
         <source>This topic does not exist, do you want to add it?</source>
         <translation>Esta categoría no existe, ¿desea agregarla?</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="463"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="464"/>
         <source>This topic is already in the list.</source>
         <translation>Esta categoría ya esta en la lista.</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="473"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="474"/>
         <source>You have not selected a valid topic. Either select a topic from the list, or type in a new topic and click the &quot;Add Topic to Song&quot; button to add the new topic.</source>
-        <translation>No seleccionado una categoría válida. Seleccione una categoría de la lista o ingrese un nombre nuevo y presione el botón &quot;Agregar Categoría a Canción&quot; para agregar la categoría nueva.</translation>
+        <translation>No seleccionado una categoría válida. Seleccione una categoría de la lista o ingrese una nueva y presione el botón &quot;Agregar Categoría a Canción&quot; para añadir la categoría nueva.</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="688"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="689"/>
         <source>You need to type in a song title.</source>
         <translation>Debe escribir un título.</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="695"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="696"/>
         <source>You need to type in at least one verse.</source>
         <translation>Debe agregar al menos un verso.</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="671"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="672"/>
         <source>The verse order is invalid. There is no verse corresponding to %s. Valid entries are %s.</source>
         <translation>El orden del verso es inválido. Ningún verso corresponde a %s. Las entradas válidas son %s.</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="713"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="714"/>
         <source>Add Book</source>
         <translation>Agregar Himnario</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="713"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="714"/>
         <source>This song book does not exist, do you want to add it?</source>
         <translation>Este himnario no existe, ¿desea agregarlo?</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="702"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="703"/>
         <source>You need to have an author for this song.</source>
         <translation>Debe ingresar un autor para esta canción.</translation>
     </message>
@@ -6795,7 +6795,7 @@ La codificación se encarga de la correcta representación de caracteres.</trans
         <translation>Quitar &amp;Todo</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="765"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="811"/>
         <source>Open File(s)</source>
         <translation>Abrir Archivo(s)</translation>
     </message>
@@ -6805,7 +6805,7 @@ La codificación se encarga de la correcta representación de caracteres.</trans
         <translation>&lt;strong&gt;Advertencia:&lt;/strong&gt; No se han utilizado todos los versos.</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="666"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="667"/>
         <source>The verse order is invalid. There are no verses corresponding to %s. Valid entries are %s.</source>
         <translation>El orden de los versos es inválido. Ningún verso corresponde a %s. Las entradas válidas son %s.</translation>
     </message>

@@ -3230,7 +3230,7 @@ For å avbryte &quot;Første-gangs veiviser&quot; helt (og ikke starte OpenLP), 
 <context>
     <name>OpenLP.MainDisplay</name>
     <message>
-        <location filename="openlp/core/ui/maindisplay.py" line="203"/>
+        <location filename="openlp/core/ui/maindisplay.py" line="205"/>
         <source>OpenLP Display</source>
         <translation>OpenLP Display</translation>
     </message>
@@ -5825,13 +5825,14 @@ These files will be removed if you continue to save.</source>
     <message>
         <location filename="openlp/core/lib/ui.py" line="80"/>
         <source>File Not Found</source>
-        <translation type="unfinished"></translation>
+        <translation>Fil ikke funnet</translation>
     </message>
     <message>
         <location filename="openlp/core/lib/ui.py" line="82"/>
         <source>File %s not found.
 Please try selecting it individually.</source>
-        <translation type="unfinished"></translation>
+        <translation>Fil %s ikke funnet.
+Vennligst prøv å velge den individuelt.</translation>
     </message>
 </context>
 <context>
@@ -6701,72 +6702,72 @@ EasyWorship]</translation>
         <translation>Tema, copyright info &amp;&amp; kommentarer</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="384"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="385"/>
         <source>Add Author</source>
         <translation>Legg til forfatter</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="384"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="385"/>
         <source>This author does not exist, do you want to add them?</source>
         <translation>Denne forfatteren eksisterer ikke, skal han opprettes?</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="407"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="408"/>
         <source>This author is already in the list.</source>
         <translation>Denne forfatteren er allerede på listen.</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="414"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="415"/>
         <source>You have not selected a valid author. Either select an author from the list, or type in a new author and click the &quot;Add Author to Song&quot; button to add the new author.</source>
         <translation>Du har ikke valgt et gyldig forfatternavn. Enten velg en forfatter fra listen eller skriv inn en ny forfatter og klikk &quot;Tilføye sangen forfatter&quot; -knappen for å legge til en ny forfatter.</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="442"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="443"/>
         <source>Add Topic</source>
         <translation>Legg til emne-</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="442"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="443"/>
         <source>This topic does not exist, do you want to add it?</source>
         <translation>Dette emnet eksisterer ikke, skal det opprettes?</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="463"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="464"/>
         <source>This topic is already in the list.</source>
         <translation>Dette emnet eksisterer allerede i listen.</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="473"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="474"/>
         <source>You have not selected a valid topic. Either select a topic from the list, or type in a new topic and click the &quot;Add Topic to Song&quot; button to add the new topic.</source>
         <translation>Du har ikke valgt et gyldig emne. Enten velger du et emne fra listen, eller skriv inn et nytt emne og klikk på &quot;Tilføye sangen emne&quot;-knappen for å legge til det nye emnet.</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="688"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="689"/>
         <source>You need to type in a song title.</source>
         <translation>Du må oppgi sangtittel.</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="695"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="696"/>
         <source>You need to type in at least one verse.</source>
         <translation>Du må skrive inn minst ett vers.</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="671"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="672"/>
         <source>The verse order is invalid. There is no verse corresponding to %s. Valid entries are %s.</source>
         <translation>Versrekkefølgen er ugyldig. Det er ingen vers tilsvarende %s. Gyldige verdier er %s.</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="713"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="714"/>
         <source>Add Book</source>
         <translation>Legg til bok</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="713"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="714"/>
         <source>This song book does not exist, do you want to add it?</source>
         <translation>Denne sangboken eksisterer ikke, vil du opprette den?</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="702"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="703"/>
         <source>You need to have an author for this song.</source>
         <translation>Du må angi en forfatter til denne sangen.</translation>
     </message>
@@ -6791,7 +6792,7 @@ EasyWorship]</translation>
         <translation>Fjern &amp;alle</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="765"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="811"/>
         <source>Open File(s)</source>
         <translation>Åpne fil(er)</translation>
     </message>
@@ -6801,14 +6802,14 @@ EasyWorship]</translation>
         <translation>&lt;strong&gt;Advarsel:&lt;/strong&gt; Ikke alle versene er i bruk.</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="666"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="667"/>
         <source>The verse order is invalid. There are no verses corresponding to %s. Valid entries are %s.</source>
         <translation>Versrekkefølgen er ugyldig. Det er ingen vers tilsvarende %s. Gyldige verdier er %s.</translation>
     </message>
     <message>
         <location filename="openlp/plugins/songs/forms/editsongdialog.py" line="359"/>
         <source>&lt;strong&gt;Warning:&lt;/strong&gt; You have not entered a verse order.</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;strong&gt;Advarsel:&lt;/strong&gt; Du har ikke angitt versrekkefølge.</translation>
     </message>
 </context>
 <context>
@@ -6922,7 +6923,7 @@ EasyWorship]</translation>
     <message>
         <location filename="openlp/plugins/songs/lib/foilpresenterimport.py" line="432"/>
         <source>Invalid Foilpresenter song file. No verses found.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ugyldig Foilpresenter sangfiler. Ingen vers funnet.</translation>
     </message>
 </context>
 <context>

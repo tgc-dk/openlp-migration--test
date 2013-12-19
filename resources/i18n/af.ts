@@ -3230,7 +3230,7 @@ Om die Eerste Keer Gids heeltemal te kanselleer (en verhoed dat OpenLP begin), k
 <context>
     <name>OpenLP.MainDisplay</name>
     <message>
-        <location filename="openlp/core/ui/maindisplay.py" line="203"/>
+        <location filename="openlp/core/ui/maindisplay.py" line="205"/>
         <source>OpenLP Display</source>
         <translation>OpenLP Vertooning</translation>
     </message>
@@ -5823,13 +5823,14 @@ Hierdie lêers sal verwyder word as jy voortgaan om te stoor.</translation>
     <message>
         <location filename="openlp/core/lib/ui.py" line="80"/>
         <source>File Not Found</source>
-        <translation type="unfinished"></translation>
+        <translation>Lêer nie gevind nie</translation>
     </message>
     <message>
         <location filename="openlp/core/lib/ui.py" line="82"/>
         <source>File %s not found.
 Please try selecting it individually.</source>
-        <translation type="unfinished"></translation>
+        <translation>Lêer %s nie gevind nie.
+Probeer asseblief om dit individueel te kies.</translation>
     </message>
 </context>
 <context>
@@ -6701,72 +6702,72 @@ Die enkodering is verantwoordelik vir die korrekte karrakter voorstelling.</tran
         <translation>Tema, Kopiereg Informasie &amp;&amp; Kommentaar</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="384"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="385"/>
         <source>Add Author</source>
         <translation>Voeg Skrywer By</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="384"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="385"/>
         <source>This author does not exist, do you want to add them?</source>
         <translation>Hierdie skrywer bestaan nie, moet die skrywer bygevoeg word?</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="407"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="408"/>
         <source>This author is already in the list.</source>
         <translation>Hierdie skrywer is alreeds in die lys.</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="414"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="415"/>
         <source>You have not selected a valid author. Either select an author from the list, or type in a new author and click the &quot;Add Author to Song&quot; button to add the new author.</source>
         <translation>Die geselekteerde skrywer is ongeldig. Kies &apos;n skrywer vanaf die lys of voer &apos;n nuwe skrywer in en kliek op die &quot;Voeg Skrywer by Lied&quot; knoppie om die skrywer by te voeg.</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="442"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="443"/>
         <source>Add Topic</source>
         <translation>Voeg Onderwerp by</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="442"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="443"/>
         <source>This topic does not exist, do you want to add it?</source>
         <translation>Die onderwerp bestaan nie. Voeg dit by?</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="463"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="464"/>
         <source>This topic is already in the list.</source>
         <translation>Die onderwerp is reeds in die lys.</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="473"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="474"/>
         <source>You have not selected a valid topic. Either select a topic from the list, or type in a new topic and click the &quot;Add Topic to Song&quot; button to add the new topic.</source>
         <translation>Geselekteerde onderwerp is ongeldig. Kies &apos;n onderwerp vanaf die lys of voer &apos;n nuwe onderwerp in en kliek die &quot;Voeg Onderwerp by Lied&quot; knoppie om die onderwerp by te voeg.</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="688"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="689"/>
         <source>You need to type in a song title.</source>
         <translation>Tik &apos;n lied titel in.</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="695"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="696"/>
         <source>You need to type in at least one verse.</source>
         <translation>Ten minste een vers moet ingevoer word.</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="671"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="672"/>
         <source>The verse order is invalid. There is no verse corresponding to %s. Valid entries are %s.</source>
         <translation>Die vers orde is ongeldig. Daar is geen vers wat ooreenstem met %s nie. Geldige opsies is %s.</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="713"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="714"/>
         <source>Add Book</source>
         <translation>Voeg Boek by</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="713"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="714"/>
         <source>This song book does not exist, do you want to add it?</source>
         <translation>Die lied boek bestaan nie. Voeg dit by?</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="702"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="703"/>
         <source>You need to have an author for this song.</source>
         <translation>Daar word &apos;n outeur benodig vir hierdie lied.</translation>
     </message>
@@ -6791,7 +6792,7 @@ Die enkodering is verantwoordelik vir die korrekte karrakter voorstelling.</tran
         <translation>Verwyder &amp;Alles</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="765"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="811"/>
         <source>Open File(s)</source>
         <translation>Maak Lêer(s) Oop</translation>
     </message>
@@ -6801,14 +6802,14 @@ Die enkodering is verantwoordelik vir die korrekte karrakter voorstelling.</tran
         <translation>&lt;strong&gt;Waarskuwing:&lt;/strong&gt; Nie al die verse is in gebruik nie.</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="666"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="667"/>
         <source>The verse order is invalid. There are no verses corresponding to %s. Valid entries are %s.</source>
         <translation>Die vers orde is ongeldig. Daar is geen verse wat ooreenstem met %s nie. Geldige inskrywings is %s.</translation>
     </message>
     <message>
         <location filename="openlp/plugins/songs/forms/editsongdialog.py" line="359"/>
         <source>&lt;strong&gt;Warning:&lt;/strong&gt; You have not entered a verse order.</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;strong&gt;Waarskuwing:&lt;/strong&gt;&apos;n Vers orde is nie ingevoer nie.</translation>
     </message>
 </context>
 <context>
@@ -6922,7 +6923,7 @@ Die enkodering is verantwoordelik vir die korrekte karrakter voorstelling.</tran
     <message>
         <location filename="openlp/plugins/songs/lib/foilpresenterimport.py" line="432"/>
         <source>Invalid Foilpresenter song file. No verses found.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ongeldige Foilpresenter lied lêer. Geen verse gevin die.</translation>
     </message>
 </context>
 <context>
