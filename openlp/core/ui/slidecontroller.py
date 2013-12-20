@@ -44,6 +44,7 @@ from openlp.core.utils.actions import ActionList, CategoryOrder
 
 log = logging.getLogger(__name__)
 
+
 class SlideList(QtGui.QTableWidget):
     """
     Customised version of QTableWidget which can respond to keyboard
@@ -390,7 +391,7 @@ class SlideController(Controller):
                 self._slideShortcutActivated)
         # Signals
         QtCore.QObject.connect(self.previewListWidget,
-            QtCore.SIGNAL(u'clicked(QModelIndex)'), self.onSlideSelected)
+            QtCore.SIGNAL(u'itemSelectionChanged()'), self.onSlideSelected)
         if self.isLive:
             QtCore.QObject.connect(Receiver.get_receiver(),
                 QtCore.SIGNAL(u'slidecontroller_live_spin_delay'),
