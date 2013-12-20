@@ -493,11 +493,11 @@ def get_web_page(url, header=None, update_openlp=False):
     if not url:
         return None
     req = urllib2.Request(url)
-    user_agent = _get_user_agent()
-    log.debug(u'Using user agent: %s', unicode(user_agent))
-    req.add_header('User-Agent', user_agent)
-    if header:
-        req.add_header(header[0], header[1])
+    if not header or header[0].lower() != u'user-agent':
+        user_agent = _get_user_agent()
+        req.add_header('User-Agent', str(user_agent))
+    elif header:
+        req.add_header(str(header[0]), str(header[1]))
     page = None
     log.debug(u'Downloading URL = %s' % url)
     try:
