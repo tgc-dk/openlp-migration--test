@@ -1061,7 +1061,7 @@ class OldBibleDB(QtCore.QObject, Manager):
         QtCore.QObject.__init__(self)
         if u'path' not in kwargs:
             raise KeyError(u'Missing keyword argument "path".')
-        if  u'file' not in kwargs:
+        if u'file' not in kwargs:
             raise KeyError(u'Missing keyword argument "file".')
         if u'path' in kwargs:
             self.path = kwargs[u'path']
