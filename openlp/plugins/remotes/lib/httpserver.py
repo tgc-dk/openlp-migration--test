@@ -593,8 +593,11 @@ class HttpConnection(object):
         for header, value in response.headers.iteritems():
             http += '%s: %s\r\n' % (header, value)
         http += '\r\n'
-        self.socket.write(http)
-        self.socket.write(response.content)
+        if self.socket:
+            # Write to the socket if it's open, else ignore it.
+            # See http://support.openlp.org/scp/tickets.php?id=2112
+            self.socket.write(http)
+            self.socket.write(response.content)
 
     def disconnected(self):
         """

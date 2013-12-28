@@ -32,6 +32,7 @@ import logging
 import os
 import re
 import sqlite3
+import time
 
 from PyQt4 import QtCore
 from sqlalchemy import Column, ForeignKey, or_, Table, types, func
@@ -262,7 +263,8 @@ class BibleDB(QtCore.QObject, Manager):
         try:
             self.session.commit()
         except OperationalError:
-            # Try again. If it fails again, let the exception happen
+            # Wait 10ms and try again.
+            time.sleep(0.01)
             self.session.commit()
 
     def create_verse(self, book_id, chapter, verse, text):
@@ -1067,7 +1069,7 @@ class OldBibleDB(QtCore.QObject, Manager):
         QtCore.QObject.__init__(self)
         if u'path' not in kwargs:
             raise KeyError(u'Missing keyword argument "path".')
-        if  u'file' not in kwargs:
+        if u'file' not in kwargs:
             raise KeyError(u'Missing keyword argument "file".')
         if u'path' in kwargs:
             self.path = kwargs[u'path']
