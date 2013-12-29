@@ -32,9 +32,11 @@ import logging
 import os
 import re
 import sqlite3
+import time
 
 from PyQt4 import QtCore
 from sqlalchemy import Column, ForeignKey, or_, Table, types, func
+from sqlalchemy.exc import OperationalError
 from sqlalchemy.orm import class_mapper, mapper, relation
 from sqlalchemy.orm.exc import UnmappedClassError
 
@@ -47,6 +49,7 @@ import upgrade
 log = logging.getLogger(__name__)
 
 RESERVED_CHARACTERS = u'\\.^$*+?{}[]()'
+
 
 class BibleMeta(BaseModel):
     """
@@ -257,7 +260,12 @@ class BibleDB(QtCore.QObject, Manager):
                 text=verse_text
             )
             self.session.add(verse)
-        self.session.commit()
+        try:
+            self.session.commit()
+        except OperationalError:
+            # Wait 10ms and try again.
+            time.sleep(0.01)
+            self.session.commit()
 
     def create_verse(self, book_id, chapter, verse, text):
         """
@@ -363,7 +371,7 @@ class BibleDB(QtCore.QObject, Manager):
 
         ``book``
             The name of the book, according to the selected language.
-        
+
         ``language_selection``
             The language selection the user has chosen in the settings
             section of the Bible.
