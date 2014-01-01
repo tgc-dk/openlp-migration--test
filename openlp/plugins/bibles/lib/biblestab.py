@@ -39,6 +39,7 @@ from openlp.plugins.bibles.lib import LayoutStyle, DisplayStyle, \
 
 log = logging.getLogger(__name__)
 
+
 class BiblesTab(SettingsTab):
     """
     BiblesTab is the Bibles settings tab in the settings dialog.

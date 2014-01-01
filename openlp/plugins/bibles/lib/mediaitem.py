@@ -47,6 +47,7 @@ from openlp.plugins.bibles.lib.db import BiblesResourcesDB
 
 log = logging.getLogger(__name__)
 
+
 class BibleSearch(object):
     """
     Enumeration class for the different search methods for the "quick search".
@@ -62,7 +63,6 @@ class BibleMediaItem(MediaManagerItem):
     log.info(u'Bible Media Item loaded')
 
     def __init__(self, parent, plugin, icon):
-        self.IconPath = u'songs/song'
         self.lockIcon = build_icon(u':/bibles/bibles_search_lock.png')
         self.unlockIcon = build_icon(u':/bibles/bibles_search_unlock.png')
         MediaManagerItem.__init__(self, parent, plugin, icon)
@@ -180,6 +180,8 @@ class BibleMediaItem(MediaManagerItem):
         tab.setVisible(False)
         QtCore.QObject.connect(lockButton, QtCore.SIGNAL(u'toggled(bool)'),
             self.onLockButtonToggled)
+        QtCore.QObject.connect(secondComboBox, QtCore.SIGNAL(u'currentIndexChanged(QString)'),
+                               self.onSecondBibleComboBoxCurrentIndexChanged)
         setattr(self, prefix + u'VersionLabel', versionLabel)
         setattr(self, prefix + u'VersionComboBox', versionComboBox)
         setattr(self, prefix + u'SecondLabel', secondLabel)
@@ -299,15 +301,15 @@ class BibleMediaItem(MediaManagerItem):
         log.debug(u'configUpdated')
         if Settings().value(self.settingsSection + u'/second bibles',
             QtCore.QVariant(True)).toBool():
-            self.advancedSecondLabel.setVisible(True)
-            self.advancedSecondComboBox.setVisible(True)
             self.quickSecondLabel.setVisible(True)
             self.quickSecondComboBox.setVisible(True)
+            self.advancedSecondLabel.setVisible(True)
+            self.advancedSecondComboBox.setVisible(True)
         else:
-            self.advancedSecondLabel.setVisible(False)
-            self.advancedSecondComboBox.setVisible(False)
             self.quickSecondLabel.setVisible(False)
             self.quickSecondComboBox.setVisible(False)
+            self.advancedSecondLabel.setVisible(False)
+            self.advancedSecondComboBox.setVisible(False)
         self.quickStyleComboBox.setCurrentIndex(self.settings.layout_style)
         self.advancedStyleComboBox.setCurrentIndex(self.settings.layout_style)
 
@@ -541,6 +543,14 @@ class BibleMediaItem(MediaManagerItem):
                         books.append(data[u'name'] + u' ')
                 books.sort(cmp=locale_compare)
         set_case_insensitive_completer(books, self.quickSearchEdit)
+
+    def onSecondBibleComboBoxCurrentIndexChanged(self, text):
+        if text is None or not unicode(text):
+            self.quickStyleComboBox.setEnabled(True)
+            self.advancedStyleComboBox.setEnabled(True)
+        else:
+            self.quickStyleComboBox.setEnabled(False)
+            self.advancedStyleComboBox.setEnabled(False)
 
     def onImportClick(self):
         if not hasattr(self, u'import_wizard'):
