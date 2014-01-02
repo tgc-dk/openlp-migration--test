@@ -175,12 +175,12 @@ Do you want to continue anyway?</source>
         <translation>Βίβλοι</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/bibles/lib/http.py" line="601"/>
+        <location filename="openlp/plugins/bibles/lib/http.py" line="604"/>
         <source>No Book Found</source>
         <translation>Δεν βρέθηκε κανένα βιβλίο</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/bibles/lib/http.py" line="601"/>
+        <location filename="openlp/plugins/bibles/lib/http.py" line="604"/>
         <source>No matching book could be found in this Bible. Check that you have spelled the name of the book correctly.</source>
         <translation>Δεν βρέθηκε βιβλίο που να ταιριάζει στην Βίβλο αυτή. Ελέγξτε την ορθογραφία του βιβλίου.</translation>
     </message>
@@ -1044,38 +1044,38 @@ It is not possible to customize the Book Names.</source>
 <context>
     <name>BiblesPlugin.HTTPBible</name>
     <message>
-        <location filename="openlp/plugins/bibles/lib/http.py" line="515"/>
+        <location filename="openlp/plugins/bibles/lib/http.py" line="518"/>
         <source>Registering Bible and loading books...</source>
         <translation>Εγγραφή Βίβλου και φόρτωμα βιβλίων...</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/bibles/lib/http.py" line="540"/>
+        <location filename="openlp/plugins/bibles/lib/http.py" line="543"/>
         <source>Registering Language...</source>
         <translation>Εγγραφή Γλώσσας...</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/bibles/lib/http.py" line="556"/>
+        <location filename="openlp/plugins/bibles/lib/http.py" line="559"/>
         <source>Importing %s...</source>
         <comment>Importing &lt;book name&gt;...</comment>
         <translation>Εισαγωγή %s...</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/bibles/lib/http.py" line="723"/>
+        <location filename="openlp/plugins/bibles/lib/http.py" line="726"/>
         <source>Download Error</source>
         <translation>Σφάλμα Λήψης</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/bibles/lib/http.py" line="723"/>
+        <location filename="openlp/plugins/bibles/lib/http.py" line="726"/>
         <source>There was a problem downloading your verse selection. Please check your Internet connection, and if this error continues to occur please consider reporting a bug.</source>
         <translation>Υπήρξε ένα πρόβλημα κατά την λήψη των επιλεγμένων εδαφίων. Παρακαλούμε ελέγξτε την σύνδεση στο Internet και αν αυτό το σφάλμα επανεμφανιστεί παρακαλούμε σκεφτείτε να κάνετε αναφορά σφάλματος.</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/bibles/lib/http.py" line="730"/>
+        <location filename="openlp/plugins/bibles/lib/http.py" line="733"/>
         <source>Parse Error</source>
         <translation>Σφάλμα Ανάλυσης</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/bibles/lib/http.py" line="730"/>
+        <location filename="openlp/plugins/bibles/lib/http.py" line="733"/>
         <source>There was a problem extracting your verse selection. If this error continues to occur please consider reporting a bug.</source>
         <translation>Υπήρξε πρόβλημα κατά την εξαγωγή των επιλεγμένων εδαφίων σας. Αν αυτό το σφάλμα επανεμφανιστεί σκεφτείτε να κάνετε μια αναφορά σφάλματος.</translation>
     </message>
@@ -1398,7 +1398,7 @@ You will need to re-import this Bible to use it again.</source>
         <translation>Ανίχνευση κωδικοποίησης (μπορεί να χρειαστεί μερικά λεπτά)...</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/bibles/lib/osis.py" line="162"/>
+        <location filename="openlp/plugins/bibles/lib/osis.py" line="174"/>
         <source>Importing %s %s...</source>
         <comment>Importing &lt;book name&gt; &lt;chapter&gt;...</comment>
         <translation>Εισαγωγή %s %s...</translation>
@@ -1992,7 +1992,7 @@ Do you want to add the other images anyway?</source>
 <context>
     <name>OpenLP</name>
     <message>
-        <location filename="openlp/core/utils/__init__.py" line="362"/>
+        <location filename="openlp/core/utils/__init__.py" line="363"/>
         <source>Image Files</source>
         <translation>Αρχεία Εικόνων</translation>
     </message>
@@ -2302,7 +2302,7 @@ Portions copyright &#xa9; 2004-2013 %s</source>
         <translation>Επαναφορά στο προκαθορισμένο λογότυπο του OpenLP.</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/servicemanager.py" line="622"/>
+        <location filename="openlp/core/ui/servicemanager.py" line="623"/>
         <source>Service %Y-%m-%d %H-%M</source>
         <comment>This may not contain any of the following characters: /\?*|&lt;&gt;[]&quot;:+
 See http://docs.python.org/library/datetime.html#strftime-strptime-behavior for more information.</comment>
@@ -2702,192 +2702,192 @@ Version: %s
 <context>
     <name>OpenLP.FirstTimeWizard</name>
     <message>
-        <location filename="openlp/core/ui/firsttimewizard.py" line="212"/>
+        <location filename="openlp/core/ui/firsttimewizard.py" line="216"/>
         <source>Songs</source>
         <translation>Τραγούδια</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/firsttimewizard.py" line="199"/>
+        <location filename="openlp/core/ui/firsttimewizard.py" line="203"/>
         <source>First Time Wizard</source>
         <translation>Οδηγός Πρώτης Εκτέλεσης</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/firsttimewizard.py" line="201"/>
+        <location filename="openlp/core/ui/firsttimewizard.py" line="205"/>
         <source>Welcome to the First Time Wizard</source>
         <translation>Καλώς ορίσατε στον Οδηγό Πρώτης Εκτέλεσης</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/firsttimewizard.py" line="208"/>
+        <location filename="openlp/core/ui/firsttimewizard.py" line="212"/>
         <source>Activate required Plugins</source>
         <translation>Ενεργοποίηση απαιτούμενων Πρόσθετων</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/firsttimewizard.py" line="210"/>
+        <location filename="openlp/core/ui/firsttimewizard.py" line="214"/>
         <source>Select the Plugins you wish to use. </source>
         <translation>Επιλέξτε τα Πρόσθετα που θέλετε να χρησιμοποιήσετε.</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/firsttimewizard.py" line="215"/>
+        <location filename="openlp/core/ui/firsttimewizard.py" line="219"/>
         <source>Bible</source>
         <translation>Βίβλος</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/firsttimewizard.py" line="216"/>
+        <location filename="openlp/core/ui/firsttimewizard.py" line="220"/>
         <source>Images</source>
         <translation>Εικόνες</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/firsttimewizard.py" line="221"/>
+        <location filename="openlp/core/ui/firsttimewizard.py" line="225"/>
         <source>Presentations</source>
         <translation>Παρουσιάσεις</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/firsttimewizard.py" line="223"/>
+        <location filename="openlp/core/ui/firsttimewizard.py" line="227"/>
         <source>Media (Audio and Video)</source>
         <translation>Πολυμέσα (Ήχος και Βίντεο)</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/firsttimewizard.py" line="225"/>
+        <location filename="openlp/core/ui/firsttimewizard.py" line="229"/>
         <source>Allow remote access</source>
         <translation>Επιτρέψτε απομακρυσμένη πρόσβαση</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/firsttimewizard.py" line="227"/>
+        <location filename="openlp/core/ui/firsttimewizard.py" line="231"/>
         <source>Monitor Song Usage</source>
         <translation>Επίβλεψη Χρήσης Τραγουδιών</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/firsttimewizard.py" line="229"/>
+        <location filename="openlp/core/ui/firsttimewizard.py" line="233"/>
         <source>Allow Alerts</source>
         <translation>Επιτρέψτε τις Ειδοποιήσεις</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/firsttimewizard.py" line="259"/>
+        <location filename="openlp/core/ui/firsttimewizard.py" line="263"/>
         <source>Default Settings</source>
         <translation>Προκαθορισμένες Ρυθμίσεις</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/firsttimeform.py" line="97"/>
+        <location filename="openlp/core/ui/firsttimeform.py" line="116"/>
         <source>Downloading %s...</source>
         <translation>Λήψη %s...</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/firsttimeform.py" line="409"/>
+        <location filename="openlp/core/ui/firsttimeform.py" line="447"/>
         <source>Download complete. Click the finish button to start OpenLP.</source>
         <translation>Η λήψη ολοκληρώθηκε. Κάντε κλικ στο κουμπί τερματισμού για να ξεκινήσετε το OpenLP.</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/firsttimeform.py" line="430"/>
+        <location filename="openlp/core/ui/firsttimeform.py" line="468"/>
         <source>Enabling selected plugins...</source>
         <translation>Ενεργοποίηση των επιλεγμένων Πρόσθετων...</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/firsttimewizard.py" line="231"/>
+        <location filename="openlp/core/ui/firsttimewizard.py" line="235"/>
         <source>No Internet Connection</source>
         <translation>Καμία Σύνδεση Διαδικτύου</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/firsttimewizard.py" line="233"/>
+        <location filename="openlp/core/ui/firsttimewizard.py" line="237"/>
         <source>Unable to detect an Internet connection.</source>
         <translation>Δεν μπορεί να ανιχνευθεί σύνδεση στο διαδίκτυο.</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/firsttimewizard.py" line="247"/>
+        <location filename="openlp/core/ui/firsttimewizard.py" line="251"/>
         <source>Sample Songs</source>
         <translation>Δείγματα Τραγουδιών</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/firsttimewizard.py" line="249"/>
+        <location filename="openlp/core/ui/firsttimewizard.py" line="253"/>
         <source>Select and download public domain songs.</source>
         <translation>Επιλογή και λήψη τραγουδιών του δημόσιου πεδίου.</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/firsttimewizard.py" line="251"/>
+        <location filename="openlp/core/ui/firsttimewizard.py" line="255"/>
         <source>Sample Bibles</source>
         <translation>Δείγματα Βίβλων</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/firsttimewizard.py" line="253"/>
+        <location filename="openlp/core/ui/firsttimewizard.py" line="257"/>
         <source>Select and download free Bibles.</source>
         <translation>Επιλογή και λήψη δωρεάν Βίβλων.</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/firsttimewizard.py" line="255"/>
+        <location filename="openlp/core/ui/firsttimewizard.py" line="259"/>
         <source>Sample Themes</source>
         <translation>Δείγματα Θεμάτων</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/firsttimewizard.py" line="257"/>
+        <location filename="openlp/core/ui/firsttimewizard.py" line="261"/>
         <source>Select and download sample themes.</source>
         <translation>Επιλογή και λήψη δειγμάτων θεμάτων.</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/firsttimewizard.py" line="261"/>
+        <location filename="openlp/core/ui/firsttimewizard.py" line="265"/>
         <source>Set up default settings to be used by OpenLP.</source>
         <translation>Θέστε τις προκαθορισμένες ρυθμίσεις για χρήση από το OpenLP.</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/firsttimewizard.py" line="263"/>
+        <location filename="openlp/core/ui/firsttimewizard.py" line="267"/>
         <source>Default output display:</source>
         <translation>Προκαθορισμένη έξοδος προβολής:</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/firsttimewizard.py" line="265"/>
+        <location filename="openlp/core/ui/firsttimewizard.py" line="269"/>
         <source>Select default theme:</source>
         <translation>Επιλογή προκαθορισμένου θέματος:</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/firsttimewizard.py" line="267"/>
+        <location filename="openlp/core/ui/firsttimewizard.py" line="271"/>
         <source>Starting configuration process...</source>
         <translation>Εκκίνηση διαδικασίας διαμόρφωσης...</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/firsttimewizard.py" line="205"/>
+        <location filename="openlp/core/ui/firsttimewizard.py" line="209"/>
         <source>This wizard will help you to configure OpenLP for initial use. Click the next button below to start.</source>
         <translation>Αυτός ο οδηγός θα σας βοηθήσει να διαμορφώσετε το OpenLP για αρχική χρήση. Κάντε κλικ στο πλήκτρο Επόμενο παρακάτω για να ξεκινήσετε.</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/firsttimeform.py" line="383"/>
+        <location filename="openlp/core/ui/firsttimeform.py" line="421"/>
         <source>Setting Up And Downloading</source>
         <translation>Διαμόρφωση Και Λήψη</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/firsttimeform.py" line="385"/>
+        <location filename="openlp/core/ui/firsttimeform.py" line="423"/>
         <source>Please wait while OpenLP is set up and your data is downloaded.</source>
         <translation>Περιμένετε όσο το OpenLP διαμορφώνεται και γίνεται λήψη των δεδομένων σας.</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/firsttimeform.py" line="390"/>
+        <location filename="openlp/core/ui/firsttimeform.py" line="428"/>
         <source>Setting Up</source>
         <translation>Διαμόρφωση</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/firsttimeform.py" line="417"/>
+        <location filename="openlp/core/ui/firsttimeform.py" line="455"/>
         <source>Click the finish button to start OpenLP.</source>
         <translation>Κάντε κλικ στο πλήκτρο τερματισμού για να ξεκινήσετε το OpenLP.</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/firsttimeform.py" line="405"/>
+        <location filename="openlp/core/ui/firsttimeform.py" line="443"/>
         <source>Download complete. Click the finish button to return to OpenLP.</source>
         <translation>Λήψη ολοκληρώθηκε. Κάντε κλικ στο πλήκτρο τερματισμού για να γυρίσετε στο OpenLP.</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/firsttimeform.py" line="414"/>
+        <location filename="openlp/core/ui/firsttimeform.py" line="452"/>
         <source>Click the finish button to return to OpenLP.</source>
         <translation>Κάντε κλικ στο πλήκτρο τερματισμού για να γυρίσετε στο OpenLP.</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/firsttimewizard.py" line="213"/>
+        <location filename="openlp/core/ui/firsttimewizard.py" line="217"/>
         <source>Custom Slides</source>
         <translation>Εξατομικευμένες Διαφάνειες</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/firsttimewizard.py" line="269"/>
+        <location filename="openlp/core/ui/firsttimewizard.py" line="273"/>
         <source>Finish</source>
         <translation>Τέλος</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/firsttimewizard.py" line="236"/>
+        <location filename="openlp/core/ui/firsttimewizard.py" line="240"/>
         <source>No Internet connection was found. The First Time Wizard needs an Internet connection in order to be able to download sample songs, Bibles and themes.  Click the Finish button now to start OpenLP with initial settings and no sample data.
 
 To re-run the First Time Wizard and import this sample data at a later time, check your Internet connection and re-run this wizard by selecting &quot;Tools/Re-run First Time Wizard&quot; from OpenLP.</source>
@@ -2896,7 +2896,7 @@ To re-run the First Time Wizard and import this sample data at a later time, che
 Για επανεκτέλεση του Οδηγού Πρώτης Εκτέλεσης και εισαγωγή των δειγμάτων δεδομένων σε ύστερη στιγμή, ελέγξτε την σύνδεσή σας στο διαδίκτυο και ξανατρέξτε αυτόν τον οδηγό επιλέγοντας &quot;Εργαλεία/ Επανεκτέλεση Οδηγού Πρώτης Εκτέλεσης&quot; από το OpenLP.</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/firsttimewizard.py" line="244"/>
+        <location filename="openlp/core/ui/firsttimewizard.py" line="248"/>
         <source>
 
 To cancel the First Time Wizard completely (and not start OpenLP), click the Cancel button now.</source>
@@ -2946,32 +2946,32 @@ To cancel the First Time Wizard completely (and not start OpenLP), click the Can
 <context>
     <name>OpenLP.FormattingTagForm</name>
     <message>
-        <location filename="openlp/core/ui/formattingtagform.py" line="167"/>
+        <location filename="openlp/core/ui/formattingtagform.py" line="168"/>
         <source>Update Error</source>
         <translation>Σφάλμα Ενημέρωσης</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/formattingtagform.py" line="119"/>
+        <location filename="openlp/core/ui/formattingtagform.py" line="120"/>
         <source>Tag &quot;n&quot; already defined.</source>
         <translation>Η ετικέτα &quot;n&quot; έχει ήδη οριστεί.</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/formattingtagform.py" line="126"/>
+        <location filename="openlp/core/ui/formattingtagform.py" line="127"/>
         <source>New Tag</source>
         <translation>Νέα Ετικέτα</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/formattingtagform.py" line="128"/>
+        <location filename="openlp/core/ui/formattingtagform.py" line="129"/>
         <source>&lt;HTML here&gt;</source>
         <translation>&lt;HTML εδώ&gt;</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/formattingtagform.py" line="130"/>
+        <location filename="openlp/core/ui/formattingtagform.py" line="131"/>
         <source>&lt;/and here&gt;</source>
         <translation>&lt;/και εδώ&gt;</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/formattingtagform.py" line="167"/>
+        <location filename="openlp/core/ui/formattingtagform.py" line="168"/>
         <source>Tag %s already defined.</source>
         <translation>Η ετικέτα %s έχει ήδη οριστεί.</translation>
     </message>
@@ -2979,82 +2979,82 @@ To cancel the First Time Wizard completely (and not start OpenLP), click the Can
 <context>
     <name>OpenLP.FormattingTags</name>
     <message>
-        <location filename="openlp/core/lib/formattingtags.py" line="89"/>
+        <location filename="openlp/core/lib/formattingtags.py" line="90"/>
         <source>Red</source>
         <translation>Κόκκινο</translation>
     </message>
     <message>
-        <location filename="openlp/core/lib/formattingtags.py" line="94"/>
+        <location filename="openlp/core/lib/formattingtags.py" line="95"/>
         <source>Black</source>
         <translation>Μαύρο</translation>
     </message>
     <message>
-        <location filename="openlp/core/lib/formattingtags.py" line="99"/>
+        <location filename="openlp/core/lib/formattingtags.py" line="100"/>
         <source>Blue</source>
         <translation>Μπλε</translation>
     </message>
     <message>
-        <location filename="openlp/core/lib/formattingtags.py" line="104"/>
+        <location filename="openlp/core/lib/formattingtags.py" line="105"/>
         <source>Yellow</source>
         <translation>Κίτρινο</translation>
     </message>
     <message>
-        <location filename="openlp/core/lib/formattingtags.py" line="109"/>
+        <location filename="openlp/core/lib/formattingtags.py" line="110"/>
         <source>Green</source>
         <translation>Πράσινο</translation>
     </message>
     <message>
-        <location filename="openlp/core/lib/formattingtags.py" line="114"/>
+        <location filename="openlp/core/lib/formattingtags.py" line="115"/>
         <source>Pink</source>
         <translation>Ροζ</translation>
     </message>
     <message>
-        <location filename="openlp/core/lib/formattingtags.py" line="119"/>
+        <location filename="openlp/core/lib/formattingtags.py" line="120"/>
         <source>Orange</source>
         <translation>Πορτοκαλί</translation>
     </message>
     <message>
-        <location filename="openlp/core/lib/formattingtags.py" line="124"/>
+        <location filename="openlp/core/lib/formattingtags.py" line="125"/>
         <source>Purple</source>
         <translation>Μωβ</translation>
     </message>
     <message>
-        <location filename="openlp/core/lib/formattingtags.py" line="129"/>
+        <location filename="openlp/core/lib/formattingtags.py" line="130"/>
         <source>White</source>
         <translation>Άσπρο</translation>
     </message>
     <message>
-        <location filename="openlp/core/lib/formattingtags.py" line="134"/>
+        <location filename="openlp/core/lib/formattingtags.py" line="135"/>
         <source>Superscript</source>
         <translation>Εκθέτης</translation>
     </message>
     <message>
-        <location filename="openlp/core/lib/formattingtags.py" line="139"/>
+        <location filename="openlp/core/lib/formattingtags.py" line="140"/>
         <source>Subscript</source>
         <translation>Δείκτης</translation>
     </message>
     <message>
-        <location filename="openlp/core/lib/formattingtags.py" line="144"/>
+        <location filename="openlp/core/lib/formattingtags.py" line="145"/>
         <source>Paragraph</source>
         <translation>Παράγραφος</translation>
     </message>
     <message>
-        <location filename="openlp/core/lib/formattingtags.py" line="149"/>
+        <location filename="openlp/core/lib/formattingtags.py" line="150"/>
         <source>Bold</source>
         <translation>Έντονη γραφή</translation>
     </message>
     <message>
-        <location filename="openlp/core/lib/formattingtags.py" line="153"/>
+        <location filename="openlp/core/lib/formattingtags.py" line="154"/>
         <source>Italics</source>
         <translation>Πλάγια γραφή</translation>
     </message>
     <message>
-        <location filename="openlp/core/lib/formattingtags.py" line="157"/>
+        <location filename="openlp/core/lib/formattingtags.py" line="158"/>
         <source>Underline</source>
         <translation>Υπογράμμιση</translation>
     </message>
     <message>
-        <location filename="openlp/core/lib/formattingtags.py" line="163"/>
+        <location filename="openlp/core/lib/formattingtags.py" line="164"/>
         <source>Break</source>
         <translation>Διακοπή</translation>
     </message>
@@ -3233,7 +3233,7 @@ To cancel the First Time Wizard completely (and not start OpenLP), click the Can
 <context>
     <name>OpenLP.MainDisplay</name>
     <message>
-        <location filename="openlp/core/ui/maindisplay.py" line="203"/>
+        <location filename="openlp/core/ui/maindisplay.py" line="205"/>
         <source>OpenLP Display</source>
         <translation>Προβολή του OpenLP</translation>
     </message>
@@ -3855,12 +3855,12 @@ Suffix not supported</source>
 <context>
     <name>OpenLP.OpenLyricsImportError</name>
     <message>
-        <location filename="openlp/plugins/songs/lib/xml.py" line="733"/>
+        <location filename="openlp/plugins/songs/lib/xml.py" line="761"/>
         <source>&lt;lyrics&gt; tag is missing.</source>
         <translation>Η ετικέτα &lt;lyrics&gt; απουσιάζει.</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/lib/xml.py" line="740"/>
+        <location filename="openlp/plugins/songs/lib/xml.py" line="768"/>
         <source>&lt;verse&gt; tag is missing.</source>
         <translation>Η ετικέτα &lt;verse&gt; απουσιάζει.</translation>
     </message>
@@ -4036,184 +4036,184 @@ Suffix not supported</source>
 <context>
     <name>OpenLP.ServiceManager</name>
     <message>
-        <location filename="openlp/core/ui/servicemanager.py" line="183"/>
+        <location filename="openlp/core/ui/servicemanager.py" line="184"/>
         <source>Move to &amp;top</source>
         <translation>Μετακίνηση στην &amp;κορυφή</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/servicemanager.py" line="183"/>
+        <location filename="openlp/core/ui/servicemanager.py" line="184"/>
         <source>Move item to the top of the service.</source>
         <translation>Μετακίνηση αντικειμένου στην κορυφή της λειτουργίας.</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/servicemanager.py" line="189"/>
+        <location filename="openlp/core/ui/servicemanager.py" line="190"/>
         <source>Move &amp;up</source>
         <translation>Μετακίνηση &amp;επάνω</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/servicemanager.py" line="189"/>
+        <location filename="openlp/core/ui/servicemanager.py" line="190"/>
         <source>Move item up one position in the service.</source>
         <translation>Μετακίνηση μία θέση επάνω στην λειτουργία.</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/servicemanager.py" line="210"/>
+        <location filename="openlp/core/ui/servicemanager.py" line="211"/>
         <source>Move &amp;down</source>
         <translation>Μετακίνηση κά&amp;τω</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/servicemanager.py" line="196"/>
+        <location filename="openlp/core/ui/servicemanager.py" line="197"/>
         <source>Move item down one position in the service.</source>
         <translation>Μετακίνηση μία θέση κάτω στην λειτουργία.</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/servicemanager.py" line="203"/>
+        <location filename="openlp/core/ui/servicemanager.py" line="204"/>
         <source>Move to &amp;bottom</source>
         <translation>Μετακίνηση στο &amp;τέλος</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/servicemanager.py" line="203"/>
+        <location filename="openlp/core/ui/servicemanager.py" line="204"/>
         <source>Move item to the end of the service.</source>
         <translation>Μετακίνηση στο τέλος της λειτουργίας.</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/servicemanager.py" line="223"/>
+        <location filename="openlp/core/ui/servicemanager.py" line="224"/>
         <source>&amp;Delete From Service</source>
         <translation>&amp;Διαγραφή Από την Λειτουργία</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/servicemanager.py" line="223"/>
+        <location filename="openlp/core/ui/servicemanager.py" line="224"/>
         <source>Delete the selected item from the service.</source>
         <translation>Διαγραφή του επιλεγμένου αντικειμένου από την λειτουργία.</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/servicemanager.py" line="288"/>
+        <location filename="openlp/core/ui/servicemanager.py" line="289"/>
         <source>&amp;Add New Item</source>
         <translation>&amp;Προσθήκη Νέου Αντικειμένου</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/servicemanager.py" line="291"/>
+        <location filename="openlp/core/ui/servicemanager.py" line="292"/>
         <source>&amp;Add to Selected Item</source>
         <translation>&amp;Προσθήκη στο Επιλεγμένο Αντικείμενο</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/servicemanager.py" line="296"/>
+        <location filename="openlp/core/ui/servicemanager.py" line="297"/>
         <source>&amp;Edit Item</source>
         <translation>&amp;Επεξεργασία Αντικειμένου</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/servicemanager.py" line="299"/>
+        <location filename="openlp/core/ui/servicemanager.py" line="300"/>
         <source>&amp;Reorder Item</source>
         <translation>&amp;Ανακατανομή Αντικειμένου</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/servicemanager.py" line="303"/>
+        <location filename="openlp/core/ui/servicemanager.py" line="304"/>
         <source>&amp;Notes</source>
         <translation>&amp;Σημειώσεις</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/servicemanager.py" line="319"/>
+        <location filename="openlp/core/ui/servicemanager.py" line="320"/>
         <source>&amp;Change Item Theme</source>
         <translation>&amp;Αλλαγή Θέματος Αντικειμένου</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/servicemanager.py" line="635"/>
+        <location filename="openlp/core/ui/servicemanager.py" line="636"/>
         <source>OpenLP Service Files (*.osz)</source>
         <translation>Αρχεία Λειτουργίας του OpenLP (*.osz)</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/servicemanager.py" line="664"/>
+        <location filename="openlp/core/ui/servicemanager.py" line="665"/>
         <source>File is not a valid service.
 The content encoding is not UTF-8.</source>
         <translation>Το αρχείο δεν αποτελεί κατάλληλη λειτουργία. 
 Η κωδικοποίηση του περιεχομένου δεν είναι UTF-8.</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/servicemanager.py" line="706"/>
+        <location filename="openlp/core/ui/servicemanager.py" line="710"/>
         <source>File is not a valid service.</source>
         <translation>Το αρχείο δεν είναι αρχείο κατάλληλης λειτουργίας.</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/servicemanager.py" line="1313"/>
+        <location filename="openlp/core/ui/servicemanager.py" line="1317"/>
         <source>Missing Display Handler</source>
         <translation>Απουσία Διαχειριστή Προβολής</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/servicemanager.py" line="1261"/>
+        <location filename="openlp/core/ui/servicemanager.py" line="1265"/>
         <source>Your item cannot be displayed as there is no handler to display it</source>
         <translation>Το αντικείμενό σας δεν μπορεί να προβληθεί αφού δεν υπάρχει διαχειριστής για να το προβάλλει</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/servicemanager.py" line="1313"/>
+        <location filename="openlp/core/ui/servicemanager.py" line="1317"/>
         <source>Your item cannot be displayed as the plugin required to display it is missing or inactive</source>
         <translation>Το αντικείμενό σας δεν μπορεί να προβληθεί αφού το πρόσθετο που απαιτείται για την προβολή απουσιάζει ή είναι ανενεργό</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/servicemanager.py" line="232"/>
+        <location filename="openlp/core/ui/servicemanager.py" line="233"/>
         <source>&amp;Expand all</source>
         <translation>&amp;Ανάπτυξη όλων</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/servicemanager.py" line="232"/>
+        <location filename="openlp/core/ui/servicemanager.py" line="233"/>
         <source>Expand all the service items.</source>
         <translation>Ανάπτυξη όλων των αντικειμένων λειτουργίας.</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/servicemanager.py" line="238"/>
+        <location filename="openlp/core/ui/servicemanager.py" line="239"/>
         <source>&amp;Collapse all</source>
         <translation>&amp;Σύμπτυξη όλων</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/servicemanager.py" line="238"/>
+        <location filename="openlp/core/ui/servicemanager.py" line="239"/>
         <source>Collapse all the service items.</source>
         <translation>Σύμπτυξη όλων των αντικειμένων λειτουργίας.</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/servicemanager.py" line="421"/>
+        <location filename="openlp/core/ui/servicemanager.py" line="422"/>
         <source>Open File</source>
         <translation>Άνοιγμα Αρχείου</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/servicemanager.py" line="210"/>
+        <location filename="openlp/core/ui/servicemanager.py" line="211"/>
         <source>Moves the selection down the window.</source>
         <translation>Μετακίνηση της επιλογής κάτω στο παράθυρο.</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/servicemanager.py" line="216"/>
+        <location filename="openlp/core/ui/servicemanager.py" line="217"/>
         <source>Move up</source>
         <translation>Μετακίνηση επάνω</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/servicemanager.py" line="216"/>
+        <location filename="openlp/core/ui/servicemanager.py" line="217"/>
         <source>Moves the selection up the window.</source>
         <translation>Μετακίνηση της επιλογής προς τα πάνω στο παράθυρο.</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/servicemanager.py" line="246"/>
+        <location filename="openlp/core/ui/servicemanager.py" line="247"/>
         <source>Go Live</source>
         <translation>Προβολή</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/servicemanager.py" line="246"/>
+        <location filename="openlp/core/ui/servicemanager.py" line="247"/>
         <source>Send the selected item to Live.</source>
         <translation>Προβολή του επιλεγμένου αντικειμένου.</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/servicemanager.py" line="307"/>
+        <location filename="openlp/core/ui/servicemanager.py" line="308"/>
         <source>&amp;Start Time</source>
         <translation>Ώρα &amp;Έναρξης</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/servicemanager.py" line="313"/>
+        <location filename="openlp/core/ui/servicemanager.py" line="314"/>
         <source>Show &amp;Preview</source>
         <translation>Προβολή &amp;Προεπισκόπησης</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/servicemanager.py" line="438"/>
+        <location filename="openlp/core/ui/servicemanager.py" line="439"/>
         <source>Modified Service</source>
         <translation>Τροποποιημένη Λειτουργία</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/servicemanager.py" line="438"/>
+        <location filename="openlp/core/ui/servicemanager.py" line="439"/>
         <source>The current service has been modified. Would you like to save this service?</source>
         <translation>Η τρέχουσα λειτουργία έχει τροποποιηθεί. Θέλετε να αποθηκεύσετε ετούτη την λειτουργία;</translation>
     </message>
@@ -4233,87 +4233,87 @@ The content encoding is not UTF-8.</source>
         <translation>Χρόνος Αναπαραγωγής:</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/servicemanager.py" line="343"/>
+        <location filename="openlp/core/ui/servicemanager.py" line="344"/>
         <source>Untitled Service</source>
         <translation>Ανώνυμη Λειτουργία</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/servicemanager.py" line="712"/>
+        <location filename="openlp/core/ui/servicemanager.py" line="716"/>
         <source>File could not be opened because it is corrupt.</source>
         <translation>Το αρχείο δεν ανοίχθηκε επειδή είναι φθαρμένο.</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/servicemanager.py" line="718"/>
+        <location filename="openlp/core/ui/servicemanager.py" line="722"/>
         <source>Empty File</source>
         <translation>Κενό Αρχείο</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/servicemanager.py" line="718"/>
+        <location filename="openlp/core/ui/servicemanager.py" line="722"/>
         <source>This service file does not contain any data.</source>
         <translation>Ετούτο το αρχείο λειτουργίας δεν περιέχει δεδομένα.</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/servicemanager.py" line="725"/>
+        <location filename="openlp/core/ui/servicemanager.py" line="729"/>
         <source>Corrupt File</source>
         <translation>Φθαρμένο Αρχείο</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/servicemanager.py" line="132"/>
+        <location filename="openlp/core/ui/servicemanager.py" line="133"/>
         <source>Load an existing service.</source>
         <translation>Άνοιγμα υπάρχουσας λειτουργίας.</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/servicemanager.py" line="136"/>
+        <location filename="openlp/core/ui/servicemanager.py" line="137"/>
         <source>Save this service.</source>
         <translation>Αποθήκευση ετούτης της λειτουργίας.</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/servicemanager.py" line="146"/>
+        <location filename="openlp/core/ui/servicemanager.py" line="147"/>
         <source>Select a theme for the service.</source>
         <translation>Επιλέξτε ένα θέμα για την λειτουργία.</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/servicemanager.py" line="725"/>
+        <location filename="openlp/core/ui/servicemanager.py" line="729"/>
         <source>This file is either corrupt or it is not an OpenLP 2.0 service file.</source>
         <translation>Αυτό το αρχείο είναι είτε φθαρμένο είτε δεν είναι αρχείο λειτουργίας του OpenLP 2.0.</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/servicemanager.py" line="1066"/>
+        <location filename="openlp/core/ui/servicemanager.py" line="1070"/>
         <source>Slide theme</source>
         <translation>Θέμα διαφάνειας</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/servicemanager.py" line="1070"/>
+        <location filename="openlp/core/ui/servicemanager.py" line="1074"/>
         <source>Notes</source>
         <translation>Σημειώσεις</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/servicemanager.py" line="1061"/>
+        <location filename="openlp/core/ui/servicemanager.py" line="1065"/>
         <source>Edit</source>
         <translation>Επεξεργασία</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/servicemanager.py" line="1061"/>
+        <location filename="openlp/core/ui/servicemanager.py" line="1065"/>
         <source>Service copy only</source>
         <translation>Επεξεργασία αντιγράφου μόνο</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/servicemanager.py" line="577"/>
+        <location filename="openlp/core/ui/servicemanager.py" line="578"/>
         <source>Error Saving File</source>
         <translation>Σφάλμα Αποθήκευσης Αρχείου</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/servicemanager.py" line="577"/>
+        <location filename="openlp/core/ui/servicemanager.py" line="578"/>
         <source>There was an error saving your file.</source>
         <translation>Υπήρξε σφάλμα κατά την αποθήκευση του αρχείου σας.</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/servicemanager.py" line="507"/>
+        <location filename="openlp/core/ui/servicemanager.py" line="508"/>
         <source>Service File(s) Missing</source>
         <translation>Απουσία Αρχείου Λειτουργίας</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/servicemanager.py" line="509"/>
+        <location filename="openlp/core/ui/servicemanager.py" line="510"/>
         <source>The following file(s) in the service are missing:
 <byte value="x9"/>%s
 
@@ -4327,7 +4327,7 @@ These files will be removed if you continue to save.</source>
 <context>
     <name>OpenLP.ServiceNoteForm</name>
     <message>
-        <location filename="openlp/core/ui/servicenoteform.py" line="65"/>
+        <location filename="openlp/core/ui/servicenoteform.py" line="66"/>
         <source>Service Item Notes</source>
         <translation>Σημειώσεις Αντικειμένου Λειτουργίας</translation>
     </message>
@@ -5079,7 +5079,7 @@ These files will be removed if you continue to save.</source>
         <translation>Όνομα θέματος:</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/themeform.py" line="329"/>
+        <location filename="openlp/core/ui/themeform.py" line="331"/>
         <source>Edit Theme - %s</source>
         <translation>Επεξεργασία Θέματος - %s</translation>
     </message>
@@ -5139,42 +5139,42 @@ These files will be removed if you continue to save.</source>
         <translation>Προεπισκόπηση του θέματος και απόθήκευσή του.</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/themeform.py" line="209"/>
+        <location filename="openlp/core/ui/themeform.py" line="211"/>
         <source>(approximately %d lines per slide)</source>
         <translation>(περίπου %d γραμμές ανά διαφάνεια)</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/themeform.py" line="237"/>
+        <location filename="openlp/core/ui/themeform.py" line="239"/>
         <source>Background Image Empty</source>
         <translation>Εικόνα Φόντου Απούσα</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/themeform.py" line="237"/>
+        <location filename="openlp/core/ui/themeform.py" line="239"/>
         <source>You have not selected a background image. Please select one before continuing.</source>
         <translation>Δεν έχετε επιλέξει εικόνα για το φόντο. Επιλέξτε μία πριν συνεχίσετε.</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/themeform.py" line="541"/>
+        <location filename="openlp/core/ui/themeform.py" line="543"/>
         <source>Select Image</source>
         <translation>Επιλογή Εικόνας</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/themeform.py" line="623"/>
+        <location filename="openlp/core/ui/themeform.py" line="631"/>
         <source>Theme Name Missing</source>
         <translation>Ονομασία Θέματος Απουσιάζει</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/themeform.py" line="623"/>
+        <location filename="openlp/core/ui/themeform.py" line="631"/>
         <source>There is no name for this theme. Please enter one.</source>
         <translation>Δεν υπάρχει ονομασία για αυτό το θέμα. Εισάγετε ένα όνομα.</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/themeform.py" line="629"/>
+        <location filename="openlp/core/ui/themeform.py" line="637"/>
         <source>Theme Name Invalid</source>
         <translation>Ακατάλληλο Όνομα Θέματος</translation>
     </message>
     <message>
-        <location filename="openlp/core/ui/themeform.py" line="629"/>
+        <location filename="openlp/core/ui/themeform.py" line="637"/>
         <source>Invalid theme name. Please enter one.</source>
         <translation>Ακατάλληλο όνομα θέματος. Εισάγετε ένα όνομα.</translation>
     </message>
@@ -5300,185 +5300,185 @@ These files will be removed if you continue to save.</source>
         <translation>Εξαγωγή</translation>
     </message>
     <message>
-        <location filename="openlp/core/lib/ui.py" line="80"/>
+        <location filename="openlp/core/lib/ui.py" line="84"/>
         <source>pt</source>
         <comment>Abbreviated font pointsize unit</comment>
         <translation>pt</translation>
     </message>
     <message>
-        <location filename="openlp/core/lib/ui.py" line="89"/>
+        <location filename="openlp/core/lib/ui.py" line="93"/>
         <source>Image</source>
         <translation>Εικόνα</translation>
     </message>
     <message>
-        <location filename="openlp/core/lib/ui.py" line="90"/>
+        <location filename="openlp/core/lib/ui.py" line="94"/>
         <source>Import</source>
         <translation>Εισαγωγή</translation>
     </message>
     <message>
-        <location filename="openlp/core/lib/ui.py" line="92"/>
+        <location filename="openlp/core/lib/ui.py" line="96"/>
         <source>Live</source>
         <translation>Ζωντανά</translation>
     </message>
     <message>
-        <location filename="openlp/core/lib/ui.py" line="93"/>
+        <location filename="openlp/core/lib/ui.py" line="97"/>
         <source>Live Background Error</source>
         <translation>Σφάλμα Φόντου Προβολής</translation>
     </message>
     <message>
-        <location filename="openlp/core/lib/ui.py" line="95"/>
+        <location filename="openlp/core/lib/ui.py" line="99"/>
         <source>Load</source>
         <translation>Φόρτωση</translation>
     </message>
     <message>
-        <location filename="openlp/core/lib/ui.py" line="98"/>
+        <location filename="openlp/core/lib/ui.py" line="102"/>
         <source>Middle</source>
         <translation>Μέσο</translation>
     </message>
     <message>
-        <location filename="openlp/core/lib/ui.py" line="99"/>
+        <location filename="openlp/core/lib/ui.py" line="103"/>
         <source>New</source>
         <translation>Νέο</translation>
     </message>
     <message>
-        <location filename="openlp/core/lib/ui.py" line="100"/>
+        <location filename="openlp/core/lib/ui.py" line="104"/>
         <source>New Service</source>
         <translation>Νέα Λειτουργία</translation>
     </message>
     <message>
-        <location filename="openlp/core/lib/ui.py" line="101"/>
+        <location filename="openlp/core/lib/ui.py" line="105"/>
         <source>New Theme</source>
         <translation>Νέο Θέμα</translation>
     </message>
     <message>
-        <location filename="openlp/core/lib/ui.py" line="104"/>
+        <location filename="openlp/core/lib/ui.py" line="108"/>
         <source>No File Selected</source>
         <comment>Singular</comment>
         <translation>Δεν Επιλέχθηκε Αρχείο</translation>
     </message>
     <message>
-        <location filename="openlp/core/lib/ui.py" line="105"/>
+        <location filename="openlp/core/lib/ui.py" line="109"/>
         <source>No Files Selected</source>
         <comment>Plural</comment>
         <translation>Δεν Επιλέχθηκαν Αρχεία</translation>
     </message>
     <message>
-        <location filename="openlp/core/lib/ui.py" line="106"/>
+        <location filename="openlp/core/lib/ui.py" line="110"/>
         <source>No Item Selected</source>
         <comment>Singular</comment>
         <translation>Δεν Επιλέχθηκε Αντικείμενο</translation>
     </message>
     <message>
-        <location filename="openlp/core/lib/ui.py" line="107"/>
+        <location filename="openlp/core/lib/ui.py" line="111"/>
         <source>No Items Selected</source>
         <comment>Plural</comment>
         <translation>Δεν Επιλέχθηκαν Αντικείμενα</translation>
     </message>
     <message>
-        <location filename="openlp/core/lib/ui.py" line="108"/>
+        <location filename="openlp/core/lib/ui.py" line="112"/>
         <source>openlp.org 1.x</source>
         <translation>openlp.org 1.x</translation>
     </message>
     <message>
-        <location filename="openlp/core/lib/ui.py" line="109"/>
+        <location filename="openlp/core/lib/ui.py" line="113"/>
         <source>OpenLP 2.0</source>
         <translation>OpenLP 2.0</translation>
     </message>
     <message>
-        <location filename="openlp/core/lib/ui.py" line="115"/>
+        <location filename="openlp/core/lib/ui.py" line="119"/>
         <source>Preview</source>
         <translation>Προεπισκόπηση</translation>
     </message>
     <message>
-        <location filename="openlp/core/lib/ui.py" line="117"/>
+        <location filename="openlp/core/lib/ui.py" line="121"/>
         <source>Replace Background</source>
         <translation>Αντικατάσταση Φόντου</translation>
     </message>
     <message>
-        <location filename="openlp/core/lib/ui.py" line="119"/>
+        <location filename="openlp/core/lib/ui.py" line="123"/>
         <source>Reset Background</source>
         <translation>Επαναφορά Φόντου</translation>
     </message>
     <message>
-        <location filename="openlp/core/lib/ui.py" line="121"/>
+        <location filename="openlp/core/lib/ui.py" line="125"/>
         <source>s</source>
         <comment>The abbreviated unit for seconds</comment>
         <translation>δ</translation>
     </message>
     <message>
-        <location filename="openlp/core/lib/ui.py" line="123"/>
+        <location filename="openlp/core/lib/ui.py" line="127"/>
         <source>Save &amp;&amp; Preview</source>
         <translation>Αποθήκευση &amp;&amp; Προεπισκόπηση </translation>
     </message>
     <message>
-        <location filename="openlp/core/lib/ui.py" line="124"/>
+        <location filename="openlp/core/lib/ui.py" line="128"/>
         <source>Search</source>
         <translation>Αναζήτηση</translation>
     </message>
     <message>
-        <location filename="openlp/core/lib/ui.py" line="127"/>
+        <location filename="openlp/core/lib/ui.py" line="131"/>
         <source>You must select an item to delete.</source>
         <translation>Πρέπει να επιλέξετε ένα αντικείμενο προς διαγραφή.</translation>
     </message>
     <message>
-        <location filename="openlp/core/lib/ui.py" line="129"/>
+        <location filename="openlp/core/lib/ui.py" line="133"/>
         <source>You must select an item to edit.</source>
         <translation>Πρέπει να επιλέξετε ένα αντικείμενο για επεξεργασία.</translation>
     </message>
     <message>
-        <location filename="openlp/core/lib/ui.py" line="132"/>
+        <location filename="openlp/core/lib/ui.py" line="136"/>
         <source>Save Service</source>
         <translation>Αποθήκευση Λειτουργίας</translation>
     </message>
     <message>
-        <location filename="openlp/core/lib/ui.py" line="133"/>
+        <location filename="openlp/core/lib/ui.py" line="137"/>
         <source>Service</source>
         <translation>Λειτουργία</translation>
     </message>
     <message>
-        <location filename="openlp/core/lib/ui.py" line="137"/>
+        <location filename="openlp/core/lib/ui.py" line="141"/>
         <source>Start %s</source>
         <translation>Έναρξη %s</translation>
     </message>
     <message>
-        <location filename="openlp/core/lib/ui.py" line="142"/>
+        <location filename="openlp/core/lib/ui.py" line="146"/>
         <source>Theme</source>
         <comment>Singular</comment>
         <translation>Θέμα</translation>
     </message>
     <message>
-        <location filename="openlp/core/lib/ui.py" line="143"/>
+        <location filename="openlp/core/lib/ui.py" line="147"/>
         <source>Themes</source>
         <comment>Plural</comment>
         <translation>Θέματα</translation>
     </message>
     <message>
-        <location filename="openlp/core/lib/ui.py" line="145"/>
+        <location filename="openlp/core/lib/ui.py" line="149"/>
         <source>Top</source>
         <translation>Κορυφή</translation>
     </message>
     <message>
-        <location filename="openlp/core/lib/ui.py" line="149"/>
+        <location filename="openlp/core/lib/ui.py" line="153"/>
         <source>Version</source>
         <translation>Έκδοση</translation>
     </message>
     <message>
-        <location filename="openlp/core/lib/ui.py" line="305"/>
+        <location filename="openlp/core/lib/ui.py" line="309"/>
         <source>Delete the selected item.</source>
         <translation>Διαγραφή επιλεγμένου αντικειμένου.</translation>
     </message>
     <message>
-        <location filename="openlp/core/lib/ui.py" line="309"/>
+        <location filename="openlp/core/lib/ui.py" line="313"/>
         <source>Move selection up one position.</source>
         <translation>Μεταφορά επιλογής μία θέση επάνω.</translation>
     </message>
     <message>
-        <location filename="openlp/core/lib/ui.py" line="313"/>
+        <location filename="openlp/core/lib/ui.py" line="317"/>
         <source>Move selection down one position.</source>
         <translation>Μεταφορά επιλογής μία θέση κάτω.</translation>
     </message>
     <message>
-        <location filename="openlp/core/lib/ui.py" line="466"/>
+        <location filename="openlp/core/lib/ui.py" line="470"/>
         <source>&amp;Vertical Align:</source>
         <translation>&amp;Κάθετη Ευθυγράμμιση:</translation>
     </message>
@@ -5631,64 +5631,64 @@ These files will be removed if you continue to save.</source>
         <translation>Αρχείο</translation>
     </message>
     <message>
-        <location filename="openlp/core/lib/ui.py" line="82"/>
+        <location filename="openlp/core/lib/ui.py" line="86"/>
         <source>Help</source>
         <translation>Βοήθεια</translation>
     </message>
     <message>
-        <location filename="openlp/core/lib/ui.py" line="83"/>
+        <location filename="openlp/core/lib/ui.py" line="87"/>
         <source>h</source>
         <comment>The abbreviated unit for hours</comment>
         <translation>ω</translation>
     </message>
     <message>
-        <location filename="openlp/core/lib/ui.py" line="91"/>
+        <location filename="openlp/core/lib/ui.py" line="95"/>
         <source>Layout style:</source>
         <translation>Στυλ σχεδίου:</translation>
     </message>
     <message>
-        <location filename="openlp/core/lib/ui.py" line="94"/>
+        <location filename="openlp/core/lib/ui.py" line="98"/>
         <source>Live Toolbar</source>
         <translation>Εργαλειοθήκη Προβολής</translation>
     </message>
     <message>
-        <location filename="openlp/core/lib/ui.py" line="96"/>
+        <location filename="openlp/core/lib/ui.py" line="100"/>
         <source>m</source>
         <comment>The abbreviated unit for minutes</comment>
         <translation>λ</translation>
     </message>
     <message>
-        <location filename="openlp/core/lib/ui.py" line="110"/>
+        <location filename="openlp/core/lib/ui.py" line="114"/>
         <source>OpenLP is already running. Do you wish to continue?</source>
         <translation>Το OpenLP ήδη εκτελείται. Θέλετε να συνεχίσετε;</translation>
     </message>
     <message>
-        <location filename="openlp/core/lib/ui.py" line="131"/>
+        <location filename="openlp/core/lib/ui.py" line="135"/>
         <source>Settings</source>
         <translation>Ρυθμίσεις</translation>
     </message>
     <message>
-        <location filename="openlp/core/lib/ui.py" line="144"/>
+        <location filename="openlp/core/lib/ui.py" line="148"/>
         <source>Tools</source>
         <translation>Εργαλεία</translation>
     </message>
     <message>
-        <location filename="openlp/core/lib/ui.py" line="146"/>
+        <location filename="openlp/core/lib/ui.py" line="150"/>
         <source>Unsupported File</source>
         <translation>Μη Υποστηριζόμενο Αρχείο</translation>
     </message>
     <message>
-        <location filename="openlp/core/lib/ui.py" line="147"/>
+        <location filename="openlp/core/lib/ui.py" line="151"/>
         <source>Verse Per Slide</source>
         <translation>Εδάφιο Ανά Διαφάνεια</translation>
     </message>
     <message>
-        <location filename="openlp/core/lib/ui.py" line="148"/>
+        <location filename="openlp/core/lib/ui.py" line="152"/>
         <source>Verse Per Line</source>
         <translation>Εδάφιο Ανά Γραμμή</translation>
     </message>
     <message>
-        <location filename="openlp/core/lib/ui.py" line="150"/>
+        <location filename="openlp/core/lib/ui.py" line="154"/>
         <source>View</source>
         <translation>Προβολή</translation>
     </message>
@@ -5703,32 +5703,32 @@ These files will be removed if you continue to save.</source>
         <translation>Συντακτικό λάθος XML</translation>
     </message>
     <message>
-        <location filename="openlp/core/lib/ui.py" line="151"/>
+        <location filename="openlp/core/lib/ui.py" line="155"/>
         <source>View Mode</source>
         <translation>Λειτουργία Προβολής</translation>
     </message>
     <message>
-        <location filename="openlp/core/lib/ui.py" line="112"/>
+        <location filename="openlp/core/lib/ui.py" line="116"/>
         <source>Open service.</source>
         <translation>Άνοιγμα λειτουργίας.</translation>
     </message>
     <message>
-        <location filename="openlp/core/lib/ui.py" line="116"/>
+        <location filename="openlp/core/lib/ui.py" line="120"/>
         <source>Print Service</source>
         <translation>Εκτύπωση Λειτουργίας</translation>
     </message>
     <message>
-        <location filename="openlp/core/lib/ui.py" line="118"/>
+        <location filename="openlp/core/lib/ui.py" line="122"/>
         <source>Replace live background.</source>
         <translation>Αντικατάσταση του προβαλλόμενου φόντου.</translation>
     </message>
     <message>
-        <location filename="openlp/core/lib/ui.py" line="120"/>
+        <location filename="openlp/core/lib/ui.py" line="124"/>
         <source>Reset live background.</source>
         <translation>Επαναφορά προβαλλόμενου φόντου.</translation>
     </message>
     <message>
-        <location filename="openlp/core/lib/ui.py" line="135"/>
+        <location filename="openlp/core/lib/ui.py" line="139"/>
         <source>Split a slide into two only if it does not fit on the screen as one slide.</source>
         <translation>Διαίρεση μιας διαφάνειας σε δύο μόνο αν δεν χωρά στην οθόνη ως μια διαφάνεια.</translation>
     </message>
@@ -5743,61 +5743,61 @@ These files will be removed if you continue to save.</source>
         <translation>Επιβεβαίωση Διαγραφής</translation>
     </message>
     <message>
-        <location filename="openlp/core/lib/ui.py" line="113"/>
+        <location filename="openlp/core/lib/ui.py" line="117"/>
         <source>Play Slides in Loop</source>
         <translation>Αναπαραγωγή Διαφανειών Κυκλικά</translation>
     </message>
     <message>
-        <location filename="openlp/core/lib/ui.py" line="114"/>
+        <location filename="openlp/core/lib/ui.py" line="118"/>
         <source>Play Slides to End</source>
         <translation>Αναπαραγωγή Διαφανειών έως Τέλους</translation>
     </message>
     <message>
-        <location filename="openlp/core/lib/ui.py" line="138"/>
+        <location filename="openlp/core/lib/ui.py" line="142"/>
         <source>Stop Play Slides in Loop</source>
         <translation>Τερματισμός Κυκλικής Αναπαραγωγής Διαφανειών</translation>
     </message>
     <message>
-        <location filename="openlp/core/lib/ui.py" line="140"/>
+        <location filename="openlp/core/lib/ui.py" line="144"/>
         <source>Stop Play Slides to End</source>
         <translation>Τερματισμός Αναπαραγωγής Διαφανειών έως Τέλους</translation>
     </message>
     <message>
-        <location filename="openlp/core/lib/ui.py" line="102"/>
+        <location filename="openlp/core/lib/ui.py" line="106"/>
         <source>Next Track</source>
         <translation>Επόμενο Κομμάτι</translation>
     </message>
     <message>
-        <location filename="openlp/core/lib/ui.py" line="125"/>
+        <location filename="openlp/core/lib/ui.py" line="129"/>
         <source>Search Themes...</source>
         <comment>Search bar place holder text </comment>
         <translation>Αναζήτηση Θεμάτων...</translation>
     </message>
     <message>
-        <location filename="openlp/core/lib/ui.py" line="134"/>
+        <location filename="openlp/core/lib/ui.py" line="138"/>
         <source>Optional &amp;Split</source>
         <translation>Προαιρετικός &amp;Διαχωρισμός</translation>
     </message>
     <message>
-        <location filename="openlp/core/lib/ui.py" line="85"/>
+        <location filename="openlp/core/lib/ui.py" line="89"/>
         <source>Invalid Folder Selected</source>
         <comment>Singular</comment>
         <translation>Επιλέχθηκε Ακατάλληλος Φάκελος</translation>
     </message>
     <message>
-        <location filename="openlp/core/lib/ui.py" line="87"/>
+        <location filename="openlp/core/lib/ui.py" line="91"/>
         <source>Invalid File Selected</source>
         <comment>Singular</comment>
         <translation>Επιλέχθηκε Ακατάλληλο Αρχείο</translation>
     </message>
     <message>
-        <location filename="openlp/core/lib/ui.py" line="88"/>
+        <location filename="openlp/core/lib/ui.py" line="92"/>
         <source>Invalid Files Selected</source>
         <comment>Plural</comment>
         <translation>Επιλέχθηκαν Ακατάλληλα Αρχεία</translation>
     </message>
     <message>
-        <location filename="openlp/core/lib/ui.py" line="103"/>
+        <location filename="openlp/core/lib/ui.py" line="107"/>
         <source>No Folder Selected</source>
         <comment>Singular</comment>
         <translation>Δεν Επιλέχτηκε Φάκελος</translation>
@@ -5823,6 +5823,17 @@ These files will be removed if you continue to save.</source>
         <location filename="openlp/plugins/songs/songsplugin.py" line="259"/>
         <source>Importing Songs</source>
         <translation>Εισαγωγή Ύμνων</translation>
+    </message>
+    <message>
+        <location filename="openlp/core/lib/ui.py" line="80"/>
+        <source>File Not Found</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="openlp/core/lib/ui.py" line="82"/>
+        <source>File %s not found.
+Please try selecting it individually.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -5906,52 +5917,52 @@ These files will be removed if you continue to save.</source>
 <context>
     <name>PresentationPlugin.MediaItem</name>
     <message>
-        <location filename="openlp/plugins/presentations/lib/mediaitem.py" line="75"/>
+        <location filename="openlp/plugins/presentations/lib/mediaitem.py" line="76"/>
         <source>Select Presentation(s)</source>
         <translation>Επιλογή Παρουσίασης (-εων)</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/presentations/lib/mediaitem.py" line="77"/>
+        <location filename="openlp/plugins/presentations/lib/mediaitem.py" line="78"/>
         <source>Automatic</source>
         <translation>Αυτόματο</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/presentations/lib/mediaitem.py" line="79"/>
+        <location filename="openlp/plugins/presentations/lib/mediaitem.py" line="80"/>
         <source>Present using:</source>
         <translation>Παρουσίαση με χρήση:</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/presentations/lib/mediaitem.py" line="194"/>
+        <location filename="openlp/plugins/presentations/lib/mediaitem.py" line="195"/>
         <source>File Exists</source>
         <translation>Ήδη Υπάρχον Αρχείο</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/presentations/lib/mediaitem.py" line="194"/>
+        <location filename="openlp/plugins/presentations/lib/mediaitem.py" line="195"/>
         <source>A presentation with that filename already exists.</source>
         <translation>Ήδη υπάρχει παρουσίαση με αυτό το όνομα.</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/presentations/lib/mediaitem.py" line="223"/>
+        <location filename="openlp/plugins/presentations/lib/mediaitem.py" line="224"/>
         <source>This type of presentation is not supported.</source>
         <translation>Αυτός ο τύπος παρουσίασης δεν υποστηρίζεται.</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/presentations/lib/mediaitem.py" line="95"/>
+        <location filename="openlp/plugins/presentations/lib/mediaitem.py" line="96"/>
         <source>Presentations (%s)</source>
         <translation>Παρουσιάσεις (%s)</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/presentations/lib/mediaitem.py" line="317"/>
+        <location filename="openlp/plugins/presentations/lib/mediaitem.py" line="318"/>
         <source>Missing Presentation</source>
         <translation>Απούσα Παρουσίαση</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/presentations/lib/mediaitem.py" line="306"/>
+        <location filename="openlp/plugins/presentations/lib/mediaitem.py" line="307"/>
         <source>The presentation %s is incomplete, please reload.</source>
         <translation>Η παρουσίαση %s είναι ατελής, παρακαλούμε φορτώστε την ξανά.</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/presentations/lib/mediaitem.py" line="317"/>
+        <location filename="openlp/plugins/presentations/lib/mediaitem.py" line="318"/>
         <source>The presentation %s no longer exists.</source>
         <translation>Η παρουσίαση %s δεν υπάρχει πλέον.</translation>
     </message>
@@ -6598,204 +6609,209 @@ The encoding is responsible for the correct character representation.</source>
 <context>
     <name>SongsPlugin.EditSongForm</name>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongdialog.py" line="295"/>
+        <location filename="openlp/plugins/songs/forms/editsongdialog.py" line="294"/>
         <source>Song Editor</source>
         <translation>Επεξεργασία Ύμνων</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongdialog.py" line="297"/>
+        <location filename="openlp/plugins/songs/forms/editsongdialog.py" line="296"/>
         <source>&amp;Title:</source>
         <translation>&amp;Τίτλος:</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongdialog.py" line="299"/>
+        <location filename="openlp/plugins/songs/forms/editsongdialog.py" line="298"/>
         <source>Alt&amp;ernate title:</source>
         <translation>&amp;Εναλλαγή τίτλου:</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongdialog.py" line="301"/>
+        <location filename="openlp/plugins/songs/forms/editsongdialog.py" line="300"/>
         <source>&amp;Lyrics:</source>
         <translation>&amp;Στίχοι:</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongdialog.py" line="303"/>
+        <location filename="openlp/plugins/songs/forms/editsongdialog.py" line="302"/>
         <source>&amp;Verse order:</source>
         <translation>Σειρά &amp;Στροφών:</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongdialog.py" line="307"/>
+        <location filename="openlp/plugins/songs/forms/editsongdialog.py" line="306"/>
         <source>Ed&amp;it All</source>
         <translation>Ε&amp;πεξεργασία Όλων</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongdialog.py" line="310"/>
+        <location filename="openlp/plugins/songs/forms/editsongdialog.py" line="309"/>
         <source>Title &amp;&amp; Lyrics</source>
         <translation>Τίτλος &amp;&amp; Στίχοι</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongdialog.py" line="314"/>
+        <location filename="openlp/plugins/songs/forms/editsongdialog.py" line="313"/>
         <source>&amp;Add to Song</source>
         <translation>&amp;Προσθήκη στον Ύμνο</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongdialog.py" line="354"/>
+        <location filename="openlp/plugins/songs/forms/editsongdialog.py" line="353"/>
         <source>&amp;Remove</source>
         <translation>&amp;Αφαίρεση</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongdialog.py" line="318"/>
+        <location filename="openlp/plugins/songs/forms/editsongdialog.py" line="317"/>
         <source>&amp;Manage Authors, Topics, Song Books</source>
         <translation>&amp;Διαχείριση Συγγραφέων, Θεμάτων, Βιβλίων Ύμνων</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongdialog.py" line="321"/>
+        <location filename="openlp/plugins/songs/forms/editsongdialog.py" line="320"/>
         <source>A&amp;dd to Song</source>
         <translation>Προ&amp;σθήκη στον Ύμνο</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongdialog.py" line="323"/>
+        <location filename="openlp/plugins/songs/forms/editsongdialog.py" line="322"/>
         <source>R&amp;emove</source>
         <translation>Αφαίρεσ&amp;η</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongdialog.py" line="326"/>
+        <location filename="openlp/plugins/songs/forms/editsongdialog.py" line="325"/>
         <source>Book:</source>
         <translation>Βιβλίο:</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongdialog.py" line="328"/>
+        <location filename="openlp/plugins/songs/forms/editsongdialog.py" line="327"/>
         <source>Number:</source>
         <translation>Αριθμός:</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongdialog.py" line="330"/>
+        <location filename="openlp/plugins/songs/forms/editsongdialog.py" line="329"/>
         <source>Authors, Topics &amp;&amp; Song Book</source>
         <translation>Συγγραφεις, Θέματα &amp;&amp; Βιβλία Ύμνων</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongdialog.py" line="335"/>
+        <location filename="openlp/plugins/songs/forms/editsongdialog.py" line="334"/>
         <source>New &amp;Theme</source>
         <translation>Νέο &amp;Θέμα</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongdialog.py" line="337"/>
+        <location filename="openlp/plugins/songs/forms/editsongdialog.py" line="336"/>
         <source>Copyright Information</source>
         <translation>Πληροφορίες Πνευματικών Δικαιωμάτων</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongdialog.py" line="341"/>
+        <location filename="openlp/plugins/songs/forms/editsongdialog.py" line="340"/>
         <source>Comments</source>
         <translation>Σχόλια</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongdialog.py" line="343"/>
+        <location filename="openlp/plugins/songs/forms/editsongdialog.py" line="342"/>
         <source>Theme, Copyright Info &amp;&amp; Comments</source>
         <translation>Θέμα, Πληροφορίες Πνευματικών Δικαιωμάτων &amp;&amp; Σχόλια</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="377"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="385"/>
         <source>Add Author</source>
         <translation>Προσθήκη Συγγραφέα</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="377"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="385"/>
         <source>This author does not exist, do you want to add them?</source>
         <translation>Αυτός ο συγγραφέας δεν υπάρχει, θέλετε να τον προσθέσετε;</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="400"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="408"/>
         <source>This author is already in the list.</source>
         <translation>Αυτός ο συγγραφέας είναι ήδη στην λίστα.</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="407"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="415"/>
         <source>You have not selected a valid author. Either select an author from the list, or type in a new author and click the &quot;Add Author to Song&quot; button to add the new author.</source>
         <translation>Δεν επιλέξατε έγκυρο συγγραφέα. Είτε επιλέξτε έναν συγγραφέα από την λίστα, είτε πληκτρολογείστε έναν νέο συγγραφέα και πιέστε &quot;Προσθήκη Συγγραφέα στον Ύμνο&quot; για να προσθέσετε τον νέο συγγραφέα.</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="435"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="443"/>
         <source>Add Topic</source>
         <translation>Προσθήκη Κατηγορίας</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="435"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="443"/>
         <source>This topic does not exist, do you want to add it?</source>
         <translation>Η κατηγορία δεν υπάρχει, θέλετε να την προσθέσετε;</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="456"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="464"/>
         <source>This topic is already in the list.</source>
         <translation>Η κατηγορία υπάρχει ήδη στην λίστα.</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="466"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="474"/>
         <source>You have not selected a valid topic. Either select a topic from the list, or type in a new topic and click the &quot;Add Topic to Song&quot; button to add the new topic.</source>
         <translation>Δεν επιλέξατε έγκυρη κατηγορία. Είτε επιλέξτε μια κατηγορία από την λίστα, είτε πληκτρολογήστε μια νέα κατηγορία και πιέστε &quot;Προσθήκη Κατηγορίας στον Ύμνο&quot; για να προσθέσετε την νέα κατηγορία.</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="676"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="689"/>
         <source>You need to type in a song title.</source>
         <translation>Πρέπει να δώσετε έναν τίτλο στον ύμνο.</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="683"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="696"/>
         <source>You need to type in at least one verse.</source>
         <translation>Πρέπει να πληκτρολογήσετε τουλάχιστον ένα εδάφιο.</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="659"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="672"/>
         <source>The verse order is invalid. There is no verse corresponding to %s. Valid entries are %s.</source>
         <translation>Η σειρά των εδαφίων δεν είναι έγκυρη. Δεν υπάρχει εδάφιο αντίστοιχο στο %s. Έγκυρες καταχωρήσεις είναι οι %s.</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="701"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="714"/>
         <source>Add Book</source>
         <translation>Προσθήκη Βιβλίου</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="701"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="714"/>
         <source>This song book does not exist, do you want to add it?</source>
         <translation>Αυτό το βιβλίο ύμνων δεν υπάρχει, θέλετε να το προσθέσετε;</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="690"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="703"/>
         <source>You need to have an author for this song.</source>
         <translation>Πρέπει να έχετε έναν συγγραφέα για αυτόν τον ύμνο.</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongdialog.py" line="347"/>
+        <location filename="openlp/plugins/songs/forms/editsongdialog.py" line="346"/>
         <source>Linked Audio</source>
         <translation>Συνδεδεμένος Ήχος</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongdialog.py" line="350"/>
+        <location filename="openlp/plugins/songs/forms/editsongdialog.py" line="349"/>
         <source>Add &amp;File(s)</source>
         <translation>Προσθήκη &amp;Αρχείου(-ων)</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongdialog.py" line="352"/>
+        <location filename="openlp/plugins/songs/forms/editsongdialog.py" line="351"/>
         <source>Add &amp;Media</source>
         <translation>Προσθήκη &amp;Πολυμέσων</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongdialog.py" line="356"/>
+        <location filename="openlp/plugins/songs/forms/editsongdialog.py" line="355"/>
         <source>Remove &amp;All</source>
         <translation>&amp;Αφαίρεση Όλων</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="753"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="811"/>
         <source>Open File(s)</source>
         <translation>Άνοιγμα Αρχείου(-ων)</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongdialog.py" line="358"/>
+        <location filename="openlp/plugins/songs/forms/editsongdialog.py" line="357"/>
         <source>&lt;strong&gt;Warning:&lt;/strong&gt; Not all of the verses are in use.</source>
         <translation>&lt;strong&gt;Προειδοποίηση:&lt;/strong&gt; Δεν χρησιμοποιούνται όλα τα εδάφια.</translation>
     </message>
     <message>
-        <location filename="openlp/plugins/songs/forms/editsongform.py" line="654"/>
+        <location filename="openlp/plugins/songs/forms/editsongform.py" line="667"/>
         <source>The verse order is invalid. There are no verses corresponding to %s. Valid entries are %s.</source>
         <translation>Η σειρά εδαφίων είναι ακατάλληλη. Δεν υπάρχουν εδάφια που να αντιστοιχούν στο %s. Κατάλληλες καταχωρήσεις είναι %s.</translation>
+    </message>
+    <message>
+        <location filename="openlp/plugins/songs/forms/editsongdialog.py" line="359"/>
+        <source>&lt;strong&gt;Warning:&lt;/strong&gt; You have not entered a verse order.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -6902,6 +6918,14 @@ The encoding is responsible for the correct character representation.</source>
         <location filename="openlp/plugins/songs/forms/songexportform.py" line="174"/>
         <source>This wizard will help to export your songs to the open and free &lt;strong&gt;OpenLyrics&lt;/strong&gt; worship song format.</source>
         <translation>Αυτός ο οδηγός θα σας βοηθήσει να εξάγετε τους ύμνους σας στην ανοιχτή και δωρεάν μορφή του &lt;strong&gt;OpenLyrics&lt;/strong&gt;.</translation>
+    </message>
+</context>
+<context>
+    <name>SongsPlugin.FoilPresenterSongImport</name>
+    <message>
+        <location filename="openlp/plugins/songs/lib/foilpresenterimport.py" line="432"/>
+        <source>Invalid Foilpresenter song file. No verses found.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

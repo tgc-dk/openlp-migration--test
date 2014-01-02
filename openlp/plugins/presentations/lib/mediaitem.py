@@ -153,7 +153,7 @@ class PresentationMediaItem(MediaManagerItem):
             if self.controllers[item].enabled():
                 self.displayTypeComboBox.addItem(item)
         if self.displayTypeComboBox.count() > 1:
-            self.displayTypeComboBox.insertItem(0, self.Automatic)
+            self.displayTypeComboBox.insertItem(0, self.Automatic, userData=u'automatic')
             self.displayTypeComboBox.setCurrentIndex(0)
         if Settings().value(self.settingsSection + u'/override app',
             QtCore.QVariant(QtCore.Qt.Unchecked)) == QtCore.Qt.Checked:
@@ -277,13 +277,13 @@ class PresentationMediaItem(MediaManagerItem):
         service_item.shortname = unicode(self.displayTypeComboBox.currentText())
         service_item.add_capability(ItemCapabilities.ProvidesOwnDisplay)
         service_item.add_capability(ItemCapabilities.HasDetailedTitleDisplay)
-        shortname = service_item.shortname
-        if not shortname:
+        if not service_item.shortname:
             return False
         for bitem in items:
             filename = unicode(bitem.data(QtCore.Qt.UserRole).toString())
             if os.path.exists(filename):
-                if shortname == self.Automatic:
+                if self.displayTypeComboBox.itemData(
+                    self.displayTypeComboBox.currentIndex()) == u'automatic':
                     service_item.shortname = self.findControllerByType(filename)
                     if not service_item.shortname:
                         return False

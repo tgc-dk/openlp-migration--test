@@ -38,6 +38,7 @@ from subprocess import Popen, PIPE
 import sys
 import urllib2
 import urlparse
+from random import randint
 
 from openlp.core.lib.settings import Settings
 
@@ -60,6 +61,27 @@ UNO_CONNECTION_TYPE = u'pipe'
 #UNO_CONNECTION_TYPE = u'socket'
 CONTROL_CHARS = re.compile(r'[\x00-\x1F\x7F-\x9F]', re.UNICODE)
 INVALID_FILE_CHARS = re.compile(r'[\\/:\*\?"<>\|\+\[\]%]', re.UNICODE)
+USER_AGENTS = {
+    u'win32': [
+        'Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/30.0.1599.101 Safari/537.36',
+        'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/30.0.1599.101 Safari/537.36',
+        'Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/28.0.1500.71 Safari/537.36'
+    ],
+    u'darwin': [
+        'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_3) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31',
+        'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_3) AppleWebKit/536.11 (KHTML, like Gecko) Chrome/20.0.1132.57 Safari/536.11',
+        'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_6_8) AppleWebKit/536.11 (KHTML, like Gecko) Chrome/20.0.1132.47 Safari/536.11'
+    ],
+    u'linux2': [
+        'Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.22 (KHTML, like Gecko) Ubuntu Chromium/25.0.1364.160 Chrome/25.0.1364.160 Safari/537.22',
+        'Mozilla/5.0 (X11; CrOS armv7l 2913.260.0) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.99 Safari/537.11',
+        'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.27 (KHTML, like Gecko) Chrome/26.0.1389.0 Safari/537.27'
+    ],
+    u'default': [
+        'Mozilla/5.0 (X11; NetBSD amd64; rv:18.0) Gecko/20130120 Firefox/18.0'
+    ]
+}
+
 
 class VersionThread(QtCore.QThread):
     """
@@ -92,7 +114,7 @@ class AppLocation(object):
     VersionDir = 5
     CacheDir = 6
     LanguageDir = 7
-    
+
     # Base path where data/config/cache dir is located
     BaseDir = None
 
@@ -364,6 +386,7 @@ def get_images_filter():
             visible_formats, actual_formats)
     return IMAGES_FILTER
 
+
 def is_not_image_file(file_name):
     """
     Validate that the file is not an image file.
@@ -379,6 +402,7 @@ def is_not_image_file(file_name):
     if file_extension[1:].lower() in formats and os.path.exists(file_name):
         return False
     return True
+
 
 def join_url(base, *args):
     """
@@ -438,6 +462,17 @@ def delete_file(file_path_name):
         return False
 
 
+def _get_user_agent():
+    """
+    Return a user agent customised for the platform the user is on.
+    """
+    browser_list = USER_AGENTS.get(sys.platform, None)
+    if not browser_list:
+        browser_list = USER_AGENTS[u'default']
+    random_index = randint(0, len(browser_list) - 1)
+    return browser_list[random_index]
+
+
 def get_web_page(url, header=None, update_openlp=False):
     """
     Attempts to download the webpage at url and returns that page or None.
@@ -458,13 +493,20 @@ def get_web_page(url, header=None, update_openlp=False):
     if not url:
         return None
     req = urllib2.Request(url)
-    if header:
-        req.add_header(header[0], header[1])
+    if not header or header[0].lower() != u'user-agent':
+        user_agent = _get_user_agent()
+        req.add_header('User-Agent', str(user_agent))
+    elif header:
+        req.add_header(str(header[0]), str(header[1]))
     page = None
     log.debug(u'Downloading URL = %s' % url)
     try:
         page = urllib2.urlopen(req)
-        log.debug(u'Downloaded URL = %s' % page.geturl())
+        downloaded_url = page.geturl()
+        # Sometimes we get redirected, in this case page.geturl is encoded in utf-8
+        if not isinstance(downloaded_url, unicode):
+            downloaded_url = downloaded_url.decode('utf-8')
+        log.debug(u'Downloaded URL = %s' % downloaded_url)
     except urllib2.URLError:
         log.exception(u'The web page could not be downloaded')
     if not page:

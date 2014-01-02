@@ -129,9 +129,10 @@ sup {
     }
 
     function show_text(newtext){
+        var fade_direction = 0;
         var match = /-webkit-text-fill-color:[^;\"]+/gi;
-        if(timer != null)
-            clearTimeout(timer);
+        if (timer != null)
+            clearInterval(timer);
         /*
         QtWebkit bug with outlines and justify causing outline alignment
         problems. (Bug 859950) Surround each word with a <span> to workaround,
@@ -150,39 +151,45 @@ sup {
                 newtext = '<span>' + newtext + '</span>';
             }
         }
+        
         text_fade('lyricsmain', newtext);
         text_fade('lyricsoutline', newtext);
         text_fade('lyricsshadow', newtext.replace(match, ''));
         if(text_opacity() == 1) return;
-        timer = setTimeout(function(){
-            show_text(newtext);
+        timer = setInterval(function(){
+            text_fade('lyricsmain', newtext);
+            text_fade('lyricsoutline', newtext);
+            text_fade('lyricsshadow', newtext.replace(match, ''));
+            if(text_opacity() == 1) clearInterval(timer);
         }, 100);
-    }
 
-    function text_fade(id, newtext){
-        /*
-        Using -webkit-transition: opacity 1s linear; would have been preferred
-        but it isn't currently quick enough when animating multiple layers of
-        large areas of large text. Therefore do it manually as best we can.
-        Hopefully in the future we can revisit and do more interesting
-        transitions using -webkit-transition and -webkit-transform.
-        However we need to ensure interrupted transitions (quickly change 2
-        slides) still looks pretty and is zippy.
-        */
-        var text = document.getElementById(id);
-        if(text == null) return;
-        if(!transition){
-            text.innerHTML = newtext;
-            return;
-        }
-        if(newtext == text.innerHTML){
-            text.style.opacity = parseFloat(text.style.opacity) + 0.3;
-            if(text.style.opacity > 0.7)
-                text.style.opacity = 1;
-        } else {
-            text.style.opacity = parseFloat(text.style.opacity) - 0.3;
-            if(text.style.opacity <= 0.1){
+        function text_fade(id, newtext){
+            /*
+            Using -webkit-transition: opacity 1s linear; would have been preferred
+            but it isn't currently quick enough when animating multiple layers of
+            large areas of large text. Therefore do it manually as best we can.
+            Hopefully in the future we can revisit and do more interesting
+            transitions using -webkit-transition and -webkit-transform.
+            However we need to ensure interrupted transitions (quickly change 2
+            slides) still looks pretty and is zippy.
+            */
+            var text = document.getElementById(id);
+            if(text == null) return;
+            if(!transition){
                 text.innerHTML = newtext;
+                return;
+            }
+            if(fade_direction != 1){
+                text.style.opacity = parseFloat(text.style.opacity) - 0.3;
+                if(text.style.opacity <= 0.1){
+                    text.innerHTML = newtext;
+                    fade_direction = 1;
+                }
+            }else{
+                text.style.opacity = parseFloat(text.style.opacity) + 0.3;
+                if(text.style.opacity > 0.7){
+                    text.style.opacity = 1;
+                }
             }
         }
     }

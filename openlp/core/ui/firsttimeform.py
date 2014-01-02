@@ -45,7 +45,7 @@ from openlp.core.lib import translate, PluginStatus, Receiver, build_icon, \
     check_directory_exists
 from openlp.core.lib.settings import Settings
 from openlp.core.utils import get_web_page, AppLocation, join_url, \
-    get_filesystem_encoding
+    get_filesystem_encoding, get_application_version
 from firsttimewizard import Ui_FirstTimeWizard, FirstTimePage
 
 log = logging.getLogger(__name__)
@@ -106,7 +106,8 @@ class FirstTimeForm(QtGui.QWizard, Ui_FirstTimeWizard):
         # url is defined in 'download.cfg' file.
         self.baseurl = None
         # Check to see if we have web access
-        self.webAccess = get_web_page(u'%s%s' % (self.web, u'download.cfg'))
+        user_agent = u'OpenLP/' + get_application_version()[u'version']
+        self.webAccess = get_web_page(u'%s%s' % (self.web, u'download.cfg'), header=(u'User-Agent', user_agent))
         if self.webAccess:
             files = self.webAccess.read()
             self.config.readfp(io.BytesIO(files))

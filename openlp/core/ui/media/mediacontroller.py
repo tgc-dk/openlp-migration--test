@@ -423,10 +423,11 @@ class MediaController(object):
                     controller.volumeSlider.blockSignals(False)
                     return False
                 if status:
-                    display.frame.evaluateJavaScript(u'show_blank("desktop");')
+                    if not controller.media_info.is_background:
+                        display.frame.evaluateJavaScript(u'show_blank("desktop");')
                     self.curDisplayMediaPlayer[display].set_visible(display,
                         True)
-                    if controller.isLive:
+                    if controller.isLive and not controller.media_info.is_background:
                         if controller.hideMenu.defaultAction().isChecked():
                             controller.hideMenu.defaultAction().trigger()
         # Start Timer for ui updates
