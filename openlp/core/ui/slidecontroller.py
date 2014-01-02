@@ -391,7 +391,9 @@ class SlideController(Controller):
                 self._slideShortcutActivated)
         # Signals
         QtCore.QObject.connect(self.previewListWidget,
-            QtCore.SIGNAL(u'itemSelectionChanged()'), self.onSlideSelected)
+            QtCore.SIGNAL(u'clicked(QModelIndex)'), self.onSlideSelected)
+        QtCore.QObject.connect(self.previewListWidget.verticalHeader(),
+            QtCore.SIGNAL(u'sectionClicked(int)'), self.onSlideSelected)
         if self.isLive:
             QtCore.QObject.connect(Receiver.get_receiver(),
                 QtCore.SIGNAL(u'slidecontroller_live_spin_delay'),
@@ -1082,7 +1084,7 @@ class SlideController(Controller):
             else:
                 Receiver.send_message(u'live_display_show')
 
-    def onSlideSelected(self):
+    def onSlideSelected(self, index):
         """
         Slide selected in controller
         """
