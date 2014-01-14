@@ -4,7 +4,7 @@
 ###############################################################################
 # OpenLP - Open Source Lyrics Projection                                      #
 # --------------------------------------------------------------------------- #
-# Copyright (c) 2008-2013 Raoul Snyman                                        #
+# Copyright (c) 2008-2014 Raoul Snyman                                        #
 # Portions copyright (c) 2008-2013 Tim Bentley, Gerald Britton, Jonathan      #
 # Corwin, Samuel Findlay, Michael Gorven, Scott Guerrieri, Matthias Hub,      #
 # Meinert Jordan, Armin Köhler, Erik Lundin, Edwin Lunando, Brian T. Meyer.   #
@@ -128,7 +128,7 @@ class Ui_EditBibleDialog(object):
             self.bookNameEdit[book[u'abbreviation']].setObjectName(
                 u'bookNameEdit[%s]' % book[u'abbreviation'])
             self.bookNameWidgetLayout.addRow(
-                self.bookNameLabel[book[u'abbreviation']], 
+                self.bookNameLabel[book[u'abbreviation']],
                 self.bookNameEdit[book[u'abbreviation']])
         self.scrollArea.setWidget(self.bookNameWidget)
         self.bookNameTabLayout.addWidget(self.scrollArea)

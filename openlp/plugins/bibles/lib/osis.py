@@ -4,7 +4,7 @@
 ###############################################################################
 # OpenLP - Open Source Lyrics Projection                                      #
 # --------------------------------------------------------------------------- #
-# Copyright (c) 2008-2013 Raoul Snyman                                        #
+# Copyright (c) 2008-2014 Raoul Snyman                                        #
 # Portions copyright (c) 2008-2013 Tim Bentley, Gerald Britton, Jonathan      #
 # Corwin, Samuel Findlay, Michael Gorven, Scott Guerrieri, Matthias Hub,      #
 # Meinert Jordan, Armin Köhler, Erik Lundin, Edwin Lunando, Brian T. Meyer.   #
@@ -103,7 +103,7 @@ class OSISBible(BibleDB):
             osis = codecs.open(self.filename, u'r', details['encoding'])
             repl = replacement
             language_id = False
-            # Decide if the bible propably contains only NT or AT and NT or 
+            # Decide if the bible propably contains only NT or AT and NT or
             # AT, NT and Apocrypha
             if lines_in_file < 11500:
                 book_count = 27

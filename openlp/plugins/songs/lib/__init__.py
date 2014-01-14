@@ -4,7 +4,7 @@
 ###############################################################################
 # OpenLP - Open Source Lyrics Projection                                      #
 # --------------------------------------------------------------------------- #
-# Copyright (c) 2008-2013 Raoul Snyman                                        #
+# Copyright (c) 2008-2014 Raoul Snyman                                        #
 # Portions copyright (c) 2008-2013 Tim Bentley, Gerald Britton, Jonathan      #
 # Corwin, Samuel Findlay, Michael Gorven, Scott Guerrieri, Matthias Hub,      #
 # Meinert Jordan, Armin Köhler, Erik Lundin, Edwin Lunando, Brian T. Meyer.   #
@@ -41,7 +41,7 @@ PATTERN = re.compile(r"\\([a-z]{1,32})(-?\d{1,10})?[ ]?|\\'"
     r"([0-9a-f]{2})|\\([^a-z])|([{}])|[\r\n]+|(.)", re.I)
 # RTF control words which specify a "destination" to be ignored.
 DESTINATIONS = frozenset((
-    u'aftncn', u'aftnsep', u'aftnsepc', u'annotation', u'atnauthor', 
+    u'aftncn', u'aftnsep', u'aftnsepc', u'annotation', u'atnauthor',
     u'atndate', u'atnicn', u'atnid', u'atnparent', u'atnref', u'atntime',
     u'atrfend', u'atrfstart', u'author', u'background', u'bkmkend',
     u'bkmkstart', u'blipuid', u'buptim', u'category',
@@ -579,7 +579,7 @@ def strip_rtf(text, default_encoding=None):
                 failed = False
                 while True:
                     try:
-                        encoding, default_encoding = get_encoding(font, 
+                        encoding, default_encoding = get_encoding(font,
                             font_table, default_encoding, failed=failed)
                         if not encoding:
                             return None

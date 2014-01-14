@@ -4,7 +4,7 @@
 ###############################################################################
 # OpenLP - Open Source Lyrics Projection                                      #
 # --------------------------------------------------------------------------- #
-# Copyright (c) 2008-2013 Raoul Snyman                                        #
+# Copyright (c) 2008-2014 Raoul Snyman                                        #
 # Portions copyright (c) 2008-2013 Tim Bentley, Gerald Britton, Jonathan      #
 # Corwin, Samuel Findlay, Michael Gorven, Scott Guerrieri, Matthias Hub,      #
 # Meinert Jordan, Armin Köhler, Erik Lundin, Edwin Lunando, Brian T. Meyer.   #
@@ -163,7 +163,7 @@ class VlcPlayer(MediaPlayer):
         # We need to set media_info.length during load because we want
         # to avoid start and stop the video twice. Once for real playback
         # and once to just get media length.
-        # 
+        #
         # Media plugin depends on knowing media length before playback.
         controller.media_info.length = \
             int(display.vlcMediaPlayer.get_media().get_duration() / 1000)

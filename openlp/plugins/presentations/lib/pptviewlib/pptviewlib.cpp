@@ -1,7 +1,7 @@
 /******************************************************************************
 * OpenLP - Open Source Lyrics Projection                                      *
 * --------------------------------------------------------------------------- *
-* Copyright (c) 2008-2013 Raoul Snyman                                        *
+* Copyright (c) 2008-2014 Raoul Snyman                                        *
 * Portions copyright (c) 2008-2013 Tim Bentley, Gerald Britton, Jonathan      *
 * Corwin, Samuel Findlay, Michael Gorven, Scott Guerrieri, Matthias Hub,      *
 * Meinert Jordan, Armin Köhler, Erik Lundin, Edwin Lunando, Brian T. Meyer.   *
@@ -409,7 +409,7 @@ BOOL GetPPTViewerPathFromReg(wchar_t *pptViewerPath, int stringSize)
     // The following registry settings are for, respectively, (I think)
     // PPT Viewer 2007 (older versions. Latest not in registry) & PPT Viewer 2010
     // PPT Viewer 2003 (recent versions)
-    // PPT Viewer 2003 (older versions) 
+    // PPT Viewer 2003 (older versions)
     // PPT Viewer 97
     if ((RegOpenKeyExW(HKEY_CLASSES_ROOT,
         L"PowerPointViewer.Show.12\\shell\\Show\\command", 0, KEY_READ, &hKey)
