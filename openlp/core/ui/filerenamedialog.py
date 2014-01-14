@@ -29,12 +29,14 @@
 
 from PyQt4 import QtCore, QtGui
 
-from openlp.core.lib import translate
+from openlp.core.lib import translate, build_icon
 from openlp.core.lib.ui import create_button_box
+
 
 class Ui_FileRenameDialog(object):
     def setupUi(self, fileRenameDialog):
         fileRenameDialog.setObjectName(u'fileRenameDialog')
+        fileRenameDialog.setWindowIcon(build_icon(u':/icon/openlp-logo.svg'))
         fileRenameDialog.resize(300, 10)
         self.dialogLayout = QtGui.QGridLayout(fileRenameDialog)
         self.dialogLayout.setObjectName(u'dialogLayout')

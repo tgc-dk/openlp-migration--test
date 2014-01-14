@@ -29,13 +29,15 @@
 
 from PyQt4 import QtCore, QtGui
 
-from openlp.core.lib import translate
+from openlp.core.lib import translate, build_icon
 from openlp.core.lib.ui import UiStrings, create_button_box
+
 
 class Ui_PluginViewDialog(object):
     def setupUi(self, pluginViewDialog):
         pluginViewDialog.setObjectName(u'pluginViewDialog')
         pluginViewDialog.setWindowModality(QtCore.Qt.ApplicationModal)
+        pluginViewDialog.setWindowIcon(build_icon(u':/icon/openlp-logo.svg'))
         self.pluginLayout = QtGui.QVBoxLayout(pluginViewDialog)
         self.pluginLayout.setObjectName(u'pluginLayout')
         self.listLayout = QtGui.QHBoxLayout()

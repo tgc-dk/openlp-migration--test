@@ -32,10 +32,13 @@ from PyQt4 import QtCore, QtGui
 from openlp.core.lib import build_icon, translate
 from openlp.core.lib.ui import create_button_box
 
+
 class Ui_SongUsageDetailDialog(object):
     def setupUi(self, songUsageDetailDialog):
         songUsageDetailDialog.setObjectName(u'songUsageDetailDialog')
         songUsageDetailDialog.resize(609, 413)
+        songUsageDetailDialog.setWindowIcon(
+            build_icon(u':/icon/openlp-logo.svg'))
         self.verticalLayout = QtGui.QVBoxLayout(songUsageDetailDialog)
         self.verticalLayout.setSpacing(8)
         self.verticalLayout.setContentsMargins(8, 8, 8, 8)

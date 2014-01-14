@@ -33,11 +33,13 @@ from openlp.core.lib import build_icon, translate, SpellTextEdit
 from openlp.core.lib.ui import create_button_box, UiStrings
 from openlp.plugins.songs.lib import VerseType
 
+
 class Ui_EditVerseDialog(object):
     def setupUi(self, editVerseDialog):
         editVerseDialog.setObjectName(u'editVerseDialog')
         editVerseDialog.resize(400, 400)
         editVerseDialog.setModal(True)
+        editVerseDialog.setWindowIcon(build_icon(u':/icon/openlp-logo.svg'))
         self.dialogLayout = QtGui.QVBoxLayout(editVerseDialog)
         self.dialogLayout.setObjectName(u'dialogLayout')
         self.verseTextEdit = SpellTextEdit(editVerseDialog)

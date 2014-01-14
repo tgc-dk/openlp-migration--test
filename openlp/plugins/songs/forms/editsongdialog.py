@@ -33,12 +33,12 @@ from openlp.core.lib import build_icon, translate
 from openlp.core.lib.ui import UiStrings, create_button_box, create_button
 from openlp.plugins.songs.lib.ui import SongStrings
 
+
 class Ui_EditSongDialog(object):
     def setupUi(self, editSongDialog):
         editSongDialog.setObjectName(u'editSongDialog')
         editSongDialog.resize(650, 400)
-        editSongDialog.setWindowIcon(
-            build_icon(u':/icon/openlp-logo-16x16.png'))
+        editSongDialog.setWindowIcon(build_icon(u':/icon/openlp-logo.svg'))
         editSongDialog.setModal(True)
         self.dialogLayout = QtGui.QVBoxLayout(editSongDialog)
         self.dialogLayout.setSpacing(8)

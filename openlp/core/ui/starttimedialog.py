@@ -29,13 +29,15 @@
 
 from PyQt4 import QtCore, QtGui
 
-from openlp.core.lib import translate
+from openlp.core.lib import translate, build_icon
 from openlp.core.lib.ui import UiStrings, create_button_box
+
 
 class Ui_StartTimeDialog(object):
     def setupUi(self, StartTimeDialog):
         StartTimeDialog.setObjectName(u'StartTimeDialog')
         StartTimeDialog.resize(350, 10)
+        StartTimeDialog.setWindowIcon(build_icon(u':/icon/openlp-logo.svg'))
         self.dialogLayout = QtGui.QGridLayout(StartTimeDialog)
         self.dialogLayout.setObjectName(u'dialogLayout')
         self.startLabel = QtGui.QLabel(StartTimeDialog)

@@ -32,12 +32,12 @@ from PyQt4 import QtCore, QtGui
 from openlp.core.lib import translate, build_icon
 from openlp.core.lib.ui import create_button_box
 
+
 class Ui_SettingsDialog(object):
     def setupUi(self, settingsDialog):
         settingsDialog.setObjectName(u'settingsDialog')
         settingsDialog.resize(800, 500)
-        settingsDialog.setWindowIcon(
-            build_icon(u':/system/system_settings.png'))
+        settingsDialog.setWindowIcon(build_icon(u':/icon/openlp-logo.svg'))
         self.dialogLayout = QtGui.QGridLayout(settingsDialog)
         self.dialogLayout.setObjectName(u'dialogLayout')
         self.dialogLayout.setMargin(8)

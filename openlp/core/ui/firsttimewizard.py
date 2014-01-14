@@ -31,7 +31,7 @@ from PyQt4 import QtCore, QtGui
 
 import sys
 
-from openlp.core.lib import translate
+from openlp.core.lib import translate, build_icon
 from openlp.core.lib.ui import add_welcome_page
 
 
@@ -59,6 +59,7 @@ class Ui_FirstTimeWizard(object):
             QtGui.QWizard.NoBackButtonOnStartPage |
             QtGui.QWizard.NoBackButtonOnLastPage |
             QtGui.QWizard.HaveCustomButton1)
+        FirstTimeWizard.setWindowIcon(build_icon(u':/icon/openlp-logo.svg'))
         self.finishButton = self.button(QtGui.QWizard.FinishButton)
         self.noInternetFinishButton = self.button(QtGui.QWizard.CustomButton1)
         self.cancelButton = self.button(QtGui.QWizard.CancelButton)

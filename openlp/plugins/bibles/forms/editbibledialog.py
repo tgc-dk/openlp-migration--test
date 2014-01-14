@@ -39,8 +39,7 @@ class Ui_EditBibleDialog(object):
     def setupUi(self, editBibleDialog):
         editBibleDialog.setObjectName(u'editBibleDialog')
         editBibleDialog.resize(520, 400)
-        editBibleDialog.setWindowIcon(
-            build_icon(u':/icon/openlp-logo-16x16.png'))
+        editBibleDialog.setWindowIcon(build_icon(u':/icon/openlp-logo.svg'))
         editBibleDialog.setModal(True)
         self.dialogLayout = QtGui.QVBoxLayout(editBibleDialog)
         self.dialogLayout.setSpacing(8)

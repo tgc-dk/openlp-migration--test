@@ -29,14 +29,14 @@
 
 from PyQt4 import QtGui
 
-from openlp.core.lib import translate
+from openlp.core.lib import translate, build_icon
 from openlp.core.lib.ui import create_button_box
 
 
 class Ui_ThemeLayoutDialog(object):
     def setupUi(self, themeLayoutDialog):
         themeLayoutDialog.setObjectName(u'themeLayoutDialogDialog')
-        #themeLayoutDialog.resize(300, 200)
+        themeLayoutDialog.setWindowIcon(build_icon(u':/icon/openlp-logo.svg'))
         self.previewLayout = QtGui.QVBoxLayout(themeLayoutDialog)
         self.previewLayout.setObjectName(u'previewLayout')
         self.previewArea = QtGui.QWidget(themeLayoutDialog)

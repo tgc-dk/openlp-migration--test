@@ -32,6 +32,7 @@ from PyQt4 import QtCore, QtGui
 from openlp.core.lib import build_icon, translate, SpellTextEdit
 from openlp.core.lib.ui import UiStrings
 
+
 class ZoomSize(object):
     """
     Type enumeration for Combo Box sizes
@@ -48,6 +49,7 @@ class Ui_PrintServiceDialog(object):
     def setupUi(self, printServiceDialog):
         printServiceDialog.setObjectName(u'printServiceDialog')
         printServiceDialog.resize(664, 594)
+        printServiceDialog.setWindowIcon(build_icon(u':/icon/openlp-logo.svg'))
         self.mainLayout = QtGui.QVBoxLayout(printServiceDialog)
         self.mainLayout.setSpacing(0)
         self.mainLayout.setMargin(0)

@@ -32,6 +32,7 @@ from PyQt4 import QtCore, QtGui
 from openlp.core.lib import translate, build_icon
 from openlp.core.lib.ui import create_button_box
 
+
 class CaptureShortcutButton(QtGui.QPushButton):
     """
     A class to encapsulate a ``QPushButton``.
@@ -54,6 +55,7 @@ class Ui_ShortcutListDialog(object):
     def setupUi(self, shortcutListDialog):
         shortcutListDialog.setObjectName(u'shortcutListDialog')
         shortcutListDialog.resize(500, 438)
+        shortcutListDialog.setWindowIcon(build_icon(u':/icon/openlp-logo.svg'))
         self.shortcutListLayout = QtGui.QVBoxLayout(shortcutListDialog)
         self.shortcutListLayout.setObjectName(u'shortcutListLayout')
         self.descriptionLabel = QtGui.QLabel(shortcutListDialog)

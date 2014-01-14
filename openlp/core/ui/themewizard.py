@@ -35,6 +35,7 @@ from openlp.core.lib.theme import HorizontalType, BackgroundType, \
 from openlp.core.lib.ui import UiStrings, add_welcome_page, \
     create_valign_selection_widgets
 
+
 class Ui_ThemeWizard(object):
     def setupUi(self, themeWizard):
         themeWizard.setObjectName(u'OpenLP.ThemeWizard')
@@ -43,6 +44,7 @@ class Ui_ThemeWizard(object):
         themeWizard.setOptions(QtGui.QWizard.IndependentPages |
             QtGui.QWizard.NoBackButtonOnStartPage |
             QtGui.QWizard.HaveCustomButton1)
+        themeWizard.setWindowIcon(build_icon(u':/icon/openlp-logo.svg'))
         self.spacer = QtGui.QSpacerItem(10, 0,
             QtGui.QSizePolicy.Fixed, QtGui.QSizePolicy.Minimum)
         # Welcome Page

@@ -45,6 +45,7 @@ from openlp.plugins.bibles.lib.db import BiblesResourcesDB, clean_filename
 
 log = logging.getLogger(__name__)
 
+
 class WebDownload(object):
     """
     Provides an enumeration for the web bible types available to OpenLP.

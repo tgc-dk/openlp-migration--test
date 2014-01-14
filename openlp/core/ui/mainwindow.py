@@ -82,13 +82,14 @@ PROGRESSBAR_STYLE = """
     }
 """
 
+
 class Ui_MainWindow(object):
     def setupUi(self, mainWindow):
         """
         Set up the user interface
         """
         mainWindow.setObjectName(u'MainWindow')
-        mainWindow.setWindowIcon(build_icon(u':/icon/openlp-logo-64x64.png'))
+        mainWindow.setWindowIcon(build_icon(u':/icon/openlp-logo.svg'))
         mainWindow.setDockNestingEnabled(True)
         # Set up the main container, which contains all the other form widgets.
         self.mainContent = QtGui.QWidget(mainWindow)

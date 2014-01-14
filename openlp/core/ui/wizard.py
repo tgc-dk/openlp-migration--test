@@ -39,6 +39,7 @@ from openlp.core.lib.ui import UiStrings, add_welcome_page
 
 log = logging.getLogger(__name__)
 
+
 class WizardStrings(object):
     """
     Provide standard strings for wizards to use.
@@ -103,6 +104,7 @@ class OpenLPWizard(QtGui.QWizard):
         """
         Set up the wizard UI.
         """
+        self.setWindowIcon(build_icon(u':/icon/openlp-logo.svg'))
         self.setModal(True)
         self.setWizardStyle(QtGui.QWizard.ModernStyle)
         self.setOptions(QtGui.QWizard.IndependentPages |

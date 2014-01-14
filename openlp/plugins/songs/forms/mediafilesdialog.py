@@ -32,14 +32,14 @@ from PyQt4 import QtCore, QtGui
 from openlp.core.lib import translate, build_icon
 from openlp.core.lib.ui import create_button_box
 
+
 class Ui_MediaFilesDialog(object):
     def setupUi(self, mediaFilesDialog):
         mediaFilesDialog.setObjectName(u'mediaFilesDialog')
         mediaFilesDialog.setWindowModality(QtCore.Qt.ApplicationModal)
         mediaFilesDialog.resize(400, 300)
         mediaFilesDialog.setModal(True)
-        mediaFilesDialog.setWindowIcon(
-            build_icon(u':/icon/openlp-logo-16x16.png'))
+        mediaFilesDialog.setWindowIcon(build_icon(u':/icon/openlp-logo.svg'))
         self.filesVerticalLayout = QtGui.QVBoxLayout(mediaFilesDialog)
         self.filesVerticalLayout.setSpacing(8)
         self.filesVerticalLayout.setMargin(8)

@@ -32,10 +32,12 @@ from PyQt4 import QtGui
 from openlp.core.lib import translate, SpellTextEdit, build_icon
 from openlp.core.lib.ui import UiStrings, create_button, create_button_box
 
+
 class Ui_CustomSlideEditDialog(object):
     def setupUi(self, customSlideEditDialog):
         customSlideEditDialog.setObjectName(u'customSlideEditDialog')
         customSlideEditDialog.resize(350, 300)
+        customSlideEditDialog.setWindowIcon(build_icon(u':/icon/openlp-logo.svg'))
         self.dialogLayout = QtGui.QVBoxLayout(customSlideEditDialog)
         self.slideTextEdit = SpellTextEdit(self)
         self.slideTextEdit.setObjectName(u'slideTextEdit')

@@ -29,13 +29,15 @@
 
 from PyQt4 import QtCore, QtGui
 
-from openlp.core.lib import translate
+from openlp.core.lib import translate, build_icon
 from openlp.core.lib.ui import UiStrings, create_button_box
+
 
 class Ui_FormattingTagDialog(object):
 
     def setupUi(self, formattingTagDialog):
         formattingTagDialog.setObjectName(u'formattingTagDialog')
+        formattingTagDialog.setWindowIcon(build_icon(u':/icon/openlp-logo.svg'))
         formattingTagDialog.resize(725, 548)
         self.listdataGridLayout = QtGui.QGridLayout(formattingTagDialog)
         self.listdataGridLayout.setMargin(8)

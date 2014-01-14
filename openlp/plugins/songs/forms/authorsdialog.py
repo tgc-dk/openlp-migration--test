@@ -29,13 +29,15 @@
 
 from PyQt4 import QtGui
 
-from openlp.core.lib import translate
+from openlp.core.lib import translate, build_icon
 from openlp.core.lib.ui import create_button_box
+
 
 class Ui_AuthorsDialog(object):
     def setupUi(self, authorsDialog):
         authorsDialog.setObjectName(u'AuthorsDialog')
         authorsDialog.resize(300, 10)
+        authorsDialog.setWindowIcon(build_icon(u':/icon/openlp-logo.svg'))
         self.dialogLayout = QtGui.QVBoxLayout(authorsDialog)
         self.dialogLayout.setObjectName(u'dialogLayout')
         self.authorLayout = QtGui.QFormLayout()
