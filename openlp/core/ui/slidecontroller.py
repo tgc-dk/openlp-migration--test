@@ -526,6 +526,7 @@ class SlideController(Controller):
     def liveEscape(self):
         self.display.setVisible(False)
         self.mediaController.video_stop([self])
+        self.onPlaySlidesLoop(False)
 
     def toggleDisplay(self, action):
         """
