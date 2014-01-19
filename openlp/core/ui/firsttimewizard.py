@@ -4,8 +4,8 @@
 ###############################################################################
 # OpenLP - Open Source Lyrics Projection                                      #
 # --------------------------------------------------------------------------- #
-# Copyright (c) 2008-2013 Raoul Snyman                                        #
-# Portions copyright (c) 2008-2013 Tim Bentley, Gerald Britton, Jonathan      #
+# Copyright (c) 2008-2014 Raoul Snyman                                        #
+# Portions copyright (c) 2008-2014 Tim Bentley, Gerald Britton, Jonathan      #
 # Corwin, Samuel Findlay, Michael Gorven, Scott Guerrieri, Matthias Hub,      #
 # Meinert Jordan, Armin Köhler, Erik Lundin, Edwin Lunando, Brian T. Meyer.   #
 # Joshua Miller, Stevan Pettit, Andreas Preikschat, Mattias Põldaru,          #
@@ -31,7 +31,7 @@ from PyQt4 import QtCore, QtGui
 
 import sys
 
-from openlp.core.lib import translate
+from openlp.core.lib import translate, build_icon
 from openlp.core.lib.ui import add_welcome_page
 
 
@@ -59,6 +59,7 @@ class Ui_FirstTimeWizard(object):
             QtGui.QWizard.NoBackButtonOnStartPage |
             QtGui.QWizard.NoBackButtonOnLastPage |
             QtGui.QWizard.HaveCustomButton1)
+        FirstTimeWizard.setWindowIcon(build_icon(u':/icon/openlp-logo.svg'))
         self.finishButton = self.button(QtGui.QWizard.FinishButton)
         self.noInternetFinishButton = self.button(QtGui.QWizard.CustomButton1)
         self.cancelButton = self.button(QtGui.QWizard.CancelButton)
