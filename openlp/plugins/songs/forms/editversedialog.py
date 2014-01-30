@@ -4,8 +4,8 @@
 ###############################################################################
 # OpenLP - Open Source Lyrics Projection                                      #
 # --------------------------------------------------------------------------- #
-# Copyright (c) 2008-2013 Raoul Snyman                                        #
-# Portions copyright (c) 2008-2013 Tim Bentley, Gerald Britton, Jonathan      #
+# Copyright (c) 2008-2014 Raoul Snyman                                        #
+# Portions copyright (c) 2008-2014 Tim Bentley, Gerald Britton, Jonathan      #
 # Corwin, Samuel Findlay, Michael Gorven, Scott Guerrieri, Matthias Hub,      #
 # Meinert Jordan, Armin Köhler, Erik Lundin, Edwin Lunando, Brian T. Meyer.   #
 # Joshua Miller, Stevan Pettit, Andreas Preikschat, Mattias Põldaru,          #
@@ -33,11 +33,13 @@ from openlp.core.lib import build_icon, translate, SpellTextEdit
 from openlp.core.lib.ui import create_button_box, UiStrings
 from openlp.plugins.songs.lib import VerseType
 
+
 class Ui_EditVerseDialog(object):
     def setupUi(self, editVerseDialog):
         editVerseDialog.setObjectName(u'editVerseDialog')
         editVerseDialog.resize(400, 400)
         editVerseDialog.setModal(True)
+        editVerseDialog.setWindowIcon(build_icon(u':/icon/openlp-logo.svg'))
         self.dialogLayout = QtGui.QVBoxLayout(editVerseDialog)
         self.dialogLayout.setObjectName(u'dialogLayout')
         self.verseTextEdit = SpellTextEdit(editVerseDialog)
