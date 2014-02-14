@@ -4,8 +4,8 @@
 ###############################################################################
 # OpenLP - Open Source Lyrics Projection                                      #
 # --------------------------------------------------------------------------- #
-# Copyright (c) 2008-2013 Raoul Snyman                                        #
-# Portions copyright (c) 2008-2013 Tim Bentley, Gerald Britton, Jonathan      #
+# Copyright (c) 2008-2014 Raoul Snyman                                        #
+# Portions copyright (c) 2008-2014 Tim Bentley, Gerald Britton, Jonathan      #
 # Corwin, Samuel Findlay, Michael Gorven, Scott Guerrieri, Matthias Hub,      #
 # Meinert Jordan, Armin Köhler, Erik Lundin, Edwin Lunando, Brian T. Meyer.   #
 # Joshua Miller, Stevan Pettit, Andreas Preikschat, Mattias Põldaru,          #
@@ -35,6 +35,7 @@ from openlp.core.lib.theme import HorizontalType, BackgroundType, \
 from openlp.core.lib.ui import UiStrings, add_welcome_page, \
     create_valign_selection_widgets
 
+
 class Ui_ThemeWizard(object):
     def setupUi(self, themeWizard):
         themeWizard.setObjectName(u'OpenLP.ThemeWizard')
@@ -43,6 +44,7 @@ class Ui_ThemeWizard(object):
         themeWizard.setOptions(QtGui.QWizard.IndependentPages |
             QtGui.QWizard.NoBackButtonOnStartPage |
             QtGui.QWizard.HaveCustomButton1)
+        themeWizard.setWindowIcon(build_icon(u':/icon/openlp-logo.svg'))
         self.spacer = QtGui.QSpacerItem(10, 0,
             QtGui.QSizePolicy.Fixed, QtGui.QSizePolicy.Minimum)
         # Welcome Page

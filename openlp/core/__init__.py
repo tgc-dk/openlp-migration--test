@@ -4,8 +4,8 @@
 ###############################################################################
 # OpenLP - Open Source Lyrics Projection                                      #
 # --------------------------------------------------------------------------- #
-# Copyright (c) 2008-2013 Raoul Snyman                                        #
-# Portions copyright (c) 2008-2013 Tim Bentley, Gerald Britton, Jonathan      #
+# Copyright (c) 2008-2014 Raoul Snyman                                        #
+# Portions copyright (c) 2008-2014 Tim Bentley, Gerald Britton, Jonathan      #
 # Corwin, Samuel Findlay, Michael Gorven, Scott Guerrieri, Matthias Hub,      #
 # Meinert Jordan, Armin Köhler, Erik Lundin, Edwin Lunando, Brian T. Meyer.   #
 # Joshua Miller, Stevan Pettit, Andreas Preikschat, Mattias Põldaru,          #
@@ -220,8 +220,15 @@ class OpenLP(QtGui.QApplication):
             log.debug(u'Got open file event for %s!', file_name)
             self.args.insert(0, unicode(file_name))
             return True
-        else:
-            return QtGui.QApplication.event(self, event)
+        # Mac OS X should restore app window when user clicked on the OpenLP icon
+        # in the Dock bar. However, OpenLP constists of multiple windows and this
+        # does not work. This workaround fixes that.
+        # The main OpenLP window is restored when it was previously minimized.
+        elif event.type() == QtCore.QEvent.ApplicationActivate:
+            if sys.platform.startswith('darwin') and self.mainWindow.isMinimized():
+                self.mainWindow.showNormal()
+                return True
+        return QtGui.QApplication.event(self, event)
 
 
 def set_up_logging(log_path):
