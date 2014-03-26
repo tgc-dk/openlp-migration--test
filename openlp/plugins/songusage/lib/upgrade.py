@@ -30,10 +30,14 @@
 The :mod:`upgrade` module provides a way for the database and schema that is the
 backend for the SongsUsage plugin
 """
+import logging
 
 from sqlalchemy import Column, Table, types
+from sqlalchemy.exc import OperationalError
 
+log = logging.getLogger(__name__)
 __version__ = 1
+
 
 def upgrade_setup(metadata):
     """
@@ -53,7 +57,10 @@ def upgrade_1(session, metadata, tables):
 
     This upgrade adds two new fields to the songusage database
     """
-    Column(u'plugin_name', types.Unicode(20), default=u'') \
-        .create(table=tables[u'songusage_data'], populate_default=True)
-    Column(u'source', types.Unicode(10), default=u'') \
-        .create(table=tables[u'songusage_data'], populate_default=True)
+    try:
+        Column(u'plugin_name', types.Unicode(20), default=u'') \
+            .create(table=tables[u'songusage_data'], populate_default=True)
+        Column(u'source', types.Unicode(10), default=u'') \
+            .create(table=tables[u'songusage_data'], populate_default=True)
+    except OperationalError:
+        log.info(u'Upgrade 1 has already been run, continue with upgrade')
