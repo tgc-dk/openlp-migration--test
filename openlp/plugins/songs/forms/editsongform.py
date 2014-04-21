@@ -739,7 +739,6 @@ class EditSongForm(QtGui.QDialog, Ui_EditSongDialog):
             if verse_tags.count(tag) > 26:
                 # lp#1310523: OpenLyrics allows only a-z variants of one verse:
                 # http://openlyrics.info/dataformat.html#verse-name
-                print tag
                 critical_error_message_box(
                     message=translate('SongsPlugin.EditSongForm',
                     'You have %(count)s verses named %(name)s %(number)s. '
