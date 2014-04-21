@@ -723,19 +723,33 @@ class EditSongForm(QtGui.QDialog, Ui_EditSongDialog):
                 return False
         cnt_errors = 0
         error_list = ''
-        verse_tag = []
-        verse_num = []
+        verse_tags = []
+        wrong_verse_tags = []
+        wrong_verse_nums = []
         for i in range(self.verseListWidget.rowCount()):
             item = self.verseListWidget.item(i, 0)
             tags = self.find_tags.findall(item.text())
+            verse_tags.append(unicode(item.data(QtCore.Qt.UserRole).toString()))
             if self._validate_tags(tags) == False:
                 field = unicode(item.data(QtCore.Qt.UserRole).toString())
-                verse_tag.append(VerseType.translated_name(field[0]))
-                verse_num.append(field[1:])
+                wrong_verse_tags.append(VerseType.translated_name(field[0]))
+                wrong_verse_nums.append(field[1:])
                 cnt_errors += 1;
+        for tag in verse_tags:
+            if verse_tags.count(tag) > 26:
+                # lp#1310523: OpenLyrics allows only a-z variants of one verse:
+                # http://openlyrics.info/dataformat.html#verse-name
+                print tag
+                critical_error_message_box(
+                    message=translate('SongsPlugin.EditSongForm',
+                    'You have %(count)s verses named %(name)s %(number)s. '
+                    'You can have at most 26 verses with the same name' %
+                    {'count': verse_tags.count(tag), 'name': VerseType.translated_name(tag[0]),
+                     'number': tag[1:]}))
+                return False
         if cnt_errors > 0:
             for i in range(cnt_errors):
-                error_list += '%s %s' % (verse_tag[i], verse_num[i])
+                error_list += '%s %s' % (wrong_verse_tags[i], wrong_verse_nums[i])
                 if i < cnt_errors-1:
                     error_list += ', '
             critical_error_message_box(
