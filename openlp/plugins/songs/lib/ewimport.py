@@ -192,7 +192,7 @@ class EasyWorshipSongImport(SongImport):
                     try:
                         result = strip_rtf(words, self.encoding)
                     except UnicodeDecodeError:
-                        # The unicode chars in the rtf was not escaped in the expected manor
+                        # The unicode chars in the rtf was not escaped in the expected manner.
                         self.logError(self.title, unicode(translate('SongsPlugin.EasyWorshipSongImport',
                                                                     'Unexpected data formatting.')))
                         continue
