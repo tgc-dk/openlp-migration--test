@@ -360,9 +360,9 @@ class OpenLyrics(object):
             verse_tag = verse[0][u'type'][0].lower()
             verse_number = verse[0][u'label']
             verse_def = verse_tag + verse_number
-            verse_tags.append(verse_def)
             # Create the letter from the number of duplicates
-            verse[0][u'suffix'] = chr(96 + verse_tags.count(verse_def))
+            verse[0][u'suffix'] = chr(97 + (verse_tags.count(verse_def) % 26))
+            verse_tags.append(verse_def)
         # If the verse tag is a duplicate use the suffix letter
         for verse in verse_list:
             verse_tag = verse[0][u'type'][0].lower()
