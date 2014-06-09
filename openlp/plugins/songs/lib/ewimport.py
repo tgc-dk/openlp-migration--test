@@ -66,18 +66,18 @@ class EasyWorshipSongImport(SongImport):
         # Open the DB and MB files if they exist
         import_source_mb = self.importSource.replace('.DB', '.MB').replace('.db', '.mb')
         if not os.path.isfile(self.importSource):
-            self.log_error(self.import_source, translate('SongsPlugin.EasyWorshipSongImport',
+            self.logError(self.importSource, translate('SongsPlugin.EasyWorshipSongImport',
                                                          'This file does not exist.'))
             return
             return
         if not os.path.isfile(import_source_mb):
-            self.log_error(self.import_source, translate('SongsPlugin.EasyWorshipSongImport',
+            self.logError(self.importSource, translate('SongsPlugin.EasyWorshipSongImport',
                                                          'Could not find the "Songs.MB" file. It must be in the same '
                                                          'folder as the "Songs.DB" file.'))
             return
         db_size = os.path.getsize(self.importSource)
         if db_size < 0x800:
-            self.log_error(self.import_source, translate('SongsPlugin.EasyWorshipSongImport',
+            self.logError(self.importSource, translate('SongsPlugin.EasyWorshipSongImport',
                                                          'This file is no valid EasyWorship Database.'))
             return
         db_file = open(self.importSource, 'rb')
@@ -88,7 +88,7 @@ class EasyWorshipSongImport(SongImport):
         if header_size != 0x800 or block_size < 1 or block_size > 4:
             db_file.close()
             self.memoFile.close()
-            self.log_error(self.import_source, translate('SongsPlugin.EasyWorshipSongImport',
+            self.logError(self.importSource, translate('SongsPlugin.EasyWorshipSongImport',
                                                          'This file is no valid EasyWorship Database.'))
             return
         # Take a stab at how text is encoded
