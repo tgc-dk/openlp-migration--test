@@ -188,7 +188,14 @@ class EasyWorshipSongImport(SongImport):
                         self.addAuthor(author_name.strip())
                 if words:
                     # Format the lyrics
-                    result = strip_rtf(words, self.encoding)
+                    result = None
+                    try:
+                        result = strip_rtf(words, self.encoding)
+                    except UnicodeDecodeError:
+                        # The unicode chars in the rtf was not escaped in the expected manner.
+                        self.logError(self.title, unicode(translate('SongsPlugin.EasyWorshipSongImport',
+                                                                    'Unexpected data formatting.')))
+                        continue
                     if result is None:
                         return
                     words, self.encoding = result

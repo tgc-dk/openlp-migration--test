@@ -37,6 +37,7 @@ from sqlalchemy import Table, func, select, insert
 __version__ = 1
 log = logging.getLogger(__name__)
 
+
 def upgrade_setup(metadata):
     """
     Set up the latest revision all tables, with reflection, needed for the
@@ -61,31 +62,37 @@ def upgrade_1(session, metadata, tables):
     metadata_table = metadata.tables[u'metadata']
     # Copy "Version" to "name" ("version" used by upgrade system)
     # TODO: Clean up in a subsequent release of OpenLP (like 2.0 final)
-    session.execute(insert(metadata_table).values(
-        key=u'name',
-        value=select(
-            [metadata_table.c.value],
-            metadata_table.c.key == u'Version'
-        ).as_scalar()
-    ))
+    if select([metadata_table.c.value], metadata_table.c.key == u'Version')\
+            .as_scalar().execute().fetchall():
+        session.execute(insert(metadata_table).values(
+            key=u'name',
+            value=select(
+                [metadata_table.c.value],
+                metadata_table.c.key == u'Version'
+            ).as_scalar()
+        ))
     # Copy "Copyright" to "copyright"
     # TODO: Clean up in a subsequent release of OpenLP (like 2.0 final)
-    session.execute(insert(metadata_table).values(
-        key=u'copyright',
-        value=select(
-            [metadata_table.c.value],
-            metadata_table.c.key == u'Copyright'
-        ).as_scalar()
-    ))
+    if select([metadata_table.c.value], metadata_table.c.key == u'Copyright')\
+            .as_scalar().execute().fetchall():
+        session.execute(insert(metadata_table).values(
+            key=u'copyright',
+            value=select(
+                [metadata_table.c.value],
+                metadata_table.c.key == u'Copyright'
+            ).as_scalar()
+        ))
     # Copy "Permissions" to "permissions"
     # TODO: Clean up in a subsequent release of OpenLP (like 2.0 final)
-    session.execute(insert(metadata_table).values(
-        key=u'permissions',
-        value=select(
-            [metadata_table.c.value],
-            metadata_table.c.key == u'Permissions'
-        ).as_scalar()
-    ))
+    if select([metadata_table.c.value], metadata_table.c.key == u'Permissions')\
+            .as_scalar().execute().fetchall():
+        session.execute(insert(metadata_table).values(
+            key=u'permissions',
+            value=select(
+                [metadata_table.c.value],
+                metadata_table.c.key == u'Permissions'
+            ).as_scalar()
+        ))
     # Copy "Bookname language" to "book_name_language"
     # TODO: Clean up in a subsequent release of OpenLP (like 2.0 final)
     value_count = session.execute(
