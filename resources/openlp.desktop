@@ -1,6 +1,5 @@
 [Desktop Entry]
 Categories=AudioVideo;
-Comment=Openlp Desktop file
 Exec=openlp %F
 GenericName[de]=Church lyrics projection
 GenericName=Church lyrics projection
