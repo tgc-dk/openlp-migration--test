@@ -64,13 +64,11 @@ class EasyWorshipSongImport(SongImport):
 
     def doImport(self):
         # Open the DB and MB files if they exist
-        import_source_mb = self.importSource.replace('.DB', '.MB')
-            .replace('.db', '.mb')
+        import_source_mb = self.importSource.replace('.DB', '.MB').replace('.db', '.mb')
         if not os.path.isfile(self.importSource):
             self.logError(self.importSource, translate(
                 'SongsPlugin.EasyWorshipSongImport',
                 'This file does not exist.'))
-            return
             return
         if not os.path.isfile(import_source_mb):
             self.logError(self.importSource, translate(
