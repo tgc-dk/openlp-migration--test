@@ -64,13 +64,23 @@ class EasyWorshipSongImport(SongImport):
 
     def doImport(self):
         # Open the DB and MB files if they exist
-        import_source_mb = self.importSource.replace('.DB', '.MB')
+        import_source_mb = self.importSource.replace('.DB', '.MB').replace('.db', '.mb')
         if not os.path.isfile(self.importSource):
+            self.logError(self.importSource, translate(
+                'SongsPlugin.EasyWorshipSongImport',
+                'This file does not exist.'))
             return
         if not os.path.isfile(import_source_mb):
+            self.logError(self.importSource, translate(
+                'SongsPlugin.EasyWorshipSongImport', 
+                'Could not find the "Songs.MB" file. It must be in the same '
+                'folder as the "Songs.DB" file.'))
             return
         db_size = os.path.getsize(self.importSource)
         if db_size < 0x800:
+            self.logError(self.importSource, translate(
+                'SongsPlugin.EasyWorshipSongImport',
+                'This file is not a valid EasyWorship database.'))
             return
         db_file = open(self.importSource, 'rb')
         self.memoFile = open(import_source_mb, 'rb')
@@ -80,6 +90,9 @@ class EasyWorshipSongImport(SongImport):
         if header_size != 0x800 or block_size < 1 or block_size > 4:
             db_file.close()
             self.memoFile.close()
+            self.logError(self.importSource, translate(
+                'SongsPlugin.EasyWorshipSongImport',
+                'This file is not a valid EasyWorship database.'))
             return
         # Take a stab at how text is encoded
         self.encoding = u'cp1252'
@@ -193,8 +206,9 @@ class EasyWorshipSongImport(SongImport):
                         result = strip_rtf(words, self.encoding)
                     except UnicodeDecodeError:
                         # The unicode chars in the rtf was not escaped in the expected manner.
-                        self.logError(self.title, unicode(translate('SongsPlugin.EasyWorshipSongImport',
-                                                                    'Unexpected data formatting.')))
+                        self.logError(self.title, unicode(translate(
+                            'SongsPlugin.EasyWorshipSongImport',
+                            'Unexpected data formatting.')))
                         continue
                     if result is None:
                         return
