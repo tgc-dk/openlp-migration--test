@@ -100,7 +100,7 @@ class PowerpointController(PresentationController):
                 if self.process.Presentations.Count > 0:
                     return
                 self.process.Quit()
-            except pywintypes.com_error:
+            except (AttributeError, pywintypes.com_error):
                 pass
             self.process = None
 
@@ -124,9 +124,9 @@ class PowerpointDocument(PresentationDocument):
         Opens the PowerPoint file using the process created earlier.
         """
         log.debug(u'load_presentation')
-        if not self.controller.process or not self.controller.process.Visible:
-            self.controller.start_process()
         try:
+            if not self.controller.process or not self.controller.process.Visible:
+                self.controller.start_process()
             self.controller.process.Presentations.Open(self.filepath, False,
                 False, True)
         except pywintypes.com_error:
@@ -275,28 +275,44 @@ class PowerpointDocument(PresentationDocument):
         Returns the current slide number.
         """
         log.debug(u'get_slide_number')
-        return self.presentation.SlideShowWindow.View.CurrentShowPosition
+        try:
+            ret = self.presentation.SlideShowWindow.View.CurrentShowPosition
+        except pywintypes.com_error:
+            ret = 0
+            log.error('COM error while in get_slide_number')
+        return ret
 
     def get_slide_count(self):
         """
         Returns total number of slides.
         """
         log.debug(u'get_slide_count')
-        return self.presentation.Slides.Count
+        try:
+            ret = self.presentation.Slides.Count
+        except pywintypes.com_error:
+            ret = 0
+            log.error('COM error while in get_slide_count')
+        return ret
 
     def goto_slide(self, slideno):
         """
         Moves to a specific slide in the presentation.
         """
         log.debug(u'goto_slide')
-        self.presentation.SlideShowWindow.View.GotoSlide(slideno)
+        try:
+            self.presentation.SlideShowWindow.View.GotoSlide(slideno)
+        except pywintypes.com_error:
+            log.error('COM error while in goto_slide')
 
     def next_step(self):
         """
         Triggers the next effect of slide on the running presentation.
         """
         log.debug(u'next_step')
-        self.presentation.SlideShowWindow.View.Next()
+        try:
+            self.presentation.SlideShowWindow.View.Next()
+        except pywintypes.com_error:
+            log.error('COM error while in next_step')
         if self.get_slide_number() > self.get_slide_count():
             self.previous_step()
 
@@ -305,7 +321,10 @@ class PowerpointDocument(PresentationDocument):
         Triggers the previous slide on the running presentation.
         """
         log.debug(u'previous_step')
-        self.presentation.SlideShowWindow.View.Previous()
+        try:
+            self.presentation.SlideShowWindow.View.Previous()
+        except pywintypes.com_error:
+            log.error('COM error while in previous_step')
 
     def get_slide_text(self, slide_no):
         """
