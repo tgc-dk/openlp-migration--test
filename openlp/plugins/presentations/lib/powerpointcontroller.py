@@ -130,16 +130,17 @@ class PowerpointDocument(PresentationDocument):
                 self.controller.start_process()
             self.controller.process.Presentations.Open(self.filepath, False,
                 False, True)
+            self.presentation = self.controller.process.Presentations(
+                self.controller.process.Presentations.Count)
+            self.create_thumbnails()
             # Powerpoint 2013 pops up when loading a file, so we minimize it again
             if self.presentation.Application.Version == u'15.0':
                 self.presentation.ActiveWindow.WindowState = 2
-        except pywintypes.com_error:
-            log.debug(u'PPT open failed')
+            return True
+        except pywintypes.com_error as e:
+            log.error(u'PPT open failed')
+            log.error(e)
             return False
-        self.presentation = self.controller.process.Presentations(
-            self.controller.process.Presentations.Count)
-        self.create_thumbnails()
-        return True
 
     def create_thumbnails(self):
         """
