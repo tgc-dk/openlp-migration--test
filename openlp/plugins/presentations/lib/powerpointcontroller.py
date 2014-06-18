@@ -139,8 +139,13 @@ class PowerpointDocument(PresentationDocument):
                     self.presentation.Application.ActiveWindow.WindowState = 2
                 except:
                     log.error(u'this failed: "self.presentation.Application.ActiveWindow.WindowState = 2", trying option 2...')
-                    log.error(sys.exc_info()[0])
-                    self.presentation.Application.WindowState = 2
+                    log.error(sys.exc_info())
+                    try:
+                        self.presentation.Application.WindowState = 2
+                    except:
+                        log.error(u'option 2 failed as well')
+                        log.error(sys.exc_info())
+
             return True
         except pywintypes.com_error as e:
             log.error(u'PPT open failed')
@@ -306,8 +311,12 @@ class PowerpointDocument(PresentationDocument):
                     self.presentation.Application.ActiveWindow.WindowState = 2
                 except:
                     log.error(u'this failed: "self.presentation.Application.ActiveWindow.WindowState = 2", trying option 2...')
-                    log.error(sys.exc_info()[0])
-                    self.presentation.Application.WindowState = 2
+                    log.error(sys.exc_info())
+                    try:
+                        self.presentation.Application.WindowState = 2
+                    except:
+                        log.error(u'option 2 failed as well')
+                        log.error(sys.exc_info())
 
     def get_slide_number(self):
         """
