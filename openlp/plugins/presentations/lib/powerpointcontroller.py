@@ -135,7 +135,12 @@ class PowerpointDocument(PresentationDocument):
             self.create_thumbnails()
             # Powerpoint 2013 pops up when loading a file, so we minimize it again
             if self.presentation.Application.Version == u'15.0':
-                self.presentation.ActiveWindow.WindowState = 2
+                try:
+                    self.presentation.Application.ActiveWindow.WindowState = 2
+                except:
+                    log.error(u'this failed: "self.presentation.Application.ActiveWindow.WindowState = 2", trying option 2...')
+                    log.error(sys.exc_info()[0])
+                    self.presentation.Application.WindowState = 2
             return True
         except pywintypes.com_error as e:
             log.error(u'PPT open failed')
@@ -297,7 +302,12 @@ class PowerpointDocument(PresentationDocument):
                 log.error(e)
             # Powerpoint 2013 pops up when starting a file, so we minimize it again
             if self.presentation.Application.Version == u'15.0':
-                self.presentation.ActiveWindow.WindowState = 2
+                try:
+                    self.presentation.Application.ActiveWindow.WindowState = 2
+                except:
+                    log.error(u'this failed: "self.presentation.Application.ActiveWindow.WindowState = 2", trying option 2...')
+                    log.error(sys.exc_info()[0])
+                    self.presentation.Application.WindowState = 2
 
     def get_slide_number(self):
         """
