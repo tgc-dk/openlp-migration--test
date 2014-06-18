@@ -250,7 +250,7 @@ class PowerpointDocument(PresentationDocument):
             try:
                 return self.presentation.SlideShowWindow.View.State == 3
             except pywintypes.com_error:
-                log.error(u'COM error while in blank_screen')
+                log.error(u'COM error while in is_blank')
                 log.error(e)
                 return False
         else:
@@ -287,10 +287,14 @@ class PowerpointDocument(PresentationDocument):
             ppt_window = self.presentation.SlideShowSettings.Run()
             if not ppt_window:
                 return
-            ppt_window.Top = rect.y() * 72 / dpi
-            ppt_window.Height = rect.height() * 72 / dpi
-            ppt_window.Left = rect.x() * 72 / dpi
-            ppt_window.Width = rect.width() * 72 / dpi
+            try:
+                ppt_window.Top = rect.y() * 72 / dpi
+                ppt_window.Height = rect.height() * 72 / dpi
+                ppt_window.Left = rect.x() * 72 / dpi
+                ppt_window.Width = rect.width() * 72 / dpi
+            except AttributeError as e:
+                log.error(u'AttributeError while in start_presentation')
+                log.error(e)
             # Powerpoint 2013 pops up when starting a file, so we minimize it again
             if self.presentation.Application.Version == u'15.0':
                 self.presentation.ActiveWindow.WindowState = 2
@@ -383,14 +387,13 @@ class PowerpointDocument(PresentationDocument):
 
     def show_error_msg(self):
         """
-        Close presentation and display an error message.
+        Stop presentation and display an error message.
         """
         self.stop_presentation()
-        self.close_presentation()
         critical_error_message_box(UiStrings().Error, translate('PresentationPlugin.PowerpointDocument', 
                                                                 'An error occurred in the Powerpoint integration '
-                                                                'and the presentation will be closed. '
-                                                                'Reload the presentation if you wish to present it.'))
+                                                                'and the presentation will be stopped. '
+                                                                'Relstart the presentation if you wish to present it.'))
 
 def _get_text_from_shapes(shapes):
     """
