@@ -136,15 +136,9 @@ class PowerpointDocument(PresentationDocument):
             # Powerpoint 2013 pops up when loading a file, so we minimize it again
             if self.presentation.Application.Version == u'15.0':
                 try:
-                    self.presentation.Application.ActiveWindow.WindowState = 2
+                    self.presentation.Application.WindowState = 2
                 except:
-                    log.error(u'this failed: "self.presentation.Application.ActiveWindow.WindowState = 2", trying option 2...')
-                    log.error(sys.exc_info())
-                    try:
-                        self.presentation.Application.WindowState = 2
-                    except:
-                        log.error(u'option 2 failed as well')
-                        log.error(sys.exc_info())
+                    log.error(u'Failed to minimize main powerpoint window')
 
             return True
         except pywintypes.com_error as e:
@@ -308,15 +302,9 @@ class PowerpointDocument(PresentationDocument):
             # Powerpoint 2013 pops up when starting a file, so we minimize it again
             if self.presentation.Application.Version == u'15.0':
                 try:
-                    self.presentation.Application.ActiveWindow.WindowState = 2
+                    self.presentation.Application.WindowState = 2
                 except:
-                    log.error(u'this failed: "self.presentation.Application.ActiveWindow.WindowState = 2", trying option 2...')
-                    log.error(sys.exc_info())
-                    try:
-                        self.presentation.Application.WindowState = 2
-                    except:
-                        log.error(u'option 2 failed as well')
-                        log.error(sys.exc_info())
+                    log.error(u'Failed to minimize main powerpoint window')
 
     def get_slide_number(self):
         """
