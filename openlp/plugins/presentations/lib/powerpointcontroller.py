@@ -228,7 +228,7 @@ class PowerpointDocument(PresentationDocument):
                 self.presentation.SlideShowWindow.View.GotoSlide(slide)
                 if click:
                     self.presentation.SlideShowWindow.View.GotoClick(click)
-        except pywintypes.com_error:
+        except pywintypes.com_error as e:
             log.error(u'COM error while in unblank_screen')
             log.error(e)
             self.show_error_msg()
@@ -240,7 +240,7 @@ class PowerpointDocument(PresentationDocument):
         log.debug(u'blank_screen')
         try:
             self.presentation.SlideShowWindow.View.State = 3
-        except pywintypes.com_error:
+        except pywintypes.com_error as e:
             log.error(u'COM error while in blank_screen')
             log.error(e)
             self.show_error_msg()
@@ -253,7 +253,7 @@ class PowerpointDocument(PresentationDocument):
         if self.is_active():
             try:
                 return self.presentation.SlideShowWindow.View.State == 3
-            except pywintypes.com_error:
+            except pywintypes.com_error as e:
                 log.error(u'COM error while in is_blank')
                 log.error(e)
                 return False
@@ -267,7 +267,7 @@ class PowerpointDocument(PresentationDocument):
         log.debug(u'stop_presentation')
         try:
             self.presentation.SlideShowWindow.View.Exit()
-        except pywintypes.com_error:
+        except pywintypes.com_error as e:
             log.error(u'COM error while in stop_presentation')
             log.error(e)
 
@@ -313,7 +313,7 @@ class PowerpointDocument(PresentationDocument):
         log.debug(u'get_slide_number')
         try:
             ret = self.presentation.SlideShowWindow.View.CurrentShowPosition
-        except pywintypes.com_error:
+        except pywintypes.com_error as e:
             ret = 0
             log.error(u'COM error while in get_slide_number')
             log.error(e)
@@ -327,7 +327,7 @@ class PowerpointDocument(PresentationDocument):
         log.debug(u'get_slide_count')
         try:
             ret = self.presentation.Slides.Count
-        except pywintypes.com_error:
+        except pywintypes.com_error as e:
             ret = 0
             log.error(u'COM error while in get_slide_count')
             log.error(e)
@@ -341,7 +341,7 @@ class PowerpointDocument(PresentationDocument):
         log.debug(u'goto_slide')
         try:
             self.presentation.SlideShowWindow.View.GotoSlide(slideno)
-        except pywintypes.com_error:
+        except pywintypes.com_error as e:
             log.error(u'COM error while in goto_slide')
             log.error(e)
             self.show_error_msg()
@@ -353,7 +353,7 @@ class PowerpointDocument(PresentationDocument):
         log.debug(u'next_step')
         try:
             self.presentation.SlideShowWindow.View.Next()
-        except pywintypes.com_error:
+        except pywintypes.com_error as e:
             log.error(u'COM error while in next_step')
             log.error(e)
             self.show_error_msg()
