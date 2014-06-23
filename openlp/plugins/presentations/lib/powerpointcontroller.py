@@ -400,7 +400,7 @@ class PowerpointDocument(PresentationDocument):
         critical_error_message_box(UiStrings().Error, translate('PresentationPlugin.PowerpointDocument', 
                                                                 'An error occurred in the Powerpoint integration '
                                                                 'and the presentation will be stopped. '
-                                                                'Relstart the presentation if you wish to present it.'))
+                                                                'Restart the presentation if you wish to present it.'))
 
 def _get_text_from_shapes(shapes):
     """
