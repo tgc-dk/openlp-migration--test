@@ -138,12 +138,14 @@ class PowerpointDocument(PresentationDocument):
                 try:
                     self.presentation.Application.WindowState = 2
                 except:
-                    log.error(u'Failed to minimize main powerpoint window')
-
+                    log.exception(u'Failed to minimize main powerpoint window')
+                    exc_type, exc_value, exc_traceback = sys.exc_info()
+                    log.exception(''.join(traceback.format_exception(exc_type, exc_value, exc_traceback)))
             return True
-        except pywintypes.com_error as e:
-            log.error(u'PPT open failed')
-            log.error(e)
+        except pywintypes.com_error:
+            log.exception(u'PPT open failed')
+            exc_type, exc_value, exc_traceback = sys.exc_info()
+            log.exception(''.join(traceback.format_exception(exc_type, exc_value, exc_traceback)))
             return False
 
     def create_thumbnails(self):
@@ -228,9 +230,10 @@ class PowerpointDocument(PresentationDocument):
                 self.presentation.SlideShowWindow.View.GotoSlide(slide)
                 if click:
                     self.presentation.SlideShowWindow.View.GotoClick(click)
-        except pywintypes.com_error as e:
-            log.error(u'COM error while in unblank_screen')
-            log.error(e)
+        except pywintypes.com_error:
+            log.exception(u'COM error while in unblank_screen')
+            exc_type, exc_value, exc_traceback = sys.exc_info()
+            log.exception(''.join(traceback.format_exception(exc_type, exc_value, exc_traceback)))
             self.show_error_msg()
 
     def blank_screen(self):
@@ -240,9 +243,10 @@ class PowerpointDocument(PresentationDocument):
         log.debug(u'blank_screen')
         try:
             self.presentation.SlideShowWindow.View.State = 3
-        except pywintypes.com_error as e:
-            log.error(u'COM error while in blank_screen')
-            log.error(e)
+        except pywintypes.com_error:
+            log.exception(u'COM error while in blank_screen')
+            exc_type, exc_value, exc_traceback = sys.exc_info()
+            log.exception(''.join(traceback.format_exception(exc_type, exc_value, exc_traceback)))
             self.show_error_msg()
 
     def is_blank(self):
@@ -253,9 +257,10 @@ class PowerpointDocument(PresentationDocument):
         if self.is_active():
             try:
                 return self.presentation.SlideShowWindow.View.State == 3
-            except pywintypes.com_error as e:
-                log.error(u'COM error while in is_blank')
-                log.error(e)
+            except pywintypes.com_error:
+                log.exception(u'COM error while in is_blank')
+                exc_type, exc_value, exc_traceback = sys.exc_info()
+                log.exception(''.join(traceback.format_exception(exc_type, exc_value, exc_traceback)))
                 return False
         else:
             return False
@@ -268,9 +273,9 @@ class PowerpointDocument(PresentationDocument):
         try:
             self.presentation.SlideShowWindow.View.Exit()
         except pywintypes.com_error as e:
-            log.error(u'COM error while in stop_presentation')
-            log.error(e)
-
+            log.exception(u'COM error while in stop_presentation')
+            exc_type, exc_value, exc_traceback = sys.exc_info()
+            log.exception(''.join(traceback.format_exception(exc_type, exc_value, exc_traceback)))
     if os.name == u'nt':
         def start_presentation(self):
             """
@@ -297,14 +302,17 @@ class PowerpointDocument(PresentationDocument):
                 ppt_window.Left = rect.x() * 72 / dpi
                 ppt_window.Width = rect.width() * 72 / dpi
             except AttributeError as e:
-                log.error(u'AttributeError while in start_presentation')
-                log.error(e)
+                log.exception(u'AttributeError while in start_presentation')
+                exc_type, exc_value, exc_traceback = sys.exc_info()
+                log.exception(''.join(traceback.format_exception(exc_type, exc_value, exc_traceback)))
             # Powerpoint 2013 pops up when starting a file, so we minimize it again
             if self.presentation.Application.Version == u'15.0':
                 try:
                     self.presentation.Application.WindowState = 2
                 except:
-                    log.error(u'Failed to minimize main powerpoint window')
+                    log.exception(u'Failed to minimize main powerpoint window')
+                    exc_type, exc_value, exc_traceback = sys.exc_info()
+                    log.exception(''.join(traceback.format_exception(exc_type, exc_value, exc_traceback)))
 
     def get_slide_number(self):
         """
@@ -315,8 +323,9 @@ class PowerpointDocument(PresentationDocument):
             ret = self.presentation.SlideShowWindow.View.CurrentShowPosition
         except pywintypes.com_error as e:
             ret = 0
-            log.error(u'COM error while in get_slide_number')
-            log.error(e)
+            log.exception(u'COM error while in get_slide_number')
+            exc_type, exc_value, exc_traceback = sys.exc_info()
+            log.exception(''.join(traceback.format_exception(exc_type, exc_value, exc_traceback)))
             self.show_error_msg()
         return ret
 
@@ -329,8 +338,9 @@ class PowerpointDocument(PresentationDocument):
             ret = self.presentation.Slides.Count
         except pywintypes.com_error as e:
             ret = 0
-            log.error(u'COM error while in get_slide_count')
-            log.error(e)
+            log.exception(u'COM error while in get_slide_count')
+            exc_type, exc_value, exc_traceback = sys.exc_info()
+            log.exception(''.join(traceback.format_exception(exc_type, exc_value, exc_traceback)))
             self.show_error_msg()
         return ret
 
@@ -342,8 +352,9 @@ class PowerpointDocument(PresentationDocument):
         try:
             self.presentation.SlideShowWindow.View.GotoSlide(slideno)
         except pywintypes.com_error as e:
-            log.error(u'COM error while in goto_slide')
-            log.error(e)
+            log.exception(u'COM error while in goto_slide')
+            exc_type, exc_value, exc_traceback = sys.exc_info()
+            log.exception(''.join(traceback.format_exception(exc_type, exc_value, exc_traceback)))
             self.show_error_msg()
 
     def next_step(self):
@@ -354,8 +365,9 @@ class PowerpointDocument(PresentationDocument):
         try:
             self.presentation.SlideShowWindow.View.Next()
         except pywintypes.com_error as e:
-            log.error(u'COM error while in next_step')
-            log.error(e)
+            log.exception(u'COM error while in next_step')
+            exc_type, exc_value, exc_traceback = sys.exc_info()
+            log.exception(''.join(traceback.format_exception(exc_type, exc_value, exc_traceback)))
             self.show_error_msg()
             return
         if self.get_slide_number() > self.get_slide_count():
@@ -369,8 +381,9 @@ class PowerpointDocument(PresentationDocument):
         try:
             self.presentation.SlideShowWindow.View.Previous()
         except pywintypes.com_error as e:
-            log.error(u'COM error while in previous_step')
-            log.error(e)
+            log.exception(u'COM error while in previous_step')
+            exc_type, exc_value, exc_traceback = sys.exc_info()
+            log.exception(''.join(traceback.format_exception(exc_type, exc_value, exc_traceback)))
             self.show_error_msg()
 
     def get_slide_text(self, slide_no):
