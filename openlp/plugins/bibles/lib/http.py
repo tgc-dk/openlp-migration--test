@@ -238,7 +238,7 @@ class BGExtract(object):
             version)
         cleaner = [(re.compile('&nbsp;|<br />|\'\+\''), lambda match: '')]
         soup = get_soup_for_bible_ref(
-            u'http://www.biblegateway.com/passage/?%s' % url_params,
+            u'http://legacy.biblegateway.com/passage/?%s' % url_params,
             pre_parse_regex=r'<meta name.*?/>', pre_parse_substitute='',
             cleaner=cleaner)
         if not soup:
@@ -271,7 +271,7 @@ class BGExtract(object):
         log.debug(u'BGExtract.get_books_from_http("%s")', version)
         url_params = urllib.urlencode(
             {u'action': 'getVersionInfo', u'vid': u'%s' % version})
-        reference_url = u'http://www.biblegateway.com/versions/?%s#books' % \
+        reference_url = u'http://legacy.biblegateway.com/versions/?%s#books' % \
             url_params
         page = get_web_page(reference_url)
         if not page:
