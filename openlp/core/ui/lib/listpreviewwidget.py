@@ -152,9 +152,6 @@ class ListPreviewWidget(QtWidgets.QTableWidget, RegistryProperties):
                 else:
                     label.setScaledContents(True)
                 if self.service_item.is_command():
-                    #pixmap = QtGui.QPixmap(frame['image'])
-                    #pixmap.setDevicePixelRatio(label.devicePixelRatio())
-                    #label.setPixmap(pixmap)
                     image = self.image_manager.get_image(frame['image'], ImageSource.PresentationPlugin)
                 else:
                     image = self.image_manager.get_image(frame['path'], ImageSource.ImagePlugin)
