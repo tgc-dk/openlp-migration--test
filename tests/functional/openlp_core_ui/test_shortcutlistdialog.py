@@ -20,42 +20,41 @@
 # Temple Place, Suite 330, Boston, MA 02111-1307 USA                          #
 ###############################################################################
 """
-Package to test the openlp.core.ui.firsttimeform package.
+Package to test the openlp.core.ui.shortcutlistdialog package.
 """
-from unittest import TestCase
+from PyQt5 import QtCore, QtGui, QtWidgets
 
-from openlp.core.ui.aboutform import AboutForm
+from openlp.core.ui.shortcutlistdialog import CaptureShortcutButton, ShortcutTreeWidget
 
-from tests.functional import patch
-from tests.helpers.testmixin import TestMixin
+from tests.interfaces import MagicMock, patch
 
 
-class TestFirstTimeForm(TestCase, TestMixin):
+def test_key_press_event():
+    """
+    Test the keyPressEvent method
+    """
+    # GIVEN: A checked button and a mocked event
+    button = CaptureShortcutButton()
+    button.setChecked(True)
+    mocked_event = MagicMock()
+    mocked_event.key.return_value = QtCore.Qt.Key_Space
 
-    @patch('openlp.core.ui.aboutform.webbrowser')
-    def test_on_volunteer_button_clicked(self, mocked_webbrowser):
-        """
-        Test that clicking on the "Volunteer" button opens a web page.
-        """
-        # GIVEN: A new About dialog and a mocked out webbrowser module
-        about_form = AboutForm(None)
+    # WHEN: keyPressEvent is called with an event that should be ignored
+    button.keyPressEvent(mocked_event)
 
-        # WHEN: The "Volunteer" button is "clicked"
-        about_form.on_volunteer_button_clicked()
+    # THEN: The ignore() method on the event should have been called
+    mocked_event.ignore.assert_called_once_with()
 
-        # THEN: A web browser is opened
-        mocked_webbrowser.open_new.assert_called_with('http://openlp.org/en/contribute')
 
-    @patch('openlp.core.ui.aboutform.get_application_version')
-    def test_about_form_build_number(self, mocked_get_application_version):
-        """
-        Test that the build number is added to the about form
-        """
-        # GIVEN: A mocked out get_application_version function
-        mocked_get_application_version.return_value = {'version': '3.1.5', 'build': '3000'}
+def test_keyboard_search():
+    """
+    Test the keyboardSearch method of the ShortcutTreeWidget
+    """
+    # GIVEN: A ShortcutTreeWidget
+    widget = ShortcutTreeWidget()
 
-        # WHEN: The about form is created
-        about_form = AboutForm(None)
+    # WHEN: keyboardSearch() is called
+    widget.keyboardSearch('')
 
-        # THEN: The build number should be in the text
-        assert 'OpenLP 3.1.5 build 3000' in about_form.about_text_edit.toPlainText()
+    # THEN: Nothing happens
+    assert True
