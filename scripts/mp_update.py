@@ -17,6 +17,7 @@ def parse_args():
                         help='The main part of the URL to the merge proposal, without the hostname.')
     parser.add_argument('-m', '--message', required=True,
                         help='The comment to add to the merge proposal')
+    parser.add_argument('-s', '--subject', default=None, help='The subject for the comment')
     return parser.parse_args()
 
 
@@ -34,11 +35,13 @@ def get_merge_proposal(merge_proposal_url):
     return None
 
 
-def create_comment(merge_proposal, comment):
+def create_comment(merge_proposal, comment, subject):
     """
     Create a comment on the merge proposal
     """
-    merge_proposal.createComment(subject='comment', content=comment)
+    if not subject:
+        subject = 'Jenkins test update'
+    merge_proposal.createComment(subject, content=comment)
 
 
 def main():
@@ -51,7 +54,7 @@ def main():
         print('No merge proposal with that URL found')
         sys.exit(1)
     else:
-        create_comment(merge_proposal, args.message)
+        create_comment(merge_proposal, args.message, args.subject)
 
 
 if __name__ == '__main__':
