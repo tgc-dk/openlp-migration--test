@@ -1,7 +1,11 @@
 #!/usr/bin/env python2
 import sys
+import os
 from argparse import ArgumentParser
+from launchpadlib.credentials import UnencryptedFileCredentialStore
 from launchpadlib.launchpad import Launchpad
+
+HERE = os.path.dirname(os.path.abspath(__file__))
 
 
 def parse_args():
@@ -20,7 +24,8 @@ def get_merge_proposal(merge_proposal_url):
     """
     Get the merge proposal for the ``merge_proposal_url``
     """
-    lp = Launchpad.login_with('OpenLP CI', 'production', version='devel')
+    lp = Launchpad.login_with('OpenLP CI', 'production', version='devel',
+                              credential_store=UnencryptedFileCredentialStore(os.path.join(HERE, 'launchpadcreds.txt')))
     openlp_project = lp.projects['openlp']
     merge_proposals = openlp_project.getMergeProposals()
     for merge_proposal in merge_proposals:
