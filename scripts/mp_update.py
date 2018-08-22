@@ -24,7 +24,7 @@ def get_merge_proposal(merge_proposal_url):
     openlp_project = lp.projects['openlp']
     merge_proposals = openlp_project.getMergeProposals()
     for merge_proposal in merge_proposals:
-        if str(merge_proposal).endwith(merge_proposal_url):
+        if str(merge_proposal).endswith(merge_proposal_url):
             return merge_proposal
     return None
 
@@ -47,3 +47,7 @@ def main():
         sys.exit(1)
     else:
         create_comment(merge_proposal, args.message)
+
+
+if __name__ == '__main__':
+    main()
