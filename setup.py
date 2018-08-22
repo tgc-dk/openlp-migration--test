@@ -99,10 +99,11 @@ try:
     if tree_revision == tag_revision:
         version_string = tag_version.decode('utf-8')
     else:
-        version_string = '%s-bzr%s' % (tag_version.decode('utf-8'), tree_revision.decode('utf-8'))
+        version_string = '{version}-dev{revision}'.format(version=tag_version.decode('utf-8'),
+                                                          revision=tree_revision.decode('utf-8'))
     ver_file = open(VERSION_FILE, 'w')
     ver_file.write(version_string)
-except:
+except Exception:
     ver_file = open(VERSION_FILE, 'r')
     version_string = ver_file.read().strip()
 finally:
