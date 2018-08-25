@@ -24,7 +24,7 @@ Package to test the openlp.core.ui.formattingtagscontroller package.
 """
 from unittest import TestCase
 
-from openlp.core.ui import FormattingTagController
+from openlp.core.ui.formattingtagcontroller import FormattingTagController
 
 
 class TestFormattingTagController(TestCase):

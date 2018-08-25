@@ -32,7 +32,7 @@ from PyQt5 import QtWidgets
 
 from openlp.core.common.path import Path
 from openlp.core.common.registry import Registry
-from openlp.core.ui import ThemeManager
+from openlp.core.ui.thememanager import ThemeManager
 from tests.utils.constants import RESOURCE_PATH
 
 

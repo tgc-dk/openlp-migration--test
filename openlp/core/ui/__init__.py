@@ -93,30 +93,4 @@ class SingleColumnTableWidget(QtWidgets.QTableWidget):
             self.resizeRowsToContents()
 
 
-from .starttimeform import StartTimeForm
-from .maindisplay import MainDisplay, Display, AudioPlayer
-from .servicenoteform import ServiceNoteForm
-from .serviceitemeditform import ServiceItemEditForm
-from .slidecontroller import SlideController, DisplayController, PreviewController, LiveController
-from .splashscreen import SplashScreen
-from .generaltab import GeneralTab
-from .themestab import ThemesTab
-from .advancedtab import AdvancedTab
-from .aboutform import AboutForm
-from .pluginform import PluginForm
-from .formattingtagform import FormattingTagForm
-from .formattingtagcontroller import FormattingTagController
-from .shortcutlistform import ShortcutListForm
-from .servicemanager import ServiceManager
-from .thememanager import ThemeManager
-
-from openlp.core.projectors.editform import ProjectorEditForm
-from openlp.core.projectors.manager import ProjectorManager
-from openlp.core.projectors.tab import ProjectorTab
-
-__all__ = ['SplashScreen', 'AboutForm', 'MainDisplay', 'SlideController', 'ServiceManager',
-           'ThemeManager', 'ServiceItemEditForm', 'Display', 'AudioPlayer',
-           'ServiceNoteForm', 'StartTimeForm', 'MainDisplay',
-           'SlideController', 'DisplayController', 'GeneralTab', 'ThemesTab', 'AdvancedTab', 'PluginForm',
-           'FormattingTagForm', 'ShortcutListForm', 'FormattingTagController', 'SingleColumnTableWidget',
-           'ProjectorManager', 'ProjectorTab', 'ProjectorEditForm', 'LiveController', 'PreviewController']
+__all__ = ['SingleColumnTableWidget']

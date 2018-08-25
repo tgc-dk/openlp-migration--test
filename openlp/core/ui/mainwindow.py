@@ -48,8 +48,13 @@ from openlp.core.lib.plugin import PluginStatus
 from openlp.core.lib.pluginmanager import PluginManager
 from openlp.core.lib.ui import create_action
 from openlp.core.projectors.manager import ProjectorManager
-from openlp.core.ui import AboutForm, ServiceManager, ThemeManager, LiveController, PluginForm, \
-    ShortcutListForm, FormattingTagForm, PreviewController
+from openlp.core.ui.shortcutlistform import ShortcutListForm
+from openlp.core.ui.formattingtagform import FormattingTagForm
+from openlp.core.ui.thememanager import ThemeManager
+from openlp.core.ui.servicemanager import ServiceManager
+from openlp.core.ui.aboutform import AboutForm
+from openlp.core.ui.pluginform import PluginForm
+from openlp.core.ui.slidecontroller import LiveController, PreviewController
 from openlp.core.ui.settingsform import SettingsForm
 from openlp.core.ui.firsttimeform import FirstTimeForm
 from openlp.core.ui.media import MediaController
