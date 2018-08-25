@@ -30,7 +30,7 @@ import PyQt5
 
 from openlp.core.common import ThemeLevel
 from openlp.core.common.registry import Registry
-from openlp.core.lib import ServiceItem, ServiceItemType, ItemCapabilities
+from openlp.core.lib.serviceitem import ServiceItem, ServiceItemType, ItemCapabilities
 from openlp.core.ui import ServiceManager
 from openlp.core.widgets.toolbar import OpenLPToolbar
 

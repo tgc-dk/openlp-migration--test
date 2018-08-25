@@ -28,7 +28,7 @@ from unittest.mock import MagicMock, patch
 from PyQt5 import QtGui, QtWidgets
 
 from openlp.core.common.registry import Registry
-from openlp.core.lib import ServiceItem
+from openlp.core.lib.serviceitem import ServiceItem
 from openlp.core.widgets.views import ListPreviewWidget
 from tests.helpers.testmixin import TestMixin
 from tests.utils.osdinteraction import read_service_from_file

@@ -31,8 +31,9 @@ from openlp.core.common.mixins import RegistryProperties
 from openlp.core.common.path import Path, path_to_str, create_paths
 from openlp.core.common.registry import Registry
 from openlp.core.common.settings import Settings
-from openlp.core.lib import ItemCapabilities, MediaManagerItem, MediaType, ServiceItem, ServiceItemContext, \
-    check_item_selected
+from openlp.core.lib import MediaType, ServiceItemContext, check_item_selected
+from openlp.core.lib.mediamanageritem import MediaManagerItem
+from openlp.core.lib.serviceitem import ItemCapabilities, ServiceItem
 from openlp.core.lib.ui import create_widget_action, critical_error_message_box, create_horizontal_adjusting_combo_box
 from openlp.core.ui import DisplayControllerType
 from openlp.core.ui.icons import UiIcons

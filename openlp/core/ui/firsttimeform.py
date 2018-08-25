@@ -40,7 +40,8 @@ from openlp.core.common.mixins import RegistryProperties
 from openlp.core.common.path import Path, create_paths
 from openlp.core.common.registry import Registry
 from openlp.core.common.settings import Settings
-from openlp.core.lib import PluginStatus, build_icon
+from openlp.core.lib import build_icon
+from openlp.core.lib.plugin import PluginStatus
 from openlp.core.lib.ui import critical_error_message_box
 from openlp.core.threading import ThreadWorker, run_thread, get_thread_worker, is_thread_finished
 from openlp.core.ui.firsttimewizard import UiFirstTimeWizard, FirstTimePage

@@ -27,7 +27,8 @@ import logging
 from PyQt5 import QtWidgets
 
 from openlp.core.display.screens import ScreenList
-from openlp.core.lib import StringContent, build_icon
+from openlp.core.lib import build_icon
+from openlp.core.lib.plugin import StringContent
 
 log = logging.getLogger(__name__)
 

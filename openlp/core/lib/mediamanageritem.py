@@ -33,7 +33,9 @@ from openlp.core.common.mixins import RegistryProperties
 from openlp.core.common.path import path_to_str, str_to_path
 from openlp.core.common.registry import Registry
 from openlp.core.common.settings import Settings
-from openlp.core.lib import ServiceItem, StringContent, ServiceItemContext
+from openlp.core.lib import ServiceItemContext
+from openlp.core.lib.plugin import StringContent
+from openlp.core.lib.serviceitem import ServiceItem
 from openlp.core.lib.ui import create_widget_action, critical_error_message_box
 from openlp.core.widgets.dialogs import FileDialog
 from openlp.core.widgets.edits import SearchEdit

@@ -36,11 +36,13 @@ from openlp.core.common.mixins import LogMixin, RegistryProperties
 from openlp.core.common.path import Path, copyfile, create_paths, path_to_str
 from openlp.core.common.registry import Registry, RegistryBase
 from openlp.core.common.settings import Settings
-from openlp.core.lib import ImageSource, ValidationError, get_text_file_string, build_icon, \
+from openlp.core.lib import ImageSource, get_text_file_string, build_icon, \
     check_item_selected, create_thumb, validate_thumb
+from openlp.core.lib.exceptions import ValidationError
 from openlp.core.lib.theme import Theme, BackgroundType
 from openlp.core.lib.ui import critical_error_message_box, create_widget_action
-from openlp.core.ui import FileRenameForm, ThemeForm
+from openlp.core.ui.filerenameform import FileRenameForm
+from openlp.core.ui.themeform import ThemeForm
 from openlp.core.widgets.dialogs import FileDialog
 from openlp.core.widgets.toolbar import OpenLPToolbar
 

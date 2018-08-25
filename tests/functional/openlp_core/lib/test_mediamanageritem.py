@@ -25,7 +25,7 @@ Package to test the openlp.core.lib.mediamanageritem package.
 from unittest import TestCase
 from unittest.mock import MagicMock, patch
 
-from openlp.core.lib import MediaManagerItem
+from openlp.core.lib.mediamanageritem import MediaManagerItem
 from tests.helpers.testmixin import TestMixin
 
 

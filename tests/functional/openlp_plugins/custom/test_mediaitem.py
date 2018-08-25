@@ -28,7 +28,8 @@ from unittest.mock import patch, MagicMock
 from PyQt5 import QtCore
 
 from openlp.core.common.registry import Registry
-from openlp.core.lib import ServiceItem, PluginStatus
+from openlp.core.lib.plugin import PluginStatus
+from openlp.core.lib.serviceitem import ServiceItem
 from openlp.plugins.custom.lib import CustomMediaItem
 from tests.helpers.testmixin import TestMixin
 

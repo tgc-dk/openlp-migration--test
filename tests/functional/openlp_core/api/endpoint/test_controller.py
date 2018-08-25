@@ -28,7 +28,7 @@ from openlp.core.common.registry import Registry
 from openlp.core.api.endpoint.controller import controller_text, controller_direction
 from openlp.core.display.renderer import Renderer
 from openlp.core.display.screens import ScreenList
-from openlp.core.lib import ServiceItem
+from openlp.core.lib.serviceitem import ServiceItem
 
 from tests.utils import convert_file_service_item
 from tests.utils.constants import RESOURCE_PATH

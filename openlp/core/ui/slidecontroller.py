@@ -36,7 +36,9 @@ from openlp.core.common.mixins import LogMixin, RegistryProperties
 from openlp.core.common.registry import Registry, RegistryBase
 from openlp.core.common.settings import Settings
 from openlp.core.display.screens import ScreenList
-from openlp.core.lib import ItemCapabilities, ServiceItem, ImageSource, ServiceItemAction, build_icon, build_html
+from openlp.core.lib import ImageSource, ServiceItemAction, build_icon
+from openlp.core.lib.htmlbuilder import build_html
+from openlp.core.lib.serviceitem import ServiceItem, ItemCapabilities
 from openlp.core.lib.ui import create_action
 from openlp.core.ui import HideMode, MainDisplay, Display, DisplayControllerType
 from openlp.core.ui.icons import UiIcons

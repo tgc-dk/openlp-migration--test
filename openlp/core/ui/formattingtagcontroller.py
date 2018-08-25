@@ -27,7 +27,7 @@ cannot be changed.
 import re
 
 from openlp.core.common.i18n import translate
-from openlp.core.lib import FormattingTags
+from openlp.core.lib.formattingtags import FormattingTags
 
 
 class FormattingTagController(object):

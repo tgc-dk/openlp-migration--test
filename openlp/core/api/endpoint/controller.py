@@ -31,7 +31,8 @@ from openlp.core.common.applocation import AppLocation
 from openlp.core.common.path import Path
 from openlp.core.common.registry import Registry
 from openlp.core.common.settings import Settings
-from openlp.core.lib import ItemCapabilities, create_thumb
+from openlp.core.lib import create_thumb
+from openlp.core.lib.serviceitem import ItemCapabilities
 
 log = logging.getLogger(__name__)
 

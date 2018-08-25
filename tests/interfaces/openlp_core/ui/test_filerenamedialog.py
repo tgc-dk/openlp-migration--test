@@ -28,7 +28,7 @@ from unittest.mock import MagicMock, patch
 from PyQt5 import QtTest, QtWidgets
 
 from openlp.core.common.registry import Registry
-from openlp.core.ui import filerenameform
+from openlp.core.ui.filerenameform import FileRenameForm
 from tests.helpers.testmixin import TestMixin
 
 
@@ -42,7 +42,7 @@ class TestStartFileRenameForm(TestCase, TestMixin):
         self.setup_application()
         self.main_window = QtWidgets.QMainWindow()
         Registry().register('main_window', self.main_window)
-        self.form = filerenameform.FileRenameForm()
+        self.form = FileRenameForm()
 
     def tearDown(self):
         """

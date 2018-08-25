@@ -26,7 +26,7 @@ from unittest import TestCase
 from unittest.mock import MagicMock, patch
 
 from openlp.core.common.path import Path
-from openlp.core.ui import ThemeForm
+from openlp.core.ui.themeform import ThemeForm
 
 
 class TestThemeManager(TestCase):
@@ -34,7 +34,7 @@ class TestThemeManager(TestCase):
     Test the functions in the ThemeManager Class
     """
     def setUp(self):
-        with patch('openlp.core.ui.ThemeForm._setup'):
+        with patch('openlp.core.ui.themeform.ThemeForm._setup'):
             self.instance = ThemeForm(None)
 
     def test_on_image_path_edit_path_changed(self):

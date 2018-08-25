@@ -63,7 +63,7 @@ from lxml import etree, objectify
 
 from openlp.core.common.i18n import translate
 from openlp.core.common.settings import Settings
-from openlp.core.lib import FormattingTags
+from openlp.core.lib.formattingtags import FormattingTags
 from openlp.core.version import get_version
 from openlp.plugins.songs.lib import VerseType, clean_song
 from openlp.plugins.songs.lib.db import Author, AuthorType, Book, Song, Topic
