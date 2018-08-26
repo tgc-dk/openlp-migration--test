@@ -31,8 +31,11 @@ from openlp.core.common.path import path_to_str
 from openlp.core.common.registry import Registry, RegistryBase
 from openlp.core.common.settings import Settings
 from openlp.core.display.screens import ScreenList
-from openlp.core.lib import FormattingTags, ImageSource, ItemCapabilities, ServiceItem, expand_tags, build_chords_css, \
-    build_lyrics_format_css, build_lyrics_outline_css
+from openlp.core.lib import ImageSource, expand_tags
+from openlp.core.lib.htmlbuilder import build_chords_css, build_lyrics_format_css, \
+    build_lyrics_outline_css
+from openlp.core.lib.formattingtags import FormattingTags
+from openlp.core.lib.serviceitem import ServiceItem, ItemCapabilities
 from openlp.core.ui.maindisplay import MainDisplay
 
 VERSE = 'The Lord said to {r}Noah{/r}: \n' \

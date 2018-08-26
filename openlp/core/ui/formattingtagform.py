@@ -27,7 +27,7 @@ Base Tags cannot be changed.
 from PyQt5 import QtCore, QtWidgets
 
 from openlp.core.common.i18n import translate
-from openlp.core.lib import FormattingTags
+from openlp.core.lib.formattingtags import FormattingTags
 from openlp.core.ui.formattingtagcontroller import FormattingTagController
 from openlp.core.ui.formattingtagdialog import Ui_FormattingTagDialog
 

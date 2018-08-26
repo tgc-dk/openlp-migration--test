@@ -27,7 +27,7 @@ from urllib.parse import urlparse
 from openlp.core.api.http import requires_auth
 from openlp.core.api.http.endpoint import Endpoint
 from openlp.core.common.registry import Registry
-from openlp.core.lib import PluginStatus
+from openlp.core.lib.plugin import PluginStatus
 
 log = logging.getLogger(__name__)
 

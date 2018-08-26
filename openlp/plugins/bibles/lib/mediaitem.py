@@ -29,7 +29,9 @@ from PyQt5 import QtCore, QtWidgets
 from openlp.core.common.i18n import UiStrings, translate, get_locale_key
 from openlp.core.common.registry import Registry
 from openlp.core.common.settings import Settings
-from openlp.core.lib import MediaManagerItem, ItemCapabilities, ServiceItemContext
+from openlp.core.lib import ServiceItemContext
+from openlp.core.lib.mediamanageritem import MediaManagerItem
+from openlp.core.lib.serviceitem import ItemCapabilities
 from openlp.core.lib.ui import set_case_insensitive_completer, create_horizontal_adjusting_combo_box, \
     critical_error_message_box, find_and_set_in_combo_box
 from openlp.core.ui.icons import UiIcons

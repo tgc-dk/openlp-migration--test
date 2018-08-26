@@ -32,6 +32,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 
 from openlp.core.common.i18n import translate
 from openlp.core.common.path import Path
+from openlp.core.lib.formattingtags import FormattingTags
 
 log = logging.getLogger(__name__ + '.__init__')
 
@@ -609,14 +610,3 @@ def create_separated_list(string_list):
     else:
         list_to_string = ''
     return list_to_string
-
-
-from .exceptions import ValidationError
-from .formattingtags import FormattingTags
-from .plugin import PluginStatus, StringContent, Plugin
-from .pluginmanager import PluginManager
-from .settingstab import SettingsTab
-from .serviceitem import ServiceItem, ServiceItemType, ItemCapabilities
-from .htmlbuilder import build_html, build_lyrics_format_css, build_lyrics_outline_css, build_chords_css
-from .imagemanager import ImageManager
-from .mediamanageritem import MediaManagerItem

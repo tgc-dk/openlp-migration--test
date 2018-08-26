@@ -31,8 +31,10 @@ from openlp.core.ui.icons import UiIcons
 from openlp.core.common.path import copyfile, create_paths
 from openlp.core.common.registry import Registry
 from openlp.core.common.settings import Settings
-from openlp.core.lib import MediaManagerItem, ItemCapabilities, PluginStatus, ServiceItemContext, \
-    check_item_selected, create_separated_list
+from openlp.core.lib import ServiceItemContext, check_item_selected, create_separated_list
+from openlp.core.lib.mediamanageritem import MediaManagerItem
+from openlp.core.lib.plugin import PluginStatus
+from openlp.core.lib.serviceitem import ItemCapabilities
 from openlp.core.lib.ui import create_widget_action
 from openlp.plugins.songs.forms.editsongform import EditSongForm
 from openlp.plugins.songs.forms.songexportform import SongExportForm

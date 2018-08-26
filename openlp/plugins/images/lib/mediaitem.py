@@ -30,8 +30,11 @@ from openlp.core.common.i18n import UiStrings, translate, get_natural_key
 from openlp.core.common.path import Path, create_paths
 from openlp.core.common.registry import Registry
 from openlp.core.common.settings import Settings
-from openlp.core.lib import ItemCapabilities, MediaManagerItem, ServiceItemContext, StringContent, build_icon, \
-    check_item_selected, create_thumb, validate_thumb
+from openlp.core.lib import ServiceItemContext, build_icon, check_item_selected, \
+    create_thumb, validate_thumb
+from openlp.core.lib.mediamanageritem import MediaManagerItem
+from openlp.core.lib.serviceitem import ItemCapabilities
+from openlp.core.lib.plugin import StringContent
 from openlp.core.lib.ui import create_widget_action, critical_error_message_box
 from openlp.core.ui.icons import UiIcons
 from openlp.core.widgets.views import TreeWidgetWithDnD

@@ -43,10 +43,14 @@ from openlp.core.common.mixins import LogMixin, RegistryProperties
 from openlp.core.common.path import Path, str_to_path
 from openlp.core.common.registry import Registry, RegistryBase
 from openlp.core.common.settings import Settings
-from openlp.core.lib import ServiceItem, ItemCapabilities, PluginStatus, build_icon
+from openlp.core.lib import build_icon
+from openlp.core.lib.plugin import PluginStatus
+from openlp.core.lib.serviceitem import ServiceItem, ItemCapabilities
 from openlp.core.lib.exceptions import ValidationError
 from openlp.core.lib.ui import critical_error_message_box, create_widget_action, find_and_set_in_combo_box
-from openlp.core.ui import ServiceNoteForm, ServiceItemEditForm, StartTimeForm
+from openlp.core.ui.serviceitemeditform import ServiceItemEditForm
+from openlp.core.ui.servicenoteform import ServiceNoteForm
+from openlp.core.ui.starttimeform import StartTimeForm
 from openlp.core.widgets.dialogs import FileDialog
 from openlp.core.widgets.toolbar import OpenLPToolbar
 

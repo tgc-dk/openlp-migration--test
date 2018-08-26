@@ -29,7 +29,7 @@ from PyQt5 import QtCore
 
 from openlp.core.common.registry import Registry
 from openlp.core.common.settings import Settings
-from openlp.core.lib import ServiceItem
+from openlp.core.lib.serviceitem import ServiceItem
 from openlp.plugins.songs.lib.db import AuthorType, Song
 from openlp.plugins.songs.lib.mediaitem import SongMediaItem
 from tests.helpers.testmixin import TestMixin

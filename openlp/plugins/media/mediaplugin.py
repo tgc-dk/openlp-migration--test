@@ -33,7 +33,8 @@ from openlp.core.common.applocation import AppLocation
 from openlp.core.common.i18n import translate
 from openlp.core.ui.icons import UiIcons
 from openlp.core.common.path import Path
-from openlp.core.lib import Plugin, StringContent, build_icon
+from openlp.core.lib import build_icon
+from openlp.core.lib.plugin import Plugin, StringContent
 from openlp.plugins.media.endpoint import api_media_endpoint, media_endpoint
 from openlp.plugins.media.lib import MediaMediaItem, MediaTab
 

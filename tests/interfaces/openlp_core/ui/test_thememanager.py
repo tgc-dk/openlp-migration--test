@@ -28,7 +28,7 @@ from unittest.mock import patch, MagicMock
 from openlp.core.common.path import Path
 from openlp.core.common.registry import Registry
 from openlp.core.common.settings import Settings
-from openlp.core.ui import ThemeManager
+from openlp.core.ui.thememanager import ThemeManager
 from tests.helpers.testmixin import TestMixin
 
 

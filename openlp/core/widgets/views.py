@@ -31,7 +31,8 @@ from openlp.core.common.mixins import RegistryProperties
 from openlp.core.common.path import Path
 from openlp.core.common.registry import Registry
 from openlp.core.common.settings import Settings
-from openlp.core.lib import ImageSource, ItemCapabilities, ServiceItem
+from openlp.core.lib import ImageSource
+from openlp.core.lib.serviceitem import ItemCapabilities, ServiceItem
 
 
 def handle_mime_data_urls(mime_data):

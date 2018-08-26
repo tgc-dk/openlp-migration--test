@@ -26,7 +26,7 @@ import copy
 from unittest import TestCase
 from unittest.mock import patch
 
-from openlp.core.lib import FormattingTags
+from openlp.core.lib.formattingtags import FormattingTags
 
 TAG = {
     'end tag': '{/aa}',
