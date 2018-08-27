@@ -41,7 +41,7 @@ def create_comment(merge_proposal, comment, subject):
     """
     if not subject:
         subject = 'Jenkins test update'
-    merge_proposal.createComment(subject, content=comment)
+    merge_proposal.createComment(subject=subject, content=comment)
 
 
 def main():
