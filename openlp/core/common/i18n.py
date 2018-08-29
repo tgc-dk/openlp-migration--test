@@ -271,9 +271,10 @@ class LanguageManager(object):
         language = Settings().value('core/language')
         language = str(language)
         log.info("Language file: '{language}' Loaded from conf file".format(language=language))
-        if re.match(r'[[].*[]]', language):
+        m = re.match(r'\[(.*)\]', language)
+        if m:
             LanguageManager.auto_language = True
-            language = re.sub(r'[\[\]]', '', language)
+            language = m.group(1)
         return language
 
     @staticmethod
