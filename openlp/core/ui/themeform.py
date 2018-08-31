@@ -153,7 +153,7 @@ class ThemeForm(QtWidgets.QWizard, Ui_ThemeWizard, RegistryProperties):
         Calculate the number of lines on a page by rendering text
         """
         # Do not trigger on start up
-        if self.currentPage != self.welcome_page:
+        if self.currentPage() != self.welcome_page:
             self.update_theme()
             self.theme_manager.generate_image(self.theme, True)
 
