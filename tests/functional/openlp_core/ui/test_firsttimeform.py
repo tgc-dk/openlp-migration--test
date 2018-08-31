@@ -233,3 +233,39 @@ class TestFirstTimeForm(TestCase, TestMixin):
         mocked_message_box.critical.assert_called_once_with(
             first_time_form, 'Network Error', 'There was a network error attempting to connect to retrieve '
             'initial configuration information', 'OK')
+
+    @patch('openlp.core.ui.firsttimewizard.Settings')
+    def test_on_projectors_check_box_checked(self, MockSettings):
+        """
+        Test that the projector panel is shown when the checkbox in the first time wizard is checked
+        """
+        # GIVEN: A First Time Wizard and a mocked settings object
+        frw = FirstTimeForm(None)
+        mocked_settings = MagicMock()
+        mocked_settings.value.return_value = True
+        MockSettings.return_value = mocked_settings
+
+        # WHEN: on_projectors_check_box_clicked() is called
+        frw.on_projectors_check_box_clicked()
+
+        # THEN: The visibility of the projects panel should have been set
+        mocked_settings.value.assert_called_once_with('projector/show after wizard')
+        mocked_settings.setValue.assert_called_once_with('projector/show after wizard', False)
+
+    @patch('openlp.core.ui.firsttimewizard.Settings')
+    def test_on_projectors_check_box_unchecked(self, MockSettings):
+        """
+        Test that the projector panel is shown when the checkbox in the first time wizard is checked
+        """
+        # GIVEN: A First Time Wizard and a mocked settings object
+        frw = FirstTimeForm(None)
+        mocked_settings = MagicMock()
+        mocked_settings.value.return_value = False
+        MockSettings.return_value = mocked_settings
+
+        # WHEN: on_projectors_check_box_clicked() is called
+        frw.on_projectors_check_box_clicked()
+
+        # THEN: The visibility of the projects panel should have been set
+        mocked_settings.value.assert_called_once_with('projector/show after wizard')
+        mocked_settings.setValue.assert_called_once_with('projector/show after wizard', True)
