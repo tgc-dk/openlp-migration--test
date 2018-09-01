@@ -32,6 +32,7 @@ from openlp.core.common.registry import Registry
 from openlp.plugins.images.forms.choosegroupform import ChooseGroupForm
 from tests.helpers.testmixin import TestMixin
 
+
 class TestImageChooseGroupForm(TestCase, TestMixin):
     """
     Test the ChooseGroupForm class
@@ -74,7 +75,6 @@ class TestImageChooseGroupForm(TestCase, TestMixin):
         # THEN: The Existing Group should be selected along with the radio button
         assert self.form.group_combobox.currentIndex() == 1
         assert self.form.existing_radio_button.isChecked()
-
 
     def test_auto_select_existing_group_on_combo_selection(self):
         """
