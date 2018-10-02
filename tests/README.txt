@@ -8,10 +8,10 @@ Prerequisites
 
 In order to run the unit tests, you will need the following Python packages/libraries installed:
 
- - Mock
- - Nose
+ - nose2
+ - pylint
 
-On Ubuntu you can simple install the python-mock and python-nose packages. Most other distributions will also have these
+On Ubuntu you can simple install the python-nose2 and pylint packages. Most other distributions will also have these
 packages. On Windows and Mac OS X you will need to use ``pip`` or ``easy_install`` to install these packages.
 
 Running the Tests
@@ -19,16 +19,16 @@ Running the Tests
 
 To run the tests, navigate to the root directory of the OpenLP project, and then run the following command::
 
-    nosetests -v tests
+    nose2 -v tests
 
 Or, to run only the functional tests, run the following command::
 
-    nosetests -v tests/functional
+    nose2 -v tests.functional
 
 Or, to run only a particular test suite within a file, run the following command::
 
-    nosetests -v tests/functional/test_applocation.py
+    nose2 -v tests.functional.openlp_core.test_app
 
 Finally, to only run a particular test, run the following command::
 
-    nosetests -v tests/functional/test_applocation.py:TestAppLocation.get_frozen_path_test
+    nose2 -v tests.functional.openlp_core.test_app.TestOpenLP.test_process_events

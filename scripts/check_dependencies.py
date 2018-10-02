@@ -33,12 +33,6 @@ import os
 import sys
 from distutils.version import LooseVersion
 
-# If we try to import uno before nose this will create a warning. Just try to import nose first to suppress the warning.
-try:
-    import nose
-except ImportError:
-    nose = None
-
 IS_WIN = sys.platform.startswith('win')
 IS_LIN = sys.platform.startswith('lin')
 IS_MAC = sys.platform.startswith('dar')
@@ -106,7 +100,7 @@ MODULES = [
 OPTIONAL_MODULES = [
     ('mysql.connector', '(MySQL support)', True),
     ('psycopg2', '(PostgreSQL support)', True),
-    ('nose', '(testing framework)', True),
+    ('nose2', '(testing framework)', True),
     ('mock', '(testing module)', sys.version_info[1] < 3),
     ('jenkins', '(access jenkins api - package name: jenkins-webapi)', True),
     ('pysword', '(import SWORD bibles)', True),
