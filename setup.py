@@ -197,7 +197,8 @@ using a computer and a data projector.""",
         'odbc': ['pyodbc'],
         'postgresql': ['psycopg2'],
         'spellcheck': ['pyenchant >= 1.6'],
-        'sword-bibles': ['pysword']
+        'sword-bibles': ['pysword'],
+        'xdg': ['pyxdg']
     },
     tests_require=['nose2', 'pylint'],
     entry_points={'gui_scripts': ['openlp = openlp.__main__:start']}
