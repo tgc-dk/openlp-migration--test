@@ -189,7 +189,7 @@ using a computer and a data projector.""",
     packages=find_packages(exclude=['ez_setup', 'tests*']),
     include_package_data=True,
     zip_safe=False,
-    python_requires='>=3.4',
+    python_requires='>=3.6',
     install_requires=requires,
     extras_require={
         'jenkins': ['python-jenkins'],
