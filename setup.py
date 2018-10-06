@@ -201,5 +201,6 @@ using a computer and a data projector.""",
         'xdg': ['pyxdg']
     },
     tests_require=['nose2', 'PyICU', 'pylint'],
+    test_suite='nose2.collector.collector',
     entry_points={'gui_scripts': ['openlp = openlp.__main__:start']}
 )
