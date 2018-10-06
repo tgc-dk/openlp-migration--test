@@ -1,6 +1,10 @@
+# -*- coding: utf-8 -*-
+# vim: autoindent shiftwidth=4 expandtab textwidth=120 tabstop=4 softtabstop=4
+
 # The MIT License
 #
 # Copyright (c) 2010-2014, Patrick Altman <paltman@gmail.com>
+# Copyright (c) 2016-2018, OpenLP Developers
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -22,15 +26,15 @@
 #
 # http://www.opensource.org/licenses/mit-license.php
 
+"""
+The :mod:`~openlp.core.ui.media.mediainfo` module contains code to run mediainfo
+on a media file and obtain information related to the requested media.
+"""
 import json
 import os
-from subprocess import Popen
-from tempfile import mkstemp
+from subprocess import check_output
 
-import six
 from bs4 import BeautifulSoup, NavigableString
-
-__version__ = '1.4.1'
 
 ENV_DICT = os.environ
 
@@ -77,27 +81,23 @@ class Track(object):
                         pass
 
     def __repr__(self):
-        return("<Track track_id='{0}', track_type='{1}'>".format(self.track_id, self.track_type))
+        return "<Track track_id='{0}', track_type='{1}'>".format(self.track_id, self.track_type)
 
     def to_data(self):
         data = {}
-        for k, v in six.iteritems(self.__dict__):
+        for k, v in self.__dict__.items():
             if k != 'xml_dom_fragment':
                 data[k] = v
         return data
 
 
-class MediaInfo(object):
+class MediaInfoWrapper(object):
 
     def __init__(self, xml):
         self.xml_dom = xml
-        if six.PY3:
-            xml_types = (str,)     # no unicode type in python3
-        else:
-            xml_types = (str, unicode)
-
+        xml_types = (str,)     # no unicode type in python3
         if isinstance(xml, xml_types):
-            self.xml_dom = MediaInfo.parse_xml_data_into_dom(xml)
+            self.xml_dom = MediaInfoWrapper.parse_xml_data_into_dom(xml)
 
     @staticmethod
     def parse_xml_data_into_dom(xml_data):
@@ -105,21 +105,11 @@ class MediaInfo(object):
 
     @staticmethod
     def parse(filename, environment=ENV_DICT):
-        command = ["mediainfo", "-f", "--Output=XML", filename]
-        fileno_out, fname_out = mkstemp(suffix=".xml", prefix="media-")
-        fileno_err, fname_err = mkstemp(suffix=".err", prefix="media-")
-        fp_out = os.fdopen(fileno_out, 'r+b')
-        fp_err = os.fdopen(fileno_err, 'r+b')
-        p = Popen(command, stdout=fp_out, stderr=fp_err, env=environment)
-        p.wait()
-        fp_out.seek(0)
-
-        xml_dom = MediaInfo.parse_xml_data_into_dom(fp_out.read())
-        fp_out.close()
-        fp_err.close()
-        os.unlink(fname_out)
-        os.unlink(fname_err)
-        return MediaInfo(xml_dom)
+        xml = check_output(['mediainfo', '-f', '--Output=XML', '--Inform=OLDXML', filename])
+        if not xml.startswith(b'<?xml'):
+            xml = check_output(['mediainfo', '-f', '--Output=XML', filename])
+        xml_dom = MediaInfoWrapper.parse_xml_data_into_dom(xml)
+        return MediaInfoWrapper(xml_dom)
 
     def _populate_tracks(self):
         if self.xml_dom is None:
