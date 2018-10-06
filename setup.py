@@ -200,6 +200,6 @@ using a computer and a data projector.""",
         'sword-bibles': ['pysword'],
         'xdg': ['pyxdg']
     },
-    tests_require=['nose2', 'pylint'],
+    tests_require=['nose2', 'PyICU', 'pylint'],
     entry_points={'gui_scripts': ['openlp = openlp.__main__:start']}
 )

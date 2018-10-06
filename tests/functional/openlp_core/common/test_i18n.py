@@ -113,11 +113,11 @@ def test_get_language_invalid_with_none():
     assert language is None
 
 
-@skipIf(is_macosx(), 'This test doesn\'t work on macOS currently')
 def test_get_locale_key():
     """
     Test the get_locale_key(string) function
     """
+    import icu
     with patch('openlp.core.common.i18n.LanguageManager.get_language') as mocked_get_language:
         # GIVEN: The language is German
         # 0x00C3 (A with diaresis) should be sorted as "A". 0x00DF (sharp s) should be sorted as "ss".
