@@ -1,33 +1,36 @@
-# -*- coding: utf-8 -*-
-# vim: autoindent shiftwidth=4 expandtab textwidth=120 tabstop=4 softtabstop=4
+# The MIT License
+#
+# Copyright (c) 2010-2014, Patrick Altman <paltman@gmail.com>
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in
+# all copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+# THE SOFTWARE.
+#
+# http://www.opensource.org/licenses/mit-license.php
 
-###############################################################################
-# OpenLP - Open Source Lyrics Projection                                      #
-# --------------------------------------------------------------------------- #
-# Copyright (c) 2008-2018 OpenLP Developers                                   #
-# --------------------------------------------------------------------------- #
-# This program is free software; you can redistribute it and/or modify it     #
-# under the terms of the GNU General Public License as published by the Free  #
-# Software Foundation; version 2 of the License.                              #
-#                                                                             #
-# This program is distributed in the hope that it will be useful, but WITHOUT #
-# ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or       #
-# FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for    #
-# more details.                                                               #
-#                                                                             #
-# You should have received a copy of the GNU General Public License along     #
-# with this program; if not, write to the Free Software Foundation, Inc., 59  #
-# Temple Place, Suite 330, Boston, MA 02111-1307 USA                          #
-###############################################################################
-"""
-The :mod:`~openlp.core.ui.media.mediainfo` module contains code to run mediainfo on a media file and obtain
-information related to the rwquested media.
-"""
 import json
 import os
-from subprocess import check_output
+from subprocess import Popen
+from tempfile import mkstemp
 
+import six
 from bs4 import BeautifulSoup, NavigableString
+
+__version__ = '1.4.1'
 
 ENV_DICT = os.environ
 
@@ -74,23 +77,27 @@ class Track(object):
                         pass
 
     def __repr__(self):
-        return "<Track track_id='{0}', track_type='{1}'>".format(self.track_id, self.track_type)
+        return("<Track track_id='{0}', track_type='{1}'>".format(self.track_id, self.track_type))
 
     def to_data(self):
         data = {}
-        for k, v in self.__dict__.items():
+        for k, v in six.iteritems(self.__dict__):
             if k != 'xml_dom_fragment':
                 data[k] = v
         return data
 
 
-class MediaInfoWrapper(object):
+class MediaInfo(object):
 
     def __init__(self, xml):
         self.xml_dom = xml
-        xml_types = (str,)     # no unicode type in python3
+        if six.PY3:
+            xml_types = (str,)     # no unicode type in python3
+        else:
+            xml_types = (str, unicode)
+
         if isinstance(xml, xml_types):
-            self.xml_dom = MediaInfoWrapper.parse_xml_data_into_dom(xml)
+            self.xml_dom = MediaInfo.parse_xml_data_into_dom(xml)
 
     @staticmethod
     def parse_xml_data_into_dom(xml_data):
@@ -98,11 +105,21 @@ class MediaInfoWrapper(object):
 
     @staticmethod
     def parse(filename, environment=ENV_DICT):
-        xml = check_output(['mediainfo', '-f', '--Output=XML', '--Inform=OLDXML', filename])
-        if not xml.startswith(b'<?xml'):
-            xml = check_output(['mediainfo', '-f', '--Output=XML', filename])
-        xml_dom = MediaInfoWrapper.parse_xml_data_into_dom(xml)
-        return MediaInfoWrapper(xml_dom)
+        command = ["mediainfo", "-f", "--Output=XML", filename]
+        fileno_out, fname_out = mkstemp(suffix=".xml", prefix="media-")
+        fileno_err, fname_err = mkstemp(suffix=".err", prefix="media-")
+        fp_out = os.fdopen(fileno_out, 'r+b')
+        fp_err = os.fdopen(fileno_err, 'r+b')
+        p = Popen(command, stdout=fp_out, stderr=fp_err, env=environment)
+        p.wait()
+        fp_out.seek(0)
+
+        xml_dom = MediaInfo.parse_xml_data_into_dom(fp_out.read())
+        fp_out.close()
+        fp_err.close()
+        os.unlink(fname_out)
+        os.unlink(fname_err)
+        return MediaInfo(xml_dom)
 
     def _populate_tracks(self):
         if self.xml_dom is None:
