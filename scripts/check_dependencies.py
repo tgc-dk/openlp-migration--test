@@ -79,6 +79,7 @@ MODULES = [
     'PyQt5.QtWebKit',
     'PyQt5.QtMultimedia',
     'pymediainfo',
+    'appdirs',
     'sqlalchemy',
     'alembic',
     'sqlite3',

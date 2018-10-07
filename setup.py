@@ -113,6 +113,7 @@ finally:
 
 requires = [
     'alembic',
+    'appdirs',
     'beautifulsoup4',
     'chardet',
     'lxml',
@@ -198,8 +199,7 @@ using a computer and a data projector.""",
         'odbc': ['pyodbc'],
         'postgresql': ['psycopg2'],
         'spellcheck': ['pyenchant >= 1.6'],
-        'sword-bibles': ['pysword'],
-        'xdg': ['pyxdg']
+        'sword-bibles': ['pysword']
     },
     tests_require=['nose2', 'PyICU', 'pylint'],
     test_suite='nose2.collector.collector',

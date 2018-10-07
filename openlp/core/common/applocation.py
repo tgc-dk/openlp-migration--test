@@ -26,17 +26,12 @@ import logging
 import os
 import sys
 
+import appdirs
+
 import openlp
 from openlp.core.common import get_frozen_path, is_win, is_macosx
 from openlp.core.common.path import Path, create_paths
 from openlp.core.common.settings import Settings
-
-if not is_win() and not is_macosx():
-    try:
-        from xdg import BaseDirectory
-        XDG_BASE_AVAILABLE = True
-    except ImportError:
-        XDG_BASE_AVAILABLE = False
 
 log = logging.getLogger(__name__)
 
@@ -143,8 +138,10 @@ def _get_os_dir_path(dir_type):
         elif dir_type == AppLocation.LanguageDir:
             return Path(openlp.__file__).parent
         return openlp_folder_path
-    elif is_macosx():
-        openlp_folder_path = Path(os.getenv('HOME'), 'Library', 'Application Support', 'openlp')
+
+    dirs = appdirs.AppDirs('openlp', multipath=True)
+    if is_macosx():
+        openlp_folder_path = Path(dirs.user_data_dir)
         if dir_type == AppLocation.DataDir:
             return openlp_folder_path / 'Data'
         elif dir_type == AppLocation.LanguageDir:
@@ -152,15 +149,15 @@ def _get_os_dir_path(dir_type):
         return openlp_folder_path
     else:
         if dir_type == AppLocation.LanguageDir:
-            directory = Path('/usr', 'local', 'share', 'openlp')
+            site_dirs = dirs.site_data_dir.split(os.pathsep)
+            directory = Path(site_dirs[0])
             if directory.exists():
                 return directory
-            return Path('/usr', 'share', 'openlp')
-        if XDG_BASE_AVAILABLE:
-            if dir_type == AppLocation.DataDir:
-                return Path(BaseDirectory.xdg_data_home, 'openlp')
-            elif dir_type == AppLocation.CacheDir:
-                return Path(BaseDirectory.xdg_cache_home, 'openlp')
+            return Path(site_dirs[1])
+        if dir_type == AppLocation.DataDir:
+            return Path(dirs.user_data_dir)
+        elif dir_type == AppLocation.CacheDir:
+            return Path(dirs.user_cache_dir)
         if dir_type == AppLocation.DataDir:
             return Path(os.getenv('HOME'), '.openlp', 'data')
         return Path(os.getenv('HOME'), '.openlp')
