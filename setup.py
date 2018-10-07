@@ -117,6 +117,7 @@ requires = [
     'chardet',
     'lxml',
     'Mako',
+    'pymediainfo >= 2.1.6',
     'PyQt5',
     'QtAwesome',
     'requests',
