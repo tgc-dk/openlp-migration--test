@@ -288,7 +288,7 @@ def parse_options(args=None):
     :return: a tuple of parsed options of type optparse.Value and a list of remaining argsZ
     """
     # Set up command line options.
-    parser = argparse.ArgumentParser(prog='openlp.py')
+    parser = argparse.ArgumentParser(prog='openlp')
     parser.add_argument('-e', '--no-error-form', dest='no_error_form', action='store_true',
                         help='Disable the error notification form.')
     parser.add_argument('-l', '--log-level', dest='loglevel', default='warning', metavar='LEVEL',
