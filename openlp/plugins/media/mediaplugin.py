@@ -25,6 +25,7 @@ The Media plugin
 import logging
 import re
 
+from pymediainfo import MediaInfo
 from PyQt5 import QtCore
 
 from openlp.core.api.http import register_endpoint
@@ -77,8 +78,8 @@ class MediaPlugin(Plugin):
         :return: true or false
         """
         log.debug('check_installed Mediainfo')
-        # Try to find mediainfo in the path
-        exists = process_check_binary(Path('mediainfo'))
+        # Try to find libmediainfo or mediainfo in the path
+        exists = MediaInfo.can_parse() or process_check_binary(Path('mediainfo'))
         # If mediainfo is not in the path, try to find it in the application folder
         if not exists:
             exists = process_check_binary(AppLocation.get_directory(AppLocation.AppDir) / 'mediainfo')
