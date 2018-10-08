@@ -42,9 +42,9 @@ VERS = {
     'Python': '3.6',
     'PyQt5': '5.0',
     'Qt5': '5.0',
+    'pymediainfo': '2.2',
     'sqlalchemy': '0.5',
-    # pyenchant 1.6 required on Windows
-    'enchant': '1.6' if IS_WIN else '1.3'
+    'enchant': '1.6'
 }
 
 # pywin32
@@ -52,7 +52,6 @@ WIN32_MODULES = [
     'win32com',
     'win32ui',
     'pywintypes',
-    'pyodbc',
     'icu',
 ]
 
@@ -82,17 +81,12 @@ MODULES = [
     'appdirs',
     'sqlalchemy',
     'alembic',
-    'sqlite3',
     'lxml',
     'chardet',
-    'enchant',
     'bs4',
     'mako',
-    'uno',
     'websockets',
-    'asyncio',
     'waitress',
-    'six',
     'webob',
     'requests',
     'qtawesome'
@@ -100,12 +94,16 @@ MODULES = [
 
 
 OPTIONAL_MODULES = [
-    ('mysql.connector', '(MySQL support)', True),
-    ('psycopg2', '(PostgreSQL support)', True),
-    ('nose2', '(testing framework)', True),
-    ('mock', '(testing module)', sys.version_info[1] < 3),
-    ('jenkins', '(access jenkins api - package name: jenkins-webapi)', True),
-    ('pysword', '(import SWORD bibles)', True),
+    ('mysql.connector', '(MySQL support)'),
+    ('pyodbc', '(ODBC support)'),
+    ('psycopg2', '(PostgreSQL support)'),
+    ('jenkins', '(access jenkins api - package name: jenkins-webapi)'),
+    ('enchant', '(spell checker)'),
+    ('pysword', '(import SWORD bibles)'),
+    ('uno', '(LibreOffice/OpenOffice support)'),
+    # development/testing modules
+    ('nose2', '(testing framework)'),
+    ('pylint', '(linter)')
 ]
 
 w = sys.stdout.write
@@ -234,8 +232,7 @@ def main():
         check_module(m)
     print('Checking for optional modules...')
     for m in OPTIONAL_MODULES:
-        if m[2]:
-            check_module(m[0], text=m[1])
+        check_module(m[0], text=m[1])
     if IS_WIN:
         print('Checking for Windows specific modules...')
         for m in WIN32_MODULES:
