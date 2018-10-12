@@ -138,6 +138,7 @@ elif sys.platform.startswith('darwin'):
         'pyobjc-framework-Cocoa'
     ])
 elif sys.platform.startswith('linux'):
+    # dbus-python could be replaced by PyQt5.QtDBus
     requires.append('dbus-python')
 
 setup(
@@ -194,14 +195,16 @@ using a computer and a data projector.""",
     python_requires='>=3.6',
     install_requires=requires,
     extras_require={
-        'jenkins': ['python-jenkins'],
         'mysql': ['mysql-connector-python'],
         'odbc': ['pyodbc'],
         'postgresql': ['psycopg2'],
         'spellcheck': ['pyenchant >= 1.6'],
-        'sword-bibles': ['pysword']
+        'sword-bibles': ['pysword'],
+        # Required for scripts/*.py:
+        'jenkins': ['python-jenkins'],
+        'launchpad': ['launchpadlib']
     },
-    tests_require=['nose2', 'PyICU', 'pylint'],
+    tests_require=['nose2', 'PyICU', 'pylint', 'pyodbc', 'pysword'],
     test_suite='nose2.collector.collector',
     entry_points={'gui_scripts': ['openlp = openlp.__main__:start']}
 )

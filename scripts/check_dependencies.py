@@ -97,11 +97,12 @@ OPTIONAL_MODULES = [
     ('mysql.connector', '(MySQL support)'),
     ('pyodbc', '(ODBC support)'),
     ('psycopg2', '(PostgreSQL support)'),
-    ('jenkins', '(access jenkins api - package name: jenkins-webapi)'),
     ('enchant', '(spell checker)'),
     ('pysword', '(import SWORD bibles)'),
     ('uno', '(LibreOffice/OpenOffice support)'),
     # development/testing modules
+    ('jenkins', '(access jenkins api)'),
+    ('launchpadlib', '(launchpad script support)'),
     ('nose2', '(testing framework)'),
     ('pylint', '(linter)')
 ]
