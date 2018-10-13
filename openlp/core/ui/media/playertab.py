@@ -32,7 +32,6 @@ from openlp.core.common.settings import Settings
 from openlp.core.lib.settingstab import SettingsTab
 from openlp.core.lib.ui import create_button
 from openlp.core.ui.icons import UiIcons
-from openlp.core.ui.media import get_media_players, set_media_players
 from openlp.core.widgets.buttons import ColorButton
 
 

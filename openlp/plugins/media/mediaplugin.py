@@ -142,23 +142,23 @@ class MediaPlugin(Plugin):
         self.media_controller.finalise()
         Plugin.finalise(self)
 
-    def get_display_css(self):
-        """
-        Add css style sheets to htmlbuilder.
-        """
-        return self.media_controller.get_media_display_css()
-
-    def get_display_javascript(self):
-        """
-        Add javascript functions to htmlbuilder.
-        """
-        return self.media_controller.get_media_display_javascript()
-
-    def get_display_html(self):
-        """
-        Add html code to htmlbuilder.
-        """
-        return self.media_controller.get_media_display_html()
+    # def get_display_css(self):
+    #     """
+    #     Add css style sheets to htmlbuilder.
+    #     """
+    #     return self.media_controller.get_media_display_css()
+    #
+    # def get_display_javascript(self):
+    #     """
+    #     Add javascript functions to htmlbuilder.
+    #     """
+    #     return self.media_controller.get_media_display_javascript()
+    #
+    # def get_display_html(self):
+    #     """
+    #     Add html code to htmlbuilder.
+    #     """
+    #     return self.media_controller.get_media_display_html()
 
 
 def process_check_binary(program_path):

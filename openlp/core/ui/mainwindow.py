@@ -57,7 +57,6 @@ from openlp.core.ui.pluginform import PluginForm
 from openlp.core.ui.slidecontroller import LiveController, PreviewController
 from openlp.core.ui.settingsform import SettingsForm
 from openlp.core.ui.firsttimeform import FirstTimeForm
-from openlp.core.ui.media import MediaController
 from openlp.core.ui.printserviceform import PrintServiceForm
 from openlp.core.ui.style import PROGRESSBAR_STYLE, get_library_stylesheet
 from openlp.core.version import get_version
@@ -501,7 +500,6 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow, LogMixin, RegistryPropert
         self.copy_data = False
         Settings().set_up_default_values()
         self.about_form = AboutForm(self)
-        MediaController()
         self.ws_server = websockets.WebSocketServer()
         self.http_server = server.HttpServer(self)
         SettingsForm(self)

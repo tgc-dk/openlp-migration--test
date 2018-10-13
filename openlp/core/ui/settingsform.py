@@ -34,7 +34,6 @@ from openlp.core.projectors.tab import ProjectorTab
 from openlp.core.ui.advancedtab import AdvancedTab
 from openlp.core.ui.generaltab import GeneralTab
 from openlp.core.ui.themestab import ThemesTab
-from openlp.core.ui.media import PlayerTab
 from openlp.core.ui.settingsdialog import Ui_SettingsDialog
 
 log = logging.getLogger(__name__)
@@ -59,7 +58,6 @@ class SettingsForm(QtWidgets.QDialog, Ui_SettingsDialog, RegistryProperties):
         self.themes_tab = None
         self.projector_tab = None
         self.advanced_tab = None
-        self.player_tab = None
         self.api_tab = None
 
     def exec(self):
@@ -75,7 +73,6 @@ class SettingsForm(QtWidgets.QDialog, Ui_SettingsDialog, RegistryProperties):
         self.insert_tab(self.general_tab)
         self.insert_tab(self.themes_tab)
         self.insert_tab(self.advanced_tab)
-        self.insert_tab(self.player_tab)
         self.insert_tab(self.projector_tab)
         self.insert_tab(self.api_tab)
         for plugin in self.plugin_manager.plugins:
@@ -159,14 +156,11 @@ class SettingsForm(QtWidgets.QDialog, Ui_SettingsDialog, RegistryProperties):
         self.projector_tab = ProjectorTab(self)
         # Advanced tab
         self.advanced_tab = AdvancedTab(self)
-        # Advanced tab
-        self.player_tab = PlayerTab(self)
         # Api tab
         self.api_tab = ApiTab(self)
         self.general_tab.post_set_up()
         self.themes_tab.post_set_up()
         self.advanced_tab.post_set_up()
-        self.player_tab.post_set_up()
         self.api_tab.post_set_up()
         for plugin in self.plugin_manager.plugins:
             if plugin.settings_tab:
