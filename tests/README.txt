@@ -9,9 +9,9 @@ Prerequisites
 In order to run the unit tests, you will need the following Python packages/libraries installed:
 
  - nose2
- - pylint
+ - pylint3
 
-On Ubuntu you can simple install the python-nose2 and pylint packages. Most other distributions will also have these
+On Ubuntu you can simple install the python-nose2 and pylint3 packages. Most other distributions will also have these
 packages. On Windows and Mac OS X you will need to use ``pip`` or ``easy_install`` to install these packages.
 
 Running the Tests
