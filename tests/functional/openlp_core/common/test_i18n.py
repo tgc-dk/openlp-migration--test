@@ -162,6 +162,7 @@ def test_check_same_instance():
 def test_get_language_from_settings():
     assert LanguageManager.get_language() == 'en'
 
+
 def test_get_language_from_settings_returns_unchanged_if_unknown_format():
     Settings().setValue('core/language', '(foobar)')
     assert LanguageManager.get_language() == '(foobar)'

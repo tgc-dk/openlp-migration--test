@@ -58,6 +58,7 @@ class Ui_ChooseGroupDialog(object):
         self.choose_group_layout.setWidget(3, QtWidgets.QFormLayout.LabelRole, self.existing_radio_button)
         self.group_combobox = QtWidgets.QComboBox(choose_group_dialog)
         self.group_combobox.setObjectName('group_combobox')
+        self.group_combobox.activated.connect(self.on_group_combobox_selected)
         self.choose_group_layout.setWidget(3, QtWidgets.QFormLayout.FieldRole, self.group_combobox)
         self.new_radio_button = QtWidgets.QRadioButton(choose_group_dialog)
         self.new_radio_button.setChecked(False)
@@ -65,6 +66,7 @@ class Ui_ChooseGroupDialog(object):
         self.choose_group_layout.setWidget(4, QtWidgets.QFormLayout.LabelRole, self.new_radio_button)
         self.new_group_edit = QtWidgets.QLineEdit(choose_group_dialog)
         self.new_group_edit.setObjectName('new_group_edit')
+        self.new_group_edit.textEdited.connect(self.on_new_group_edit_changed)
         self.choose_group_layout.setWidget(4, QtWidgets.QFormLayout.FieldRole, self.new_group_edit)
         self.group_button_box = create_button_box(choose_group_dialog, 'buttonBox', ['ok'])
         self.choose_group_layout.setWidget(5, QtWidgets.QFormLayout.FieldRole, self.group_button_box)
@@ -83,3 +85,22 @@ class Ui_ChooseGroupDialog(object):
         self.nogroup_radio_button.setText(translate('ImagePlugin.ChooseGroupForm', 'No group'))
         self.existing_radio_button.setText(translate('ImagePlugin.ChooseGroupForm', 'Existing group'))
         self.new_radio_button.setText(translate('ImagePlugin.ChooseGroupForm', 'New group'))
+
+    def on_group_combobox_selected(self, index):
+        """
+        Handles the activated signal from the existing group combobox when the
+        user makes a selection
+
+        :param index: position of the selected item in the combobox
+        """
+        self.existing_radio_button.setChecked(True)
+        self.group_combobox.setFocus()
+
+    def on_new_group_edit_changed(self, new_group):
+        """
+        Handles the textEdited signal from the new group text input field
+        when the user enters a new group name
+
+        :param new_group: new text entered by the user
+        """
+        self.new_radio_button.setChecked(True)

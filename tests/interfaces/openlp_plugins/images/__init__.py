@@ -19,34 +19,3 @@
 # with this program; if not, write to the Free Software Foundation, Inc., 59  #
 # Temple Place, Suite 330, Boston, MA 02111-1307 USA                          #
 ###############################################################################
-
-from PyQt5 import QtCore, QtWidgets
-
-from openlp.plugins.images.forms.choosegroupdialog import Ui_ChooseGroupDialog
-
-
-class ChooseGroupForm(QtWidgets.QDialog, Ui_ChooseGroupDialog):
-    """
-    This class implements the 'Choose group' form for the Images plugin.
-    """
-    def __init__(self, parent=None):
-        """
-        Constructor
-        """
-        super(ChooseGroupForm, self).__init__(parent, QtCore.Qt.WindowSystemMenuHint | QtCore.Qt.WindowTitleHint |
-                                              QtCore.Qt.WindowCloseButtonHint)
-        self.setupUi(self)
-
-    def exec(self, selected_group=None):
-        """
-        Show the form
-
-        :param selected_group: The ID of the group that should be selected by default when showing the dialog.
-        """
-        self.new_group_edit.clear()
-        if selected_group is not None:
-            for index in range(self.group_combobox.count()):
-                if self.group_combobox.itemData(index) == selected_group:
-                    self.group_combobox.setCurrentIndex(index)
-                    self.existing_radio_button.setChecked(True)
-        return QtWidgets.QDialog.exec(self)
