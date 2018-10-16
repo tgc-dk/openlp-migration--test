@@ -138,7 +138,6 @@ elif sys.platform.startswith('darwin'):
         'pyobjc-framework-Cocoa'
     ])
 elif sys.platform.startswith('linux'):
-    # dbus-python could be replaced by PyQt5.QtDBus
     requires.append('dbus-python')
 
 setup(
