@@ -59,5 +59,6 @@ def start():
         sys.argv = [x for x in sys.argv if not x.startswith('-psn')]
     main()
 
+
 if __name__ == '__main__':
     start()
