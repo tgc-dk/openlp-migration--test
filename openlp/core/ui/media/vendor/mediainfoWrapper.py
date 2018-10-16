@@ -26,6 +26,7 @@ on a media file and obtain information related to the requested media.
 from pymediainfo import MediaInfo
 from subprocess import check_output
 
+
 class MediaInfoWrapper(object):
 
     @staticmethod
