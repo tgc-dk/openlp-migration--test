@@ -25,7 +25,6 @@ on a media file and obtain information related to the requested media.
 """
 from pymediainfo import MediaInfo
 from subprocess import check_output
-import sys
 
 
 class MediaInfoWrapper(object):
@@ -38,4 +37,5 @@ class MediaInfoWrapper(object):
             xml = check_output(['mediainfo', '-f', '--Output=XML', '--Inform=OLDXML', filename])
             if not xml.startswith(b'<?xml'):
                 xml = check_output(['mediainfo', '-f', '--Output=XML', filename])
+            print(xml)
             return MediaInfo(xml)
