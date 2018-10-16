@@ -189,6 +189,7 @@ using a computer and a data projector.""",
     url='https://openlp.org/',
     license='GNU General Public License',
     packages=find_packages(exclude=['ez_setup', 'tests']),
+    py_modules=['run_openlp'],
     include_package_data=True,
     zip_safe=False,
     python_requires='>=3.6',
@@ -205,5 +206,5 @@ using a computer and a data projector.""",
     },
     tests_require=['nose2', 'PyICU', 'pylint', 'pyodbc', 'pysword'],
     test_suite='nose2.collector.collector',
-    entry_points={'gui_scripts': ['openlp = openlp.__main__:start']}
+    entry_points={'gui_scripts': ['openlp = run_openlp:start']}
 )
