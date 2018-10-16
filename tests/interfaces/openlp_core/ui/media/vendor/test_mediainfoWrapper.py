@@ -44,5 +44,7 @@ class TestMediainfoWrapper(TestCase):
             # WHEN the media data is retrieved
             results = MediaInfoWrapper.parse(full_path)
 
+            assert ['fail'] == results.tracks
+
             # THEN you can determine the run time
             assert results.tracks[0].duration == test_data[1], 'The correct duration is returned for ' + test_data[0]

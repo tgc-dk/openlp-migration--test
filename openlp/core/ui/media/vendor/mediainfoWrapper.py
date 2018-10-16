@@ -32,8 +32,7 @@ class MediaInfoWrapper(object):
 
     @staticmethod
     def parse(filename):
-        # FIXME: library loading on macOS
-        if sys.platform != 'darwin' and MediaInfo.can_parse():
+        if MediaInfo.can_parse():
             return MediaInfo.parse(filename)
         else:
             xml = check_output(['mediainfo', '-f', '--Output=XML', '--Inform=OLDXML', filename])
