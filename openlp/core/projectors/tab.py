@@ -27,6 +27,7 @@ import logging
 from PyQt5 import QtWidgets
 
 from openlp.core.common.i18n import UiStrings, translate
+from openlp.core.common.registry import Registry
 from openlp.core.common.settings import Settings
 from openlp.core.lib.settingstab import SettingsTab
 from openlp.core.ui.icons import UiIcons
@@ -47,8 +48,11 @@ class ProjectorTab(SettingsTab):
         :param parent: Parent widget
         """
         self.icon_path = UiIcons().projector
+        self.udp_listeners = {}  # Key on port number
         projector_translated = translate('OpenLP.ProjectorTab', 'Projector')
         super(ProjectorTab, self).__init__(parent, 'Projector', projector_translated)
+        Registry().register_function('udp_broadcast_add', self.add_udp_listener)
+        Registry().register_function('udp_broadcast_remove', self.remove_udp_listener)
 
     def setupUi(self):
         """
@@ -90,6 +94,10 @@ class ProjectorTab(SettingsTab):
         self.connect_box_layout.addRow(self.dialog_type_label, self.dialog_type_combo_box)
         self.left_layout.addStretch()
         self.dialog_type_combo_box.activated.connect(self.on_dialog_type_combo_box_changed)
+        # Enable/disable listening on UDP ports for PJLink2 broadcasts
+        self.udp_broadcast_listen = QtWidgets.QCheckBox(self.connect_box)
+        self.udp_broadcast_listen.setObjectName('udp_broadcast_listen')
+        self.connect_box_layout.addRow(self.udp_broadcast_listen)
         # Connect on LKUP packet received (PJLink v2+ only)
         self.connect_on_linkup = QtWidgets.QCheckBox(self.connect_box)
         self.connect_on_linkup.setObjectName('connect_on_linkup')
@@ -116,6 +124,9 @@ class ProjectorTab(SettingsTab):
                                                translate('OpenLP.ProjectorTab', 'Single dialog box'))
         self.connect_on_linkup.setText(
             translate('OpenLP.ProjectorTab', 'Connect to projector when LINKUP received (v2 only)'))
+        self.udp_broadcast_listen.setText(
+            translate('OpenLP.ProjectorTab', 'Enable listening for PJLink2 broadcast messages'))
+        log.debug('PJLink settings tab initialized')
 
     def load(self):
         """
@@ -125,6 +136,7 @@ class ProjectorTab(SettingsTab):
         self.socket_timeout_spin_box.setValue(Settings().value('projector/socket timeout'))
         self.socket_poll_spin_box.setValue(Settings().value('projector/poll time'))
         self.dialog_type_combo_box.setCurrentIndex(Settings().value('projector/source dialog type'))
+        self.udp_broadcast_listen.setChecked(Settings().value('projector/udp broadcast listen'))
         self.connect_on_linkup.setChecked(Settings().value('projector/connect when LKUP received'))
 
     def save(self):
@@ -136,6 +148,41 @@ class ProjectorTab(SettingsTab):
         Settings().setValue('projector/poll time', self.socket_poll_spin_box.value())
         Settings().setValue('projector/source dialog type', self.dialog_type_combo_box.currentIndex())
         Settings().setValue('projector/connect when LKUP received', self.connect_on_linkup.isChecked())
+        Settings().setValue('projector/udp broadcast listen', self.udp_broadcast_listen.isChecked())
+        self.call_udp_listener()
 
     def on_dialog_type_combo_box_changed(self):
         self.dialog_type = self.dialog_type_combo_box.currentIndex()
+
+    def add_udp_listener(self, port, callback):
+        """
+        Add new UDP listener to list
+        """
+        if port in self.udp_listeners:
+            log.warning('Port {port} already in list - not adding'.format(port=port))
+            return
+        self.udp_listeners[port] = callback
+        log.debug('PJLinkSettings: new callback list: {port}'.format(port=self.udp_listeners.keys()))
+
+    def remove_udp_listener(self, port):
+        """
+        Remove UDP listener from list
+        """
+        if port not in self.udp_listeners:
+            log.warning('Port {port} not in list - ignoring'.format(port=port))
+            return
+        # Turn off listener before deleting
+        self.udp_listeners[port](checked=False)
+        del self.udp_listeners[port]
+        log.debug('PJLinkSettings: new callback list: {port}'.format(port=self.udp_listeners.keys()))
+
+    def call_udp_listener(self):
+        """
+        Call listeners to update UDP listen setting
+        """
+        if len(self.udp_listeners) < 1:
+            log.warning('PJLinkSettings: No callers - returning')
+            return
+        log.debug('PJLinkSettings: Calling UDP listeners')
+        for call in self.udp_listeners:
+            self.udp_listeners[call](checked=self.udp_broadcast_listen.isChecked())

@@ -32,13 +32,13 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from openlp.core.common.i18n import translate
 from openlp.core.ui.icons import UiIcons
 from openlp.core.common.mixins import LogMixin, RegistryProperties
-from openlp.core.common.registry import RegistryBase
+from openlp.core.common.registry import Registry, RegistryBase
 from openlp.core.common.settings import Settings
 from openlp.core.lib.ui import create_widget_action
 from openlp.core.projectors import DialogSourceStyle
 from openlp.core.projectors.constants import E_AUTHENTICATION, E_ERROR, E_NETWORK, E_NOT_CONNECTED, \
     E_SOCKET_TIMEOUT, E_UNKNOWN_SOCKET_ERROR, S_CONNECTED, S_CONNECTING, S_COOLDOWN, S_INITIALIZE, \
-    S_NOT_CONNECTED, S_OFF, S_ON, S_STANDBY, S_WARMUP, PJLINK_PORT, STATUS_CODE, STATUS_MSG, QSOCKET_STATE
+    S_NOT_CONNECTED, S_OFF, S_ON, S_STANDBY, S_WARMUP, STATUS_CODE, STATUS_MSG, QSOCKET_STATE
 
 from openlp.core.projectors.db import ProjectorDB
 from openlp.core.projectors.editform import ProjectorEditForm
@@ -297,7 +297,7 @@ class ProjectorManager(QtWidgets.QWidget, RegistryBase, UiProjectorManager, LogM
         self.projector_list = []
         self.source_select_form = None
         # Dictionary of PJLinkUDP objects to listen for UDP broadcasts from PJLink 2+ projectors.
-        # Key is port number that projectors use
+        # Key is port number
         self.pjlink_udp = {}
         # Dict for matching projector status to display icon
         self.status_icons = {
@@ -335,10 +335,6 @@ class ProjectorManager(QtWidgets.QWidget, RegistryBase, UiProjectorManager, LogM
         """
         Post-initialize setups.
         """
-        # Default PJLink port UDP socket
-        log.debug('Creating PJLinkUDP listener for default port {port}'.format(port=PJLINK_PORT))
-        self.pjlink_udp = {PJLINK_PORT: PJLinkUDP(port=PJLINK_PORT)}
-        self.pjlink_udp[PJLINK_PORT].bind(PJLINK_PORT)
         # Set 1.5 second delay before loading all projectors
         if self.autostart:
             log.debug('Delaying 1.5 seconds before loading all projectors')
@@ -350,6 +346,36 @@ class ProjectorManager(QtWidgets.QWidget, RegistryBase, UiProjectorManager, LogM
         self.projector_form.newProjector.connect(self.add_projector_from_wizard)
         self.projector_form.editProjector.connect(self.edit_projector_from_wizard)
         self.projector_list_widget.itemSelectionChanged.connect(self.update_icons)
+
+    def udp_listen_add(self, port):
+        """
+        Add UDP broadcast listener
+        """
+        if port in self.pjlink_udp:
+            log.warning('UDP Listener for port {port} already added - skipping'.format(port=port))
+        else:
+            log.debug('Adding UDP listener on port {port}'.format(port=port))
+            self.pjlink_udp[port] = PJLinkUDP(port=port)
+            Registry().execute('udp_broadcast_add', port=port, callback=self.pjlink_udp[port].check_settings)
+
+    def udp_listen_delete(self, port):
+        """
+        Remove a UDP broadcast listener
+        """
+        log.debug('Checking for UDP port {port} listener deletion'.format(port=port))
+        if port not in self.pjlink_udp:
+            log.warn('UDP listener for port {port} not there - skipping delete'.format(port=port))
+            return
+        keep_port = False
+        for item in self.projector_list:
+            if port == item.link.port:
+                keep_port = True
+        if keep_port:
+            log.warn('UDP listener for port {port} needed for other projectors - skipping delete'.format(port=port))
+            return
+        Registry().execute('udp_broadcast_remove', port=port)
+        del self.pjlink_udp[port]
+        log.debug('UDP listener for port {port} deleted'.format(port=port))
 
     def get_settings(self):
         """
@@ -518,25 +544,22 @@ class ProjectorManager(QtWidgets.QWidget, RegistryBase, UiProjectorManager, LogM
         except (AttributeError, TypeError):
             pass
         try:
-            projector.poll_timer.stop()
-            projector.poll_timer.timeout.disconnect(projector.link.poll_loop)
+            projector.link.poll_timer.stop()
+            projector.link.poll_timer.timeout.disconnect(projector.link.poll_loop)
         except (AttributeError, TypeError):
             pass
         try:
-            projector.socket_timer.stop()
-            projector.socket_timer.timeout.disconnect(projector.link.socket_abort)
-        except (AttributeError, TypeError):
-            pass
-        # Disconnect signals from projector being deleted
-        try:
-            self.pjlink_udp[projector.link.port].data_received.disconnect(projector.link.get_buffer)
+            projector.link.socket_timer.stop()
+            projector.link.socket_timer.timeout.disconnect(projector.link.socket_abort)
         except (AttributeError, TypeError):
             pass
 
+        old_port = projector.link.port
         # Rebuild projector list
         new_list = []
         for item in self.projector_list:
             if item.link.db_item.id == projector.link.db_item.id:
+                log.debug('Removing projector "{item}"'.format(item=item.link.name))
                 continue
             new_list.append(item)
         self.projector_list = new_list
@@ -546,6 +569,7 @@ class ProjectorManager(QtWidgets.QWidget, RegistryBase, UiProjectorManager, LogM
             log.warning('Delete projector {item} failed'.format(item=projector.db_item))
         for item in self.projector_list:
             log.debug('New projector list - item: {ip} {name}'.format(ip=item.link.ip, name=item.link.name))
+        self.udp_listen_delete(old_port)
 
     def on_disconnect_projector(self, opt=None):
         """
@@ -748,15 +772,8 @@ class ProjectorManager(QtWidgets.QWidget, RegistryBase, UiProjectorManager, LogM
         item.link.projectorAuthentication.connect(self.authentication_error)
         item.link.projectorNoAuthentication.connect(self.no_authentication_error)
         item.link.projectorUpdateIcons.connect(self.update_icons)
-        # Connect UDP signal to projector instances with same port
-        if item.link.port not in self.pjlink_udp:
-            log.debug('Adding new PJLinkUDP listener fo port {port}'.format(port=item.link.port))
-            self.pjlink_udp[item.link.port] = PJLinkUDP(port=item.link.port)
-            self.pjlink_udp[item.link.port].bind(item.link.port)
-        log.debug('Connecting PJLinkUDP port {port} signal to "{item}"'.format(port=item.link.port,
-                                                                               item=item.link.name))
-        self.pjlink_udp[item.link.port].data_received.connect(item.link.get_buffer)
-
+        # Add UDP listener for new projector port
+        self.udp_listen_add(item.link.port)
         self.projector_list.append(item)
         if start:
             item.link.connect_to_host()
@@ -783,13 +800,25 @@ class ProjectorManager(QtWidgets.QWidget, RegistryBase, UiProjectorManager, LogM
         :param projector: Projector() instance of projector with updated information
         """
         log.debug('edit_projector_from_wizard(ip={ip})'.format(ip=projector.ip))
+        old_port = self.old_projector.link.port
+        old_ip = self.old_projector.link.ip
         self.old_projector.link.name = projector.name
         self.old_projector.link.ip = projector.ip
         self.old_projector.link.pin = None if projector.pin == '' else projector.pin
-        self.old_projector.link.port = projector.port
         self.old_projector.link.location = projector.location
         self.old_projector.link.notes = projector.notes
         self.old_projector.widget.setText(projector.name)
+        self.old_projector.link.port = int(projector.port)
+        # Update projector list items
+        for item in self.projector_list:
+            if item.link.ip == old_ip:
+                item.link.port = int(projector.port)
+                # NOTE: This assumes (!) we are using IP addresses as keys
+                break
+        # Update UDP listeners before setting old_projector.port
+        if old_port != projector.port:
+            self.udp_listen_delete(old_port)
+            self.udp_listen_add(int(projector.port))
 
     def _load_projectors(self):
         """'
