@@ -430,16 +430,6 @@ class ImageMediaItem(MediaManagerItem):
                     if isinstance(selected_item.data(0, QtCore.Qt.UserRole), ImageGroups):
                         preselect_group = selected_item.data(0, QtCore.Qt.UserRole).id
             # Enable and disable parts of the 'choose group' form
-            if preselect_group is None:
-                self.choose_group_form.nogroup_radio_button.setChecked(True)
-                self.choose_group_form.nogroup_radio_button.setFocus()
-                self.choose_group_form.existing_radio_button.setChecked(False)
-                self.choose_group_form.new_radio_button.setChecked(False)
-            else:
-                self.choose_group_form.nogroup_radio_button.setChecked(False)
-                self.choose_group_form.existing_radio_button.setChecked(True)
-                self.choose_group_form.new_radio_button.setChecked(False)
-                self.choose_group_form.group_combobox.setFocus()
             if self.manager.get_object_count(ImageGroups) == 0:
                 self.choose_group_form.existing_radio_button.setDisabled(True)
                 self.choose_group_form.group_combobox.setDisabled(True)
