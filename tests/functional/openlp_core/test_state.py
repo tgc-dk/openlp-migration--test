@@ -72,9 +72,24 @@ class TestState(TestCase, TestMixin):
         # WHEN I add a new service twice
         State().add_service("test", 1, PluginStatus.Active)
         State().add_service("test1", 1, PluginStatus.Active, "test")
+        State().add_service("test1", 1, PluginStatus.Active, "test")
 
-        # THEN I have a single saved service
+        # THEN I have a single saved service and one dependancy
         assert len(State().modules) == 2
+        assert len(State().modules['test'].required_by) == 1
+
+    def test_add_service_multiple_depends(self):
+        # GIVEN a new state
+        State().load_settings()
+
+        # WHEN I add a new service twice
+        State().add_service("test", 1, PluginStatus.Active)
+        State().add_service("test1", 1, PluginStatus.Active, "test")
+        State().add_service("test2", 1, PluginStatus.Active, "test")
+
+        # THEN I have a 3 modules and 2 dependancies
+        assert len(State().modules) == 3
+        assert len(State().modules['test'].required_by) == 2
 
     def test_active_service(self):
         # GIVEN a new state
@@ -84,7 +99,7 @@ class TestState(TestCase, TestMixin):
         State().add_service("test", 1, PluginStatus.Active)
 
         # THEN I have a single saved service
-        assert State().is_service_active('test') is True
+        assert State().is_module_active('test') is True
 
     def test_inactive_service(self):
         # GIVEN a new state
@@ -94,4 +109,23 @@ class TestState(TestCase, TestMixin):
         State().add_service("test", 1, PluginStatus.Inactive)
 
         # THEN I have a single saved service
-        assert State().is_service_active('test') is False
+        assert State().is_module_active('test') is False
+
+    def test_basic_preconditions(self):
+        # GIVEN a new state
+        State().load_settings()
+
+        # WHEN I add a new services with dependancies and a failed pre condition
+        State().add_service("test", 1, PluginStatus.Inactive)
+        State().add_service("test2", 1, PluginStatus.Inactive)
+        State().add_service("test1", 1, PluginStatus.Inactive, 'test')
+        State().update_pre_conditions('test1', False)
+
+        # THEN correct the state when I flush the preconditions
+        assert State().modules['test'].pass_preconditions == True
+        assert State().modules['test2'].pass_preconditions == True
+        assert State().modules['test1'].pass_preconditions == False
+        State().flush_preconditions()
+        assert State().modules['test'].pass_preconditions == False
+        assert State().modules['test2'].pass_preconditions == True
+        assert State().modules['test1'].pass_preconditions == False

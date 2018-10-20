@@ -634,7 +634,7 @@ class SongMediaItem(MediaManagerItem):
         if song.media_files:
             service_item.add_capability(ItemCapabilities.HasBackgroundAudio)
             service_item.background_audio = [m.file_path for m in song.media_files]
-            item.metadata.append('<em>{label}:</em> {media}'.
+            service_item.metadata.append('<em>{label}:</em> {media}'.
                                  format(label=translate('SongsPlugin.MediaItem', 'Media'),
                                         media=service_item.background_audio))
         return True

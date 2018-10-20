@@ -339,31 +339,31 @@ class SlideController(DisplayController, LogMixin, RegistryProperties):
             self.toolbar.add_toolbar_widget(self.song_menu)
             # Stuff for items with background audio.
             # FIXME: object name should be changed. But this requires that we migrate the shortcut.
-            self.audio_pause_item = self.toolbar.add_toolbar_action(
-                'audioPauseItem',
-                icon=UiIcons().pause, text=translate('OpenLP.SlideController', 'Pause Audio'),
-                tooltip=translate('OpenLP.SlideController', 'Pause audio.'),
-                checked=False, visible=False, category=self.category, context=QtCore.Qt.WindowShortcut,
-                can_shortcuts=True, triggers=self.set_audio_pause_clicked)
-            self.audio_menu = QtWidgets.QMenu(translate('OpenLP.SlideController', 'Background Audio'), self.toolbar)
-            self.audio_pause_item.setMenu(self.audio_menu)
-            self.audio_pause_item.setParent(self.toolbar)
-            self.toolbar.widgetForAction(self.audio_pause_item).setPopupMode(QtWidgets.QToolButton.MenuButtonPopup)
-            self.next_track_item = create_action(self, 'nextTrackItem', text=UiStrings().NextTrack,
-                                                 icon=UiIcons().arrow_right,
-                                                 tooltip=translate('OpenLP.SlideController',
-                                                                   'Go to next audio track.'),
-                                                 category=self.category,
-                                                 can_shortcuts=True,
-                                                 triggers=self.on_next_track_clicked)
-            self.audio_menu.addAction(self.next_track_item)
-            self.track_menu = self.audio_menu.addMenu(translate('OpenLP.SlideController', 'Tracks'))
-            self.audio_time_label = QtWidgets.QLabel(' 00:00 ', self.toolbar)
-            self.audio_time_label.setAlignment(QtCore.Qt.AlignCenter | QtCore.Qt.AlignHCenter)
-            self.audio_time_label.setStyleSheet(AUDIO_TIME_LABEL_STYLESHEET)
-            self.audio_time_label.setObjectName('audio_time_label')
-            self.toolbar.add_toolbar_widget(self.audio_time_label)
-            self.toolbar.set_widget_visible(AUDIO_LIST, False)
+            # self.audio_pause_item = self.toolbar.add_toolbar_action(
+            #     'audioPauseItem',
+            #     icon=UiIcons().pause, text=translate('OpenLP.SlideController', 'Pause Audio'),
+            #     tooltip=translate('OpenLP.SlideController', 'Pause audio.'),
+            #     checked=False, visible=False, category=self.category, context=QtCore.Qt.WindowShortcut,
+            #     can_shortcuts=True, triggers=self.set_audio_pause_clicked)
+            # self.audio_menu = QtWidgets.QMenu(translate('OpenLP.SlideController', 'Background Audio'), self.toolbar)
+            # self.audio_pause_item.setMenu(self.audio_menu)
+            # self.audio_pause_item.setParent(self.toolbar)
+            # self.toolbar.widgetForAction(self.audio_pause_item).setPopupMode(QtWidgets.QToolButton.MenuButtonPopup)
+            # self.next_track_item = create_action(self, 'nextTrackItem', text=UiStrings().NextTrack,
+            #                                      icon=UiIcons().arrow_right,
+            #                                      tooltip=translate('OpenLP.SlideController',
+            #                                                        'Go to next audio track.'),
+            #                                      category=self.category,
+            #                                      can_shortcuts=True,
+            #                                      triggers=self.on_next_track_clicked)
+            # self.audio_menu.addAction(self.next_track_item)
+            # self.track_menu = self.audio_menu.addMenu(translate('OpenLP.SlideController', 'Tracks'))
+            # self.audio_time_label = QtWidgets.QLabel(' 00:00 ', self.toolbar)
+            # self.audio_time_label.setAlignment(QtCore.Qt.AlignCenter | QtCore.Qt.AlignHCenter)
+            # self.audio_time_label.setStyleSheet(AUDIO_TIME_LABEL_STYLESHEET)
+            # self.audio_time_label.setObjectName('audio_time_label')
+            # self.toolbar.add_toolbar_widget(self.audio_time_label)
+            # self.toolbar.set_widget_visible(AUDIO_LIST, False)
             self.toolbar.set_widget_visible('song_menu', False)
         # Screen preview area
         self.preview_frame = QtWidgets.QFrame(self.splitter)
@@ -874,24 +874,25 @@ class SlideController(DisplayController, LogMixin, RegistryProperties):
             if self.display.audio_player:
                 self.display.audio_player.reset()
                 self.set_audio_items_visibility(False)
-                self.audio_pause_item.setChecked(False)
+                # self.audio_pause_item.setChecked(False)
                 # If the current item has background audio
                 if self.service_item.is_capable(ItemCapabilities.HasBackgroundAudio):
-                    self.log_debug('Starting to play...')
-                    self.display.audio_player.add_to_playlist(self.service_item.background_audio)
-                    self.track_menu.clear()
-                    for counter in range(len(self.service_item.background_audio)):
-                        action = self.track_menu.addAction(
-                            os.path.basename(str(self.service_item.background_audio[counter])))
-                        action.setData(counter)
-                        action.triggered.connect(self.on_track_triggered)
-                    self.display.audio_player.repeat = \
-                        Settings().value(self.main_window.general_settings_section + '/audio repeat list')
-                    if Settings().value(self.main_window.general_settings_section + '/audio start paused'):
-                        self.audio_pause_item.setChecked(True)
-                        self.display.audio_player.pause()
-                    else:
-                        self.display.audio_player.play()
+                    self.on_media_start(service_item)
+                    #self.log_debug('Starting to play...')
+                    #self.display.audio_player.add_to_playlist(self.service_item.background_audio)
+                    #self.track_menu.clear()
+                    #for counter in range(len(self.service_item.background_audio)):
+                    #    action = self.track_menu.addAction(
+                    #        os.path.basename(str(self.service_item.background_audio[counter])))
+                    #    action.setData(counter)
+                    #    action.triggered.connect(self.on_track_triggered)
+                    #self.display.audio_player.repeat = \
+                    #    Settings().value(self.main_window.general_settings_section + '/audio repeat list')
+                    #if Settings().value(self.main_window.general_settings_section + '/audio start paused'):
+                    #    self.audio_pause_item.setChecked(True)
+                    #    self.display.audio_player.pause()
+                    #else:
+                    #    self.display.audio_player.play()
                     self.set_audio_items_visibility(True)
         row = 0
         width = self.main_window.control_splitter.sizes()[self.split]

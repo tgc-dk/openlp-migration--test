@@ -24,6 +24,7 @@ import logging
 
 from PyQt5 import QtGui
 
+from openlp.core.state import State
 from openlp.core.api.http import register_endpoint
 from openlp.core.common.actions import ActionList
 from openlp.core.common.i18n import UiStrings, translate
@@ -146,6 +147,8 @@ class AlertsPlugin(Plugin):
         self.alert_form = AlertForm(self)
         register_endpoint(alerts_endpoint)
         register_endpoint(api_alerts_endpoint)
+        State().add_service(self.name, self.weight)
+        State().update_pre_conditions(self.name, self.check_pre_conditions())
 
     def add_tools_menu_item(self, tools_menu):
         """

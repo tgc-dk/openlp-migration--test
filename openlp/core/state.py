@@ -28,13 +28,27 @@ logging and a plugin framework are contained within the openlp.core module.
 """
 import logging
 
+from openlp.core.common.mixins import LogMixin
 from openlp.core.lib.plugin import PluginStatus
 
 
 log = logging.getLogger()
 
 
-class State(object):
+class StateModule(LogMixin):
+    def __init__(self):
+        """
+        """
+        super(StateModule, self).__init__()
+        self.name = None
+        self.order = 0
+        self.status = PluginStatus.Inactive
+        self.pass_preconditions = True
+        self.requires = None
+        self.required_by = None
+
+
+class State(LogMixin):
 
     __instance__ = None
 
@@ -44,7 +58,6 @@ class State(object):
         """
         if not cls.__instance__:
             cls.__instance__ = object.__new__(cls)
-            cls.modules = {}
         return cls.__instance__
 
     def load_settings(self):
@@ -53,12 +66,47 @@ class State(object):
     def save_settings(self):
         pass
 
-    def add_service(self, name, order, status, dependance=None):
+    def add_service(self, name, order, status=PluginStatus.Active, requires=None):
+        """
+        Add a module to the array and lod dependancies.  There will only be one item per module
+        :param name: Module name
+        :param order: Order fo display
+        :param status: The active status
+        :param requires: Module name this requires
+        :return:
+        """
         if name not in self.modules:
-            self.modules[name] = {'order': order, 'status': status, 'depemdancy': dependance}
+            state = StateModule()
+            state.name = name
+            state.order = order
+            state.status = status
+            state.requires = requires
+            state.required_by = []
+            self.modules[name] = state
+            if requires and requires in self.modules:
+                if requires not in self.modules[requires].required_by:
+                    self.modules[requires].required_by.append(name)
 
-    def is_service_active(self, name):
-        return self.modules[name]['status'] == PluginStatus.Active
+    def update_pre_conditions(self, name, status):
+        """
+        Updates the preconditions state of a module
+        :param name: Module name
+        :param status: Module new status
+        :return:
+        """
+        self.modules[name].pass_preconditions = status
+
+    def flush_preconditions(self):
+        """
+        Now all modules are loaded lets update all the preconditions.
+        :return:
+        """
+        for mods in self.modules:
+            for req in self.modules[mods].required_by:
+                self.modules[mods].pass_preconditions = self.modules[req].pass_preconditions
+
+    def is_module_active(self, name):
+        return self.modules[name].status == PluginStatus.Active
 
     def check_active_dependency(self, name):
         pass

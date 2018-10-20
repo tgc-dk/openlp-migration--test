@@ -22,11 +22,11 @@
 
 import logging
 
+from openlp.core.state import State
 from openlp.core.api.http import register_endpoint
 from openlp.core.common.actions import ActionList
 from openlp.core.common.i18n import UiStrings, translate
 from openlp.core.ui.icons import UiIcons
-from openlp.core.lib import build_icon
 from openlp.core.lib.plugin import Plugin, StringContent
 from openlp.core.lib.ui import create_action
 from openlp.plugins.bibles.endpoint import api_bibles_endpoint, bibles_endpoint
@@ -81,6 +81,8 @@ class BiblePlugin(Plugin):
         self.manager = BibleManager(self)
         register_endpoint(bibles_endpoint)
         register_endpoint(api_bibles_endpoint)
+        State().add_service(self.name, self.weight)
+        State().update_pre_conditions(self.name, self.check_pre_conditions())
 
     def initialise(self):
         """

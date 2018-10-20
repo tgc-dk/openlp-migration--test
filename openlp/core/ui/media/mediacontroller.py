@@ -25,13 +25,20 @@ related to playing media, such as sliders.
 """
 import datetime
 import logging
-import os
+
+try:
+    import pymediainfo
+    pymediainfo_available = True
+except ImportError:
+    pymediainfo_available = False
+
+from subprocess import check_output
 
 from PyQt5 import QtCore, QtWidgets
 
+from openlp.core.state import State
 from openlp.core.api.http import register_endpoint
-from openlp.core.common import extension_loader
-from openlp.core.common.i18n import UiStrings, translate
+from openlp.core.common.i18n import translate
 from openlp.core.common.mixins import LogMixin, RegistryProperties
 from openlp.core.common.registry import Registry, RegistryBase
 from openlp.core.common.settings import Settings
@@ -41,9 +48,7 @@ from openlp.core.ui import DisplayControllerType
 from openlp.core.ui.icons import UiIcons
 from openlp.core.ui.media import MediaState, MediaInfo, MediaType, parse_optical_path
 from openlp.core.ui.media.endpoint import media_endpoint
-from openlp.core.ui.media.mediaplayer import MediaPlayer
-from openlp.core.ui.media.vlcplayer import VlcPlayer
-from openlp.core.ui.media.vendor.mediainfoWrapper import MediaInfoWrapper
+from openlp.core.ui.media.vlcplayer import VlcPlayer, get_vlc
 from openlp.core.widgets.toolbar import OpenLPToolbar
 
 log = logging.getLogger(__name__)
@@ -62,7 +67,6 @@ class MediaSlider(QtWidgets.QSlider):
         super(MediaSlider, self).__init__(direction)
         self.manager = manager
         self.controller = controller
-        self.no_matching_player = translate('MediaPlugin.MediaItem', 'File %s not supported using player %s')
 
     def mouseMoveEvent(self, event):
         """
@@ -193,6 +197,9 @@ class MediaController(RegistryBase, LogMixin, RegistryProperties):
         # self.register_players()
         self.setup()
         self.media_players = VlcPlayer(self)
+        State().add_service("mediacontroller", 0)
+        if get_vlc() and pymediainfo_available:
+            State().update_pre_conditions("mediacontroller", True)
         self._generate_extensions_lists()
         return True
 
@@ -460,7 +467,14 @@ class MediaController(RegistryBase, LogMixin, RegistryProperties):
         media_info = MediaInfo()
         media_info.volume = 0
         media_info.file_info = QtCore.QFileInfo(service_item.get_frame_path())
-        media_data = MediaInfoWrapper.parse(service_item.get_frame_path())
+        filename = service_item.get_frame_path()
+        if pymediainfo.MediaInfo.can_parse():
+            media_data = pymediainfo.MediaInfo.parse(filename)
+        else:
+            xml = check_output(['mediainfo', '-f', '--Output=XML', '--Inform=OLDXML', filename])
+            if not xml.startswith(b'<?xml'):
+                xml = check_output(['mediainfo', '-f', '--Output=XML', filename])
+            media_data = pymediainfo.MediaInfo(xml)
         # duration returns in milli seconds
         service_item.set_media_length(media_data.tracks[0].duration)
         return True

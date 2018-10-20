@@ -30,6 +30,12 @@ from openlp.core.ui.media.mediacontroller import MediaController
 from openlp.core.ui.media.mediaplayer import MediaPlayer
 from tests.helpers.testmixin import TestMixin
 
+from tests.utils.constants import RESOURCE_PATH
+
+
+TEST_PATH = RESOURCE_PATH / 'media'
+TEST_MEDIA = [['avi_file.avi', 61495], ['mp3_file.mp3', 134426], ['mpg_file.mpg', 9404], ['mp4_file.mp4', 188336]]
+
 
 class TestMediaController(TestCase, TestMixin):
 
@@ -254,3 +260,18 @@ class TestMediaController(TestCase, TestMixin):
 
         # THEN: The underlying method is called
         mocked_media_seek.assert_called_with(1, 800)
+
+    def test_media_length(self):
+        """
+        Test the Media Info basic functionality
+        """
+        for test_data in TEST_MEDIA:
+            # GIVEN: a media file
+            full_path = str(TEST_PATH / test_data[0])
+            media_controller = MediaController()
+
+            # WHEN the media data is retrieved
+            results = media_controller.media_length(full_path)
+
+            # THEN you can determine the run time
+            assert results.tracks[0].duration == test_data[1], 'The correct duration is returned for ' + test_data[0]

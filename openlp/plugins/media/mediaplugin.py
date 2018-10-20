@@ -27,6 +27,7 @@ import re
 
 from PyQt5 import QtCore
 
+from openlp.core.state import State
 from openlp.core.api.http import register_endpoint
 from openlp.core.common import check_binary_exists
 from openlp.core.common.applocation import AppLocation
@@ -64,6 +65,8 @@ class MediaPlugin(Plugin):
         self.dnd_id = 'Media'
         register_endpoint(media_endpoint)
         register_endpoint(api_media_endpoint)
+        State().add_service(self.name, self.weight, requires='mediacontroller')
+        State().update_pre_conditions(self.name, self.check_pre_conditions())
 
     def initialise(self):
         """

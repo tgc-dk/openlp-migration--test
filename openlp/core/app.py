@@ -35,6 +35,7 @@ from traceback import format_exception
 
 from PyQt5 import QtCore, QtWidgets
 
+from openlp.core.state import State
 from openlp.core.common import is_macosx, is_win
 from openlp.core.common.applocation import AppLocation
 from openlp.core.loader import loader
@@ -118,6 +119,7 @@ class OpenLP(QtWidgets.QApplication):
         self.main_window = MainWindow()
         Registry().execute('bootstrap_initialise')
         Registry().execute('bootstrap_post_set_up')
+        State().flush_preconditions()
         Registry().initialise = False
         self.main_window.show()
         if can_show_splash:

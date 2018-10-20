@@ -99,7 +99,8 @@ MODULES = [
     'six',
     'webob',
     'requests',
-    'qtawesome'
+    'qtawesome',
+    'pymediainfo'
 ]
 
 

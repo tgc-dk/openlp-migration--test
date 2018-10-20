@@ -25,6 +25,7 @@ The :mod:`~openlp.core.commmon.loader` module provides a bootstrap for the commo
 
 from openlp.core.state import State
 from openlp.core.ui.media import MediaController
+from openlp.core.lib.pluginmanager import PluginManager
 
 
 def loader():
@@ -34,5 +35,5 @@ def loader():
     :return: None
     """
     State().load_settings()
-
     MediaController()
+    PluginManager()

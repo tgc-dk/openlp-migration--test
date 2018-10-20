@@ -506,7 +506,6 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow, LogMixin, RegistryPropert
         self.formatting_tag_form = FormattingTagForm(self)
         self.shortcut_form = ShortcutListForm(self)
         # Set up the path with plugins
-        PluginManager(self)
         ImageManager()
         Renderer()
         # Set up the interface
