@@ -74,19 +74,6 @@ class MediaPlugin(Plugin):
         """
         super().initialise()
 
-    def check_pre_conditions(self):
-        """
-        Check it we have a valid environment.
-        :return: true or false
-        """
-        log.debug('check_installed Mediainfo')
-        # Try to find mediainfo in the path
-        exists = process_check_binary(Path('mediainfo'))
-        # If mediainfo is not in the path, try to find it in the application folder
-        if not exists:
-            exists = process_check_binary(AppLocation.get_directory(AppLocation.AppDir) / 'mediainfo')
-        return exists
-
     def app_startup(self):
         """
         Override app_startup() in order to do nothing

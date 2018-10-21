@@ -25,6 +25,7 @@ import os
 
 from PyQt5 import QtCore, QtWidgets
 
+from openlp.core.state import State
 from openlp.core.common.applocation import AppLocation
 from openlp.core.common.i18n import UiStrings, translate, get_natural_key
 from openlp.core.common.mixins import RegistryProperties
@@ -174,6 +175,8 @@ class MediaMediaItem(MediaManagerItem, RegistryProperties):
         :param remote: Triggered from remote
         :param context: Why is it being generated
         """
+        if State().check_active_dependency():
+            a=1
         if item is None:
             item = self.list_view.currentItem()
             if item is None:

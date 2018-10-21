@@ -90,6 +90,7 @@ class State(LogMixin):
     def update_pre_conditions(self, name, status):
         """
         Updates the preconditions state of a module
+
         :param name: Module name
         :param status: Module new status
         :return:
@@ -99,14 +100,25 @@ class State(LogMixin):
     def flush_preconditions(self):
         """
         Now all modules are loaded lets update all the preconditions.
+
         :return:
         """
         for mods in self.modules:
             for req in self.modules[mods].required_by:
-                self.modules[mods].pass_preconditions = self.modules[req].pass_preconditions
+                self.modules[req].pass_preconditions = self.modules[mods].pass_preconditions
 
     def is_module_active(self, name):
         return self.modules[name].status == PluginStatus.Active
 
-    def check_active_dependency(self, name):
-        pass
+    def check_preconditions(self, name):
+        """
+        Checks is a modules preconditions have been met and that of a required by module
+
+        :param name: Module name
+        :return: True / False
+        """
+        if self.modules[name].requires is None:
+            return self.modules[name].pass_preconditions
+        else:
+            mod = self.modules[name].requires
+            return self.modules[mod].pass_preconditions

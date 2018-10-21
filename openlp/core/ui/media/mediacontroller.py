@@ -394,7 +394,10 @@ class MediaController(RegistryBase, LogMixin, RegistryProperties):
         controller.media_info.is_background = video_behind_text
         # background will always loop video.
         controller.media_info.can_loop_playback = video_behind_text
-        controller.media_info.file_info = QtCore.QFileInfo(service_item.get_frame_path())
+        if service_item.is_capable(ItemCapabilities.HasBackgroundAudio):
+            controller.media_info.file_info = service_item.background_audio
+        else:
+            controller.media_info.file_info = QtCore.QFileInfo(service_item.get_frame_path())
         display = self._define_display(controller)
         if controller.is_live:
             # if this is an optical device use special handling
@@ -458,7 +461,7 @@ class MediaController(RegistryBase, LogMixin, RegistryProperties):
         return True
 
     @staticmethod
-    def media_length(service_item):
+    def media_length(media_path):
         """
         Uses Media Info to obtain the media length
 
@@ -466,18 +469,17 @@ class MediaController(RegistryBase, LogMixin, RegistryProperties):
         """
         media_info = MediaInfo()
         media_info.volume = 0
-        media_info.file_info = QtCore.QFileInfo(service_item.get_frame_path())
-        filename = service_item.get_frame_path()
+        media_info.file_info = media_path
+        filename = media_path
         if pymediainfo.MediaInfo.can_parse():
             media_data = pymediainfo.MediaInfo.parse(filename)
         else:
             xml = check_output(['mediainfo', '-f', '--Output=XML', '--Inform=OLDXML', filename])
             if not xml.startswith(b'<?xml'):
                 xml = check_output(['mediainfo', '-f', '--Output=XML', filename])
-            media_data = pymediainfo.MediaInfo(xml)
+            media_data = pymediainfo.MediaInfo(xml.decode("utf-8"))
         # duration returns in milli seconds
-        service_item.set_media_length(media_data.tracks[0].duration)
-        return True
+        return media_data.tracks[0].duration
 
     def media_setup_optical(self, filename, title, audio_track, subtitle_track, start, end, display, controller):
         """

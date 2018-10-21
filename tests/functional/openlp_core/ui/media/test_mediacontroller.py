@@ -49,19 +49,18 @@ class TestMediaController(TestCase, TestMixin):
         """
         # GIVEN: A MediaController and an active player with audio and video extensions
         media_controller = MediaController()
-        media_player = MediaPlayer(None)
-        media_player.is_active = True
-        media_player.audio_extensions_list = ['*.mp3', '*.wav', '*.wma', '*.ogg']
-        media_player.video_extensions_list = ['*.mp4', '*.mov', '*.avi', '*.ogm']
-        media_controller.register_players(media_player)
+        media_controller.media_players = MediaPlayer(None)
+        media_controller.media_players.is_active = True
+        media_controller.media_players.audio_extensions_list = ['*.mp3', '*.wav', '*.wma', '*.ogg']
+        media_controller.media_players.video_extensions_list = ['*.mp4', '*.mov', '*.avi', '*.ogm']
 
         # WHEN: calling _generate_extensions_lists
         media_controller._generate_extensions_lists()
 
         # THEN: extensions list should have been copied from the player to the mediacontroller
-        assert media_player.video_extensions_list == media_controller.video_extensions_list, \
+        assert media_controller.video_extensions_list == media_controller.video_extensions_list, \
             'Video extensions should be the same'
-        assert media_player.audio_extensions_list == media_controller.audio_extensions_list, \
+        assert media_controller.audio_extensions_list == media_controller.audio_extensions_list, \
             'Audio extensions should be the same'
 
     def test_resize(self):
@@ -79,112 +78,23 @@ class TestMediaController(TestCase, TestMixin):
         # THEN: The player's resize method should be called correctly
         mocked_player.resize.assert_called_with(mocked_display)
 
-    def test_check_file_type_no_players(self):
+    def test_check_file_type(self):
         """
         Test that we don't try to play media when no players available
         """
         # GIVEN: A mocked UiStrings, get_used_players, controller, display and service_item
-        with patch('openlp.core.ui.media.mediacontroller.MediaController._get_used_players') as \
-                mocked_get_used_players,\
-                patch('openlp.core.ui.media.mediacontroller.UiStrings') as mocked_uistrings:
-            mocked_get_used_players.return_value = ([])
-            mocked_ret_uistrings = MagicMock()
-            mocked_ret_uistrings.Automatic = 1
-            mocked_uistrings.return_value = mocked_ret_uistrings
-            media_controller = MediaController()
-            mocked_controller = MagicMock()
-            mocked_display = MagicMock()
-            mocked_service_item = MagicMock()
-            mocked_service_item.processor = 1
-
-            # WHEN: calling _check_file_type when no players exists
-            ret = media_controller._check_file_type(mocked_controller, mocked_display, mocked_service_item)
-
-            # THEN: it should return False
-            assert ret is False, '_check_file_type should return False when no mediaplayers are available.'
-
-    @patch('openlp.core.ui.media.mediacontroller.MediaController._get_used_players')
-    @patch('openlp.core.ui.media.mediacontroller.UiStrings')
-    def test_check_file_type_no_processor(self, mocked_uistrings, mocked_get_used_players):
-        """
-        Test that we don't try to play media when the processor for the service item is None
-        """
-        # GIVEN: A mocked UiStrings, get_media_players, controller, display and service_item
-        mocked_get_used_players.return_value = ([], '')
-        mocked_ret_uistrings = MagicMock()
-        mocked_ret_uistrings.Automatic = 1
-        mocked_uistrings.return_value = mocked_ret_uistrings
         media_controller = MediaController()
         mocked_controller = MagicMock()
-        mocked_display = MagicMock()
-        mocked_service_item = MagicMock()
-        mocked_service_item.processor = None
-
-        # WHEN: calling _check_file_type when the processor for the service item is None
-        ret = media_controller._check_file_type(mocked_controller, mocked_display, mocked_service_item)
-
-        # THEN: it should return False
-        assert ret is False, '_check_file_type should return False when the processor for service_item is None.'
-
-    @patch('openlp.core.ui.media.mediacontroller.MediaController._get_used_players')
-    @patch('openlp.core.ui.media.mediacontroller.UiStrings')
-    def test_check_file_type_automatic_processor(self, mocked_uistrings, mocked_get_used_players):
-        """
-        Test that we can play media when players are available and we have a automatic processor from the service item
-        """
-        # GIVEN: A mocked UiStrings, get_media_players, controller, display and service_item
-        mocked_get_used_players.return_value = (['vlc', 'webkit'])
-        mocked_ret_uistrings = MagicMock()
-        mocked_ret_uistrings.Automatic = 1
-        mocked_uistrings.return_value = mocked_ret_uistrings
-        media_controller = MediaController()
-        mocked_vlc = MagicMock()
-        mocked_vlc.video_extensions_list = ['*.mp4']
-        media_controller.media_players = {'vlc': mocked_vlc, 'webkit': MagicMock()}
-        mocked_controller = MagicMock()
-        mocked_suffix = MagicMock()
-        mocked_suffix.return_value = 'mp4'
-        mocked_controller.media_info.file_info.suffix = mocked_suffix
         mocked_display = MagicMock()
         mocked_service_item = MagicMock()
         mocked_service_item.processor = 1
+        media_controller.media_players = MagicMock()
 
-        # WHEN: calling _check_file_type when the processor for the service item is None
+        # WHEN: calling _check_file_type when no players exists
         ret = media_controller._check_file_type(mocked_controller, mocked_display, mocked_service_item)
 
-        # THEN: it should return True
-        assert ret is True, '_check_file_type should return True when mediaplayers are available and ' \
-            'the service item has an automatic processor.'
-
-    @patch('openlp.core.ui.media.mediacontroller.MediaController._get_used_players')
-    @patch('openlp.core.ui.media.mediacontroller.UiStrings')
-    def test_check_file_type_processor_different_from_available(self, mocked_uistrings, mocked_get_used_players):
-        """
-        Test that we can play media when players available are different from the processor from the service item
-        """
-        # GIVEN: A mocked UiStrings, get_media_players, controller, display and service_item
-        mocked_get_used_players.return_value = (['system'])
-        mocked_ret_uistrings = MagicMock()
-        mocked_ret_uistrings.Automatic = 'automatic'
-        mocked_uistrings.return_value = mocked_ret_uistrings
-        media_controller = MediaController()
-        mocked_phonon = MagicMock()
-        mocked_phonon.video_extensions_list = ['*.mp4']
-        media_controller.media_players = {'system': mocked_phonon}
-        mocked_controller = MagicMock()
-        mocked_suffix = MagicMock()
-        mocked_suffix.return_value = 'mp4'
-        mocked_controller.media_info.file_info.suffix = mocked_suffix
-        mocked_display = MagicMock()
-        mocked_service_item = MagicMock()
-        mocked_service_item.processor = 'vlc'
-
-        # WHEN: calling _check_file_type when the processor for the service item is None
-        ret = media_controller._check_file_type(mocked_controller, mocked_display, mocked_service_item)
-
-        # THEN: it should return True
-        assert ret is True, '_check_file_type should return True when the players available are different' \
-            'from the processor from the service item.'
+        # THEN: it should return False
+        assert ret is False, '_check_file_type should return False when no mediaplayers are available.'
 
     def test_media_play_msg(self):
         """
@@ -265,13 +175,13 @@ class TestMediaController(TestCase, TestMixin):
         """
         Test the Media Info basic functionality
         """
+        media_controller = MediaController()
         for test_data in TEST_MEDIA:
             # GIVEN: a media file
             full_path = str(TEST_PATH / test_data[0])
-            media_controller = MediaController()
 
             # WHEN the media data is retrieved
             results = media_controller.media_length(full_path)
 
             # THEN you can determine the run time
-            assert results.tracks[0].duration == test_data[1], 'The correct duration is returned for ' + test_data[0]
+            assert results == test_data[1], 'The correct duration is returned for ' + test_data[0]
