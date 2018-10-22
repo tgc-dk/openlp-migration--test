@@ -116,7 +116,6 @@ class BibleManager(LogMixin, RegistryProperties):
         self.web = 'Web'
         self.db_cache = None
         self.path = AppLocation.get_section_data_path(self.settings_section)
-        self.proxy_name = Settings().value(self.settings_section + '/proxy name')
         self.suffix = '.sqlite'
         self.import_wizard = None
         self.reload_bibles()
@@ -149,11 +148,8 @@ class BibleManager(LogMixin, RegistryProperties):
             if self.db_cache[name].is_web_bible:
                 source = self.db_cache[name].get_object(BibleMeta, 'download_source')
                 download_name = self.db_cache[name].get_object(BibleMeta, 'download_name').value
-                meta_proxy = self.db_cache[name].get_object(BibleMeta, 'proxy_server')
                 web_bible = HTTPBible(self.parent, path=self.path, file=file_path, download_source=source.value,
                                       download_name=download_name)
-                if meta_proxy:
-                    web_bible.proxy_server = meta_proxy.value
                 self.db_cache[name] = web_bible
         log.debug('Bibles reloaded')
 

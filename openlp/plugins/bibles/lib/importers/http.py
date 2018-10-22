@@ -94,9 +94,8 @@ class BGExtract(RegistryProperties):
     """
     NAME = 'BibleGateway'
 
-    def __init__(self, proxy_url=None):
-        log.debug('BGExtract.init(proxy_url="{url}")'.format(url=proxy_url))
-        self.proxy_url = proxy_url
+    def __init__(self):
+        log.debug('BGExtract.__init__()')
         socket.setdefaulttimeout(30)
 
     def _remove_elements(self, parent, tag, class_=None):
@@ -358,9 +357,8 @@ class BSExtract(RegistryProperties):
     """
     NAME = 'BibleServer'
 
-    def __init__(self, proxy_url=None):
-        log.debug('BSExtract.init("{url}")'.format(url=proxy_url))
-        self.proxy_url = proxy_url
+    def __init__(self):
+        log.debug('BSExtract.__init__()')
         socket.setdefaulttimeout(30)
 
     def get_bible_chapter(self, version, book_name, chapter):
@@ -461,9 +459,8 @@ class CWExtract(RegistryProperties):
     """
     NAME = 'Crosswalk'
 
-    def __init__(self, proxy_url=None):
-        log.debug('CWExtract.init("{url}")'.format(url=proxy_url))
-        self.proxy_url = proxy_url
+    def __init__(self):
+        log.debug('CWExtract.__init__()')
         socket.setdefaulttimeout(30)
 
     def get_bible_chapter(self, version, book_name, chapter):
@@ -595,19 +592,9 @@ class HTTPBible(BibleImport, RegistryProperties):
         super().__init__(*args, **kwargs)
         self.download_source = kwargs['download_source']
         self.download_name = kwargs['download_name']
-        # TODO: Clean up proxy stuff. We probably want one global proxy per connection type (HTTP and HTTPS) at most.
-        self.proxy_server = None
-        self.proxy_username = None
-        self.proxy_password = None
         self.language_id = None
         if 'path' in kwargs:
             self.path = kwargs['path']
-        if 'proxy_server' in kwargs:
-            self.proxy_server = kwargs['proxy_server']
-        if 'proxy_username' in kwargs:
-            self.proxy_username = kwargs['proxy_username']
-        if 'proxy_password' in kwargs:
-            self.proxy_password = kwargs['proxy_password']
         if 'language_id' in kwargs:
             self.language_id = kwargs['language_id']
 
@@ -621,20 +608,12 @@ class HTTPBible(BibleImport, RegistryProperties):
                                                      'Registering Bible and loading books...'))
         self.save_meta('download_source', self.download_source)
         self.save_meta('download_name', self.download_name)
-        if self.proxy_server:
-            self.save_meta('proxy_server', self.proxy_server)
-        if self.proxy_username:
-            # Store the proxy userid.
-            self.save_meta('proxy_username', self.proxy_username)
-        if self.proxy_password:
-            # Store the proxy password.
-            self.save_meta('proxy_password', self.proxy_password)
         if self.download_source.lower() == 'crosswalk':
-            handler = CWExtract(self.proxy_server)
+            handler = CWExtract()
         elif self.download_source.lower() == 'biblegateway':
-            handler = BGExtract(self.proxy_server)
+            handler = BGExtract()
         elif self.download_source.lower() == 'bibleserver':
-            handler = BSExtract(self.proxy_server)
+            handler = BSExtract()
         books = handler.get_books_from_http(self.download_name)
         if not books:
             log.error('Importing books from {source} - download name: "{name}" '
@@ -722,11 +701,11 @@ class HTTPBible(BibleImport, RegistryProperties):
         log.debug('HTTPBible.get_chapter("{book}", "{chapter}")'.format(book=book, chapter=chapter))
         log.debug('source = {source}'.format(source=self.download_source))
         if self.download_source.lower() == 'crosswalk':
-            handler = CWExtract(self.proxy_server)
+            handler = CWExtract()
         elif self.download_source.lower() == 'biblegateway':
-            handler = BGExtract(self.proxy_server)
+            handler = BGExtract()
         elif self.download_source.lower() == 'bibleserver':
-            handler = BSExtract(self.proxy_server)
+            handler = BSExtract()
         return handler.get_bible_chapter(self.download_name, book, chapter)
 
     def get_books(self):
