@@ -51,7 +51,6 @@ def upgrade_2(session, metadata):
     Remove the individual proxy settings, after the implementation of central proxy settings.
     Added in 2.5 (3.0 development)
     """
-    # TODO: Test
     settings = Settings()
     op = get_upgrade_op(session)
     metadata_table = Table('metadata', metadata, autoload=True)
@@ -80,7 +79,8 @@ def upgrade_2(session, metadata):
             https_proxy = proxy
             settings.setValue('advanced/proxy https', proxy)
         if http_proxy or https_proxy:
-            username, = session.execute(select([metadata_table.c.value], metadata_table.c.key == 'proxy_username')).first()
+            username, = session.execute(
+                select([metadata_table.c.value], metadata_table.c.key == 'proxy_username')).first()
             proxy, = session.execute(select([metadata_table.c.value], metadata_table.c.key == 'proxy_password')).first()
             settings.setValue('advanced/proxy username', username)
             settings.setValue('advanced/proxy password', proxy)

@@ -275,9 +275,6 @@ class Settings(QtCore.QSettings):
         ('songuasge/db hostname', 'songusage/db hostname', []),
         ('songuasge/db database', 'songusage/db database', []),
         ('presentations / Powerpoint Viewer', '', []),
-        ('songuasge/db hostname', 'songusage/db hostname', []),
-        ('songuasge/db hostname', 'songusage/db hostname', []),
-        ('songuasge/db hostname', 'songusage/db hostname', []),
         ('bibles/proxy name', '', []),  # Just remove these bible proxy settings. They weren't used in 2.4!
         ('bibles/proxy address', '', []),
         ('bibles/proxy username', '', []),

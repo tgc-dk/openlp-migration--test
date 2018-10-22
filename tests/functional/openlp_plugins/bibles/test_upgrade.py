@@ -146,7 +146,6 @@ class TestProxyMetaUpgrade(TestCase, TestMixin):
         assert conn.execute('SELECT * FROM metadata WHERE key = "version"').first().value == '2'
         self.mocked_settings_instance.setValue.assert_not_called()
 
-
     def test_upgrade_2_http_selected(self):
         """
         Test that upgrade 2 completes properly when the user chooses to use a HTTP proxy
@@ -167,7 +166,7 @@ class TestProxyMetaUpgrade(TestCase, TestMixin):
         assert conn.execute('SELECT * FROM metadata WHERE key = "version"').first().value == '2'
 
         assert self.mocked_settings_instance.setValue.call_args_list == [
-            call('advanced/proxy http', 'proxy_server'),  call('advanced/proxy username', 'proxy_username'),
+            call('advanced/proxy http', 'proxy_server'), call('advanced/proxy username', 'proxy_username'),
             call('advanced/proxy password', 'proxy_password'), call('advanced/proxy mode', ProxyMode.MANUAL_PROXY)]
 
     def test_upgrade_2_https_selected(self):
@@ -214,6 +213,6 @@ class TestProxyMetaUpgrade(TestCase, TestMixin):
         assert conn.execute('SELECT * FROM metadata WHERE key = "version"').first().value == '2'
 
         assert self.mocked_settings_instance.setValue.call_args_list == [
-                call('advanced/proxy http', 'proxy_server'), call('advanced/proxy https', 'proxy_server'),
-                call('advanced/proxy username', 'proxy_username'), call('advanced/proxy password', 'proxy_password'),
-                call('advanced/proxy mode', ProxyMode.MANUAL_PROXY)]
+            call('advanced/proxy http', 'proxy_server'), call('advanced/proxy https', 'proxy_server'),
+            call('advanced/proxy username', 'proxy_username'), call('advanced/proxy password', 'proxy_password'),
+            call('advanced/proxy mode', ProxyMode.MANUAL_PROXY)]
