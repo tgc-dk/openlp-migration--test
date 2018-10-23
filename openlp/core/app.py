@@ -118,6 +118,7 @@ class OpenLP(QtWidgets.QApplication):
         loader()
         self.main_window = MainWindow()
         Registry().execute('bootstrap_initialise')
+        State().flush_preconditions()
         Registry().execute('bootstrap_post_set_up')
         State().flush_preconditions()
         Registry().initialise = False
@@ -136,7 +137,7 @@ class OpenLP(QtWidgets.QApplication):
         if Settings().value('core/update check'):
             check_for_update(self.main_window)
         self.main_window.is_display_blank()
-        self.main_window.app_startup()
+        Registry().execute('bootstrap_completion')
         return self.exec()
 
     @staticmethod

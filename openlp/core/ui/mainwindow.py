@@ -657,16 +657,6 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow, LogMixin, RegistryPropert
             self.set_view_mode(False, True, False, False, True, True)
             self.mode_live_item.setChecked(True)
 
-    def app_startup(self):
-        """
-        Give all the plugins a chance to perform some tasks at startup
-        """
-        self.application.process_events()
-        for plugin in self.plugin_manager.plugins:
-            if plugin.is_active():
-                plugin.app_startup()
-                self.application.process_events()
-
     def first_time(self):
         """
         Import themes if first time

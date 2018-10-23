@@ -55,6 +55,11 @@ class PluginManager(RegistryBase, LogMixin, RegistryProperties):
         # hook methods have to happen after find_plugins. Find plugins needs
         # the controllers hence the hooks have moved from setupUI() to here
         # Find and insert settings tabs
+
+    def bootstrap_post_set_up(self):
+        """
+        Bootstrap all the plugin manager functions
+        """
         self.hook_settings_tabs()
         # Find and insert media manager items
         self.hook_media_manager()
@@ -66,6 +71,16 @@ class PluginManager(RegistryBase, LogMixin, RegistryProperties):
         self.hook_tools_menu()
         # Call the initialise method to setup plugins.
         self.initialise_plugins()
+
+    def bootstrap_completion(self):
+        """
+        Give all the plugins a chance to perform some tasks at startup
+        """
+        self.application.process_events()
+        for plugin in self.plugins:
+            if plugin.is_active():
+                plugin.app_startup()
+                self.application.process_events()
 
     def find_plugins(self):
         """

@@ -323,6 +323,9 @@ class Plugin(RegistryBase, RegistryProperties):
         """
         return self.text_strings[name]
 
+    def set_plugin_text_strings(self):
+        pass
+
     def set_plugin_ui_text_strings(self, tooltips):
         """
         Called to define all translatable texts of the plugin
