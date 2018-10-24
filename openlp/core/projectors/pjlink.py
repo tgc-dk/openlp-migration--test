@@ -98,32 +98,51 @@ class PJLinkUDP(QtNetwork.QUdpSocket):
         self.search_active = False
         self.search_time = 30000  # 30 seconds for allowed time
         self.search_timer = QtCore.QTimer()
+        self.udp_broadcast_listen_setting = False
+        log.debug('(UDP:{port}) PJLinkUDP() Initialized'.format(port=self.port))
+        if Settings().value('projector/udp broadcast listen'):
+            self.udp_start()
+
+    def udp_start(self):
+        """
+        Start listening on UDP port
+        """
+        log.debug('(UDP:{port}) Start called'.format(port=self.port))
         self.readyRead.connect(self.get_datagram)
-        log.debug('(UDP) PJLinkUDP() Initialized for port {port}'.format(port=self.port))
+        self.check_settings(checked=Settings().value('projector/udp broadcast listen'))
+
+    def udp_stop(self):
+        """
+        Stop listening on UDP port
+        """
+        log.debug('(UDP:{port}) Stopping listener'.format(port=self.port))
+        self.close()
+        self.readyRead.disconnect(self.get_datagram)
 
     @QtCore.pyqtSlot()
     def get_datagram(self):
         """
         Retrieve packet and basic checks
         """
-        log.debug('(UDP) get_datagram() - Receiving data')
+        log.debug('(UDP:{port}) get_datagram() - Receiving data'.format(port=self.port))
         read_size = self.pendingDatagramSize()
         if -1 == read_size:
-            log.warning('(UDP) No data (-1)')
+            log.warning('(UDP:{port}) No data (-1)'.format(port=self.port))
             return
         elif 0 == read_size:
-            log.warning('(UDP) get_datagram() called when pending data size is 0')
+            log.warning('(UDP:{port}) get_datagram() called when pending data size is 0'.format(port=self.port))
             return
         elif read_size > PJLINK_MAX_PACKET:
-            log.warning('(UDP) UDP Packet too large ({size} bytes)- ignoring'.format(size=read_size))
+            log.warning('(UDP:{port}) UDP Packet too large ({size} bytes)- ignoring'.format(size=read_size,
+                                                                                            port=self.port))
             return
         data_in, peer_host, peer_port = self.readDatagram(read_size)
         data = data_in.decode('utf-8') if isinstance(data_in, bytes) else data_in
-        log.debug('(UDP) {size} bytes received from {adx} on port {port}'.format(size=len(data),
-                                                                                 adx=peer_host.toString(),
-                                                                                 port=self.port))
-        log.debug('(UDP) packet "{data}"'.format(data=data))
-        log.debug('(UDP) Sending data_received signal to projectors')
+        log.debug('(UDP:{port}) {size} bytes received from {adx}'.format(size=len(data),
+                                                                         adx=peer_host.toString(),
+                                                                         port=self.port))
+        log.debug('(UDP:{port}) packet "{data}"'.format(data=data, port=self.port))
+        log.debug('(UDP:{port}) Sending data_received signal to projectors'.format(port=self.port))
         self.data_received.emit(peer_host, self.localPort(), data)
         return
 
@@ -142,6 +161,25 @@ class PJLinkUDP(QtNetwork.QUdpSocket):
         """
         self.search_active = False
         self.search_timer.stop()
+
+    def check_settings(self, checked):
+        """
+        Update UDP listening state based on settings change.
+        NOTE: This method is called by projector settings tab and setup/removed by ProjectorManager
+        """
+        if self.udp_broadcast_listen_setting == checked:
+            log.debug('(UDP:{port}) No change to status - skipping'.format(port=self.port))
+            return
+        self.udp_broadcast_listen_setting = checked
+        if self.udp_broadcast_listen_setting:
+            if self.state() == self.ListeningState:
+                log.debug('(UDP:{port}) Already listening - skipping')
+                return
+            self.bind(self.port)
+            log.debug('(UDP:{port}) Listening'.format(port=self.port))
+        else:
+            # Close socket
+            self.udp_stop()
 
 
 class PJLinkCommands(object):

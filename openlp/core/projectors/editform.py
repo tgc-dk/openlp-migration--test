@@ -179,6 +179,7 @@ class ProjectorEditForm(QtWidgets.QDialog, Ui_ProjectorEditForm):
         Validate input before accepting input.
         """
         log.debug('accept_me() signal received')
+        valid = True
         if len(self.name_text.text().strip()) < 1:
             QtWidgets.QMessageBox.warning(self,
                                           translate('OpenLP.ProjectorEdit', 'Name Not Set'),
