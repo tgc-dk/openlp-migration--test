@@ -82,20 +82,19 @@ def init_schema(url):
 
     meta_table = Table('metadata', metadata,
                        Column('key', types.Unicode(255), primary_key=True, index=True),
-                       Column('value', types.Unicode(255)),)
+                       Column('value', types.Unicode(255)))
 
     book_table = Table('book', metadata,
                        Column('id', types.Integer, primary_key=True),
                        Column('book_reference_id', types.Integer, index=True),
                        Column('testament_reference_id', types.Integer),
-                       Column('name', types.Unicode(50), index=True),)
+                       Column('name', types.Unicode(50), index=True))
     verse_table = Table('verse', metadata,
                         Column('id', types.Integer, primary_key=True, index=True),
-                        Column('book_id', types.Integer, ForeignKey(
-                            'book.id'), index=True),
+                        Column('book_id', types.Integer, ForeignKey('book.id'), index=True),
                         Column('chapter', types.Integer, index=True),
                         Column('verse', types.Integer, index=True),
-                        Column('text', types.UnicodeText, index=True),)
+                        Column('text', types.UnicodeText, index=True))
 
     try:
         class_mapper(BibleMeta)

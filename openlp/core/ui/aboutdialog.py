@@ -112,8 +112,8 @@ class UiAboutDialog(object):
                       'Andreas "googol" Preikschat', 'Ken "alisonken1" Roberts', 'Raoul "superfly" Snyman',
                       'Jonathan "springermac" Springer', 'Philip "Phill" Ridout']
         contributors = ['Stuart "sibecker" Becker', 'Gerald "jerryb" Britton', 'Jonathan "gushie" Corwin',
-                        'Samuel "MrGamgee" Findlay', 'Michael "cocooncrash" Gorven', 'Scott "sguerrieri" Guerrieri',
-                        'Simon Hanna', 'Chris Hill',
+                        'Samuel "MrGamgee" Findlay', 'Bastian Germann', 'Michael "cocooncrash" Gorven',
+                        'Scott "sguerrieri" Guerrieri', 'Simon Hanna', 'Chris Hill',
                         'Matthias "matthub" Hub', 'Meinert "m2j" Jordan', 'Ian Knightly'
                         'Armin "orangeshirt" K\xf6hler',
                         'Rafael "rafaellerm" Lerm', 'Gabriel loo', 'Erik "luen" Lundin', 'Edwin "edwinlunando" Lunando',

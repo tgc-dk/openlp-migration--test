@@ -57,8 +57,7 @@ class Registry(object):
         registry.functions_list = {}
         registry.working_flags = {}
         # Allow the tests to remove Registry entries but not the live system
-        registry.running_under_test = 'nose' in sys.argv[0]
-        registry.running_under_test = 'pytest' in sys.argv[0]
+        registry.running_under_test = 'nose' in sys.argv[0] or 'pytest' in sys.argv[0]
         registry.initialising = True
         return registry
 

@@ -217,7 +217,8 @@ class Settings(QtCore.QSettings):
         'projector/last directory export': None,
         'projector/poll time': 20,  # PJLink  timeout is 30 seconds
         'projector/socket timeout': 5,  # 5 second socket timeout
-        'projector/source dialog type': 0  # Source select dialog box type
+        'projector/source dialog type': 0,  # Source select dialog box type
+        'projector/udp broadcast listen': False  # Enable/disable listening for PJLink 2 UDP broadcast packets
     }
     __file_path__ = ''
     # Settings upgrades prior to 3.0
@@ -274,7 +275,11 @@ class Settings(QtCore.QSettings):
         ('songuasge/db password', 'songusage/db password', []),
         ('songuasge/db hostname', 'songusage/db hostname', []),
         ('songuasge/db database', 'songusage/db database', []),
-        ('presentations / Powerpoint Viewer', '', [])
+        ('presentations / Powerpoint Viewer', '', []),
+        ('bibles/proxy name', '', []),  # Just remove these bible proxy settings. They weren't used in 2.4!
+        ('bibles/proxy address', '', []),
+        ('bibles/proxy username', '', []),
+        ('bibles/proxy password', '', [])
     ]
 
     @staticmethod

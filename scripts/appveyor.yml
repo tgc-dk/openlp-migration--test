@@ -11,11 +11,8 @@ environment:
 
 install:
   # Install dependencies from pypi
-  - "%PYTHON%\\python.exe -m pip install sqlalchemy alembic chardet beautifulsoup4 Mako nose mock pyodbc==4.0.8 psycopg2 pypiwin32==219 pyenchant websockets asyncio waitress six webob requests QtAwesome"
-  # Install mysql dependency
-  - "%PYTHON%\\python.exe -m pip install http://cdn.mysql.com/Downloads/Connector-Python/mysql-connector-python-2.0.4.zip#md5=3df394d89300db95163f17c843ef49df"
-  # Download and install lxml and pyicu (originally from http://www.lfd.uci.edu/~gohlke/pythonlibs/)
-  - "%PYTHON%\\python.exe -m pip install https://get.openlp.org/win-sdk/lxml-3.6.4-cp34-cp34m-win32.whl"
+  - "%PYTHON%\\python.exe -m pip install sqlalchemy alembic appdirs chardet beautifulsoup4 lxml Mako mysql-connector-python nose mock pyodbc==4.0.8 psycopg2 pypiwin32==219 pyenchant pymediainfo websockets asyncio waitress six webob requests QtAwesome"
+  # Download and install pyicu (originally from http://www.lfd.uci.edu/~gohlke/pythonlibs/)
   - "%PYTHON%\\python.exe -m pip install https://get.openlp.org/win-sdk/PyICU-1.9.5-cp34-cp34m-win32.whl"
   # Download and install PyQt5
   - appveyor DownloadFile http://downloads.sourceforge.net/project/pyqt/PyQt5/PyQt-5.5.1/PyQt5-5.5.1-gpl-Py3.4-Qt5.5.1-x32.exe

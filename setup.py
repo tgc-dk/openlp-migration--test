@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 # vim: autoindent shiftwidth=4 expandtab textwidth=120 tabstop=4 softtabstop=4
 
@@ -21,6 +22,7 @@
 ###############################################################################
 
 import re
+import sys
 from setuptools import setup, find_packages
 from subprocess import Popen, PIPE
 
@@ -109,6 +111,34 @@ except Exception:
 finally:
     ver_file.close()
 
+requires = [
+    'alembic',
+    'appdirs',
+    'beautifulsoup4',
+    'chardet',
+    'lxml',
+    'Mako',
+    'pymediainfo >= 2.2',
+    'PyQt5',
+    'QtAwesome',
+    'requests',
+    'SQLAlchemy >= 0.5',
+    'waitress',
+    'WebOb',
+    'websockets'
+]
+if sys.platform.startswith('win'):
+    requires.extend([
+        'PyICU',
+        'pywin32'
+    ])
+elif sys.platform.startswith('darwin'):
+    requires.extend([
+        'pyobjc',
+        'pyobjc-framework-Cocoa'
+    ])
+elif sys.platform.startswith('linux'):
+    requires.append('dbus-python')
 
 setup(
     name='OpenLP',
@@ -156,18 +186,25 @@ using a computer and a data projector.""",
     keywords='open source church presentation lyrics projection song bible display project',
     author='Raoul Snyman',
     author_email='raoulsnyman@openlp.org',
-    url='http://openlp.org/',
+    url='https://openlp.org/',
     license='GNU General Public License',
-    packages=find_packages(exclude=['ez_setup', 'examples', 'tests']),
-    scripts=['openlp.py'],
+    packages=find_packages(exclude=['ez_setup', 'tests']),
+    py_modules=['run_openlp'],
     include_package_data=True,
     zip_safe=False,
-    install_requires=[
-        # -*- Extra requirements: -*-
-        'sqlalchemy',
-        'alembic'
-    ],
-    entry_points="""
-    # -*- Entry points: -*-
-    """
+    python_requires='>=3.6',
+    install_requires=requires,
+    extras_require={
+        'mysql': ['mysql-connector-python'],
+        'odbc': ['pyodbc'],
+        'postgresql': ['psycopg2'],
+        'spellcheck': ['pyenchant >= 1.6'],
+        'sword-bibles': ['pysword'],
+        # Required for scripts/*.py:
+        'jenkins': ['python-jenkins'],
+        'launchpad': ['launchpadlib']
+    },
+    tests_require=['nose2', 'PyICU', 'pylint', 'pyodbc', 'pysword'],
+    test_suite='nose2.collector.collector',
+    entry_points={'gui_scripts': ['openlp = run_openlp:start']}
 )
