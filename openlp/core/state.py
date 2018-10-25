@@ -42,6 +42,7 @@ class StateModule(LogMixin):
         super(StateModule, self).__init__()
         self.name = None
         self.order = 0
+        self.isPlugin = None
         self.status = PluginStatus.Inactive
         self.pass_preconditions = True
         self.requires = None
@@ -66,11 +67,12 @@ class State(LogMixin):
     def save_settings(self):
         pass
 
-    def add_service(self, name, order, status=PluginStatus.Active, requires=None):
+    def add_service(self, name, order, isPlugin=False, status=PluginStatus.Active, requires=None):
         """
         Add a module to the array and lod dependancies.  There will only be one item per module
         :param name: Module name
         :param order: Order fo display
+        :param isPlugin: Am I a plugin
         :param status: The active status
         :param requires: Module name this requires
         :return:
@@ -79,6 +81,7 @@ class State(LogMixin):
             state = StateModule()
             state.name = name
             state.order = order
+            state.plugin = isPlugin
             state.status = status
             state.requires = requires
             state.required_by = []
@@ -106,6 +109,7 @@ class State(LogMixin):
         for mods in self.modules:
             for req in self.modules[mods].required_by:
                 self.modules[req].pass_preconditions = self.modules[mods].pass_preconditions
+        #         plugins_list = sorted(plugin_objects, key=lambda plugin: plugin.weight)
 
     def is_module_active(self, name):
         return self.modules[name].status == PluginStatus.Active
@@ -122,3 +126,10 @@ class State(LogMixin):
         else:
             mod = self.modules[name].requires
             return self.modules[mod].pass_preconditions
+
+    def list_plugins(self):
+        plugins = []
+        for mod in self.modules:
+            if mod.isPlugin:
+                plugins.append(mod.name)
+        return plugins

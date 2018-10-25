@@ -60,7 +60,7 @@ class ImagePlugin(Plugin):
         self.icon = build_icon(self.icon_path)
         register_endpoint(images_endpoint)
         register_endpoint(api_images_endpoint)
-        State().add_service(self.name, self.weight)
+        State().add_service(self.name, self.weight, isPlugin=True)
         State().update_pre_conditions(self.name, self.check_pre_conditions())
 
     @staticmethod

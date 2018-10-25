@@ -100,7 +100,7 @@ class SongsPlugin(Plugin):
         self.songselect_form = None
         register_endpoint(songs_endpoint)
         register_endpoint(api_songs_endpoint)
-        State().add_service(self.name, self.weight)
+        State().add_service(self.name, self.weight, isPlugin=True)
         State().update_pre_conditions(self.name, self.check_pre_conditions())
 
     def check_pre_conditions(self):

@@ -24,6 +24,7 @@ Provide plugin management
 """
 import os
 
+from openlp.core.state import State
 from openlp.core.common import extension_loader
 from openlp.core.common.applocation import AppLocation
 from openlp.core.common.mixins import LogMixin, RegistryProperties
@@ -97,20 +98,12 @@ class PluginManager(RegistryBase, LogMixin, RegistryProperties):
                 plugin_objects.append(plugin)
             except TypeError:
                 self.log_exception('Failed to load plugin {plugin}'.format(plugin=str(p)))
-        plugins_list = sorted(plugin_objects, key=lambda plugin: plugin.weight)
-        for plugin in plugins_list:
-            if plugin.check_pre_conditions():
-                self.log_debug('Plugin {plugin} active'.format(plugin=str(plugin.name)))
-                plugin.set_status()
-            else:
-                plugin.status = PluginStatus.Disabled
-            self.plugins.append(plugin)
 
     def hook_media_manager(self):
         """
         Create the plugins' media manager items.
         """
-        for plugin in self.plugins:
+        for plugin in State().list_plugins():
             if plugin.status is not PluginStatus.Disabled:
                 plugin.create_media_manager_item()
 

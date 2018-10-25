@@ -81,7 +81,7 @@ class BiblePlugin(Plugin):
         self.manager = BibleManager(self)
         register_endpoint(bibles_endpoint)
         register_endpoint(api_bibles_endpoint)
-        State().add_service(self.name, self.weight)
+        State().add_service(self.name, self.weight, isPlugin=True)
         State().update_pre_conditions(self.name, self.check_pre_conditions())
 
     def initialise(self):
