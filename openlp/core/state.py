@@ -28,6 +28,7 @@ logging and a plugin framework are contained within the openlp.core module.
 """
 import logging
 
+from openlp.core.common.registry import Registry
 from openlp.core.common.mixins import LogMixin
 from openlp.core.lib.plugin import PluginStatus
 
@@ -42,7 +43,7 @@ class StateModule(LogMixin):
         super(StateModule, self).__init__()
         self.name = None
         self.order = 0
-        self.isPlugin = None
+        self.is_plugin = None
         self.status = PluginStatus.Inactive
         self.pass_preconditions = True
         self.requires = None
@@ -67,12 +68,12 @@ class State(LogMixin):
     def save_settings(self):
         pass
 
-    def add_service(self, name, order, isPlugin=False, status=PluginStatus.Active, requires=None):
+    def add_service(self, name, order, is_plugin=False, status=PluginStatus.Active, requires=None):
         """
         Add a module to the array and lod dependancies.  There will only be one item per module
         :param name: Module name
-        :param order: Order fo display
-        :param isPlugin: Am I a plugin
+        :param order: Order to display
+        :param is_plugin: Am I a plugin
         :param status: The active status
         :param requires: Module name this requires
         :return:
@@ -81,7 +82,7 @@ class State(LogMixin):
             state = StateModule()
             state.name = name
             state.order = order
-            state.plugin = isPlugin
+            state.is_plugin = is_plugin
             state.status = status
             state.requires = requires
             state.required_by = []
@@ -99,6 +100,13 @@ class State(LogMixin):
         :return:
         """
         self.modules[name].pass_preconditions = status
+        if self.modules[name].is_plugin:
+            plugin = Registry().get('{mod}_plugin'.format(mod=name))
+            if status:
+                self.log_debug('Plugin {plugin} active'.format(plugin=str(plugin.name)))
+                plugin.set_status()
+            else:
+                plugin.status = PluginStatus.Disabled
 
     def flush_preconditions(self):
         """
@@ -109,7 +117,11 @@ class State(LogMixin):
         for mods in self.modules:
             for req in self.modules[mods].required_by:
                 self.modules[req].pass_preconditions = self.modules[mods].pass_preconditions
-        #         plugins_list = sorted(plugin_objects, key=lambda plugin: plugin.weight)
+        plugins_list = sorted(self.modules, key=lambda state: self.modules[state].order)
+        mdl = {}
+        for pl in plugins_list:
+            mdl[pl] = self.modules[pl]
+        self.modules = mdl
 
     def is_module_active(self, name):
         return self.modules[name].status == PluginStatus.Active
@@ -130,6 +142,6 @@ class State(LogMixin):
     def list_plugins(self):
         plugins = []
         for mod in self.modules:
-            if mod.isPlugin:
-                plugins.append(mod.name)
+            if self.modules[mod].is_plugin:
+                plugins.append(Registry().get('{mod}_plugin'.format(mod=mod)))
         return plugins

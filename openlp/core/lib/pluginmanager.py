@@ -103,6 +103,7 @@ class PluginManager(RegistryBase, LogMixin, RegistryProperties):
         """
         Create the plugins' media manager items.
         """
+        aa = State().list_plugins()
         for plugin in State().list_plugins():
             if plugin.status is not PluginStatus.Disabled:
                 plugin.create_media_manager_item()
@@ -114,7 +115,7 @@ class PluginManager(RegistryBase, LogMixin, RegistryProperties):
         Tabs are set for all plugins not just Active ones
 
         """
-        for plugin in self.plugins:
+        for plugin in State().list_plugins():
             if plugin.status is not PluginStatus.Disabled:
                 plugin.create_settings_tab(self.settings_form)
 
@@ -124,7 +125,7 @@ class PluginManager(RegistryBase, LogMixin, RegistryProperties):
         item to the import menu.
 
         """
-        for plugin in self.plugins:
+        for plugin in State().list_plugins():
             if plugin.status is not PluginStatus.Disabled:
                 plugin.add_import_menu_item(self.main_window.file_import_menu)
 
@@ -133,7 +134,7 @@ class PluginManager(RegistryBase, LogMixin, RegistryProperties):
         Loop through all the plugins and give them an opportunity to add an
         item to the export menu.
         """
-        for plugin in self.plugins:
+        for plugin in State().list_plugins():
             if plugin.status is not PluginStatus.Disabled:
                 plugin.add_export_menu_item(self.main_window.file_export_menu)
 
@@ -142,7 +143,7 @@ class PluginManager(RegistryBase, LogMixin, RegistryProperties):
         Loop through all the plugins and give them an opportunity to add an
         item to the tools menu.
         """
-        for plugin in self.plugins:
+        for plugin in State().list_plugins():
             if plugin.status is not PluginStatus.Disabled:
                 plugin.add_tools_menu_item(self.main_window.tools_menu)
 
@@ -152,7 +153,7 @@ class PluginManager(RegistryBase, LogMixin, RegistryProperties):
 
         :param settings: The Settings object containing the old settings.
         """
-        for plugin in self.plugins:
+        for plugin in State().list_plugins():
             if plugin.status is not PluginStatus.Disabled:
                 plugin.upgrade_settings(settings)
 
@@ -160,7 +161,7 @@ class PluginManager(RegistryBase, LogMixin, RegistryProperties):
         """
         Loop through all the plugins and give them an opportunity to initialise themselves.
         """
-        for plugin in self.plugins:
+        for plugin in State().list_plugins():
             self.log_info('initialising plugins {plugin} in a {state} state'.format(plugin=plugin.name,
                                                                                     state=plugin.is_active()))
             if plugin.is_active():
@@ -171,7 +172,7 @@ class PluginManager(RegistryBase, LogMixin, RegistryProperties):
         """
         Loop through all the plugins and give them an opportunity to clean themselves up
         """
-        for plugin in self.plugins:
+        for plugin in State().list_plugins():
             if plugin.is_active():
                 plugin.finalise()
                 self.log_info('Finalisation Complete for {plugin}'.format(plugin=plugin.name))
@@ -180,7 +181,7 @@ class PluginManager(RegistryBase, LogMixin, RegistryProperties):
         """
         Return the plugin which has a name with value ``name``.
         """
-        for plugin in self.plugins:
+        for plugin in State().list_plugins():
             if plugin.name == name:
                 return plugin
         return None
@@ -189,6 +190,6 @@ class PluginManager(RegistryBase, LogMixin, RegistryProperties):
         """
         Loop through all the plugins and give them an opportunity to handle a new service
         """
-        for plugin in self.plugins:
+        for plugin in State().list_plugins():
             if plugin.is_active():
                 plugin.new_service_created()

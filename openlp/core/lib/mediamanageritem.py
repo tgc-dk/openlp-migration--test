@@ -129,6 +129,9 @@ class MediaManagerItem(QtWidgets.QWidget, RegistryProperties):
         self.has_file_icon = False
         self.has_delete_icon = True
         self.add_to_service_item = False
+        self.can_preview = True
+        self.can_make_live = True
+        self.can_add_to_service = True
 
     def retranslateUi(self):
         """
@@ -210,27 +213,30 @@ class MediaManagerItem(QtWidgets.QWidget, RegistryProperties):
                                  icon=UiIcons().edit,
                                  triggers=self.on_edit_click)
             create_widget_action(self.list_view, separator=True)
-        create_widget_action(self.list_view,
-                             'listView{plugin}{preview}Item'.format(plugin=self.plugin.name.title(),
-                                                                    preview=StringContent.Preview.title()),
-                             text=self.plugin.get_string(StringContent.Preview)['title'],
-                             icon=UiIcons().preview,
-                             can_shortcuts=True,
-                             triggers=self.on_preview_click)
-        create_widget_action(self.list_view,
-                             'listView{plugin}{live}Item'.format(plugin=self.plugin.name.title(),
-                                                                 live=StringContent.Live.title()),
-                             text=self.plugin.get_string(StringContent.Live)['title'],
-                             icon=UiIcons().live,
-                             can_shortcuts=True,
-                             triggers=self.on_live_click)
-        create_widget_action(self.list_view,
-                             'listView{plugin}{service}Item'.format(plugin=self.plugin.name.title(),
-                                                                    service=StringContent.Service.title()),
-                             can_shortcuts=True,
-                             text=self.plugin.get_string(StringContent.Service)['title'],
-                             icon=UiIcons().add,
-                             triggers=self.on_add_click)
+        if self.can_preview:
+            create_widget_action(self.list_view,
+                                 'listView{plugin}{preview}Item'.format(plugin=self.plugin.name.title(),
+                                                                        preview=StringContent.Preview.title()),
+                                 text=self.plugin.get_string(StringContent.Preview)['title'],
+                                 icon=UiIcons().preview,
+                                 can_shortcuts=True,
+                                 triggers=self.on_preview_click)
+        if self.can_make_live:
+            create_widget_action(self.list_view,
+                                 'listView{plugin}{live}Item'.format(plugin=self.plugin.name.title(),
+                                                                     live=StringContent.Live.title()),
+                                 text=self.plugin.get_string(StringContent.Live)['title'],
+                                 icon=UiIcons().live,
+                                 can_shortcuts=True,
+                                 triggers=self.on_live_click)
+        if self.can_add_to_service:
+            create_widget_action(self.list_view,
+                                 'listView{plugin}{service}Item'.format(plugin=self.plugin.name.title(),
+                                                                        service=StringContent.Service.title()),
+                                 can_shortcuts=True,
+                                 text=self.plugin.get_string(StringContent.Service)['title'],
+                                 icon=UiIcons().add,
+                                 triggers=self.on_add_click)
         if self.has_delete_icon:
             create_widget_action(self.list_view, separator=True)
             create_widget_action(self.list_view,

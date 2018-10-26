@@ -112,6 +112,10 @@ class MediaMediaItem(MediaManagerItem, RegistryProperties):
         self.has_file_icon = True
         self.has_new_icon = False
         self.has_edit_icon = False
+        if not State().check_preconditions('media'):
+            self.can_preview = False
+            self.can_make_live = False
+            self.can_add_to_service = False
 
     def add_list_view_to_toolbar(self):
         """

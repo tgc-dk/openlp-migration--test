@@ -65,7 +65,7 @@ class MediaPlugin(Plugin):
         self.dnd_id = 'Media'
         register_endpoint(media_endpoint)
         register_endpoint(api_media_endpoint)
-        State().add_service(self.name, self.weight, requires='mediacontroller')
+        State().add_service(self.name, self.weight, requires='mediacontroller', is_plugin=True)
         State().update_pre_conditions(self.name, self.check_pre_conditions())
 
     def initialise(self):
@@ -149,20 +149,3 @@ class MediaPlugin(Plugin):
     #     Add html code to htmlbuilder.
     #     """
     #     return self.media_controller.get_media_display_html()
-
-
-def process_check_binary(program_path):
-    """
-    Function that checks whether a binary MediaInfo is present
-
-    :param openlp.core.common.path.Path program_path:The full path to the binary to check.
-    :return: If exists or not
-    :rtype: bool
-    """
-    runlog = check_binary_exists(program_path)
-    # Analyse the output to see it the program is mediainfo
-    for line in runlog.splitlines():
-        decoded_line = line.decode()
-        if re.search('MediaInfo Command line', decoded_line, re.IGNORECASE):
-            return True
-    return False

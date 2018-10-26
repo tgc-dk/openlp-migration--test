@@ -147,7 +147,7 @@ class AlertsPlugin(Plugin):
         self.alert_form = AlertForm(self)
         register_endpoint(alerts_endpoint)
         register_endpoint(api_alerts_endpoint)
-        State().add_service(self.name, self.weight, isPlugin=True)
+        State().add_service(self.name, self.weight, is_plugin=True)
         State().update_pre_conditions(self.name, self.check_pre_conditions())
 
     def add_tools_menu_item(self, tools_menu):

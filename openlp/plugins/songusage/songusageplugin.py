@@ -67,8 +67,8 @@ class SongUsagePlugin(Plugin):
         self.weight = -4
         self.icon = UiIcons().song_usage
         self.song_usage_active = False
-        State().add_service(self.name, self.weight, isPlugin=True)
-        State().update_pre_conditions(self.name, self.check_pre_conditions())
+        State().add_service('song_usage', self.weight, is_plugin=True)
+        State().update_pre_conditions('song_usage', self.check_pre_conditions())
 
     def check_pre_conditions(self):
         """
