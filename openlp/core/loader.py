@@ -20,12 +20,15 @@
 # Temple Place, Suite 330, Boston, MA 02111-1307 USA                          #
 ###############################################################################
 """
-The :mod:`~openlp.core.commmon.loader` module provides a bootstrap for the common modules
+The :mod:`~openlp.core.loader` module provides a bootstrap for the singleton classes
 """
 
 from openlp.core.state import State
 from openlp.core.ui.media import MediaController
 from openlp.core.lib.pluginmanager import PluginManager
+from openlp.core.display.renderer import Renderer
+from openlp.core.lib.imagemanager import ImageManager
+from openlp.core.ui.slidecontroller import LiveController, PreviewController
 
 
 def loader():
@@ -37,3 +40,9 @@ def loader():
     State().load_settings()
     MediaController()
     PluginManager()
+    # Set up the path with plugins
+    ImageManager()
+    Renderer()
+    # Create slide controllers
+    PreviewController()
+    LiveController()

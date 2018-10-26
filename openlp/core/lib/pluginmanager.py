@@ -90,20 +90,18 @@ class PluginManager(RegistryBase, LogMixin, RegistryProperties):
         glob_pattern = os.path.join('plugins', '*', '[!.]*plugin.py')
         extension_loader(glob_pattern)
         plugin_classes = Plugin.__subclasses__()
-        plugin_objects = []
         for p in plugin_classes:
             try:
-                plugin = p()
+                p()
                 self.log_debug('Loaded plugin {plugin}'.format(plugin=str(p)))
-                plugin_objects.append(plugin)
             except TypeError:
                 self.log_exception('Failed to load plugin {plugin}'.format(plugin=str(p)))
 
-    def hook_media_manager(self):
+    @staticmethod
+    def hook_media_manager():
         """
         Create the plugins' media manager items.
         """
-        aa = State().list_plugins()
         for plugin in State().list_plugins():
             if plugin.status is not PluginStatus.Disabled:
                 plugin.create_media_manager_item()

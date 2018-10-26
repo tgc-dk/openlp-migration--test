@@ -26,6 +26,7 @@ import logging
 
 from PyQt5 import QtCore, QtWidgets
 
+from openlp.core.state import State
 from openlp.core.common.i18n import translate
 from openlp.core.common.mixins import RegistryProperties
 from openlp.core.lib.plugin import PluginStatus
@@ -62,7 +63,7 @@ class PluginForm(QtWidgets.QDialog, Ui_PluginViewDialog, RegistryProperties):
         self._clear_details()
         self.programatic_change = True
         plugin_list_width = 0
-        for plugin in self.plugin_manager.plugins:
+        for plugin in State().list_plugins():
             item = QtWidgets.QListWidgetItem(self.plugin_list_widget)
             # We do this just to make 100% sure the status is an integer as
             # sometimes when it's loaded from the config, it isn't cast to int.
@@ -116,7 +117,7 @@ class PluginForm(QtWidgets.QDialog, Ui_PluginViewDialog, RegistryProperties):
             return
         plugin_name_singular = self.plugin_list_widget.currentItem().text().split('(')[0][:-1]
         self.active_plugin = None
-        for plugin in self.plugin_manager.plugins:
+        for plugin in State().list_plugins():
             if plugin.name_strings['singular'] == plugin_name_singular:
                 self.active_plugin = plugin
                 break

@@ -41,11 +41,8 @@ from openlp.core.common.mixins import LogMixin, RegistryProperties
 from openlp.core.common.path import Path, copyfile, create_paths
 from openlp.core.common.registry import Registry
 from openlp.core.common.settings import Settings
-from openlp.core.display.renderer import Renderer
 from openlp.core.display.screens import ScreenList
-from openlp.core.lib.imagemanager import ImageManager
 from openlp.core.lib.plugin import PluginStatus
-from openlp.core.lib.pluginmanager import PluginManager
 from openlp.core.lib.ui import create_action
 from openlp.core.projectors.manager import ProjectorManager
 from openlp.core.ui.shortcutlistform import ShortcutListForm
@@ -54,7 +51,6 @@ from openlp.core.ui.thememanager import ThemeManager
 from openlp.core.ui.servicemanager import ServiceManager
 from openlp.core.ui.aboutform import AboutForm
 from openlp.core.ui.pluginform import PluginForm
-from openlp.core.ui.slidecontroller import LiveController, PreviewController
 from openlp.core.ui.settingsform import SettingsForm
 from openlp.core.ui.firsttimeform import FirstTimeForm
 from openlp.core.ui.printserviceform import PrintServiceForm
@@ -89,9 +85,6 @@ class Ui_MainWindow(object):
         self.control_splitter.setOrientation(QtCore.Qt.Horizontal)
         self.control_splitter.setObjectName('control_splitter')
         self.main_content_layout.addWidget(self.control_splitter)
-        # Create slide controllers
-        PreviewController(self)
-        LiveController(self)
         preview_visible = Settings().value('user interface/preview panel')
         live_visible = Settings().value('user interface/live panel')
         panel_locked = Settings().value('user interface/lock panel')
@@ -505,9 +498,6 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow, LogMixin, RegistryPropert
         SettingsForm(self)
         self.formatting_tag_form = FormattingTagForm(self)
         self.shortcut_form = ShortcutListForm(self)
-        # Set up the path with plugins
-        ImageManager()
-        Renderer()
         # Set up the interface
         self.setupUi(self)
         # Define the media Dock Manager
