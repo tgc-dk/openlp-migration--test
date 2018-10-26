@@ -54,7 +54,6 @@ from collections import namedtuple
 
 from openlp.core.common import get_file_encoding
 from openlp.core.common.i18n import translate
-from openlp.core.common.path import Path
 from openlp.core.lib.exceptions import ValidationError
 from openlp.plugins.bibles.lib.bibleimport import BibleImport
 

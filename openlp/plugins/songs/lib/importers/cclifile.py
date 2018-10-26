@@ -289,10 +289,8 @@ class CCLIFileImport(SongImport):
                                 # verse type, so set flag
                                 verse_type = VerseType.tags[VerseType.Other]
                                 check_first_verse_line = True
-                            verse_number = verse_desc_parts[1]
                         else:
                             verse_type = VerseType.tags[VerseType.Other]
-                            verse_number = 1
                         verse_start = True
                     else:
                         # check first line for verse type
