@@ -113,7 +113,6 @@ def test_get_language_invalid_with_none():
     assert language is None
 
 
-@skipIf(is_macosx(), 'This test doesn\'t work on macOS currently')
 def test_get_locale_key():
     """
     Test the get_locale_key(string) function

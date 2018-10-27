@@ -12,19 +12,17 @@ environment:
 install:
   # Install dependencies from pypi
   - "%PYTHON%\\python.exe -m pip install sqlalchemy alembic appdirs chardet beautifulsoup4 lxml Mako mysql-connector-python nose mock pyodbc==4.0.8 psycopg2 pypiwin32==219 pyenchant pymediainfo websockets asyncio waitress six webob requests QtAwesome"
-  # Download and install pyicu (originally from http://www.lfd.uci.edu/~gohlke/pythonlibs/)
-  - "%PYTHON%\\python.exe -m pip install https://get.openlp.org/win-sdk/PyICU-1.9.5-cp34-cp34m-win32.whl"
   # Download and install PyQt5
-  - appveyor DownloadFile http://downloads.sourceforge.net/project/pyqt/PyQt5/PyQt-5.5.1/PyQt5-5.5.1-gpl-Py3.4-Qt5.5.1-x32.exe
+  - appveyor DownloadFile https://downloads.sourceforge.net/project/pyqt/PyQt5/PyQt-5.5.1/PyQt5-5.5.1-gpl-Py3.4-Qt5.5.1-x32.exe
   - PyQt5-5.5.1-gpl-Py3.4-Qt5.5.1-x32.exe /S
   # Download and unpack mupdf
-  - appveyor DownloadFile http://mupdf.com/downloads/archive/mupdf-1.9a-windows.zip
-  - 7z x mupdf-1.9a-windows.zip
-  - cp mupdf-1.9a-windows/mupdf.exe openlp-branch/mupdf.exe
+  - appveyor DownloadFile https://mupdf.com/downloads/archive/mupdf-1.14.0-windows.zip
+  - 7z x mupdf-1.14.0-windows.zip
+  - cp mupdf-1.14.0-windows/mupdf.exe openlp-branch/mupdf.exe
   # Download and unpack mediainfo
-  - appveyor DownloadFile https://mediaarea.net/download/binary/mediainfo/0.7.90/MediaInfo_CLI_0.7.90_Windows_i386.zip
+  - appveyor DownloadFile https://mediaarea.net/download/binary/mediainfo/18.08.1/MediaInfo_CLI_18.08.1_Windows_i386.zip
   - mkdir MediaInfo
-  - 7z x -oMediaInfo MediaInfo_CLI_0.7.90_Windows_i386.zip
+  - 7z x -oMediaInfo MediaInfo_CLI_18.08.1_Windows_i386.zip
   - cp MediaInfo\\MediaInfo.exe openlp-branch\\MediaInfo.exe
 
 build: off

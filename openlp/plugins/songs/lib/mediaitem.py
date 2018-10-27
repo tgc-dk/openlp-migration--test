@@ -324,12 +324,12 @@ class SongMediaItem(MediaManagerItem):
         :param search_results: A tuple containing (songbook entry, book name, song title, song id)
         :return: None
         """
-        def get_songbook_key(text_array):
+        def get_songbook_key(text):
             """
             Get the key to sort by
-            :param text_array: the result text to be processed.
+            :param text: the text tuple to be processed.
             """
-            return get_natural_key(text_array[1]), get_natural_key(text_array[0]), get_natural_key(text_array[2])
+            return get_natural_key('{0} {1} {2}'.format(text[1], text[0], text[2]))
 
         log.debug('display results Book')
         self.list_view.clear()
