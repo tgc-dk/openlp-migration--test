@@ -756,7 +756,7 @@ class TestMediaItem(TestCase, TestMixin):
         # GIVEN: An instance of :class:`MediaManagerItem` and mocked media_item.settings and select_book_combo_box
         self.media_item.version_combo_box = MagicMock(**{'currentData.return_value': None})
         self.media_item.select_book_combo_box = MagicMock()
-        with patch.object(self.media_item, 'initialise_advanced_bible') as mocked_initialise_advanced_bible:
+        with patch.object(self.media_item, 'initialise_advanced_bible'):
 
             # WHEN: Calling on_version_combo_box_index_changed
             self.media_item.on_version_combo_box_index_changed()
@@ -774,7 +774,7 @@ class TestMediaItem(TestCase, TestMixin):
         mocked_bible_db.name = 'ABC'
         self.media_item.version_combo_box = MagicMock(**{'currentData.return_value': mocked_bible_db})
         self.media_item.select_book_combo_box = MagicMock()
-        with patch.object(self.media_item, 'initialise_advanced_bible') as mocked_initialise_advanced_bible:
+        with patch.object(self.media_item, 'initialise_advanced_bible'):
 
             # WHEN: Calling on_version_combo_box_index_changed
             self.media_item.on_version_combo_box_index_changed()
@@ -792,7 +792,7 @@ class TestMediaItem(TestCase, TestMixin):
         self.media_item.list_view = MagicMock(**{'count.return_value': 5})
         self.media_item.style_combo_box = MagicMock()
         self.media_item.select_book_combo_box = MagicMock()
-        with patch.object(self.media_item, 'initialise_advanced_bible') as mocked_initialise_advanced_bible, \
+        with patch.object(self.media_item, 'initialise_advanced_bible'), \
                 patch('openlp.plugins.bibles.lib.mediaitem.critical_error_message_box') \
                 as mocked_critical_error_message_box:
 
@@ -815,7 +815,7 @@ class TestMediaItem(TestCase, TestMixin):
         self.media_item.list_view = MagicMock(**{'count.return_value': 5})
         self.media_item.style_combo_box = MagicMock()
         self.media_item.select_book_combo_box = MagicMock()
-        with patch.object(self.media_item, 'initialise_advanced_bible') as mocked_initialise_advanced_bible, \
+        with patch.object(self.media_item, 'initialise_advanced_bible'), \
                 patch('openlp.plugins.bibles.lib.mediaitem.critical_error_message_box',
                       return_value=QtWidgets.QMessageBox.No) as mocked_critical_error_message_box:
 

@@ -34,7 +34,8 @@ from openlp.core.lib.plugin import Plugin, StringContent
 from openlp.core.lib.db import Manager
 from openlp.core.lib.ui import create_action
 from openlp.core.ui.icons import UiIcons
-from openlp.plugins.songusage.forms import SongUsageDetailForm, SongUsageDeleteForm
+from openlp.plugins.songusage.forms.songusagedetailform import SongUsageDetailForm
+from openlp.plugins.songusage.forms.songusagedeleteform import SongUsageDeleteForm
 from openlp.plugins.songusage.lib import upgrade
 from openlp.plugins.songusage.lib.db import init_schema, SongUsageItem
 

@@ -22,7 +22,6 @@
 import json
 import logging
 import urllib
-from urllib.parse import urlparse
 
 from openlp.core.api.http import requires_auth
 from openlp.core.api.http.endpoint import Endpoint

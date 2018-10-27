@@ -36,8 +36,9 @@ from openlp.core.lib.ui import create_action
 from openlp.core.ui import AlertLocation
 from openlp.core.ui.icons import UiIcons
 from openlp.plugins.alerts.endpoint import api_alerts_endpoint, alerts_endpoint
-from openlp.plugins.alerts.forms import AlertForm
-from openlp.plugins.alerts.lib import AlertsManager, AlertsTab
+from openlp.plugins.alerts.forms.alertform import AlertForm
+from openlp.plugins.alerts.lib.alertsmanager import AlertsManager
+from openlp.plugins.alerts.lib.alertstab import AlertsTab
 from openlp.plugins.alerts.lib.db import init_schema
 
 log = logging.getLogger(__name__)

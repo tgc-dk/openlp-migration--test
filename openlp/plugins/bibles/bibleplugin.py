@@ -30,9 +30,10 @@ from openlp.core.ui.icons import UiIcons
 from openlp.core.lib.plugin import Plugin, StringContent
 from openlp.core.lib.ui import create_action
 from openlp.plugins.bibles.endpoint import api_bibles_endpoint, bibles_endpoint
-from openlp.plugins.bibles.lib import BibleManager, BiblesTab, BibleMediaItem, LayoutStyle, DisplayStyle, \
-    LanguageSelection
-from openlp.plugins.bibles.lib.mediaitem import BibleSearch
+from openlp.plugins.bibles.lib import LayoutStyle, DisplayStyle, LanguageSelection
+from openlp.plugins.bibles.lib.biblestab import BiblesTab
+from openlp.plugins.bibles.lib.manager import BibleManager
+from openlp.plugins.bibles.lib.mediaitem import BibleMediaItem, BibleSearch
 
 log = logging.getLogger(__name__)
 

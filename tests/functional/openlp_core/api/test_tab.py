@@ -24,7 +24,6 @@ This module contains tests for the lib submodule of the Remotes plugin.
 """
 import re
 from unittest import TestCase
-from unittest.mock import patch
 
 from PyQt5 import QtWidgets
 

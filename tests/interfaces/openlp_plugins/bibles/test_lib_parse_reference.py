@@ -27,7 +27,8 @@ from unittest.mock import MagicMock, patch
 
 from openlp.core.common.registry import Registry
 from openlp.core.common.settings import Settings
-from openlp.plugins.bibles.lib import BibleManager, parse_reference, LanguageSelection
+from openlp.plugins.bibles.lib import LanguageSelection, parse_reference
+from openlp.plugins.bibles.lib.manager import BibleManager
 from tests.helpers.testmixin import TestMixin
 from tests.utils.constants import TEST_RESOURCES_PATH
 

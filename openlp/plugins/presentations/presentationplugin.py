@@ -37,7 +37,9 @@ from openlp.core.common.settings import Settings
 from openlp.core.lib import build_icon
 from openlp.core.lib.plugin import Plugin, StringContent
 from openlp.plugins.presentations.endpoint import api_presentations_endpoint, presentations_endpoint
-from openlp.plugins.presentations.lib import PresentationController, PresentationMediaItem, PresentationTab
+from openlp.plugins.presentations.lib.presentationcontroller import PresentationController
+from openlp.plugins.presentations.lib.mediaitem import PresentationMediaItem
+from openlp.plugins.presentations.lib.presentationtab import PresentationTab
 
 log = logging.getLogger(__name__)
 

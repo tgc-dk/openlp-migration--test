@@ -33,7 +33,8 @@ from urllib.request import HTTPCookieProcessor, URLError, build_opener
 
 from bs4 import BeautifulSoup, NavigableString
 
-from openlp.plugins.songs.lib import Song, Author, Topic, VerseType, clean_song
+from openlp.plugins.songs.lib import VerseType, clean_song
+from openlp.plugins.songs.lib.db import Song, Author, Topic
 from openlp.plugins.songs.lib.openlyricsxml import SongXML
 
 USER_AGENTS = [

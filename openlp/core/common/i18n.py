@@ -522,7 +522,7 @@ def get_locale_key(string):
             icu_locale = icu.Locale(language)
             ICU_COLLATOR = icu.Collator.createInstance(icu_locale)
         return ICU_COLLATOR.getSortKey(string)
-    except:
+    except Exception:
         return locale.strxfrm(string).encode()
 
 

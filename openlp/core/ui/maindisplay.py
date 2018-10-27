@@ -172,7 +172,7 @@ class MainDisplay(Display, LogMixin, RegistryProperties):
                 # Get a pointer to the underlying NSView
                 try:
                     nsview_pointer = self.winId().ascapsule()
-                except:
+                except Exception:
                     nsview_pointer = voidptr(self.winId()).ascapsule()
                 # Set PyCapsule name so pyobjc will accept it
                 pythonapi.PyCapsule_SetName.restype = c_void_p
@@ -582,7 +582,7 @@ class MainDisplay(Display, LogMixin, RegistryProperties):
                     window_id = window.winId().__int__()
                     main_window_id = self.main_window.winId().__int__()
                     self_id = self.winId().__int__()
-                except:
+                except Exception:
                     return
                 # If the passed window has the same id as our window make sure the display has the proper level and
                 # collection behavior.

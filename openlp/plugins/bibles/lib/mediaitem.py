@@ -38,8 +38,9 @@ from openlp.core.ui.icons import UiIcons
 from openlp.core.widgets.edits import SearchEdit
 from openlp.plugins.bibles.forms.bibleimportform import BibleImportForm
 from openlp.plugins.bibles.forms.editbibleform import EditBibleForm
-from openlp.plugins.bibles.lib import DisplayStyle, LayoutStyle, VerseReferenceList, \
-    get_reference_match, get_reference_separator
+from openlp.plugins.bibles.lib import DisplayStyle, LayoutStyle, get_reference_match, \
+    get_reference_separator
+from openlp.plugins.bibles.lib.versereferencelist import VerseReferenceList
 
 log = logging.getLogger(__name__)
 

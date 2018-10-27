@@ -408,7 +408,7 @@ class Manager(object):
                 self.session.rollback()
                 log.exception('Object list save failed')
                 return False
-            except:
+            except Exception:
                 self.session.rollback()
                 raise
 
@@ -438,7 +438,7 @@ class Manager(object):
                 self.session.rollback()
                 log.exception('Object list save failed')
                 return False
-            except:
+            except Exception:
                 self.session.rollback()
                 raise
 
@@ -555,7 +555,7 @@ class Manager(object):
                     self.session.rollback()
                     log.exception('Failed to delete object')
                     return False
-                except:
+                except Exception:
                     self.session.rollback()
                     raise
         else:
@@ -590,7 +590,7 @@ class Manager(object):
                 self.session.rollback()
                 log.exception('Failed to delete {name} records'.format(name=object_class.__name__))
                 return False
-            except:
+            except Exception:
                 self.session.rollback()
                 raise
 

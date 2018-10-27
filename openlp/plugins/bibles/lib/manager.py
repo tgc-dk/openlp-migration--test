@@ -38,7 +38,7 @@ from .importers.zefania import ZefaniaBible
 
 try:
     from .importers.sword import SwordBible
-except:
+except ImportError:
     pass
 
 log = logging.getLogger(__name__)

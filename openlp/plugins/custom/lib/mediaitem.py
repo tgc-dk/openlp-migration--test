@@ -35,7 +35,7 @@ from openlp.core.lib.plugin import PluginStatus
 from openlp.core.lib.ui import create_widget_action
 from openlp.core.ui.icons import UiIcons
 from openlp.plugins.custom.forms.editcustomform import EditCustomForm
-from openlp.plugins.custom.lib import CustomXMLParser, CustomXMLBuilder
+from openlp.plugins.custom.lib.customxmlhandler import CustomXMLBuilder, CustomXMLParser
 from openlp.plugins.custom.lib.db import CustomSlide
 
 log = logging.getLogger(__name__)

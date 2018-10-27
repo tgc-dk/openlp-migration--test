@@ -63,7 +63,7 @@ class TestUtilsDBFunctions(TestCase):
                 if os.path.exists(self.tmp_folder):
                     shutil.rmtree(self.tmp_folder)
                 break
-            except:
+            except Exception:
                 time.sleep(1)
                 retries += 1
 

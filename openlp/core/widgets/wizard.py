@@ -32,7 +32,6 @@ from openlp.core.ui.icons import UiIcons
 from openlp.core.common.mixins import RegistryProperties
 from openlp.core.common.registry import Registry
 from openlp.core.common.settings import Settings
-from openlp.core.lib import build_icon
 from openlp.core.lib.ui import add_welcome_page
 from openlp.core.widgets.dialogs import FileDialog
 

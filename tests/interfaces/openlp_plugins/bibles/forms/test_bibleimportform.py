@@ -46,7 +46,6 @@ class TestBibleImportForm(TestCase, TestMixin):
         self.setup_application()
         self.main_window = QtWidgets.QMainWindow()
         Registry().register('main_window', self.main_window)
-        PYSWORD_AVAILABLE = False
         self.mocked_manager = MagicMock()
         self.form = BibleImportForm(self.main_window, self.mocked_manager, MagicMock())
 

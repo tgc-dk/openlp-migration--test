@@ -280,7 +280,7 @@ class TestLib(TestCase):
         # last test.
         try:
             thumb_path.unlink()
-        except:
+        except Exception:
             pass
 
         # Only continue when the thumb does not exist.
@@ -298,7 +298,7 @@ class TestLib(TestCase):
         # Remove the thumb so that the test actually tests if the thumb will be created.
         try:
             thumb_path.unlink()
-        except:
+        except Exception:
             pass
 
     def test_create_thumb_no_size(self):
@@ -314,7 +314,7 @@ class TestLib(TestCase):
         # last test.
         try:
             thumb_path.unlink()
-        except:
+        except Exception:
             pass
 
         # Only continue when the thumb does not exist.
@@ -332,7 +332,7 @@ class TestLib(TestCase):
         # Remove the thumb so that the test actually tests if the thumb will be created.
         try:
             thumb_path.unlink()
-        except:
+        except Exception:
             pass
 
     def test_create_thumb_invalid_size(self):
@@ -349,7 +349,7 @@ class TestLib(TestCase):
         # last test.
         try:
             thumb_path.unlink()
-        except:
+        except Exception:
             pass
 
         # Only continue when the thumb does not exist.
@@ -367,7 +367,7 @@ class TestLib(TestCase):
         # Remove the thumb so that the test actually tests if the thumb will be created.
         try:
             thumb_path.unlink()
-        except:
+        except Exception:
             pass
 
     def test_create_thumb_width_only(self):
@@ -384,7 +384,7 @@ class TestLib(TestCase):
         # last test.
         try:
             thumb_path.unlink()
-        except:
+        except Exception:
             pass
 
         # Only continue when the thumb does not exist.
@@ -402,7 +402,7 @@ class TestLib(TestCase):
         # Remove the thumb so that the test actually tests if the thumb will be created.
         try:
             thumb_path.unlink()
-        except:
+        except Exception:
             pass
 
     def test_create_thumb_height_only(self):
@@ -419,7 +419,7 @@ class TestLib(TestCase):
         # last test.
         try:
             thumb_path.unlink()
-        except:
+        except Exception:
             pass
 
         # Only continue when the thumb does not exist.
@@ -437,7 +437,7 @@ class TestLib(TestCase):
         # Remove the thumb so that the test actually tests if the thumb will be created.
         try:
             thumb_path.unlink()
-        except:
+        except Exception:
             pass
 
     def test_create_thumb_empty_img(self):
@@ -455,7 +455,7 @@ class TestLib(TestCase):
         # last test.
         try:
             thumb_path.unlink()
-        except:
+        except Exception:
             pass
 
         # Only continue when the thumb does not exist.
@@ -485,7 +485,7 @@ class TestLib(TestCase):
         # Remove the thumb so that the test actually tests if the thumb will be created.
         try:
             thumb_path.unlink()
-        except:
+        except Exception:
             pass
 
     def test_check_item_selected_true(self):

@@ -24,11 +24,8 @@ The :mod:`openlp.core.version` module downloads the version details for OpenLP.
 """
 import logging
 import platform
-import sys
-import time
 from datetime import date
 from distutils.version import LooseVersion
-from subprocess import Popen, PIPE
 
 import requests
 from PyQt5 import QtCore

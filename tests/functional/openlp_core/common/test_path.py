@@ -397,7 +397,7 @@ class TestPath(TestCase):
         try:
             create_paths(mocked_path)
             assert False, 'create_paths should have thrown an exception'
-        except:
+        except Exception:
             # THEN: `create_paths` raises an exception
             pass
 

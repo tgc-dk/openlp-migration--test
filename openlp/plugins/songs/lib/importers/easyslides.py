@@ -107,7 +107,7 @@ class EasySlidesImport(SongImport):
     def _add_authors(self, writer):
         try:
             self.parse_author(str(writer))
-        except UnicodeDecodeError as e:
+        except UnicodeDecodeError:
             log.exception('Unicode decode error while decoding Writer')
             self._success = False
 

@@ -55,7 +55,7 @@ class TestLib(TestCase, TestMixin):
 
         # WHEN: Calling get_reference_separator
         for key, value in separators.items():
-            _ = lib.get_reference_separator(key)
+            lib.get_reference_separator(key)
 
             # THEN: get_reference_separator should return the correct separator
             assert separators[key] == value

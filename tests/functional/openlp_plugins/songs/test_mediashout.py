@@ -99,7 +99,7 @@ class TestMediaShoutImport(TestCase):
         mocked_pyodbc.connect.return_value = mocked_connection
 
         # WHEN: do_import is called
-        with patch.object(importer, 'import_wizard') as mocked_import_wizard, \
+        with patch.object(importer, 'import_wizard'), \
                 patch.object(importer, 'process_song') as mocked_process_song:
             importer.do_import()
 
@@ -133,7 +133,7 @@ class TestMediaShoutImport(TestCase):
         mocked_pyodbc.connect.return_value = mocked_connection
 
         # WHEN: do_import is called, but cancelled
-        with patch.object(importer, 'import_wizard') as mocked_import_wizard, \
+        with patch.object(importer, 'import_wizard'), \
                 patch.object(importer, 'process_song') as mocked_process_song:
             importer.stop_import_flag = True
             importer.do_import()

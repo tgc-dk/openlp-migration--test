@@ -135,7 +135,7 @@ class ListPreviewWidget(QtWidgets.QTableWidget, RegistryProperties):
         # Get and validate label widget containing slide & adjust max width
         try:
             self.cellWidget(row, 0).children()[1].setMaximumWidth(new_height * self.screen_ratio)
-        except:
+        except Exception:
             return
 
     def screen_size_changed(self, screen_ratio):

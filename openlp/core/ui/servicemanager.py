@@ -704,7 +704,7 @@ class ServiceManager(QtWidgets.QWidget, RegistryBase, Ui_ServiceManager, LogMixi
                 Settings().setValue('servicemanager/last file', file_path)
             else:
                 raise ValidationError(msg='No service data found')
-        except (NameError, OSError, ValidationError, zipfile.BadZipFile) as e:
+        except (NameError, OSError, ValidationError, zipfile.BadZipFile):
             self.log_exception('Problem loading service file {name}'.format(name=file_path))
             critical_error_message_box(
                 message=translate('OpenLP.ServiceManager',
