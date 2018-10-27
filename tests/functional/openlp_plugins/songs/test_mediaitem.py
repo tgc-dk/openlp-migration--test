@@ -23,7 +23,7 @@
 This module contains tests for the lib submodule of the Songs plugin.
 """
 from unittest import TestCase
-from unittest.mock import MagicMock, patch, call
+from unittest.mock import MagicMock, patch
 
 from PyQt5 import QtCore
 

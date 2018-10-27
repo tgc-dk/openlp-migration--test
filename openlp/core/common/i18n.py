@@ -23,7 +23,6 @@
 The :mod:`languages` module provides a list of language names with utility functions.
 """
 import itertools
-import locale
 import logging
 import re
 from collections import namedtuple

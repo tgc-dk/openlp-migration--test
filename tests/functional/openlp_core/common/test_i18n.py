@@ -22,10 +22,8 @@
 """
 Package to test the openlp.core.lib.languages package.
 """
-from unittest import skipIf
 from unittest.mock import MagicMock, patch
 
-from openlp.core.common import is_macosx
 from openlp.core.common.i18n import LANGUAGES, Language, UiStrings, get_language, get_locale_key, get_natural_key, \
     translate, LanguageManager
 from openlp.core.common.settings import Settings
