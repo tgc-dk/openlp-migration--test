@@ -36,7 +36,8 @@ from openlp.core.common.path import Path
 from openlp.core.lib import build_icon
 from openlp.core.lib.plugin import Plugin, StringContent
 from openlp.plugins.media.endpoint import api_media_endpoint, media_endpoint
-from openlp.plugins.media.lib import MediaMediaItem, MediaTab
+from openlp.plugins.media.lib.mediaitem import MediaMediaItem
+from openlp.plugins.media.lib.mediatab import MediaTab
 
 log = logging.getLogger(__name__)
 
