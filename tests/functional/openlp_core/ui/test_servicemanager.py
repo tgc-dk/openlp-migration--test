@@ -22,7 +22,6 @@
 """
 Package to test the openlp.core.ui.slidecontroller package.
 """
-import os
 from unittest import TestCase
 from unittest.mock import MagicMock, patch
 

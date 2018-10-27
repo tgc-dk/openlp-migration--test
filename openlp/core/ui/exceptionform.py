@@ -241,5 +241,5 @@ class ExceptionForm(QtWidgets.QDialog, Ui_ExceptionDialog, RegistryProperties):
             return node.getByName('ooSetupVersion')
         except ImportError:
             return '-'
-        except:
+        except Exception:
             return '- (Possible non-standard UNO installation)'

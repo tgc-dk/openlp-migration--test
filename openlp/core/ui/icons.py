@@ -175,7 +175,7 @@ class UiIcons(object):
                     import sys
                     log.error("Unexpected error: %s" % sys.exc_info())
                     setattr(self, key, qta.icon('fa.plus-circle', color='red'))
-            except:
+            except KeyError:
                 setattr(self, key, qta.icon('fa.plus-circle', color='red'))
         self.main_icon = build_icon(':/icon/openlp-logo.svg')
 

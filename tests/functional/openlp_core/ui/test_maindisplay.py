@@ -172,7 +172,7 @@ class TestMainDisplay(TestCase, TestMixin):
         main_display = MainDisplay(display)
         try:
             nsview_pointer = main_display.winId().ascapsule()
-        except:
+        except Exception:
             nsview_pointer = voidptr(main_display.winId()).ascapsule()
         pythonapi.PyCapsule_SetName.restype = c_void_p
         pythonapi.PyCapsule_SetName.argtypes = [py_object, c_char_p]

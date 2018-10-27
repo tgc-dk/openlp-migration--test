@@ -22,8 +22,8 @@
 """
 Package to test the openlp.core.ui.icons package.
 """
-from unittest import TestCase, skipUnless
-from unittest.mock import MagicMock, patch
+from unittest import TestCase
+from unittest.mock import patch
 
 from PyQt5 import QtGui
 

@@ -223,5 +223,5 @@ class SongShowPlusImport(SongImport):
         try:
             # Don't question this, it works...
             return data.decode('utf-8').encode('cp1251').decode('cp1251')
-        except:
+        except Exception:
             return data.decode(retrieve_windows_encoding())

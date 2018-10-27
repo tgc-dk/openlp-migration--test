@@ -39,7 +39,7 @@ from openlp.core.ui.icons import UiIcons
 from openlp.core.common.mixins import RegistryProperties
 from openlp.core.common.path import Path
 from openlp.core.common.settings import Settings
-from openlp.core.lib import ImageSource, build_icon, clean_tags, expand_tags, expand_chords
+from openlp.core.lib import ImageSource, clean_tags, expand_tags, expand_chords
 
 log = logging.getLogger(__name__)
 

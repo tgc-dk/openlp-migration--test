@@ -412,7 +412,7 @@ class TestVLCPlayer(TestCase, TestMixin):
 
         # WHEN: An audio CD is loaded into VLC
         with patch.object(vlc_player, 'volume') as mocked_volume, \
-                patch.object(vlc_player, 'media_state_wait') as mocked_media_state_wait:
+                patch.object(vlc_player, 'media_state_wait'):
             result = vlc_player.load(mocked_display)
 
         # THEN: The video should be loaded
@@ -457,7 +457,7 @@ class TestVLCPlayer(TestCase, TestMixin):
 
         # WHEN: An audio CD is loaded into VLC
         with patch.object(vlc_player, 'volume') as mocked_volume, \
-                patch.object(vlc_player, 'media_state_wait') as mocked_media_state_wait:
+                patch.object(vlc_player, 'media_state_wait'):
             result = vlc_player.load(mocked_display)
 
         # THEN: The video should be loaded
@@ -501,8 +501,7 @@ class TestVLCPlayer(TestCase, TestMixin):
         vlc_player = VlcPlayer(None)
 
         # WHEN: An audio CD is loaded into VLC
-        with patch.object(vlc_player, 'volume') as mocked_volume, \
-                patch.object(vlc_player, 'media_state_wait') as mocked_media_state_wait:
+        with patch.object(vlc_player, 'volume'), patch.object(vlc_player, 'media_state_wait'):
             result = vlc_player.load(mocked_display)
 
         # THEN: The video should be loaded
@@ -657,7 +656,7 @@ class TestVLCPlayer(TestCase, TestMixin):
 
         # WHEN: play() is called
         with patch.object(vlc_player, 'media_state_wait') as mocked_media_state_wait, \
-                patch.object(vlc_player, 'volume') as mocked_volume:
+                patch.object(vlc_player, 'volume'):
             mocked_media_state_wait.return_value = False
             result = vlc_player.play(mocked_display)
 
@@ -690,7 +689,7 @@ class TestVLCPlayer(TestCase, TestMixin):
         vlc_player.set_state(MediaState.Paused, mocked_display)
 
         # WHEN: play() is called
-        with patch.object(vlc_player, 'media_state_wait', return_value=True) as mocked_media_state_wait, \
+        with patch.object(vlc_player, 'media_state_wait', return_value=True), \
                 patch.object(vlc_player, 'volume') as mocked_volume, \
                 patch.object(vlc_player, 'get_live_state', return_value=MediaState.Loaded):
             result = vlc_player.play(mocked_display)

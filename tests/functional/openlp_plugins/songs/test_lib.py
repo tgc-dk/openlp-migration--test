@@ -313,7 +313,7 @@ class TestLib(TestCase):
         # WHEN: Transposing it 1 down
         # THEN: An exception should be raised
         with self.assertRaises(ValueError) as err:
-            new_chord = transpose_chord(chord, -1, 'english')
+            transpose_chord(chord, -1, 'english')
         assert err.exception.args[0] == '\'T\' is not in list', \
             'ValueError exception should have been thrown for invalid chord'
 

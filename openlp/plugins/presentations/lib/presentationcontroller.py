@@ -326,14 +326,14 @@ class PresentationDocument(object):
         titles_path = self.get_thumbnail_folder() / 'titles.txt'
         try:
             titles = titles_path.read_text().splitlines()
-        except:
+        except Exception:
             log.exception('Failed to open/read existing titles file')
             titles = []
         for slide_no, title in enumerate(titles, 1):
             notes_path = self.get_thumbnail_folder() / 'slideNotes{number:d}.txt'.format(number=slide_no)
             try:
                 note = notes_path.read_text()
-            except:
+            except Exception:
                 log.exception('Failed to open/read notes file')
                 note = ''
             notes.append(note)
