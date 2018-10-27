@@ -84,7 +84,7 @@ class TestEditCustomForm(TestCase, TestMixin):
         Test the on_add_button_clicked_test method / add_button button.
         """
         # GIVEN: A mocked QDialog.exec() method
-        with patch('PyQt5.QtWidgets.QDialog.exec') as mocked_exec:
+        with patch('PyQt5.QtWidgets.QDialog.exec'):
             # WHEN: Add a new slide.
             QtTest.QTest.mouseClick(self.form.add_button, QtCore.Qt.LeftButton)
 

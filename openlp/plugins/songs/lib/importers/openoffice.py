@@ -134,7 +134,7 @@ class OpenOfficeImport(SongImport):
                 process = QtCore.QProcess()
                 process.startDetached(cmd)
             self.process_started = True
-        except:
+        except Exception:
             log.exception("start_ooo_process failed")
 
     def open_ooo_file(self, file_path):
@@ -176,7 +176,7 @@ class OpenOfficeImport(SongImport):
         """
         try:
             self.document.close(True)
-        except:
+        except Exception:
             log.exception('Exception in close_ooo_file - trying to ignore it.')
         self.document = None
 
@@ -187,7 +187,7 @@ class OpenOfficeImport(SongImport):
         if self.process_started:
             try:
                 self.desktop.terminate()
-            except:
+            except Exception:
                 log.exception('Exception in close_ooo - trying to ignore it.')
 
     def process_presentation(self):

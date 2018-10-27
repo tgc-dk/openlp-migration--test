@@ -57,7 +57,7 @@ from openlp.core.ui.pluginform import PluginForm
 from openlp.core.ui.slidecontroller import LiveController, PreviewController
 from openlp.core.ui.settingsform import SettingsForm
 from openlp.core.ui.firsttimeform import FirstTimeForm
-from openlp.core.ui.media import MediaController
+from openlp.core.ui.media.mediacontroller import MediaController
 from openlp.core.ui.printserviceform import PrintServiceForm
 from openlp.core.ui.style import PROGRESSBAR_STYLE, get_library_stylesheet
 from openlp.core.version import get_version

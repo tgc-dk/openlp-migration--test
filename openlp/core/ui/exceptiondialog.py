@@ -23,7 +23,7 @@
 The GUI widgets of the exception dialog.
 """
 
-from PyQt5 import QtGui, QtWidgets
+from PyQt5 import QtWidgets
 
 from openlp.core.common.i18n import translate
 from openlp.core.ui.icons import UiIcons

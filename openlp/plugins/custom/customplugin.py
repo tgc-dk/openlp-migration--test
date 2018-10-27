@@ -33,9 +33,9 @@ from openlp.core.lib import build_icon
 from openlp.core.lib.plugin import Plugin, StringContent
 from openlp.core.lib.db import Manager
 from openlp.plugins.custom.endpoint import api_custom_endpoint, custom_endpoint
-from openlp.plugins.custom.lib import CustomMediaItem, CustomTab
 from openlp.plugins.custom.lib.db import CustomSlide, init_schema
-from openlp.plugins.custom.lib.mediaitem import CustomSearch
+from openlp.plugins.custom.lib.mediaitem import CustomMediaItem, CustomSearch
+from openlp.plugins.custom.lib.customtab import CustomTab
 
 log = logging.getLogger(__name__)
 

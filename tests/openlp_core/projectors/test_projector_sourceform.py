@@ -91,7 +91,7 @@ class ProjectorSourceFormTest(TestCase, TestMixin):
                 if os.path.exists(TEST_DB):
                     os.unlink(TEST_DB)
                 break
-            except:
+            except Exception:
                 time.sleep(1)
                 retries += 1
         self.destroy_settings()

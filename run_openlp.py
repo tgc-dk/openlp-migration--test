@@ -46,7 +46,6 @@ def start():
     """
     Instantiate and run the application.
     """
-    faulthandler.enable()
     set_up_fault_handling()
     # Add support for using multiprocessing from frozen Windows executable (built using PyInstaller),
     # see https://docs.python.org/3/library/multiprocessing.html#multiprocessing.freeze_support

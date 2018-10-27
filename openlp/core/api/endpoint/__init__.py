@@ -22,4 +22,3 @@
 """
 The Endpoint class, which provides plugins with a way to serve their own portion of the API
 """
-from .pluginhelpers import search, live, service

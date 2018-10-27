@@ -25,7 +25,7 @@ This module contains tests for the CSV Bible importer.
 import csv
 from collections import namedtuple
 from unittest import TestCase
-from unittest.mock import ANY, MagicMock, PropertyMock, call, patch
+from unittest.mock import MagicMock, PropertyMock, call, patch
 
 from openlp.core.common.path import Path
 from openlp.core.lib.exceptions import ValidationError
@@ -131,35 +131,40 @@ class TestCSVImport(TestCase):
         # GIVEN: A mocked csv.reader which returns an iterator with test data
         test_data = [['1', 'Line 1', 'Data 1'], ['2', 'Line 2', 'Data 2'], ['3', 'Line 3', 'Data 3']]
         TestTuple = namedtuple('TestTuple', 'line_no line_description line_data')
+        mocked_csv_file = MagicMock()
+        mocked_enter_file = MagicMock()
+        mocked_csv_file.open.return_value.__enter__.return_value = mocked_enter_file
 
         with patch('openlp.plugins.bibles.lib.importers.csvbible.get_file_encoding',
-                   return_value={'encoding': 'utf-8', 'confidence': 0.99}),\
-                patch('openlp.plugins.bibles.lib.importers.csvbible.Path.open', create=True) as mocked_open,\
+                   return_value={'encoding': 'utf-8', 'confidence': 0.99}), \
                 patch('openlp.plugins.bibles.lib.importers.csvbible.csv.reader',
                       return_value=iter(test_data)) as mocked_reader:
 
             # WHEN: Calling the CSVBible parse_csv_file method with a file name and TestTuple
-            result = CSVBible.parse_csv_file(Path('file.csv'), TestTuple)
+            result = CSVBible.parse_csv_file(mocked_csv_file, TestTuple)
 
             # THEN: A list of TestTuple instances with the parsed data should be returned
             assert result == [TestTuple('1', 'Line 1', 'Data 1'), TestTuple('2', 'Line 2', 'Data 2'),
                               TestTuple('3', 'Line 3', 'Data 3')]
-            mocked_open.assert_called_once_with('r', encoding='utf-8', newline='')
-            mocked_reader.assert_called_once_with(ANY, delimiter=',', quotechar='"')
+            mocked_csv_file.open.assert_called_once_with('r', encoding='utf-8', newline='')
+            mocked_reader.assert_called_once_with(mocked_enter_file, delimiter=',', quotechar='"')
 
     def test_parse_csv_file_oserror(self):
         """
         Test the parse_csv_file() handles an OSError correctly
         """
         # GIVEN: Mocked a mocked open object which raises an OSError
+        mocked_csv_file = MagicMock()
+        mocked_csv_file.__str__.return_value = 'file.csv'
+        mocked_csv_file.open.side_effect = OSError()
+
         with patch('openlp.plugins.bibles.lib.importers.csvbible.get_file_encoding',
-                   return_value={'encoding': 'utf-8', 'confidence': 0.99}),\
-                patch('openlp.plugins.bibles.lib.importers.csvbible.Path.open', side_effect=OSError, create=True):
+                   return_value={'encoding': 'utf-8', 'confidence': 0.99}):
 
             # WHEN: Calling CSVBible.parse_csv_file
             # THEN: A ValidationError should be raised
             with self.assertRaises(ValidationError) as context:
-                CSVBible.parse_csv_file(Path('file.csv'), None)
+                CSVBible.parse_csv_file(mocked_csv_file, None)
             assert context.exception.msg == 'Parsing "file.csv" failed'
 
     def test_parse_csv_file_csverror(self):
@@ -167,15 +172,17 @@ class TestCSVImport(TestCase):
         Test the parse_csv_file() handles an csv.Error correctly
         """
         # GIVEN: Mocked a csv.reader which raises an csv.Error
+        mocked_csv_file = MagicMock()
+        mocked_csv_file.__str__.return_value = 'file.csv'
+
         with patch('openlp.plugins.bibles.lib.importers.csvbible.get_file_encoding',
                    return_value={'encoding': 'utf-8', 'confidence': 0.99}),\
-                patch('openlp.plugins.bibles.lib.importers.csvbible.Path.open', create=True),\
                 patch('openlp.plugins.bibles.lib.importers.csvbible.csv.reader', side_effect=csv.Error):
 
             # WHEN: Calling CSVBible.parse_csv_file
             # THEN: A ValidationError should be raised
             with self.assertRaises(ValidationError) as context:
-                CSVBible.parse_csv_file(Path('file.csv'), None)
+                CSVBible.parse_csv_file(mocked_csv_file, None)
             assert context.exception.msg == 'Parsing "file.csv" failed'
 
     def test_process_books_stopped_import(self):

@@ -470,7 +470,7 @@ class ProjectorManager(QtWidgets.QWidget, RegistryBase, UiProjectorManager, LogM
                 projector = list_item.data(QtCore.Qt.UserRole)
                 try:
                     projector.link.set_shutter_closed()
-                except:
+                except Exception:
                     continue
 
     def on_doubleclick_item(self, item, opt=None):
@@ -485,7 +485,7 @@ class ProjectorManager(QtWidgets.QWidget, RegistryBase, UiProjectorManager, LogM
             try:
                 log.debug('ProjectorManager: Calling connect_to_host() on "{ip}"'.format(ip=projector.link.ip))
                 projector.link.connect_to_host()
-            except:
+            except Exception:
                 log.debug('ProjectorManager: "{ip}" already connected - skipping'.format(ip=projector.link.ip))
         return
 
@@ -504,7 +504,7 @@ class ProjectorManager(QtWidgets.QWidget, RegistryBase, UiProjectorManager, LogM
                 projector = list_item.data(QtCore.Qt.UserRole)
                 try:
                     projector.link.connect_to_host()
-                except:
+                except Exception:
                     continue
 
     def on_delete_projector(self, opt=None):
@@ -586,7 +586,7 @@ class ProjectorManager(QtWidgets.QWidget, RegistryBase, UiProjectorManager, LogM
                 projector = list_item.data(QtCore.Qt.UserRole)
                 try:
                     projector.link.disconnect_from_host()
-                except:
+                except Exception:
                     continue
 
     def on_edit_projector(self, opt=None):
@@ -619,7 +619,7 @@ class ProjectorManager(QtWidgets.QWidget, RegistryBase, UiProjectorManager, LogM
                 projector = list_item.data(QtCore.Qt.UserRole)
                 try:
                     projector.link.set_power_off()
-                except:
+                except Exception:
                     continue
 
     def on_poweron_projector(self, opt=None):
@@ -637,7 +637,7 @@ class ProjectorManager(QtWidgets.QWidget, RegistryBase, UiProjectorManager, LogM
                 projector = list_item.data(QtCore.Qt.UserRole)
                 try:
                     projector.link.set_power_on()
-                except:
+                except Exception:
                     continue
 
     def on_show_projector(self, opt=None):
@@ -655,7 +655,7 @@ class ProjectorManager(QtWidgets.QWidget, RegistryBase, UiProjectorManager, LogM
                 projector = list_item.data(QtCore.Qt.UserRole)
                 try:
                     projector.link.set_shutter_open()
-                except:
+                except Exception:
                     continue
 
     def on_status_projector(self, opt=None):

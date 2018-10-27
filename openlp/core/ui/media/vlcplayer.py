@@ -69,7 +69,7 @@ def get_vlc():
         is_vlc_available = False
         try:
             is_vlc_available = bool(sys.modules['openlp.core.ui.media.vendor.vlc'].get_default_instance())
-        except:
+        except Exception:
             pass
         if is_vlc_available:
             return sys.modules['openlp.core.ui.media.vendor.vlc']
@@ -106,7 +106,7 @@ def get_vlc():
     if is_vlc_available:
         try:
             VERSION = vlc.libvlc_get_version().decode('UTF-8')
-        except:
+        except Exception:
             VERSION = '0.0.0'
         # LooseVersion does not work when a string contains letter and digits (e. g. 2.0.5 Twoflower).
         # http://bugs.python.org/issue14894
@@ -130,7 +130,7 @@ if is_linux() and 'nose' not in sys.argv[0] and get_vlc():
             # If libx11.so.6 was not found, fallback to more generic libx11.so
             x11 = ctypes.cdll.LoadLibrary('libX11.so')
         x11.XInitThreads()
-    except:
+    except Exception:
         log.exception('Failed to run XInitThreads(), VLC might not work properly!')
 
 

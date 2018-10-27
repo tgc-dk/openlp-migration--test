@@ -194,7 +194,7 @@ class SundayPlusImport(SongImport):
         while True:
             try:
                 return blob.decode(self.encoding)
-            except Exception as e:
+            except Exception:
                 self.encoding = retrieve_windows_encoding()
 
     def unescape(self, text):

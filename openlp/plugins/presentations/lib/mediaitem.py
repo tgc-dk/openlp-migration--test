@@ -21,7 +21,7 @@
 ###############################################################################
 import logging
 
-from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5 import QtCore, QtWidgets
 
 from openlp.core.common.i18n import UiStrings, translate, get_natural_key
 from openlp.core.common.path import path_to_str, str_to_path
@@ -33,7 +33,7 @@ from openlp.core.lib.mediamanageritem import MediaManagerItem
 from openlp.core.lib.serviceitem import ItemCapabilities
 from openlp.core.lib.ui import critical_error_message_box, create_horizontal_adjusting_combo_box
 from openlp.core.ui.icons import UiIcons
-from openlp.plugins.presentations.lib import MessageListener
+from openlp.plugins.presentations.lib.messagelistener import MessageListener
 from openlp.plugins.presentations.lib.pdfcontroller import PDF_CONTROLLER_FILETYPES
 
 log = logging.getLogger(__name__)

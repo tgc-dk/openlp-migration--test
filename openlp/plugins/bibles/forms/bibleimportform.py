@@ -31,7 +31,7 @@ from lxml import etree
 try:
     from pysword import modules
     PYSWORD_AVAILABLE = True
-except:
+except ImportError:
     PYSWORD_AVAILABLE = False
 
 from openlp.core.common import trace_error_handler
@@ -583,7 +583,7 @@ class BibleImportForm(OpenLPWizard):
                                            (WebDownload.Bibleserver, BSExtract())):
             try:
                 bibles = extractor.get_bibles_from_http()
-            except (urllib.error.URLError, ConnectionError) as err:
+            except (urllib.error.URLError, ConnectionError):
                 critical_error_message_box(translate('BiblesPlugin.ImportWizardForm', 'Error during download'),
                                            translate('BiblesPlugin.ImportWizardForm',
                                                      'An error occurred while downloading the list of bibles from %s.'))
@@ -613,7 +613,7 @@ class BibleImportForm(OpenLPWizard):
                 self.sword_bible_combo_box.clear()
                 for key in bible_keys:
                     self.sword_bible_combo_box.addItem(self.pysword_folder_modules_json[key]['description'], key)
-            except:
+            except Exception:
                 self.sword_bible_combo_box.clear()
 
     def on_sword_zipfile_path_edit_path_changed(self, new_path):
@@ -628,7 +628,7 @@ class BibleImportForm(OpenLPWizard):
                 self.sword_zipbible_combo_box.clear()
                 for key in bible_keys:
                     self.sword_zipbible_combo_box.addItem(self.pysword_zip_modules_json[key]['description'], key)
-            except:
+            except Exception:
                 self.sword_zipbible_combo_box.clear()
 
     def register_fields(self):

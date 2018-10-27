@@ -279,7 +279,7 @@ class PdfDocument(PresentationDocument):
             for image_path in created_files:
                 if image_path.is_file():
                     self.image_files.append(image_path)
-        except Exception as e:
+        except Exception:
             log.exception(runlog)
             return False
         self.num_pages = len(self.image_files)

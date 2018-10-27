@@ -319,7 +319,7 @@ class EditSongForm(QtWidgets.QDialog, Ui_EditSongDialog, RegistryProperties):
             for verse in multiple:
                 self.song.verse_order = re.sub(r'([' + verse.upper() + verse.lower() + r'])(\W|$)',
                                                r'\g<1>1\2', self.song.verse_order)
-        except:
+        except Exception:
             log.exception('Problem processing song Lyrics \n{xml}'.format(xml=sxml.dump_xml()))
             raise
 
@@ -1087,7 +1087,7 @@ class EditSongForm(QtWidgets.QDialog, Ui_EditSongDialog, RegistryProperties):
             if audio_path not in file_paths:
                 try:
                     audio_path.unlink()
-                except:
+                except Exception:
                     log.exception('Could not remove file: {audio}'.format(audio=audio_path))
         if not file_paths:
             try:

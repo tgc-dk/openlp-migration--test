@@ -424,9 +424,3 @@ class SearchResults(object):
         Returns whether or not the verse list contains verses.
         """
         return len(self.verse_list) > 0
-
-
-from .versereferencelist import VerseReferenceList
-from .manager import BibleManager
-from .biblestab import BiblesTab
-from .mediaitem import BibleMediaItem

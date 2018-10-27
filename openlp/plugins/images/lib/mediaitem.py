@@ -38,7 +38,8 @@ from openlp.core.lib.plugin import StringContent
 from openlp.core.lib.ui import create_widget_action, critical_error_message_box
 from openlp.core.ui.icons import UiIcons
 from openlp.core.widgets.views import TreeWidgetWithDnD
-from openlp.plugins.images.forms import AddGroupForm, ChooseGroupForm
+from openlp.plugins.images.forms.addgroupform import AddGroupForm
+from openlp.plugins.images.forms.choosegroupform import ChooseGroupForm
 from openlp.plugins.images.lib.db import ImageFilenames, ImageGroups
 
 log = logging.getLogger(__name__)

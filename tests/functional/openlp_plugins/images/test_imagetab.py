@@ -29,7 +29,7 @@ from PyQt5 import QtWidgets
 
 from openlp.core.common.registry import Registry
 from openlp.core.common.settings import Settings
-from openlp.plugins.images.lib import ImageTab
+from openlp.plugins.images.lib.imagetab import ImageTab
 from tests.helpers.testmixin import TestMixin
 
 __default_settings__ = {

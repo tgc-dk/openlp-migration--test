@@ -22,14 +22,12 @@
 """
 This module contains tests for the upgrade submodule of the Bibles plugin.
 """
-import os
 import shutil
 from pathlib import Path
 from tempfile import mkdtemp
 from unittest import TestCase
 from unittest.mock import MagicMock, call, patch
 
-from PyQt5 import QtWidgets
 from sqlalchemy import create_engine
 
 from openlp.core.common.settings import ProxyMode
