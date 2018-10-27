@@ -397,7 +397,7 @@ class MediaController(RegistryBase, LogMixin, RegistryProperties):
         if service_item.is_capable(ItemCapabilities.HasBackgroundAudio):
             controller.media_info.file_info = service_item.background_audio
         else:
-            controller.media_info.file_info = QtCore.QFileInfo(service_item.get_frame_path())
+            controller.media_info.file_info = [QtCore.QFileInfo(service_item.get_frame_path())]
         display = self._define_display(controller)
         if controller.is_live:
             # if this is an optical device use special handling
