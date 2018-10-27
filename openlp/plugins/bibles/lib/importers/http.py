@@ -749,7 +749,7 @@ def get_soup_for_bible_ref(reference_url, headers=None, pre_parse_regex=None, pr
         return None
     try:
         page_source = get_web_page(reference_url, headers, update_openlp=True)
-    except Exception as e:
+    except Exception:
         log.exception('Unable to download Bible %s, unknown exception occurred', reference_url)
         page_source = None
     if not page_source:

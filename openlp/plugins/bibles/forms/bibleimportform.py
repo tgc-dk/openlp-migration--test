@@ -583,7 +583,7 @@ class BibleImportForm(OpenLPWizard):
                                            (WebDownload.Bibleserver, BSExtract())):
             try:
                 bibles = extractor.get_bibles_from_http()
-            except (urllib.error.URLError, ConnectionError) as err:
+            except (urllib.error.URLError, ConnectionError):
                 critical_error_message_box(translate('BiblesPlugin.ImportWizardForm', 'Error during download'),
                                            translate('BiblesPlugin.ImportWizardForm',
                                                      'An error occurred while downloading the list of bibles from %s.'))
