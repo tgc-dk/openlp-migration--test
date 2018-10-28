@@ -23,7 +23,7 @@
 This module contains tests for the lib submodule of the Songs plugin.
 """
 from unittest import TestCase
-from unittest.mock import MagicMock, patch, call
+from unittest.mock import MagicMock, patch
 
 from PyQt5 import QtCore
 
@@ -170,27 +170,23 @@ class TestMediaItem(TestCase, TestMixin):
         """
         Test that songbooks are sorted naturally
         """
-        # GIVEN: Search results grouped by book and entry, plus a mocked QtListWidgetItem
-        with patch('openlp.core.lib.QtWidgets.QListWidgetItem') as MockedQListWidgetItem:
-            mock_search_results = [('2', 'Thy Book', 'Thy Song', 50),
-                                   ('2', 'My Book', 'Your Song', 7),
-                                   ('10', 'My Book', 'Our Song', 12),
-                                   ('1', 'My Book', 'My Song', 1),
-                                   ('2', 'Thy Book', 'A Song', 8)]
-            mock_qlist_widget = MagicMock()
-            MockedQListWidgetItem.return_value = mock_qlist_widget
+        # GIVEN: Search results grouped by book and entry
+        search_results = [('2', 'Thy Book', 'Thy Song', 50),
+                          ('2', 'My Book', 'Your Song', 7),
+                          ('10', 'My Book', 'Our Song', 12),
+                          ('1', 'My Book', 'My Song', 1),
+                          ('2', 'Thy Book', 'A Song', 8)]
 
-            # WHEN: I display song search results grouped by book
-            self.media_item.display_results_book(mock_search_results)
+        # WHEN: I display song search results grouped by book
+        self.media_item.display_results_book(search_results)
 
-            # THEN: The songbooks are inserted in the right (natural) order,
-            #       grouped first by book, then by number, then by song title
-            calls = [call('My Book #1: My Song'), call().setData(QtCore.Qt.UserRole, 1),
-                     call('My Book #2: Your Song'), call().setData(QtCore.Qt.UserRole, 7),
-                     call('My Book #10: Our Song'), call().setData(QtCore.Qt.UserRole, 12),
-                     call('Thy Book #2: A Song'), call().setData(QtCore.Qt.UserRole, 8),
-                     call('Thy Book #2: Thy Song'), call().setData(QtCore.Qt.UserRole, 50)]
-            MockedQListWidgetItem.assert_has_calls(calls)
+        # THEN: The songbooks are sorted inplace in the right (natural) order,
+        #       grouped first by book, then by number, then by song title
+        assert search_results == [('1', 'My Book', 'My Song', 1),
+                                  ('2', 'My Book', 'Your Song', 7),
+                                  ('10', 'My Book', 'Our Song', 12),
+                                  ('2', 'Thy Book', 'A Song', 8),
+                                  ('2', 'Thy Book', 'Thy Song', 50)]
 
     def test_display_results_topic(self):
         """

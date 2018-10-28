@@ -23,7 +23,6 @@
 The :mod:`languages` module provides a list of language names with utility functions.
 """
 import itertools
-import locale
 import logging
 import re
 from collections import namedtuple
@@ -52,8 +51,7 @@ def translate(context, text, comment=None, qt_translate=QtCore.QCoreApplication.
 
 
 Language = namedtuple('Language', ['id', 'name', 'code'])
-ICU_COLLATOR = None
-DIGITS_OR_NONDIGITS = re.compile(r'\d+|\D+')
+COLLATOR = None
 LANGUAGES = sorted([
     Language(1, translate('common.languages', '(Afan) Oromo', 'Language code: om'), 'om'),
     Language(2, translate('common.languages', 'Abkhazian', 'Language code: ab'), 'ab'),
@@ -506,24 +504,19 @@ def format_time(text, local_time):
     return re.sub(r'\%[a-zA-Z]', match_formatting, text)
 
 
-def get_locale_key(string):
+def get_locale_key(string, numeric=False):
     """
     Creates a key for case insensitive, locale aware string sorting.
 
     :param string: The corresponding string.
     """
     string = string.lower()
-    # ICU is the prefered way to handle locale sort key, we fallback to locale.strxfrm which will work in most cases.
-    global ICU_COLLATOR
-    try:
-        if ICU_COLLATOR is None:
-            import icu
-            language = LanguageManager.get_language()
-            icu_locale = icu.Locale(language)
-            ICU_COLLATOR = icu.Collator.createInstance(icu_locale)
-        return ICU_COLLATOR.getSortKey(string)
-    except Exception:
-        return locale.strxfrm(string).encode()
+    global COLLATOR
+    if COLLATOR is None:
+        language = LanguageManager.get_language()
+        COLLATOR = QtCore.QCollator(QtCore.QLocale(language))
+    COLLATOR.setNumericMode(numeric)
+    return COLLATOR.sortKey(string)
 
 
 def get_natural_key(string):
@@ -533,13 +526,7 @@ def get_natural_key(string):
     :param string: string to be sorted by
     Returns a list of string compare keys and integers.
     """
-    key = DIGITS_OR_NONDIGITS.findall(string)
-    key = [int(part) if part.isdigit() else get_locale_key(part) for part in key]
-    # Python 3 does not support comparison of different types anymore. So make sure, that we do not compare str
-    # and int.
-    if string and string[0].isdigit():
-        return [b''] + key
-    return key
+    return get_locale_key(string, True)
 
 
 def get_language(name):

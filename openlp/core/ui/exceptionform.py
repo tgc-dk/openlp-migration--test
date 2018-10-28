@@ -53,14 +53,6 @@ try:
 except ImportError:
     MAKO_VERSION = '-'
 try:
-    import icu
-    try:
-        ICU_VERSION = icu.VERSION
-    except AttributeError:
-        ICU_VERSION = 'OK'
-except ImportError:
-    ICU_VERSION = '-'
-try:
     WEBKIT_VERSION = QtWebKit.qWebKitVersion()
 except AttributeError:
     WEBKIT_VERSION = '-'
@@ -119,12 +111,12 @@ class ExceptionForm(QtWidgets.QDialog, Ui_ExceptionDialog, RegistryProperties):
         system = translate('OpenLP.ExceptionForm', 'Platform: {platform}\n').format(platform=platform.platform())
         libraries = ('Python: {python}\nQt5: {qt5}\nPyQt5: {pyqt5}\nQtWebkit: {qtwebkit}\nSQLAlchemy: {sqalchemy}\n'
                      'SQLAlchemy Migrate: {migrate}\nBeautifulSoup: {soup}\nlxml: {etree}\nChardet: {chardet}\n'
-                     'PyEnchant: {enchant}\nMako: {mako}\npyICU: {icu}\npyUNO bridge: {uno}\n'
+                     'PyEnchant: {enchant}\nMako: {mako}\npyUNO bridge: {uno}\n'
                      'VLC: {vlc}\n').format(python=platform.python_version(), qt5=Qt.qVersion(),
                                             pyqt5=Qt.PYQT_VERSION_STR, qtwebkit=WEBKIT_VERSION,
                                             sqalchemy=sqlalchemy.__version__, migrate=MIGRATE_VERSION,
                                             soup=bs4.__version__, etree=etree.__version__, chardet=CHARDET_VERSION,
-                                            enchant=ENCHANT_VERSION, mako=MAKO_VERSION, icu=ICU_VERSION,
+                                            enchant=ENCHANT_VERSION, mako=MAKO_VERSION,
                                             uno=self._pyuno_import(), vlc=VLC_VERSION)
 
         if is_linux():
