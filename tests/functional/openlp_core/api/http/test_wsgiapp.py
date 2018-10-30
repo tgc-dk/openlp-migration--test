@@ -69,7 +69,9 @@ class TestRouting(TestCase):
         rqst.method = 'GET'
         application.dispatch(rqst)
         # THEN: the not found id called
-        assert 1 == application.route_map['^\\/test\\/image$']['GET'].call_count, \
+        route_key = next(iter(application.route_map))
+        assert '/image' in route_key
+        assert 1 == application.route_map[route_key]['GET'].call_count, \
             'main_index function should have been called'
 
 
