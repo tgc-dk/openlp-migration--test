@@ -616,6 +616,10 @@ class ServiceItem(RegistryProperties):
             path_from = frame['path']
         else:
             path_from = os.path.join(frame['path'], frame['title'])
+        if isinstance(path_from, str):
+            # Handle service files prior to OpenLP 3.0
+            # Windows can handle both forward and backward slashes, so we use ntpath to get the basename
+            path_from = Path(path_from)
         return path_from
 
     def remove_frame(self, frame):

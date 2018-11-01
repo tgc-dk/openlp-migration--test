@@ -196,19 +196,19 @@ class VlcPlayer(MediaPlayer):
         """
         return get_vlc() is not None
 
-    def load(self, display):
+    def load(self, display, file):
         """
         Load a video into VLC
 
         :param display: The display where the media is
+        :param file: file to be played
         :return:
         """
         vlc = get_vlc()
         log.debug('load vid in Vlc Controller')
         controller = display.controller
         volume = controller.media_info.volume
-        file_path = str(controller.media_info.file_info.absoluteFilePath())
-        path = os.path.normcase(file_path)
+        path = os.path.normcase(file)
         # create the media
         if controller.media_info.media_type == MediaType.CD:
             if is_win():

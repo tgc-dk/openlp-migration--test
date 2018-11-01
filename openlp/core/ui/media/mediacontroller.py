@@ -33,7 +33,7 @@ except ImportError:
     pymediainfo_available = False
 
 from subprocess import check_output
-
+from pathlib import Path
 from PyQt5 import QtCore, QtWidgets
 
 from openlp.core.state import State
@@ -81,7 +81,6 @@ class MediaSlider(QtWidgets.QSlider):
     def mousePressEvent(self, event):
         """
         Mouse Press event no new functionality
-
         :param event: The triggering event
         """
         QtWidgets.QSlider.mousePressEvent(self, event)
@@ -385,7 +384,7 @@ class MediaController(RegistryBase, LogMixin, RegistryProperties):
         :param hidden: The player which is doing the playing
         :param video_behind_text: Is the video to be played behind text.
         """
-        is_valid = False
+        is_valid = True
         controller = self.display_controllers[source]
         # stop running videos
         self.media_reset(controller)
@@ -397,7 +396,7 @@ class MediaController(RegistryBase, LogMixin, RegistryProperties):
         if service_item.is_capable(ItemCapabilities.HasBackgroundAudio):
             controller.media_info.file_info = service_item.background_audio
         else:
-            controller.media_info.file_info = [QtCore.QFileInfo(service_item.get_frame_path())]
+            controller.media_info.file_info = [service_item.get_frame_path()]
         display = self._define_display(controller)
         if controller.is_live:
             # if this is an optical device use special handling
@@ -465,18 +464,14 @@ class MediaController(RegistryBase, LogMixin, RegistryProperties):
         """
         Uses Media Info to obtain the media length
 
-        :param service_item: The ServiceItem containing the details to be played.
+        :param media_path: The file path to be checked..
         """
-        media_info = MediaInfo()
-        media_info.volume = 0
-        media_info.file_info = media_path
-        filename = media_path
         if pymediainfo.MediaInfo.can_parse():
-            media_data = pymediainfo.MediaInfo.parse(filename)
+            media_data = pymediainfo.MediaInfo.parse(media_path)
         else:
-            xml = check_output(['mediainfo', '-f', '--Output=XML', '--Inform=OLDXML', filename])
+            xml = check_output(['mediainfo', '-f', '--Output=XML', '--Inform=OLDXML', media_path])
             if not xml.startswith(b'<?xml'):
-                xml = check_output(['mediainfo', '-f', '--Output=XML', filename])
+                xml = check_output(['mediainfo', '-f', '--Output=XML', media_path])
             media_data = pymediainfo.MediaInfo(xml.decode("utf-8"))
         # duration returns in milli seconds
         return media_data.tracks[0].duration
@@ -550,30 +545,33 @@ class MediaController(RegistryBase, LogMixin, RegistryProperties):
         :param display: Which display to use
         :param service_item: The ServiceItem containing the details to be played.
         """
-        if controller.media_info.file_info.isFile():
-            suffix = '*.%s' % controller.media_info.file_info.suffix().lower()
-            player = self.media_players
-            if suffix in player.video_extensions_list:
-                if not controller.media_info.is_background or controller.media_info.is_background and \
-                       player.can_background:
+        for file in controller.media_info.file_info:
+            if file.is_file:
+                suffix = '*%s' % file.suffix.lower()
+                player = self.media_players
+                file = str(file)
+                if suffix in player.video_extensions_list:
+                    if not controller.media_info.is_background or controller.media_info.is_background and \
+                           player.can_background:
+                        self.resize(display, player)
+                        if player.load(display, file):
+                            self.current_media_players[controller.controller_type] = player
+                            controller.media_info.media_type = MediaType.Video
+                            return True
+                if suffix in player.audio_extensions_list:
+                    if player.load(display, file):
+                        self.current_media_players[controller.controller_type] = player
+                        controller.media_info.media_type = MediaType.Audio
+                        return True
+            else:
+                player = self.media_players
+                file = str(file)
+                if player.can_folder:
                     self.resize(display, player)
-                    if player.load(display):
+                    if player.load(display, file):
                         self.current_media_players[controller.controller_type] = player
                         controller.media_info.media_type = MediaType.Video
                         return True
-            if suffix in player.audio_extensions_list:
-                if player.load(display):
-                    self.current_media_players[controller.controller_type] = player
-                    controller.media_info.media_type = MediaType.Audio
-                    return True
-        else:
-            player = self.media_players
-            if player.can_folder:
-                self.resize(display, player)
-                if player.load(display):
-                    self.current_media_players[controller.controller_type] = player
-                    controller.media_info.media_type = MediaType.Video
-                    return True
         # no valid player found
         return False
 

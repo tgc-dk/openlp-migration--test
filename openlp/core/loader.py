@@ -24,7 +24,7 @@ The :mod:`~openlp.core.loader` module provides a bootstrap for the singleton cla
 """
 
 from openlp.core.state import State
-from openlp.core.ui.media import MediaController
+from openlp.core.ui.media.mediacontroller import MediaController
 from openlp.core.lib.pluginmanager import PluginManager
 from openlp.core.display.renderer import Renderer
 from openlp.core.lib.imagemanager import ImageManager

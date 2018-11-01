@@ -48,13 +48,13 @@ from openlp.core.widgets.views import ListPreviewWidget
 
 # Threshold which has to be trespassed to toggle.
 HIDE_MENU_THRESHOLD = 27
-AUDIO_TIME_LABEL_STYLESHEET = 'background-color: palette(background); ' \
-    'border-top-color: palette(shadow); ' \
-    'border-left-color: palette(shadow); ' \
-    'border-bottom-color: palette(light); ' \
-    'border-right-color: palette(light); ' \
-    'border-radius: 3px; border-style: inset; ' \
-    'border-width: 1; font-family: monospace; margin: 2px;'
+# AUDIO_TIME_LABEL_STYLESHEET = 'background-color: palette(background); ' \
+#                               'border-top-color: palette(shadow); ' \
+#                               'border-left-color: palette(shadow); ' \
+#                               'border-bottom-color: palette(light); ' \
+#                               'border-right-color: palette(light); ' \
+#                               'border-radius: 3px; border-style: inset; ' \
+#                               'border-width: 1; font-family: monospace; margin: 2px;'
 
 NARROW_MENU = [
     'hide_menu'
@@ -64,10 +64,10 @@ LOOP_LIST = [
     'loop_separator',
     'delay_spin_box'
 ]
-AUDIO_LIST = [
-    'audioPauseItem',
-    'audio_time_label'
-]
+# AUDIO_LIST = [
+#     'audioPauseItem',
+#     'audio_time_label'
+# ]
 WIDE_MENU = [
     'blank_screen_button',
     'theme_screen_button',
@@ -84,6 +84,7 @@ class DisplayController(QtWidgets.QWidget):
     """
     Controller is a general display controller widget.
     """
+
     def __init__(self, *args, **kwargs):
         """
         Set up the general Controller.
@@ -140,6 +141,7 @@ class SlideController(DisplayController, LogMixin, RegistryProperties):
     SlideController is the slide controller widget. This widget is what the
     user uses to control the displaying of verses/slides/etc on the screen.
     """
+
     def __init__(self, *args, **kwargs):
         """
         Set up the Slide Controller.
@@ -371,7 +373,7 @@ class SlideController(DisplayController, LogMixin, RegistryProperties):
         self.preview_frame.setMinimumHeight(100)
         self.preview_frame.setSizePolicy(QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Ignored,
                                                                QtWidgets.QSizePolicy.Ignored,
-                                         QtWidgets.QSizePolicy.Label))
+                                                               QtWidgets.QSizePolicy.Label))
         self.preview_frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.preview_frame.setFrameShadow(QtWidgets.QFrame.Sunken)
         self.preview_frame.setObjectName('preview_frame')
@@ -409,7 +411,7 @@ class SlideController(DisplayController, LogMixin, RegistryProperties):
                 {'key': 'C', 'configurable': True, 'text': translate('OpenLP.SlideController', 'Go to "Chorus"')},
                 {'key': 'B', 'configurable': True, 'text': translate('OpenLP.SlideController', 'Go to "Bridge"')},
                 {'key': 'P', 'configurable': True,
-                    'text': translate('OpenLP.SlideController', 'Go to "Pre-Chorus"')},
+                 'text': translate('OpenLP.SlideController', 'Go to "Pre-Chorus"')},
                 {'key': 'I', 'configurable': True, 'text': translate('OpenLP.SlideController', 'Go to "Intro"')},
                 {'key': 'E', 'configurable': True, 'text': translate('OpenLP.SlideController', 'Go to "Ending"')},
                 {'key': 'O', 'configurable': True, 'text': translate('OpenLP.SlideController', 'Go to "Other"')}
@@ -475,6 +477,7 @@ class SlideController(DisplayController, LogMixin, RegistryProperties):
                 This empty class is mostly just to satisfy Python, PEP8 and PyCharm
                 """
                 pass
+
             is_songs_plugin_available = False
         sender_name = self.sender().objectName()
         verse_type = sender_name[15:] if sender_name[:15] == 'shortcutAction_' else ''
@@ -597,8 +600,8 @@ class SlideController(DisplayController, LogMixin, RegistryProperties):
         self.display.setup()
         if self.is_live:
             self.__add_actions_to_widget(self.display)
-        if self.display.audio_player:
-            self.display.audio_player.position_changed.connect(self.on_audio_time_remaining)
+        # if self.display.audio_player:
+        #     self.display.audio_player.position_changed.connect(self.on_audio_time_remaining)
         # The SlidePreview's ratio.
         try:
             self.ratio = self.screens.current['size'].width() / self.screens.current['size'].height()
@@ -610,7 +613,7 @@ class SlideController(DisplayController, LogMixin, RegistryProperties):
         self.preview_display.setup()
         service_item = ServiceItem()
         self.preview_display.web_view.setHtml(build_html(service_item, self.preview_display.screen, None, self.is_live,
-                                              plugins=self.plugin_manager.plugins))
+                                                         plugins=self.plugin_manager.plugins))
         self.media_controller.setup_display(self.preview_display, True)
         if self.service_item:
             self.refresh_service_item()
@@ -871,29 +874,29 @@ class SlideController(DisplayController, LogMixin, RegistryProperties):
         self.slide_list = {}
         if self.is_live:
             self.song_menu.menu().clear()
-            if self.display.audio_player:
-                self.display.audio_player.reset()
-                self.set_audio_items_visibility(False)
-                # self.audio_pause_item.setChecked(False)
-                # If the current item has background audio
-                if self.service_item.is_capable(ItemCapabilities.HasBackgroundAudio):
-                    self.on_media_start(service_item)
-                    #self.log_debug('Starting to play...')
-                    #self.display.audio_player.add_to_playlist(self.service_item.background_audio)
-                    #self.track_menu.clear()
-                    #for counter in range(len(self.service_item.background_audio)):
-                    #    action = self.track_menu.addAction(
-                    #        os.path.basename(str(self.service_item.background_audio[counter])))
-                    #    action.setData(counter)
-                    #    action.triggered.connect(self.on_track_triggered)
-                    #self.display.audio_player.repeat = \
-                    #    Settings().value(self.main_window.general_settings_section + '/audio repeat list')
-                    #if Settings().value(self.main_window.general_settings_section + '/audio start paused'):
-                    #    self.audio_pause_item.setChecked(True)
-                    #    self.display.audio_player.pause()
-                    #else:
-                    #    self.display.audio_player.play()
-                    self.set_audio_items_visibility(True)
+            # if self.display.audio_player:
+            #    self.display.audio_player.reset()
+            #    self.set_audio_items_visibility(False)
+            # self.audio_pause_item.setChecked(False)
+            # If the current item has background audio
+            if self.service_item.is_capable(ItemCapabilities.HasBackgroundAudio):
+                self.on_media_start(service_item)
+                # self.log_debug('Starting to play...')
+                # self.display.audio_player.add_to_playlist(self.service_item.background_audio)
+                # self.track_menu.clear()
+                # for counter in range(len(self.service_item.background_audio)):
+                #    action = self.track_menu.addAction(
+                #        os.path.basename(str(self.service_item.background_audio[counter])))
+                #    action.setData(counter)
+                #    action.triggered.connect(self.on_track_triggered)
+                # self.display.audio_player.repeat = \
+                #    Settings().value(self.main_window.general_settings_section + '/audio repeat list')
+                # if Settings().value(self.main_window.general_settings_section + '/audio start paused'):
+                #    self.audio_pause_item.setChecked(True)
+                #    self.display.audio_player.pause()
+                # else:
+                #    self.display.audio_player.play()
+                # self.set_audio_items_visibility(True)
         row = 0
         width = self.main_window.control_splitter.sizes()[self.split]
         for frame_number, frame in enumerate(self.service_item.get_frames()):
@@ -1355,24 +1358,24 @@ class SlideController(DisplayController, LogMixin, RegistryProperties):
             self.play_slides_once.setText(UiStrings().PlaySlidesToEnd)
         self.on_toggle_loop()
 
-    def set_audio_items_visibility(self, visible):
-        """
-        Set the visibility of the audio stuff
-        """
-        self.toolbar.set_widget_visible(AUDIO_LIST, visible)
+    # def set_audio_items_visibility(self, visible):
+    #    """
+    #    Set the visibility of the audio stuff
+    #    """
+    #    self.toolbar.set_widget_visible(AUDIO_LIST, visible)
 
-    def set_audio_pause_clicked(self, checked):
-        """
-        Pause the audio player
+    # def set_audio_pause_clicked(self, checked):
+    #    """
+    #   Pause the audio player
 
-        :param checked: is the check box checked.
-        """
-        if not self.audio_pause_item.isVisible():
-            return
-        if checked:
-            self.display.audio_player.pause()
-        else:
-            self.display.audio_player.play()
+    #   :param checked: is the check box checked.
+    #   """
+    #   if not self.audio_pause_item.isVisible():
+    #       return
+    #   if checked:
+    #       self.display.audio_player.pause()
+    #   else:
+    #       self.display.audio_player.play()
 
     def timerEvent(self, event):
         """
@@ -1509,29 +1512,29 @@ class SlideController(DisplayController, LogMixin, RegistryProperties):
         else:
             return None
 
-    def on_next_track_clicked(self):
-        """
-        Go to the next track when next is clicked
-        """
-        self.display.audio_player.next()
-
-    def on_audio_time_remaining(self, time):
-        """
-        Update how much time is remaining
-
-        :param time: the time remaining
-        """
-        seconds = (self.display.audio_player.player.duration() - self.display.audio_player.player.position()) // 1000
-        minutes = seconds // 60
-        seconds %= 60
-        self.audio_time_label.setText(' %02d:%02d ' % (minutes, seconds))
-
-    def on_track_triggered(self, field=None):
-        """
-        Start playing a track
-        """
-        action = self.sender()
-        self.display.audio_player.go_to(action.data())
+    # def on_next_track_clicked(self):
+    #     """
+    #     Go to the next track when next is clicked
+    #     """
+    #     self.display.audio_player.next()
+    #
+    # def on_audio_time_remaining(self, time):
+    #     """
+    #     Update how much time is remaining
+    #
+    #     :param time: the time remaining
+    #     """
+    #     seconds = (self.display.audio_player.player.duration() - self.display.audio_player.player.position()) // 1000
+    #     minutes = seconds // 60
+    #     seconds %= 60
+    #     self.audio_time_label.setText(' %02d:%02d ' % (minutes, seconds))
+    #
+    # def on_track_triggered(self, field=None):
+    #     """
+    #     Start playing a track
+    #     """
+    #     action = self.sender()
+    #     self.display.audio_player.go_to(action.data())
 
 
 class PreviewController(RegistryBase, SlideController):

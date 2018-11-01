@@ -179,8 +179,6 @@ class MediaMediaItem(MediaManagerItem, RegistryProperties):
         :param remote: Triggered from remote
         :param context: Why is it being generated
         """
-        if State().check_active_dependency():
-            a=1
         if item is None:
             item = self.list_view.currentItem()
             if item is None:
@@ -197,7 +195,7 @@ class MediaMediaItem(MediaManagerItem, RegistryProperties):
                         translate('MediaPlugin.MediaItem',
                                   'The optical disc {name} is no longer available.').format(name=name))
                 return False
-            service_item.processor = self.display_type_combo_box.currentText()
+            service_item.processor = 'vlc'
             service_item.add_from_command(filename, name, CLAPPERBOARD)
             service_item.title = clip_name
             # Set the length
@@ -218,8 +216,7 @@ class MediaMediaItem(MediaManagerItem, RegistryProperties):
             service_item.processor = 'vlc'
             service_item.add_from_command(path, name, CLAPPERBOARD)
             # Only get start and end times if going to a service
-            if not self.media_controller.media_length(service_item):
-                return False
+            service_item.set_media_length(self.media_controller.media_length(filename))
         service_item.add_capability(ItemCapabilities.CanAutoStartForLive)
         service_item.add_capability(ItemCapabilities.CanEditTitle)
         service_item.add_capability(ItemCapabilities.RequiresMedia)
