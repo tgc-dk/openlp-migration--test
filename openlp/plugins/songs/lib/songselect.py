@@ -171,6 +171,7 @@ class SongSelectImport(object):
                     callback(song)
                 songs.append(song)
                 if len(songs) >= max_results:
+                    self.run_search = False
                     break
             current_page += 1
         return songs
