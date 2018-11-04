@@ -24,9 +24,12 @@ Provide plugin management
 """
 import os
 
+from PyQt5 import QtWidgets
+
 from openlp.core.state import State
 from openlp.core.common import extension_loader
 from openlp.core.common.applocation import AppLocation
+from openlp.core.common.i18n import translate, UiStrings
 from openlp.core.common.mixins import LogMixin, RegistryProperties
 from openlp.core.common.registry import RegistryBase
 from openlp.core.lib.plugin import Plugin, PluginStatus
@@ -145,7 +148,8 @@ class PluginManager(RegistryBase, LogMixin, RegistryProperties):
             if plugin.status is not PluginStatus.Disabled:
                 plugin.add_tools_menu_item(self.main_window.tools_menu)
 
-    def hook_upgrade_plugin_settings(self, settings):
+    @staticmethod
+    def hook_upgrade_plugin_settings(settings):
         """
         Loop through all the plugins and give them an opportunity to upgrade their settings.
 
@@ -159,12 +163,27 @@ class PluginManager(RegistryBase, LogMixin, RegistryProperties):
         """
         Loop through all the plugins and give them an opportunity to initialise themselves.
         """
+        uninitialised_plugins = []
         for plugin in State().list_plugins():
             self.log_info('initialising plugins {plugin} in a {state} state'.format(plugin=plugin.name,
                                                                                     state=plugin.is_active()))
             if plugin.is_active():
-                plugin.initialise()
-                self.log_info('Initialisation Complete for {plugin}'.format(plugin=plugin.name))
+                try:
+                    plugin.initialise()
+                    self.log_info('Initialisation Complete for {plugin}'.format(plugin=plugin.name))
+                except Exception:
+                    uninitialised_plugins.append(plugin.name.title())
+                    self.log_exception('Unable to initialise plugin {plugin}'.format(plugin=plugin.name))
+        display_text = None
+        if uninitialised_plugins:
+            display_text = translate('OpenLP.PluginManager',
+                                     'Unable to initialise the following plugins:') + \
+                           '\n\n'.join(uninitialised_plugins) + '\n\n'
+        if display_text:
+            display_text = display_text + \
+                           translate('OpenLP.PluginManager', 'See the log file for more details')
+            QtWidgets.QMessageBox.critical(None, UiStrings().Error, display_text,
+                                           QtWidgets.QMessageBox.StandardButtons(QtWidgets.QMessageBox.Ok))
 
     def finalise_plugins(self):
         """
@@ -175,7 +194,8 @@ class PluginManager(RegistryBase, LogMixin, RegistryProperties):
                 plugin.finalise()
                 self.log_info('Finalisation Complete for {plugin}'.format(plugin=plugin.name))
 
-    def get_plugin_by_name(self, name):
+    @staticmethod
+    def get_plugin_by_name(name):
         """
         Return the plugin which has a name with value ``name``.
         """
@@ -184,7 +204,8 @@ class PluginManager(RegistryBase, LogMixin, RegistryProperties):
                 return plugin
         return None
 
-    def new_service_created(self):
+    @staticmethod
+    def new_service_created():
         """
         Loop through all the plugins and give them an opportunity to handle a new service
         """

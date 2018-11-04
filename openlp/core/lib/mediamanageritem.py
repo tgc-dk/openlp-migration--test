@@ -185,11 +185,14 @@ class MediaManagerItem(QtWidgets.QWidget, RegistryProperties):
         if self.has_delete_icon:
             toolbar_actions.append(['Delete', StringContent.Delete, UiIcons().delete, self.on_delete_click])
         # Preview
-        toolbar_actions.append(['Preview', StringContent.Preview, UiIcons().preview, self.on_preview_click])
+        if self.can_preview:
+            toolbar_actions.append(['Preview', StringContent.Preview, UiIcons().preview, self.on_preview_click])
         # Live Button
-        toolbar_actions.append(['Live', StringContent.Live, UiIcons().live, self.on_live_click])
+        if self.can_make_live:
+            toolbar_actions.append(['Live', StringContent.Live, UiIcons().live, self.on_live_click])
         # Add to service Button
-        toolbar_actions.append(['Service', StringContent.Service, UiIcons().add, self.on_add_click])
+        if self.can_add_to_service:
+            toolbar_actions.append(['Service', StringContent.Service, UiIcons().add, self.on_add_click])
         for action in toolbar_actions:
             if action[0] == StringContent.Preview:
                 self.toolbar.addSeparator()
@@ -467,10 +470,12 @@ class MediaManagerItem(QtWidgets.QWidget, RegistryProperties):
         Allows the list click action to be determined dynamically
         """
         if Settings().value('advanced/double click live'):
-            self.on_live_click()
+            if self.can_make_live:
+                self.on_live_click()
         elif not Settings().value('advanced/single click preview'):
             # NOTE: The above check is necessary to prevent bug #1419300
-            self.on_preview_click()
+            if self.can_preview:
+                self.on_preview_click()
 
     def on_selection_change(self):
         """

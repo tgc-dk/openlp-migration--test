@@ -128,15 +128,13 @@ class MediaMediaItem(MediaManagerItem, RegistryProperties):
         """
         Adds buttons to the start of the header bar.
         """
-        disable_optical_button_text = False
-        optical_button_text = translate('MediaPlugin.MediaItem', 'Load CD/DVD')
-        optical_button_tooltip = translate('MediaPlugin.MediaItem', 'Load CD/DVD')
-        self.load_optical = self.toolbar.add_toolbar_action('load_optical', icon=UiIcons().optical,
-                                                            text=optical_button_text,
-                                                            tooltip=optical_button_tooltip,
-                                                            triggers=self.on_load_optical)
-        if disable_optical_button_text:
-            self.load_optical.setDisabled(True)
+        if State().check_preconditions('media'):
+            optical_button_text = translate('MediaPlugin.MediaItem', 'Load CD/DVD')
+            optical_button_tooltip = translate('MediaPlugin.MediaItem', 'Load CD/DVD')
+            self.load_optical = self.toolbar.add_toolbar_action('load_optical', icon=UiIcons().optical,
+                                                                text=optical_button_text,
+                                                                tooltip=optical_button_tooltip,
+                                                                triggers=self.on_load_optical)
 
     def add_end_header_bar(self):
         """

@@ -23,7 +23,6 @@
 The :mod:`slidecontroller` module contains the most important part of OpenLP - the slide controller
 """
 import copy
-import os
 from collections import deque
 from threading import Lock
 

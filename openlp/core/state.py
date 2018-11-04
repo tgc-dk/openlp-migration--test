@@ -45,9 +45,10 @@ class StateModule(LogMixin):
         self.order = 0
         self.is_plugin = None
         self.status = PluginStatus.Inactive
-        self.pass_preconditions = True
+        self.pass_preconditions = False
         self.requires = None
         self.required_by = None
+        self.text = None
 
 
 class State(LogMixin):
@@ -90,6 +91,16 @@ class State(LogMixin):
             if requires and requires in self.modules:
                 if requires not in self.modules[requires].required_by:
                     self.modules[requires].required_by.append(name)
+
+    def missing_text(self, name, text):
+        """
+        Updates the preconditions state of a module
+
+        :param name: Module name
+        :param text: Module missing text
+        :return:
+        """
+        self.modules[name].text = text
 
     def update_pre_conditions(self, name, status):
         """
