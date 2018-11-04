@@ -102,6 +102,17 @@ class State(LogMixin):
         """
         self.modules[name].text = text
 
+    def get_text(self):
+        """
+        return an string of error text
+        :return: a string of text
+        """
+        error_text = ''
+        for mod in self.modules:
+            if self.modules[mod].text:
+                error_text = error_text + self.modules[mod].text + '\n'
+        return error_text
+
     def update_pre_conditions(self, name, status):
         """
         Updates the preconditions state of a module
@@ -151,6 +162,10 @@ class State(LogMixin):
             return self.modules[mod].pass_preconditions
 
     def list_plugins(self):
+        """
+        Return a list of plugins
+        :return: an array of plugins
+        """
         plugins = []
         for mod in self.modules:
             if self.modules[mod].is_plugin:

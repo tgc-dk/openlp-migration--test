@@ -174,14 +174,16 @@ class PluginManager(RegistryBase, LogMixin, RegistryProperties):
                 except Exception:
                     uninitialised_plugins.append(plugin.name.title())
                     self.log_exception('Unable to initialise plugin {plugin}'.format(plugin=plugin.name))
-        display_text = None
+        display_text = ''
         if uninitialised_plugins:
             display_text = translate('OpenLP.PluginManager',
                                      'Unable to initialise the following plugins:') + \
                            '\n\n'.join(uninitialised_plugins) + '\n\n'
+        error_text = State().get_text()
+        if error_text:
+            display_text = display_text + error_text + '\n'
         if display_text:
-            display_text = display_text + \
-                           translate('OpenLP.PluginManager', 'See the log file for more details')
+            display_text = display_text + translate('OpenLP.PluginManager', 'See the log file for more details')
             QtWidgets.QMessageBox.critical(None, UiStrings().Error, display_text,
                                            QtWidgets.QMessageBox.StandardButtons(QtWidgets.QMessageBox.Ok))
 
