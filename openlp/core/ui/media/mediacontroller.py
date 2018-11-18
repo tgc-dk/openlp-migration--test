@@ -45,7 +45,7 @@ from openlp.core.lib.serviceitem import ItemCapabilities
 from openlp.core.lib.ui import critical_error_message_box
 from openlp.core.ui import DisplayControllerType
 from openlp.core.ui.icons import UiIcons
-from openlp.core.ui.media import MediaState, MediaInfo, MediaType, parse_optical_path
+from openlp.core.ui.media import MediaState, ItemMediaInfo, MediaType, parse_optical_path
 from openlp.core.ui.media.endpoint import media_endpoint
 from openlp.core.ui.media.vlcplayer import VlcPlayer, get_vlc
 from openlp.core.widgets.toolbar import OpenLPToolbar
@@ -172,7 +172,7 @@ class MediaController(RegistryBase, LogMixin, RegistryProperties):
             State().update_pre_conditions("mediacontroller", True)
         else:
             State().missing_text("mediacontroller", translate('OpenLP.SlideController',
-                                 "VLC or pymediainfo are missing so you are unable to play any media"))
+                                 "VLC or pymediainfo are missing, so you are unable to play any media"))
         self._generate_extensions_lists()
         return True
 
@@ -182,12 +182,14 @@ class MediaController(RegistryBase, LogMixin, RegistryProperties):
         """
         display = self._define_display(self.display_controllers[DisplayControllerType.Live])
         if DisplayControllerType.Live in self.current_media_players:
+            print("media_state_live if")
             self.current_media_players[DisplayControllerType.Live].resize(display)
             self.current_media_players[DisplayControllerType.Live].update_ui(display)
             self.tick(self.display_controllers[DisplayControllerType.Live])
             if self.current_media_players[DisplayControllerType.Live].get_live_state() is not MediaState.Playing:
                 self.live_timer.stop()
         else:
+            print("media_state_live else")
             self.live_timer.stop()
             self.media_stop(self.display_controllers[DisplayControllerType.Live])
             if self.display_controllers[DisplayControllerType.Live].media_info.can_loop_playback:
@@ -199,12 +201,14 @@ class MediaController(RegistryBase, LogMixin, RegistryProperties):
         """
         display = self._define_display(self.display_controllers[DisplayControllerType.Preview])
         if DisplayControllerType.Preview in self.current_media_players:
+            print("media_state_preview if")
             self.current_media_players[DisplayControllerType.Preview].resize(display)
             self.current_media_players[DisplayControllerType.Preview].update_ui(display)
             self.tick(self.display_controllers[DisplayControllerType.Preview])
             if self.current_media_players[DisplayControllerType.Preview].get_preview_state() is not MediaState.Playing:
                 self.preview_timer.stop()
         else:
+            print("media_state_preview else")
             self.preview_timer.stop()
             self.media_stop(self.display_controllers[DisplayControllerType.Preview])
             if self.display_controllers[DisplayControllerType.Preview].media_info.can_loop_playback:
@@ -225,7 +229,7 @@ class MediaController(RegistryBase, LogMixin, RegistryProperties):
 
         :param controller:  First element is the controller which should be used
         """
-        controller.media_info = MediaInfo()
+        controller.media_info = ItemMediaInfo()
         # Build a Media ToolBar
         controller.mediabar = OpenLPToolbar(controller)
         controller.mediabar.add_toolbar_action('playbackPlay', text='media_playback_play',
@@ -332,7 +336,7 @@ class MediaController(RegistryBase, LogMixin, RegistryProperties):
         controller = self.display_controllers[source]
         # stop running videos
         self.media_reset(controller)
-        controller.media_info = MediaInfo()
+        controller.media_info = ItemMediaInfo()
         controller.media_info.volume = controller.volume_slider.value()
         controller.media_info.is_background = video_behind_text
         # background will always loop video.
@@ -353,7 +357,7 @@ class MediaController(RegistryBase, LogMixin, RegistryProperties):
             else:
                 log.debug('video is not optical and live')
                 controller.media_info.length = service_item.media_length
-                is_valid = self._check_file_type(controller, display, service_item)
+                is_valid = self._check_file_type(controller, display)
             display.override['theme'] = ''
             display.override['video'] = True
             if controller.media_info.is_background:
@@ -373,7 +377,7 @@ class MediaController(RegistryBase, LogMixin, RegistryProperties):
             else:
                 log.debug('video is not optical and preview')
                 controller.media_info.length = service_item.media_length
-                is_valid = self._check_file_type(controller, display, service_item)
+                is_valid = self._check_file_type(controller, display)
         if not is_valid:
             # Media could not be loaded correctly
             critical_error_message_box(translate('MediaPlugin.MediaItem', 'Unsupported File'),
@@ -437,7 +441,7 @@ class MediaController(RegistryBase, LogMixin, RegistryProperties):
         # stop running videos
         self.media_reset(controller)
         # Setup media info
-        controller.media_info = MediaInfo()
+        controller.media_info = ItemMediaInfo()
         controller.media_info.file_info = QtCore.QFileInfo(filename)
         if audio_track == -1 and subtitle_track == -1:
             controller.media_info.media_type = MediaType.CD
@@ -461,33 +465,12 @@ class MediaController(RegistryBase, LogMixin, RegistryProperties):
             controller.media_info.media_type = MediaType.DVD
         return True
 
-    def _get_used_players(self, service_item):
-        """
-        Find the player for a given service item
-
-        :param service_item: where the information is about the media and required player
-        :return: player description
-        """
-        return self.vlc_player
-        # If no player, we can't play
-        # if not used_players:
-        #     return False
-        # default_player = [used_players]
-        # if service_item.processor and service_item.processor != UiStrings().Automatic:
-        #     # check to see if the player is usable else use the default one.
-        #     if service_item.processor.lower() not in used_players:
-        #         used_players = default_player
-        #     else:
-        #         used_players = [service_item.processor.lower()]
-        # return used_players
-
-    def _check_file_type(self, controller, display, service_item):
+    def _check_file_type(self, controller, display):
         """
         Select the correct media Player type from the prioritized Player list
 
         :param controller: First element is the controller which should be used
         :param display: Which display to use
-        :param service_item: The ServiceItem containing the details to be played.
         """
         for file in controller.media_info.file_info:
             if file.is_file:
@@ -516,7 +499,6 @@ class MediaController(RegistryBase, LogMixin, RegistryProperties):
                         self.current_media_players[controller.controller_type] = player
                         controller.media_info.media_type = MediaType.Video
                         return True
-        # no valid player found
         return False
 
     def media_play_msg(self, msg, status=True):

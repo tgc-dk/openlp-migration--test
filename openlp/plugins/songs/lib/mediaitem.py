@@ -25,6 +25,7 @@ import os
 from PyQt5 import QtCore, QtWidgets
 from sqlalchemy.sql import and_, or_
 
+from openlp.core.state import State
 from openlp.core.common.applocation import AppLocation
 from openlp.core.common.i18n import UiStrings, translate, get_natural_key
 from openlp.core.ui.icons import UiIcons
@@ -35,7 +36,7 @@ from openlp.core.lib import ServiceItemContext, check_item_selected, create_sepa
 from openlp.core.lib.mediamanageritem import MediaManagerItem
 from openlp.core.lib.plugin import PluginStatus
 from openlp.core.lib.serviceitem import ItemCapabilities
-from openlp.core.lib.ui import create_widget_action
+from openlp.core.lib.ui import create_widget_action, critical_error_message_box
 from openlp.plugins.songs.forms.editsongform import EditSongForm
 from openlp.plugins.songs.forms.songexportform import SongExportForm
 from openlp.plugins.songs.forms.songimportform import SongImportForm
@@ -632,11 +633,17 @@ class SongMediaItem(MediaManagerItem):
         service_item.xml_version = self.open_lyrics.song_to_xml(song)
         # Add the audio file to the service item.
         if song.media_files:
-            service_item.add_capability(ItemCapabilities.HasBackgroundAudio)
-            service_item.background_audio = [m.file_path for m in song.media_files]
-            service_item.metadata.append('<em>{label}:</em> {media}'.
-                                 format(label=translate('SongsPlugin.MediaItem', 'Media'),
-                                        media=service_item.background_audio))
+            if State().check_preconditions('media'):
+                service_item.add_capability(ItemCapabilities.HasBackgroundAudio)
+                service_item.background_audio = [m.file_path for m in song.media_files]
+                service_item.metadata.append('<em>{label}:</em> {media}'.
+                                     format(label=translate('SongsPlugin.MediaItem', 'Media'),
+                                            media=service_item.background_audio))
+            else:
+                critical_error_message_box(
+                    translate('SongsPlugin.MediaItem', 'Missing Audio Software'),
+                    translate('SongsPlugin.MediaItem',
+                              'Unable to play background music for Song and audio is not configured'))
         return True
 
     def generate_footer(self, item, song):

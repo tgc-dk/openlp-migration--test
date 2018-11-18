@@ -54,11 +54,17 @@ class PluginManager(RegistryBase, LogMixin, RegistryProperties):
     def bootstrap_initialise(self):
         """
         Bootstrap all the plugin manager functions
+        Scan a directory for objects inheriting from the ``Plugin`` class.
         """
-        self.find_plugins()
-        # hook methods have to happen after find_plugins. Find plugins needs
-        # the controllers hence the hooks have moved from setupUI() to here
-        # Find and insert settings tabs
+        glob_pattern = os.path.join('plugins', '*', '[!.]*plugin.py')
+        extension_loader(glob_pattern)
+        plugin_classes = Plugin.__subclasses__()
+        for p in plugin_classes:
+            try:
+                p()
+                self.log_debug('Loaded plugin {plugin}'.format(plugin=str(p)))
+            except TypeError:
+                self.log_exception('Failed to load plugin {plugin}'.format(plugin=str(p)))
 
     def bootstrap_post_set_up(self):
         """
@@ -85,20 +91,6 @@ class PluginManager(RegistryBase, LogMixin, RegistryProperties):
             if plugin.is_active():
                 plugin.app_startup()
                 self.application.process_events()
-
-    def find_plugins(self):
-        """
-        Scan a directory for objects inheriting from the ``Plugin`` class.
-        """
-        glob_pattern = os.path.join('plugins', '*', '[!.]*plugin.py')
-        extension_loader(glob_pattern)
-        plugin_classes = Plugin.__subclasses__()
-        for p in plugin_classes:
-            try:
-                p()
-                self.log_debug('Loaded plugin {plugin}'.format(plugin=str(p)))
-            except TypeError:
-                self.log_exception('Failed to load plugin {plugin}'.format(plugin=str(p)))
 
     @staticmethod
     def hook_media_manager():

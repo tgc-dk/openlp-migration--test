@@ -32,6 +32,7 @@ import uuid
 
 from PyQt5 import QtGui
 
+from openlp.core.state import State
 from openlp.core.common import md5_hash
 from openlp.core.common.applocation import AppLocation
 from openlp.core.common.i18n import translate
@@ -441,7 +442,7 @@ class ServiceItem(RegistryProperties):
         self.processor = header.get('processor', None)
         self.has_original_files = True
         self.metadata = header.get('item_meta_data', [])
-        if 'background_audio' in header:
+        if 'background_audio' in header and State().check_preconditions('media'):
             self.background_audio = []
             for file_path in header['background_audio']:
                 # In OpenLP 3.0 we switched to storing Path objects in JSON files
@@ -688,7 +689,7 @@ class ServiceItem(RegistryProperties):
                 self.is_valid = False
                 break
             elif self.is_command():
-                if self.is_capable(ItemCapabilities.IsOptical):
+                if self.is_capable(ItemCapabilities.IsOptical) and State().check_preconditions('media'):
                     if not os.path.exists(frame['title']):
                         self.is_valid = False
                         break

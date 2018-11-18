@@ -50,7 +50,7 @@ class MediaType(object):
     Folder = 5
 
 
-class MediaInfo(object):
+class ItemMediaInfo(object):
     """
     This class hold the media related info
     """
