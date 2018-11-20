@@ -182,14 +182,12 @@ class MediaController(RegistryBase, LogMixin, RegistryProperties):
         """
         display = self._define_display(self.display_controllers[DisplayControllerType.Live])
         if DisplayControllerType.Live in self.current_media_players:
-            print("media_state_live if")
             self.current_media_players[DisplayControllerType.Live].resize(display)
             self.current_media_players[DisplayControllerType.Live].update_ui(display)
             self.tick(self.display_controllers[DisplayControllerType.Live])
             if self.current_media_players[DisplayControllerType.Live].get_live_state() is not MediaState.Playing:
                 self.live_timer.stop()
         else:
-            print("media_state_live else")
             self.live_timer.stop()
             self.media_stop(self.display_controllers[DisplayControllerType.Live])
             if self.display_controllers[DisplayControllerType.Live].media_info.can_loop_playback:
@@ -201,14 +199,12 @@ class MediaController(RegistryBase, LogMixin, RegistryProperties):
         """
         display = self._define_display(self.display_controllers[DisplayControllerType.Preview])
         if DisplayControllerType.Preview in self.current_media_players:
-            print("media_state_preview if")
             self.current_media_players[DisplayControllerType.Preview].resize(display)
             self.current_media_players[DisplayControllerType.Preview].update_ui(display)
             self.tick(self.display_controllers[DisplayControllerType.Preview])
             if self.current_media_players[DisplayControllerType.Preview].get_preview_state() is not MediaState.Playing:
                 self.preview_timer.stop()
         else:
-            print("media_state_preview else")
             self.preview_timer.stop()
             self.media_stop(self.display_controllers[DisplayControllerType.Preview])
             if self.display_controllers[DisplayControllerType.Preview].media_info.can_loop_playback:
