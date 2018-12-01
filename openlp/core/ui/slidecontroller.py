@@ -833,6 +833,8 @@ class SlideController(DisplayController, LogMixin, RegistryProperties):
             self._reset_blank(self.service_item.is_capable(ItemCapabilities.ProvidesOwnDisplay))
         self.info_label.setText(self.service_item.title)
         self.slide_list = {}
+        if old_item and old_item.is_capable(ItemCapabilities.HasBackgroundAudio):
+            self.on_media_close()
         if self.is_live:
             self.song_menu.menu().clear()
             if self.service_item.is_capable(ItemCapabilities.HasBackgroundAudio):
