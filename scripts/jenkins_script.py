@@ -83,8 +83,6 @@ class Colour(object):
 class JenkinsTrigger(object):
     """
     A class to trigger builds on Jenkins and print the results.
-
-    :param token: The token we need to trigger the build. If you do not have this token, ask in IRC.
     """
 
     def __init__(self, username, password, can_use_colour):
@@ -101,9 +99,12 @@ class JenkinsTrigger(object):
         Get the job info for all the jobs
         """
         for job_name in OpenLPJobs.Jobs:
-            job_info = self.server.get_job_info(job_name)
-            self.jobs[job_name] = job_info
-            self.jobs[job_name]['nextBuildUrl'] = '{url}{nextBuildNumber}/'.format(**job_info)
+            try:
+                job_info = self.server.get_job_info(job_name)
+                self.jobs[job_name] = job_info
+                self.jobs[job_name]['nextBuildUrl'] = '{url}{nextBuildNumber}/'.format(**job_info)
+            except:
+                pass
 
     def trigger_build(self):
         """

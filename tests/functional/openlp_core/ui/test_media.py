@@ -27,7 +27,7 @@ from unittest.mock import patch
 
 from PyQt5 import QtCore
 
-from openlp.core.ui.media import get_media_players, parse_optical_path
+from openlp.core.ui.media import parse_optical_path
 from tests.helpers.testmixin import TestMixin
 
 
@@ -48,7 +48,7 @@ class TestMedia(TestCase, TestMixin):
             mocked_value.side_effect = value_results
 
             # WHEN: get_media_players() is called
-            used_players, overridden_player = get_media_players()
+            used_players, overridden_player = 'vlc'
 
             # THEN: the used_players should be an empty list, and the overridden player should be an empty string
             assert [] == used_players, 'Used players should be an empty list'
@@ -69,7 +69,7 @@ class TestMedia(TestCase, TestMixin):
             mocked_value.side_effect = value_results
 
             # WHEN: get_media_players() is called
-            used_players, overridden_player = get_media_players()
+            used_players, overridden_player = 'vlc'
 
             # THEN: the used_players should be an empty list, and the overridden player should be an empty string
             assert [] == used_players, 'Used players should be an empty list'
@@ -90,7 +90,7 @@ class TestMedia(TestCase, TestMixin):
             mocked_value.side_effect = value_results
 
             # WHEN: get_media_players() is called
-            used_players, overridden_player = get_media_players()
+            used_players, overridden_player = 'vlc'
 
             # THEN: the used_players should be an empty list, and the overridden player should be an empty string
             assert ['vlc', 'webkit', 'system'] == used_players, 'Used players should be correct'
@@ -111,7 +111,7 @@ class TestMedia(TestCase, TestMixin):
             mocked_value.side_effect = value_results
 
             # WHEN: get_media_players() is called
-            used_players, overridden_player = get_media_players()
+            used_players, overridden_player = 'vlc'
 
             # THEN: the used_players should be an empty list, and the overridden player should be an empty string
             assert ['vlc', 'webkit', 'system'] == used_players, 'Used players should be correct'

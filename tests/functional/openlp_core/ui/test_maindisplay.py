@@ -32,7 +32,7 @@ from openlp.core.common.path import Path
 from openlp.core.common.registry import Registry
 from openlp.core.display.screens import ScreenList
 from openlp.core.lib.pluginmanager import PluginManager
-from openlp.core.ui.maindisplay import MainDisplay, AudioPlayer
+from openlp.core.ui.maindisplay import MainDisplay
 from openlp.core.ui.maindisplay import TRANSPARENT_STYLESHEET, OPAQUE_STYLESHEET
 from tests.helpers.testmixin import TestMixin
 
@@ -284,18 +284,3 @@ class TestMainDisplay(TestCase, TestMixin):
         assert main_display.web_view.setHtml.call_count == 1, 'setHTML should be called once'
         assert main_display.media_controller.video.call_count == 1, \
             'Media Controller video should have been called once'
-
-
-def test_calling_next_item_in_playlist():
-    """
-    Test the AudioPlayer.next() method
-    """
-    # GIVEN: An instance of AudioPlayer with a mocked out playlist
-    audio_player = AudioPlayer(None)
-
-    # WHEN: next is called.
-    with patch.object(audio_player, 'playlist') as mocked_playlist:
-        audio_player.next()
-
-    # THEN: playlist.next should had been called once.
-    mocked_playlist.next.assert_called_once_with()
