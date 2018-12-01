@@ -713,7 +713,7 @@ class SlideController(DisplayController, LogMixin, RegistryProperties):
                 self.toolbar.set_widget_visible('song_menu', True)
         if item.is_capable(ItemCapabilities.CanLoop) and len(item.get_frames()) > 1:
             self.toolbar.set_widget_visible(LOOP_LIST)
-        if item.is_media():
+        if item.is_media() or item.is_capable(ItemCapabilities.HasBackgroundAudio):
             self.mediabar.show()
         self.previous_item.setVisible(not item.is_media())
         self.next_item.setVisible(not item.is_media())
