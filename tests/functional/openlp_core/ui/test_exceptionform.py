@@ -37,7 +37,6 @@ exceptionform.MIGRATE_VERSION = 'Migrate Test'
 exceptionform.CHARDET_VERSION = 'CHARDET Test'
 exceptionform.ENCHANT_VERSION = 'Enchant Test'
 exceptionform.MAKO_VERSION = 'Mako Test'
-exceptionform.ICU_VERSION = 'ICU Test'
 exceptionform.VLC_VERSION = 'VLC Test'
 
 MAIL_ITEM_TEXT = ('**OpenLP Bug Report**\nVersion: Trunk Test\n\n--- Details of the Exception. ---\n\n'
@@ -46,7 +45,7 @@ MAIL_ITEM_TEXT = ('**OpenLP Bug Report**\nVersion: Trunk Test\n\n--- Details of 
                   'Python: Python Test\nQt5: Qt5 test\nPyQt5: PyQt5 Test\nQtWebkit: Webkit Test\n'
                   'SQLAlchemy: SqlAlchemy Test\nSQLAlchemy Migrate: Migrate Test\nBeautifulSoup: BeautifulSoup Test\n'
                   'lxml: ETree Test\nChardet: CHARDET Test\nPyEnchant: Enchant Test\nMako: Mako Test\n'
-                  'pyICU: ICU Test\npyUNO bridge: UNO Bridge Test\nVLC: VLC Test\n\n')
+                  'pyUNO bridge: UNO Bridge Test\nVLC: VLC Test\n\n')
 
 
 @patch("openlp.core.ui.exceptionform.Qt.qVersion")

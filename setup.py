@@ -119,7 +119,7 @@ requires = [
     'lxml',
     'Mako',
     'pymediainfo >= 2.2',
-    'PyQt5',
+    'PyQt5 >= 5.5',
     'QtAwesome',
     'requests',
     'SQLAlchemy >= 0.5',
@@ -128,10 +128,7 @@ requires = [
     'websockets'
 ]
 if sys.platform.startswith('win'):
-    requires.extend([
-        'PyICU',
-        'pywin32'
-    ])
+    requires.append('pywin32')
 elif sys.platform.startswith('darwin'):
     requires.extend([
         'pyobjc',
@@ -188,7 +185,7 @@ using a computer and a data projector.""",
     author_email='raoulsnyman@openlp.org',
     url='https://openlp.org/',
     license='GNU General Public License',
-    packages=find_packages(exclude=['ez_setup', 'tests']),
+    packages=find_packages(exclude=['ez_setup', 'tests*']),
     py_modules=['run_openlp'],
     include_package_data=True,
     zip_safe=False,
@@ -204,7 +201,7 @@ using a computer and a data projector.""",
         'jenkins': ['python-jenkins'],
         'launchpad': ['launchpadlib']
     },
-    tests_require=['nose2', 'PyICU', 'pylint', 'pyodbc', 'pysword'],
+    tests_require=['nose2', 'pylint', 'pyodbc', 'pysword'],
     test_suite='nose2.collector.collector',
     entry_points={'gui_scripts': ['openlp = run_openlp:start']}
 )

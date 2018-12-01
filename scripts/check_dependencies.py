@@ -40,8 +40,8 @@ IS_MAC = sys.platform.startswith('dar')
 
 VERS = {
     'Python': '3.6',
-    'PyQt5': '5.0',
-    'Qt5': '5.0',
+    'PyQt5': '5.5',
+    'Qt5': '5.5',
     'pymediainfo': '2.2',
     'sqlalchemy': '0.5',
     'enchant': '1.6'
@@ -52,7 +52,6 @@ WIN32_MODULES = [
     'win32com',
     'win32ui',
     'pywintypes',
-    'icu',
 ]
 
 LINUX_MODULES = [
