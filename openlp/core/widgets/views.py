@@ -194,7 +194,7 @@ class ListPreviewWidget(QtWidgets.QTableWidget, RegistryProperties):
                         image = self.image_manager.get_image(frame['image'], ImageSource.CommandPlugins)
                         pixmap = QtGui.QPixmap.fromImage(image)
                     else:
-                        pixmap = frame['image'].pixmap(80, 80)
+                        pixmap = None # frame['image'].pixmap(80, 80)
                 else:
                     image = self.image_manager.get_image(frame['path'], ImageSource.ImagePlugin)
                     pixmap = QtGui.QPixmap.fromImage(image)

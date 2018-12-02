@@ -146,9 +146,6 @@ class TestProjectorDB(TestCase, TestMixin):
         Registry().set_flag('no_web_server', True)
         # Mock classes and methods used by mainwindow.
         with patch('openlp.core.ui.mainwindow.SettingsForm'), \
-                patch('openlp.core.ui.mainwindow.ImageManager'), \
-                patch('openlp.core.ui.mainwindow.LiveController'), \
-                patch('openlp.core.ui.mainwindow.PreviewController'), \
                 patch('openlp.core.ui.mainwindow.OpenLPDockWidget'), \
                 patch('openlp.core.ui.mainwindow.QtWidgets.QToolBox'), \
                 patch('openlp.core.ui.mainwindow.QtWidgets.QMainWindow.addDockWidget'), \
