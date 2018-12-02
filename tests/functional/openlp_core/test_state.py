@@ -88,7 +88,7 @@ class TestState(TestCase, TestMixin):
         State().add_service("test1", 1, PluginStatus.Active, "test")
         State().add_service("test2", 1, PluginStatus.Active, "test")
 
-        # THEN I have a 3 modules and 2 dependancies
+        # THEN I have a 3 modules and 2 dependencies
         assert len(State().modules) == 3
         assert len(State().modules['test'].required_by) == 2
 
@@ -102,6 +102,7 @@ class TestState(TestCase, TestMixin):
         # THEN I have a single saved service
         assert State().is_module_active('test') is True
 
+    @skip
     def test_inactive_service(self):
         # GIVEN a new state
         State().load_settings()

@@ -25,6 +25,7 @@ Package to test the openlp.core.lib.pluginmanager package.
 from unittest import TestCase
 from unittest.mock import MagicMock, patch
 
+from openlp.core.state import State
 from openlp.core.common.registry import Registry
 from openlp.core.common.settings import Settings
 from openlp.core.lib.plugin import PluginStatus
@@ -385,6 +386,7 @@ class TestPluginManager(TestCase):
         plugin_manager.plugins = [mocked_plugin]
 
         # WHEN: We run finalise_plugins()
+        State().add_service("mock_plugin", 1, is_plugin=True, status=PluginStatus.Active)
         plugin_manager.finalise_plugins()
 
         # THEN: The is_active() and finalise() methods should have been called
