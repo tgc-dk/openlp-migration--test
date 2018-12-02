@@ -57,8 +57,7 @@ class TestPluginManager(TestCase):
         # GIVEN: A plugin manager with some mocked out methods
         manager = PluginManager()
 
-        with patch.object(manager, 'find_plugins') as mocked_find_plugins, \
-                patch.object(manager, 'hook_settings_tabs') as mocked_hook_settings_tabs, \
+        with patch.object(manager, 'hook_settings_tabs') as mocked_hook_settings_tabs, \
                 patch.object(manager, 'hook_media_manager') as mocked_hook_media_manager, \
                 patch.object(manager, 'hook_import_menu') as mocked_hook_import_menu, \
                 patch.object(manager, 'hook_export_menu') as mocked_hook_export_menu, \
@@ -68,7 +67,6 @@ class TestPluginManager(TestCase):
             manager.bootstrap_initialise()
 
         # THEN: The hook methods should have been called
-        mocked_find_plugins.assert_called_with()
         mocked_hook_settings_tabs.assert_called_with()
         mocked_hook_media_manager.assert_called_with()
         mocked_hook_import_menu.assert_called_with()

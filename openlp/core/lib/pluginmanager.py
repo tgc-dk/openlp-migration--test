@@ -87,8 +87,8 @@ class PluginManager(RegistryBase, LogMixin, RegistryProperties):
         Give all the plugins a chance to perform some tasks at startup
         """
         self.application.process_events()
-        for plugin in self.plugins:
-            if plugin.is_active():
+        for plugin in State().list_plugins():
+            if plugin and plugin.is_active():
                 plugin.app_startup()
                 self.application.process_events()
 
@@ -98,7 +98,7 @@ class PluginManager(RegistryBase, LogMixin, RegistryProperties):
         Create the plugins' media manager items.
         """
         for plugin in State().list_plugins():
-            if plugin.status is not PluginStatus.Disabled:
+            if plugin and plugin.status is not PluginStatus.Disabled:
                 plugin.create_media_manager_item()
 
     def hook_settings_tabs(self):
@@ -109,7 +109,7 @@ class PluginManager(RegistryBase, LogMixin, RegistryProperties):
 
         """
         for plugin in State().list_plugins():
-            if plugin.status is not PluginStatus.Disabled:
+            if plugin and plugin.status is not PluginStatus.Disabled:
                 plugin.create_settings_tab(self.settings_form)
 
     def hook_import_menu(self):
@@ -119,7 +119,7 @@ class PluginManager(RegistryBase, LogMixin, RegistryProperties):
 
         """
         for plugin in State().list_plugins():
-            if plugin.status is not PluginStatus.Disabled:
+            if plugin and plugin.status is not PluginStatus.Disabled:
                 plugin.add_import_menu_item(self.main_window.file_import_menu)
 
     def hook_export_menu(self):
@@ -128,7 +128,7 @@ class PluginManager(RegistryBase, LogMixin, RegistryProperties):
         item to the export menu.
         """
         for plugin in State().list_plugins():
-            if plugin.status is not PluginStatus.Disabled:
+            if plugin and plugin.status is not PluginStatus.Disabled:
                 plugin.add_export_menu_item(self.main_window.file_export_menu)
 
     def hook_tools_menu(self):
@@ -137,7 +137,7 @@ class PluginManager(RegistryBase, LogMixin, RegistryProperties):
         item to the tools menu.
         """
         for plugin in State().list_plugins():
-            if plugin.status is not PluginStatus.Disabled:
+            if plugin and plugin.status is not PluginStatus.Disabled:
                 plugin.add_tools_menu_item(self.main_window.tools_menu)
 
     @staticmethod
@@ -148,7 +148,7 @@ class PluginManager(RegistryBase, LogMixin, RegistryProperties):
         :param settings: The Settings object containing the old settings.
         """
         for plugin in State().list_plugins():
-            if plugin.status is not PluginStatus.Disabled:
+            if plugin and plugin.status is not PluginStatus.Disabled:
                 plugin.upgrade_settings(settings)
 
     def initialise_plugins(self):
@@ -185,7 +185,7 @@ class PluginManager(RegistryBase, LogMixin, RegistryProperties):
         Loop through all the plugins and give them an opportunity to clean themselves up
         """
         for plugin in State().list_plugins():
-            if plugin.is_active():
+            if plugin and plugin.is_active():
                 plugin.finalise()
                 self.log_info('Finalisation Complete for {plugin}'.format(plugin=plugin.name))
 
@@ -195,7 +195,7 @@ class PluginManager(RegistryBase, LogMixin, RegistryProperties):
         Return the plugin which has a name with value ``name``.
         """
         for plugin in State().list_plugins():
-            if plugin.name == name:
+            if plugin and plugin.name == name:
                 return plugin
         return None
 
