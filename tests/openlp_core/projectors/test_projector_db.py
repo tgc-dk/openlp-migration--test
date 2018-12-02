@@ -152,7 +152,6 @@ class TestProjectorDB(TestCase, TestMixin):
                 patch('openlp.core.ui.mainwindow.ServiceManager'), \
                 patch('openlp.core.ui.mainwindow.ThemeManager'), \
                 patch('openlp.core.ui.mainwindow.ProjectorManager'), \
-                patch('openlp.core.ui.mainwindow.Renderer'), \
                 patch('openlp.core.ui.mainwindow.websockets.WebSocketServer'), \
                 patch('openlp.core.ui.mainwindow.server.HttpServer'):
             self.main_window = MainWindow()
