@@ -69,39 +69,6 @@ class ItemMediaInfo(object):
     media_type = MediaType()
 
 
-# def get_media_players():
-#     """
-#     This method extracts the configured media players and overridden player
-#     from the settings.
-#     """
-#     log.debug('get_media_players')
-#     saved_players = Settings().value('media/players')
-#     reg_ex = QtCore.QRegExp(r'.*\[(.*)\].*')
-#     if Settings().value('media/override player') == QtCore.Qt.Checked:
-#         if reg_ex.exactMatch(saved_players):
-#             overridden_player = '{text}'.format(text=reg_ex.cap(1))
-#         else:
-#             overridden_player = 'auto'
-#     else:
-#         overridden_player = ''
-#     saved_players_list = saved_players.replace('[', '').replace(']', '').split(',') if saved_players else []
-#     return saved_players_list, overridden_player
-
-
-# def set_media_players(players_list, overridden_player='auto'):
-#     """
-#     This method saves the configured media players and overridden player to the settings
-#
-#     :param players_list: A list with all active media players.
-#     :param overridden_player: Here an special media player is chosen for all media actions.
-#     """
-#     log.debug('set_media_players')
-#     players = ','.join(players_list)
-#     if Settings().value('media/override player') == QtCore.Qt.Checked and overridden_player != 'auto':
-#         players = players.replace(overridden_player, '[{text}]'.format(text=overridden_player))
-#     Settings().setValue('media/players', players)
-
-
 def parse_optical_path(input_string):
     """
     Split the optical path info.

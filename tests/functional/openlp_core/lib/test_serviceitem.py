@@ -26,6 +26,7 @@ import os
 from unittest import TestCase
 from unittest.mock import MagicMock, patch
 
+from openlp.core.state import State
 from openlp.core.common import md5_hash
 from openlp.core.common.path import Path
 from openlp.core.common.registry import Registry
@@ -110,8 +111,11 @@ class TestServiceItem(TestCase, TestMixin):
         service_item.add_icon = MagicMock()
         FormattingTags.load_tags()
 
-        # WHEN: We add a custom from a saved service
+        # WHEN: We add a custom from a saved serviceand set the media state
         line = convert_file_service_item(TEST_PATH, 'serviceitem_custom_1.osj')
+        State().add_service("media", 0)
+        State().update_pre_conditions("media", True)
+        State().flush_preconditions()
         service_item.set_from_service(line)
 
         # THEN: We should get back a valid service item
