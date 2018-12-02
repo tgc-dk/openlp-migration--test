@@ -85,6 +85,9 @@ class TestMediaManagerItem(TestCase, TestMixin):
         mocked_settings.value.side_effect = lambda x: x == 'advanced/double click live'
         MockedSettings.return_value = mocked_settings
         mmi = MediaManagerItem(None)
+        mmi.can_preview = True
+        mmi.can_make_live = True
+        mmi.can_add_to_service = True
 
         # WHEN: on_double_clicked() is called
         mmi.on_double_clicked()
@@ -105,6 +108,9 @@ class TestMediaManagerItem(TestCase, TestMixin):
         mocked_settings.value.side_effect = lambda x: x == 'advanced/single click preview'
         MockedSettings.return_value = mocked_settings
         mmi = MediaManagerItem(None)
+        mmi.can_preview = True
+        mmi.can_make_live = True
+        mmi.can_add_to_service = True
 
         # WHEN: on_double_clicked() is called
         mmi.on_double_clicked()

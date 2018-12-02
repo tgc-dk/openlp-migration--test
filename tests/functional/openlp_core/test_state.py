@@ -74,7 +74,7 @@ class TestState(TestCase, TestMixin):
         State().add_service("test1", 1, PluginStatus.Active, "test")
         State().add_service("test1", 1, PluginStatus.Active, "test")
 
-        # THEN I have a single saved service and one dependancy
+        # THEN I have a single saved service and one dependency
         assert len(State().modules) == 2
         assert len(State().modules['test'].required_by) == 1
 
