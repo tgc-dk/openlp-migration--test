@@ -65,6 +65,7 @@ class TestPluginManager(TestCase):
                 patch.object(manager, 'initialise_plugins') as mocked_initialise_plugins:
             # WHEN: bootstrap_initialise() is called
             manager.bootstrap_initialise()
+            manager.bootstrap_post_set_up()
 
         # THEN: The hook methods should have been called
         mocked_hook_settings_tabs.assert_called_with()
