@@ -244,9 +244,11 @@ class TestPluginManager(TestCase):
         mocked_plugin = MagicMock()
         mocked_plugin.status = PluginStatus.Disabled
         plugin_manager = PluginManager()
-        plugin_manager.plugins = [mocked_plugin]
+        Registry().register('mock_plugin', mocked_plugin)
 
         # WHEN: We run hook_export_menu()
+        State().add_service("mock", 1, is_plugin=True, status=PluginStatus.Active)
+        State().flush_preconditions()
         plugin_manager.hook_export_menu()
 
         # THEN: The add_export_menu_item() method should not have been called
@@ -261,9 +263,11 @@ class TestPluginManager(TestCase):
         mocked_plugin = MagicMock()
         mocked_plugin.status = PluginStatus.Active
         plugin_manager = PluginManager()
-        plugin_manager.plugins = [mocked_plugin]
+        Registry().register('mock_plugin', mocked_plugin)
 
         # WHEN: We run hook_export_menu()
+        State().add_service("mock", 1, is_plugin=True, status=PluginStatus.Active)
+        State().flush_preconditions()
         plugin_manager.hook_export_menu()
 
         # THEN: The add_export_menu_item() method should have been called
@@ -277,10 +281,12 @@ class TestPluginManager(TestCase):
         mocked_plugin = MagicMock()
         mocked_plugin.status = PluginStatus.Disabled
         plugin_manager = PluginManager()
-        plugin_manager.plugins = [mocked_plugin]
+        Registry().register('mock_plugin', mocked_plugin)
         settings = Settings()
 
         # WHEN: We run hook_upgrade_plugin_settings()
+        State().add_service("mock", 1, is_plugin=True, status=PluginStatus.Active)
+        State().flush_preconditions()
         plugin_manager.hook_upgrade_plugin_settings(settings)
 
         # THEN: The upgrade_settings() method should not have been called
@@ -295,10 +301,12 @@ class TestPluginManager(TestCase):
         mocked_plugin = MagicMock()
         mocked_plugin.status = PluginStatus.Active
         plugin_manager = PluginManager()
-        plugin_manager.plugins = [mocked_plugin]
+        Registry().register('mock_plugin', mocked_plugin)
         settings = Settings()
 
         # WHEN: We run hook_upgrade_plugin_settings()
+        State().add_service("mock", 1, is_plugin=True, status=PluginStatus.Active)
+        State().flush_preconditions()
         plugin_manager.hook_upgrade_plugin_settings(settings)
 
         # THEN: The add_export_menu_item() method should have been called
@@ -312,9 +320,11 @@ class TestPluginManager(TestCase):
         mocked_plugin = MagicMock()
         mocked_plugin.status = PluginStatus.Disabled
         plugin_manager = PluginManager()
-        plugin_manager.plugins = [mocked_plugin]
+        Registry().register('mock_plugin', mocked_plugin)
 
         # WHEN: We run hook_tools_menu()
+        State().add_service("mock", 1, is_plugin=True, status=PluginStatus.Active)
+        State().flush_preconditions()
         plugin_manager.hook_tools_menu()
 
         # THEN: The add_tools_menu_item() method should have been called
@@ -329,9 +339,11 @@ class TestPluginManager(TestCase):
         mocked_plugin = MagicMock()
         mocked_plugin.status = PluginStatus.Active
         plugin_manager = PluginManager()
-        plugin_manager.plugins = [mocked_plugin]
+        Registry().register('mock_plugin', mocked_plugin)
 
         # WHEN: We run hook_tools_menu()
+        State().add_service("mock", 1, is_plugin=True, status=PluginStatus.Active)
+        State().flush_preconditions()
         plugin_manager.hook_tools_menu()
 
         # THEN: The add_tools_menu_item() method should have been called
@@ -346,9 +358,11 @@ class TestPluginManager(TestCase):
         mocked_plugin.status = PluginStatus.Disabled
         mocked_plugin.is_active.return_value = False
         plugin_manager = PluginManager()
-        plugin_manager.plugins = [mocked_plugin]
+        Registry().register('mock_plugin', mocked_plugin)
 
         # WHEN: We run initialise_plugins()
+        State().add_service("mock", 1, is_plugin=True, status=PluginStatus.Active)
+        State().flush_preconditions()
         plugin_manager.initialise_plugins()
 
         # THEN: The is_active() method should have been called, and initialise() method should NOT have been called
@@ -364,9 +378,11 @@ class TestPluginManager(TestCase):
         mocked_plugin.status = PluginStatus.Active
         mocked_plugin.is_active.return_value = True
         plugin_manager = PluginManager()
-        plugin_manager.plugins = [mocked_plugin]
+        Registry().register('mock_plugin', mocked_plugin)
 
         # WHEN: We run initialise_plugins()
+        State().add_service("mock", 1, is_plugin=True, status=PluginStatus.Active)
+        State().flush_preconditions()
         plugin_manager.initialise_plugins()
 
         # THEN: The is_active() and initialise() methods should have been called
