@@ -456,10 +456,10 @@ class TestPluginManager(TestCase):
         mocked_plugin.name = 'Mocked Plugin'
         plugin_manager = PluginManager()
         Registry().register('mock_plugin', mocked_plugin)
-
-        # WHEN: We run finalise_plugins()
         State().add_service("mock", 1, is_plugin=True, status=PluginStatus.Active)
         State().flush_preconditions()
+
+        # WHEN: We run finalise_plugins()
         result = plugin_manager.get_plugin_by_name('Mocked Plugin')
 
         # THEN: The is_active() and finalise() methods should have been called
@@ -474,7 +474,9 @@ class TestPluginManager(TestCase):
         mocked_plugin.status = PluginStatus.Disabled
         mocked_plugin.is_active.return_value = False
         plugin_manager = PluginManager()
-        plugin_manager.plugins = [mocked_plugin]
+        Registry().register('mock_plugin', mocked_plugin)
+        State().add_service("mock", 1, is_plugin=True, status=PluginStatus.Active)
+        State().flush_preconditions()
 
         # WHEN: We run finalise_plugins()
         plugin_manager.new_service_created()
@@ -493,7 +495,9 @@ class TestPluginManager(TestCase):
         mocked_plugin.status = PluginStatus.Active
         mocked_plugin.is_active.return_value = True
         plugin_manager = PluginManager()
-        plugin_manager.plugins = [mocked_plugin]
+        Registry().register('mock_plugin', mocked_plugin)
+        State().add_service("mock", 1, is_plugin=True, status=PluginStatus.Active)
+        State().flush_preconditions()
 
         # WHEN: We run new_service_created()
         plugin_manager.new_service_created()
