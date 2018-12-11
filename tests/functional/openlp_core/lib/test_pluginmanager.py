@@ -421,9 +421,11 @@ class TestPluginManager(TestCase):
         mocked_plugin = MagicMock()
         mocked_plugin.name = 'Mocked Plugin'
         plugin_manager = PluginManager()
-        plugin_manager.plugins = [mocked_plugin]
+        Registry().register('mock_plugin', mocked_plugin)
 
         # WHEN: We run finalise_plugins()
+        State().add_service("mock", 1, is_plugin=True, status=PluginStatus.Active)
+        State().flush_preconditions()
         result = plugin_manager.get_plugin_by_name('Mocked Plugin')
 
         # THEN: The is_active() and finalise() methods should have been called

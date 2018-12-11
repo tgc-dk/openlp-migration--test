@@ -123,11 +123,11 @@ class TestState(TestCase, TestMixin):
 
         # THEN correct the state when I flush the preconditions
         assert State().modules['test'].pass_preconditions is False
-        assert State().modules['test2'].pass_preconditions is True
-        assert State().modules['test1'].pass_preconditions is True
+        assert State().modules['test2'].pass_preconditions is False
+        assert State().modules['test1'].pass_preconditions is False
         State().flush_preconditions()
         assert State().modules['test'].pass_preconditions is False
-        assert State().modules['test2'].pass_preconditions is True
+        assert State().modules['test2'].pass_preconditions is False
         assert State().modules['test1'].pass_preconditions is False
 
     def test_basic_preconditions_pass(self):
