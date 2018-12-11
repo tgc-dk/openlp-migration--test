@@ -162,7 +162,8 @@ class TestServiceItem(TestCase, TestMixin):
         assert os.path.normpath(test_file) == os.path.normpath(service_item.get_rendered_frame(0)), \
             'The first frame should match the path to the image'
         assert frame_array == service_item.get_frames()[0], 'The return should match frame array1'
-        assert test_file == service_item.get_frame_path(0), 'The frame path should match the full path to the image'
+        assert test_file == str(service_item.get_frame_path(0)), \
+            'The frame path should match the full path to the image'
         assert image_name == service_item.get_frame_title(0), 'The frame title should match the image name'
         assert image_name == service_item.get_display_title(), 'The display title should match the first image name'
         assert service_item.is_image() is True, 'This service item should be of an "image" type'
