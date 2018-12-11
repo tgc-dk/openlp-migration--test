@@ -27,7 +27,7 @@ from pathlib import Path
 from unittest import TestCase
 from unittest.mock import MagicMock, patch
 
-from PyQt5 import QtCore, QtWidgets
+from PyQt5 import QtGui, QtCore, QtWidgets
 
 from openlp.core.state import State
 from openlp.core.common.i18n import UiStrings
@@ -72,6 +72,7 @@ class TestMainWindow(TestCase, TestMixin):
         self.mocked_add_toolbar_action.side_effect = self._create_mock_action
         mocked_plugin = MagicMock()
         mocked_plugin.status = PluginStatus.Active
+        mocked_plugin.icon = QtGui.QIcon()
         Registry().register('mock_plugin', mocked_plugin)
         State().add_service("mock", 1, is_plugin=True, status=PluginStatus.Active)
         with patch('openlp.core.display.screens.ScreenList.__instance__', spec=ScreenList) as mocked_screen_list:
