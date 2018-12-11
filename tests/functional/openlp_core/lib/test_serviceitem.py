@@ -222,7 +222,7 @@ class TestServiceItem(TestCase, TestMixin):
             assert frame_array2 == service_item2.get_frames()[0], 'The return should match the frame array2'
             assert test_file1 == str(service_item.get_frame_path(0)), \
                 'The frame path should match the full path to the image'
-            assert test_file2 == service_item2.get_frame_path(0), \
+            assert test_file2 == str(service_item2.get_frame_path(0)), \
                 'The frame path should match the full path to the image'
         assert image_name1 == service_item.get_frame_title(0), 'The 1st frame title should match the image name'
         assert image_name2 == service_item2.get_frame_title(0), 'The 2nd frame title should match the image name'

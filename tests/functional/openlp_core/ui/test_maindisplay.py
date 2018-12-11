@@ -60,14 +60,11 @@ class TestMainDisplay(TestCase, TestMixin):
         self.registry = Registry()
         self.setup_application()
         Registry().register('application', self.app)
-        self.mocked_audio_player = patch('openlp.core.ui.maindisplay.AudioPlayer')
-        self.mocked_audio_player.start()
 
     def tearDown(self):
         """
         Delete QApplication.
         """
-        self.mocked_audio_player.stop()
         del self.screens
 
     def test_initial_main_display(self):
