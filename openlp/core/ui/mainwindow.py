@@ -30,6 +30,7 @@ from tempfile import gettempdir
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
+from openlp.core.state import State
 from openlp.core.api import websockets
 from openlp.core.api.http import server
 from openlp.core.common import is_win, is_macosx, add_actions
@@ -652,7 +653,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow, LogMixin, RegistryPropert
         Import themes if first time
         """
         self.application.process_events()
-        for plugin in self.plugin_manager.plugins:
+        for plugin in State().list_plugins():
             if hasattr(plugin, 'first_time'):
                 self.application.process_events()
                 plugin.first_time()
@@ -690,7 +691,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow, LogMixin, RegistryPropert
             self.projector_manager_dock.setVisible(True)
         else:
             self.projector_manager_dock.setVisible(False)
-        for plugin in self.plugin_manager.plugins:
+        for plugin in State().list_plugins():
             self.active_plugin = plugin
             old_status = self.active_plugin.status
             self.active_plugin.set_status()
@@ -864,7 +865,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow, LogMixin, RegistryPropert
         setting_sections.extend([self.header_section])
         setting_sections.extend(['crashreport'])
         # Add plugin sections.
-        setting_sections.extend([plugin.name for plugin in self.plugin_manager.plugins])
+        setting_sections.extend([plugin.name for plugin in State().list_plugins()])
         # Copy the settings file to the tmp dir, because we do not want to change the original one.
         temp_dir_path = Path(gettempdir(), 'openlp')
         create_paths(temp_dir_path)
