@@ -19,7 +19,7 @@
 # with this program; if not, write to the Free Software Foundation, Inc., 59  #
 # Temple Place, Suite 330, Boston, MA 02111-1307 USA                          #
 ###############################################################################
-from unittest import TestCase, skip
+from unittest import TestCase
 
 from openlp.core.state import State
 from openlp.core.common.registry import Registry
@@ -38,7 +38,6 @@ class TestState(TestCase, TestMixin):
     """
     def setUp(self):
         Registry.create()
-        self.state = State()
 
     def tearDown(self):
         pass
@@ -64,29 +63,27 @@ class TestState(TestCase, TestMixin):
         # THEN I have a single saved service
         assert len(State().modules) == 1
 
-    @skip
     def test_add_service_multiple_depend(self):
         # GIVEN a new state
         State().load_settings()
 
         # WHEN I add a new service twice
-        State().add_service("test", 1, PluginStatus.Active)
-        State().add_service("test1", 1, PluginStatus.Active, "test")
-        State().add_service("test1", 1, PluginStatus.Active, "test")
+        State().add_service("test", 1, 1, PluginStatus.Active)
+        State().add_service("test1", 1, 1, PluginStatus.Active, "test")
+        State().add_service("test1", 1, 1, PluginStatus.Active, "test")
 
-        # THEN I have a single saved service and one dependency
+        # THEN I have still have a single saved service and one dependency
         assert len(State().modules) == 2
         assert len(State().modules['test'].required_by) == 1
 
-    @skip
     def test_add_service_multiple_depends(self):
         # GIVEN a new state
         State().load_settings()
 
         # WHEN I add a new service twice
-        State().add_service("test", 1, PluginStatus.Active)
-        State().add_service("test1", 1, PluginStatus.Active, "test")
-        State().add_service("test2", 1, PluginStatus.Active, "test")
+        State().add_service("test", 1, 1, PluginStatus.Active)
+        State().add_service("test1", 1, 1, PluginStatus.Active, "test")
+        State().add_service("test2", 1, 1, PluginStatus.Active, "test")
 
         # THEN I have a 3 modules and 2 dependencies
         assert len(State().modules) == 3
@@ -97,31 +94,29 @@ class TestState(TestCase, TestMixin):
         State().load_settings()
 
         # WHEN I add a new service which is Active
-        State().add_service("test", 1, PluginStatus.Active)
+        State().add_service("test", 1, 1, PluginStatus.Active)
 
         # THEN I have a single saved service
         assert State().is_module_active('test') is True
 
-    @skip
     def test_inactive_service(self):
         # GIVEN a new state
         State().load_settings()
 
         # WHEN I add a new service which is Inactive
-        State().add_service("test", 1, PluginStatus.Inactive)
+        State().add_service("test", 1, 1, PluginStatus.Inactive)
 
         # THEN I have a single saved service
         assert State().is_module_active('test') is False
 
-    @skip
-    def test_basic_preconditions(self):
+    def test_basic_preconditions_fail(self):
         # GIVEN a new state
         State().load_settings()
 
-        # WHEN I add a new services with dependancies and a failed pre condition
-        State().add_service("test", 1, PluginStatus.Inactive)
-        State().add_service("test2", 1, PluginStatus.Inactive)
-        State().add_service("test1", 1, PluginStatus.Inactive, 'test')
+        # WHEN I add a new services with dependencies and a failed pre condition
+        State().add_service("test", 1, 1, PluginStatus.Inactive)
+        State().add_service("test2", 1, 1, PluginStatus.Inactive)
+        State().add_service("test1", 1, 1, PluginStatus.Inactive, 'test')
         State().update_pre_conditions('test', False)
 
         # THEN correct the state when I flush the preconditions
@@ -133,21 +128,21 @@ class TestState(TestCase, TestMixin):
         assert State().modules['test2'].pass_preconditions is True
         assert State().modules['test1'].pass_preconditions is False
 
-    # def test_check_preconditions(self):
-    #     # GIVEN a new state
-    #     State().load_settings()
-    #
-    #     # WHEN I add a new services with dependancies and a failed pre condition
-    #     State().add_service("test", 1, PluginStatus.Inactive)
-    #     State().add_service("test2", 1, PluginStatus.Inactive)
-    #     State().add_service("test1", 1, PluginStatus.Inactive, 'test')
-    #     State().update_pre_conditions('test', False)
-    #
-    #     # THEN correct the state when I flush the preconditions
-    #     assert State().modules['test'].pass_preconditions is False
-    #     assert State().modules['test2'].pass_preconditions is True
-    #     assert State().modules['test1'].pass_preconditions is True
-    #     State().flush_preconditions()
-    #     assert State().modules['test'].pass_preconditions is False
-    #     assert State().modules['test2'].pass_preconditions is True
-    #     assert State().modules['test1'].pass_preconditions is False
+    def test_basic_preconditions_pass(self):
+        # GIVEN a new state
+        State().load_settings()
+
+        # WHEN I add a new services with dependencies and a failed pre condition
+        State().add_service("test", 1, 1, PluginStatus.Inactive)
+        State().add_service("test2", 1, 1, PluginStatus.Inactive)
+        State().add_service("test1", 1, 1, PluginStatus.Inactive, 'test')
+        State().update_pre_conditions('test', True)
+
+        # THEN correct the state when I flush the preconditions
+        assert State().modules['test'].pass_preconditions is True
+        assert State().modules['test2'].pass_preconditions is False
+        assert State().modules['test1'].pass_preconditions is False
+        State().flush_preconditions()
+        assert State().modules['test'].pass_preconditions is True
+        assert State().modules['test2'].pass_preconditions is False
+        assert State().modules['test1'].pass_preconditions is True
