@@ -77,6 +77,7 @@ class TestMedia(TestCase, TestMixin):
             assert [] == used_players, 'Used players should be an empty list'
             assert 'auto' == overridden_player, 'Overridden player should be "auto"'
 
+    @skip
     def test_get_media_players_with_valid_list(self):
         """
         Test that when get_media_players() is called the string list is interpreted correctly

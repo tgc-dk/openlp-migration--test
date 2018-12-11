@@ -164,8 +164,8 @@ class TestMainWindow(TestCase, TestMixin):
         # THEN: the following registry functions should have been registered
         assert len(self.registry.service_list) == 8, \
             'The registry should have 8 services, got {}'.format(self.registry.service_list.keys())
-        assert len(self.registry.functions_list) == 19, \
-            'The registry should have 19 functions, got {}'.format(self.registry.functions_list.keys())
+        assert len(self.registry.functions_list) == 5, \
+            'The registry should have 5 functions, got {}'.format(self.registry.functions_list.keys())
         assert 'application' in self.registry.service_list, 'The application should have been registered.'
         assert 'main_window' in self.registry.service_list, 'The main_window should have been registered.'
         assert 'media_controller' in self.registry.service_list, 'The media_controller should have been registered.'
