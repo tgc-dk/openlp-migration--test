@@ -47,6 +47,7 @@ class TestPluginManager(TestCase):
         self.mocked_main_window.file_export_menu.return_value = None
         self.mocked_settings_form = MagicMock()
         Registry.create()
+        State().load_settings()
         Registry().register('service_list', MagicMock())
         Registry().register('main_window', self.mocked_main_window)
         Registry().register('settings_form', self.mocked_settings_form)
@@ -365,9 +366,11 @@ class TestPluginManager(TestCase):
         mocked_plugin.status = PluginStatus.Disabled
         mocked_plugin.is_active.return_value = False
         plugin_manager = PluginManager()
-        plugin_manager.plugins = [mocked_plugin]
+        Registry().register('mock_plugin', mocked_plugin)
 
         # WHEN: We run finalise_plugins()
+        State().add_service("mock", 1, is_plugin=True, status=PluginStatus.Active)
+        State().flush_preconditions()
         plugin_manager.finalise_plugins()
 
         # THEN: The is_active() method should have been called, and initialise() method should NOT have been called
@@ -383,10 +386,11 @@ class TestPluginManager(TestCase):
         mocked_plugin.status = PluginStatus.Active
         mocked_plugin.is_active.return_value = True
         plugin_manager = PluginManager()
-        plugin_manager.plugins = [mocked_plugin]
+        Registry().register('mock_plugin', mocked_plugin)
 
         # WHEN: We run finalise_plugins()
-        State().add_service("mock_plugin", 1, is_plugin=True, status=PluginStatus.Active)
+        State().add_service("mock", 1, is_plugin=True, status=PluginStatus.Active)
+        State().flush_preconditions()
         plugin_manager.finalise_plugins()
 
         # THEN: The is_active() and finalise() methods should have been called

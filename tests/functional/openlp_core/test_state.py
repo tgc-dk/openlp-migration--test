@@ -20,6 +20,7 @@
 # Temple Place, Suite 330, Boston, MA 02111-1307 USA                          #
 ###############################################################################
 from unittest import TestCase
+from unittest.mock import MagicMock
 
 from openlp.core.state import State
 from openlp.core.common.registry import Registry
@@ -112,6 +113,7 @@ class TestState(TestCase, TestMixin):
     def test_basic_preconditions_fail(self):
         # GIVEN a new state
         State().load_settings()
+        plugin = Registry().register('test_plugin', MagicMock())
 
         # WHEN I add a new services with dependencies and a failed pre condition
         State().add_service("test", 1, 1, PluginStatus.Inactive)
@@ -131,6 +133,7 @@ class TestState(TestCase, TestMixin):
     def test_basic_preconditions_pass(self):
         # GIVEN a new state
         State().load_settings()
+        Registry().register('test_plugin', MagicMock())
 
         # WHEN I add a new services with dependencies and a failed pre condition
         State().add_service("test", 1, 1, PluginStatus.Inactive)
