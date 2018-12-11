@@ -85,9 +85,11 @@ class TestPluginManager(TestCase):
         mocked_plugin = MagicMock()
         mocked_plugin.status = PluginStatus.Disabled
         plugin_manager = PluginManager()
-        plugin_manager.plugins = [mocked_plugin]
+        Registry().register('mock_plugin', mocked_plugin)
 
         # WHEN: We run hook_media_manager()
+        State().add_service("mock", 1, is_plugin=True, status=PluginStatus.Active)
+        State().flush_preconditions()
         plugin_manager.hook_media_manager()
 
         # THEN: The create_media_manager_item() method should have been called
@@ -102,9 +104,11 @@ class TestPluginManager(TestCase):
         mocked_plugin = MagicMock()
         mocked_plugin.status = PluginStatus.Active
         plugin_manager = PluginManager()
-        plugin_manager.plugins = [mocked_plugin]
+        Registry().register('mock_plugin', mocked_plugin)
 
         # WHEN: We run hook_media_manager()
+        State().add_service("mock", 1, is_plugin=True, status=PluginStatus.Active)
+        State().flush_preconditions()
         plugin_manager.hook_media_manager()
 
         # THEN: The create_media_manager_item() method should have been called
@@ -118,9 +122,11 @@ class TestPluginManager(TestCase):
         mocked_plugin = MagicMock()
         mocked_plugin.status = PluginStatus.Disabled
         plugin_manager = PluginManager()
-        plugin_manager.plugins = [mocked_plugin]
+        Registry().register('mock_plugin', mocked_plugin)
 
         # WHEN: We run hook_settings_tabs()
+        State().add_service("mock", 1, is_plugin=True, status=PluginStatus.Active)
+        State().flush_preconditions()
         plugin_manager.hook_settings_tabs()
 
         # THEN: The hook_settings_tabs() method should have been called
@@ -135,12 +141,14 @@ class TestPluginManager(TestCase):
         mocked_plugin = MagicMock()
         mocked_plugin.status = PluginStatus.Disabled
         plugin_manager = PluginManager()
-        plugin_manager.plugins = [mocked_plugin]
+        Registry().register('mock_plugin', mocked_plugin)
         mocked_settings_form = MagicMock()
         # Replace the autoloaded plugin with the version for testing in real code this would error
         mocked_settings_form.plugin_manager = plugin_manager
 
         # WHEN: We run hook_settings_tabs()
+        State().add_service("mock", 1, is_plugin=True, status=PluginStatus.Active)
+        State().flush_preconditions()
         plugin_manager.hook_settings_tabs()
 
         # THEN: The create_settings_tab() method should not have been called, but the plugins lists should be the same
@@ -157,12 +165,14 @@ class TestPluginManager(TestCase):
         mocked_plugin = MagicMock()
         mocked_plugin.status = PluginStatus.Active
         plugin_manager = PluginManager()
-        plugin_manager.plugins = [mocked_plugin]
+        Registry().register('mock_plugin', mocked_plugin)
         mocked_settings_form = MagicMock()
         # Replace the autoloaded plugin with the version for testing in real code this would error
         mocked_settings_form.plugin_manager = plugin_manager
 
         # WHEN: We run hook_settings_tabs()
+        State().add_service("mock", 1, is_plugin=True, status=PluginStatus.Active)
+        State().flush_preconditions()
         plugin_manager.hook_settings_tabs()
 
         # THEN: The create_media_manager_item() method should have been called with the mocked settings form
@@ -179,9 +189,11 @@ class TestPluginManager(TestCase):
         mocked_plugin = MagicMock()
         mocked_plugin.status = PluginStatus.Active
         plugin_manager = PluginManager()
-        plugin_manager.plugins = [mocked_plugin]
+        Registry().register('mock_plugin', mocked_plugin)
 
         # WHEN: We run hook_settings_tabs()
+        State().add_service("mock", 1, is_plugin=True, status=PluginStatus.Active)
+        State().flush_preconditions()
         plugin_manager.hook_settings_tabs()
 
         # THEN: The create_settings_tab() method should have been called
@@ -195,9 +207,11 @@ class TestPluginManager(TestCase):
         mocked_plugin = MagicMock()
         mocked_plugin.status = PluginStatus.Disabled
         plugin_manager = PluginManager()
-        plugin_manager.plugins = [mocked_plugin]
+        Registry().register('mock_plugin', mocked_plugin)
 
         # WHEN: We run hook_import_menu()
+        State().add_service("mock", 1, is_plugin=True, status=PluginStatus.Active)
+        State().flush_preconditions()
         plugin_manager.hook_import_menu()
 
         # THEN: The create_media_manager_item() method should have been called
@@ -212,9 +226,11 @@ class TestPluginManager(TestCase):
         mocked_plugin = MagicMock()
         mocked_plugin.status = PluginStatus.Active
         plugin_manager = PluginManager()
-        plugin_manager.plugins = [mocked_plugin]
+        Registry().register('mock_plugin', mocked_plugin)
 
         # WHEN: We run hook_import_menu()
+        State().add_service("mock", 1, is_plugin=True, status=PluginStatus.Active)
+        State().flush_preconditions()
         plugin_manager.hook_import_menu()
 
         # THEN: The add_import_menu_item() method should have been called
