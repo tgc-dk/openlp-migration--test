@@ -27,7 +27,7 @@ from unittest.mock import MagicMock, patch
 
 from openlp.core.common.registry import Registry
 from openlp.core.ui.media.mediacontroller import MediaController
-from openlp.core.ui.media.mediaplayer import MediaPlayer
+from openlp.core.ui.media.vlcplayer import VlcPlayer
 from tests.helpers.testmixin import TestMixin
 
 from tests.utils.constants import RESOURCE_PATH
@@ -49,10 +49,10 @@ class TestMediaController(TestCase, TestMixin):
         """
         # GIVEN: A MediaController and an active player with audio and video extensions
         media_controller = MediaController()
-        media_controller.media_players = MediaPlayer(None)
-        media_controller.media_players.is_active = True
-        media_controller.media_players.audio_extensions_list = ['*.mp3', '*.wav', '*.wma', '*.ogg']
-        media_controller.media_players.video_extensions_list = ['*.mp4', '*.mov', '*.avi', '*.ogm']
+        media_controller.vlc_player = VlcPlayer(None)
+        media_controller.vlc_player.is_active = True
+        media_controller.vlc_player.audio_extensions_list = ['*.mp3', '*.wav', '*.wma', '*.ogg']
+        media_controller.vlc_player.video_extensions_list = ['*.mp4', '*.mov', '*.avi', '*.ogm']
 
         # WHEN: calling _generate_extensions_lists
         media_controller._generate_extensions_lists()
@@ -86,12 +86,10 @@ class TestMediaController(TestCase, TestMixin):
         media_controller = MediaController()
         mocked_controller = MagicMock()
         mocked_display = MagicMock()
-        mocked_service_item = MagicMock()
-        mocked_service_item.processor = 1
         media_controller.media_players = MagicMock()
 
         # WHEN: calling _check_file_type when no players exists
-        ret = media_controller._check_file_type(mocked_controller, mocked_display, mocked_service_item)
+        ret = media_controller._check_file_type(mocked_controller, mocked_display)
 
         # THEN: it should return False
         assert ret is False, '_check_file_type should return False when no mediaplayers are available.'

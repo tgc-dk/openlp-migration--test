@@ -368,7 +368,7 @@ class TestVLCPlayer(TestCase, TestMixin):
 
         # WHEN: A video is loaded into VLC
         with patch.object(vlc_player, 'volume') as mocked_volume:
-            result = vlc_player.load(mocked_display)
+            result = vlc_player.load(mocked_display, MagicMock())
 
         # THEN: The video should be loaded
         mocked_normcase.assert_called_with(media_path)
@@ -413,7 +413,7 @@ class TestVLCPlayer(TestCase, TestMixin):
         # WHEN: An audio CD is loaded into VLC
         with patch.object(vlc_player, 'volume') as mocked_volume, \
                 patch.object(vlc_player, 'media_state_wait'):
-            result = vlc_player.load(mocked_display)
+            result = vlc_player.load(mocked_display, MagicMock())
 
         # THEN: The video should be loaded
         mocked_normcase.assert_called_with(media_path)
@@ -458,7 +458,7 @@ class TestVLCPlayer(TestCase, TestMixin):
         # WHEN: An audio CD is loaded into VLC
         with patch.object(vlc_player, 'volume') as mocked_volume, \
                 patch.object(vlc_player, 'media_state_wait'):
-            result = vlc_player.load(mocked_display)
+            result = vlc_player.load(mocked_display, MagicMock())
 
         # THEN: The video should be loaded
         mocked_normcase.assert_called_with(media_path)
@@ -502,7 +502,7 @@ class TestVLCPlayer(TestCase, TestMixin):
 
         # WHEN: An audio CD is loaded into VLC
         with patch.object(vlc_player, 'volume'), patch.object(vlc_player, 'media_state_wait'):
-            result = vlc_player.load(mocked_display)
+            result = vlc_player.load(mocked_display, MagicMock())
 
         # THEN: The video should be loaded
         mocked_normcase.assert_called_with(media_path)
