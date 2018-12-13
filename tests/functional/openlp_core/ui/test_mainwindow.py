@@ -168,8 +168,6 @@ class TestMainWindow(TestCase, TestMixin):
             'The registry should have 5 functions, got {}'.format(self.registry.functions_list.keys())
         assert 'application' in self.registry.service_list, 'The application should have been registered.'
         assert 'main_window' in self.registry.service_list, 'The main_window should have been registered.'
-        assert 'media_controller' in self.registry.service_list, 'The media_controller should have been registered.'
-        assert 'plugin_manager' in self.registry.service_list, 'The plugin_manager should have been registered.'
 
     def test_projector_manager_hidden_on_startup(self):
         """
