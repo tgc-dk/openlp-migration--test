@@ -678,6 +678,7 @@ class TestSlideController(TestCase):
         slide_controller.service_item = mocked_pres_item
         slide_controller.is_live = False
         slide_controller.preview_widget = MagicMock()
+        slide_controller.preview_display = MagicMock()
         slide_controller.enable_tool_bar = MagicMock()
         slide_controller.on_media_start = MagicMock()
         slide_controller.slide_selected = MagicMock()
