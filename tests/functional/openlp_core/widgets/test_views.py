@@ -32,6 +32,9 @@ from PyQt5 import QtGui
 from openlp.core.common.i18n import UiStrings
 from openlp.core.lib import ImageSource
 from openlp.core.widgets.views import ListPreviewWidget, ListWidgetWithDnD, TreeWidgetWithDnD, handle_mime_data_urls
+from openlp.core.ui.icons import UiIcons
+
+CLAPPERBOARD = UiIcons().clapperboard
 
 
 class TestHandleMimeDataUrls(TestCase):
@@ -148,16 +151,16 @@ class TestListPreviewWidget(TestCase):
         mocked_img_service_item.is_media.return_value = False
         mocked_img_service_item.is_command.return_value = False
         mocked_img_service_item.is_capable.return_value = False
-        mocked_img_service_item.get_frames.return_value = [{'title': None, 'path': 'TEST1', 'image': 'FAIL'},
-                                                           {'title': None, 'path': 'TEST2', 'image': 'FAIL'}]
+        mocked_img_service_item.get_frames.return_value = [{'title': None, 'path': 'TEST1', 'image': CLAPPERBOARD},
+                                                           {'title': None, 'path': 'TEST2', 'image': CLAPPERBOARD}]
         # Mock Command service item
         mocked_cmd_service_item = MagicMock()
         mocked_cmd_service_item.is_text.return_value = False
         mocked_cmd_service_item.is_media.return_value = False
         mocked_cmd_service_item.is_command.return_value = True
         mocked_cmd_service_item.is_capable.return_value = True
-        mocked_cmd_service_item.get_frames.return_value = [{'title': None, 'path': 'FAIL', 'image': 'TEST3'},
-                                                           {'title': None, 'path': 'FAIL', 'image': 'TEST4'}]
+        mocked_cmd_service_item.get_frames.return_value = [{'title': None, 'path': 'FAIL', 'image': CLAPPERBOARD},
+                                                           {'title': None, 'path': 'FAIL', 'image': CLAPPERBOARD}]
         # Mock image_manager
         mocked_image_manager.get_image.return_value = QtGui.QImage()
 
@@ -223,8 +226,8 @@ class TestListPreviewWidget(TestCase):
         service_item = MagicMock()
         service_item.is_text.return_value = False
         service_item.is_capable.return_value = False
-        service_item.get_frames.return_value = [{'title': None, 'path': None, 'image': None},
-                                                {'title': None, 'path': None, 'image': None}]
+        service_item.get_frames.return_value = [{'title': None, 'path': None, 'image': CLAPPERBOARD},
+                                                {'title': None, 'path': None, 'image': CLAPPERBOARD}]
         # init ListPreviewWidget and load service item
         list_preview_widget = ListPreviewWidget(None, 1)
         list_preview_widget.replace_service_item(service_item, 200, 0)
@@ -260,8 +263,8 @@ class TestListPreviewWidget(TestCase):
         service_item = MagicMock()
         service_item.is_text.return_value = False
         service_item.is_capable.return_value = False
-        service_item.get_frames.return_value = [{'title': None, 'path': None, 'image': None},
-                                                {'title': None, 'path': None, 'image': None}]
+        service_item.get_frames.return_value = [{'title': None, 'path': None, 'image': CLAPPERBOARD},
+                                                {'title': None, 'path': None, 'image': CLAPPERBOARD}]
         # init ListPreviewWidget and load service item
         list_preview_widget = ListPreviewWidget(None, 1)
         list_preview_widget.replace_service_item(service_item, 200, 0)
@@ -296,8 +299,8 @@ class TestListPreviewWidget(TestCase):
         service_item = MagicMock()
         service_item.is_text.return_value = False
         service_item.is_capable.return_value = False
-        service_item.get_frames.return_value = [{'title': None, 'path': None, 'image': None},
-                                                {'title': None, 'path': None, 'image': None}]
+        service_item.get_frames.return_value = [{'title': None, 'path': None, 'image': CLAPPERBOARD},
+                                                {'title': None, 'path': None, 'image': CLAPPERBOARD}]
         # init ListPreviewWidget and load service item
         list_preview_widget = ListPreviewWidget(None, 1)
         list_preview_widget.replace_service_item(service_item, 200, 0)
@@ -333,8 +336,8 @@ class TestListPreviewWidget(TestCase):
         # Mock text service item
         service_item = MagicMock()
         service_item.is_text.return_value = True
-        service_item.get_frames.return_value = [{'title': None, 'text': None, 'verseTag': None},
-                                                {'title': None, 'text': None, 'verseTag': None}]
+        service_item.get_frames.return_value = [{'title': None, 'text': None, 'verseTag': CLAPPERBOARD},
+                                                {'title': None, 'text': None, 'verseTag': CLAPPERBOARD}]
         # Mock self.cellWidget().children().setMaximumWidth()
         mocked_cellWidget_child = MagicMock()
         mocked_cellWidget_obj = MagicMock()
@@ -368,8 +371,8 @@ class TestListPreviewWidget(TestCase):
         service_item = MagicMock()
         service_item.is_text.return_value = False
         service_item.is_capable.return_value = False
-        service_item.get_frames.return_value = [{'title': None, 'path': None, 'image': None},
-                                                {'title': None, 'path': None, 'image': None}]
+        service_item.get_frames.return_value = [{'title': None, 'path': None, 'image': CLAPPERBOARD},
+                                                {'title': None, 'path': None, 'image': CLAPPERBOARD}]
         # Mock self.cellWidget().children().setMaximumWidth()
         mocked_cellWidget_child = MagicMock()
         mocked_cellWidget_obj = MagicMock()
@@ -405,8 +408,8 @@ class TestListPreviewWidget(TestCase):
         service_item = MagicMock()
         service_item.is_text.return_value = False
         service_item.is_capable.return_value = False
-        service_item.get_frames.return_value = [{'title': None, 'path': None, 'image': None},
-                                                {'title': None, 'path': None, 'image': None}]
+        service_item.get_frames.return_value = [{'title': None, 'path': None, 'image': CLAPPERBOARD},
+                                                {'title': None, 'path': None, 'image': CLAPPERBOARD}]
         # Mock self.cellWidget().children().setMaximumWidth()
         mocked_cellWidget_child = MagicMock()
         mocked_cellWidget_obj = MagicMock()
@@ -440,8 +443,8 @@ class TestListPreviewWidget(TestCase):
         service_item = MagicMock()
         service_item.is_text.return_value = False
         service_item.is_capable.return_value = False
-        service_item.get_frames.return_value = [{'title': None, 'path': None, 'image': None},
-                                                {'title': None, 'path': None, 'image': None}]
+        service_item.get_frames.return_value = [{'title': None, 'path': None, 'image': CLAPPERBOARD},
+                                                {'title': None, 'path': None, 'image': CLAPPERBOARD}]
         # Mock self.cellWidget().children()
         mocked_cellWidget_obj = MagicMock()
         mocked_cellWidget_obj.children.return_value = None

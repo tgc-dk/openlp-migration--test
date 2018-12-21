@@ -34,9 +34,8 @@ from openlp.core.common.registry import Registry
 from openlp.core.common.settings import Settings
 from openlp.core.lib import MediaType, ServiceItemContext, check_item_selected
 from openlp.core.lib.mediamanageritem import MediaManagerItem
-from openlp.core.lib.serviceitem import ItemCapabilities, ServiceItem
-from openlp.core.lib.ui import create_widget_action, critical_error_message_box, create_horizontal_adjusting_combo_box
-from openlp.core.ui import DisplayControllerType
+from openlp.core.lib.serviceitem import ItemCapabilities
+from openlp.core.lib.ui import critical_error_message_box
 from openlp.core.ui.icons import UiIcons
 from openlp.core.ui.media import parse_optical_path, format_milliseconds
 from openlp.core.ui.media.vlcplayer import get_vlc
