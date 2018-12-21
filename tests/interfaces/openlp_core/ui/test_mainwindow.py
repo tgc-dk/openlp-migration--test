@@ -47,16 +47,12 @@ class TestMainWindow(TestCase, TestMixin):
         Registry().set_flag('no_web_server', True)
         # Mock classes and methods used by mainwindow.
         with patch('openlp.core.ui.mainwindow.SettingsForm'), \
-                patch('openlp.core.ui.mainwindow.ImageManager'), \
-                patch('openlp.core.ui.mainwindow.LiveController'), \
-                patch('openlp.core.ui.mainwindow.PreviewController'), \
                 patch('openlp.core.ui.mainwindow.OpenLPDockWidget'), \
                 patch('openlp.core.ui.mainwindow.QtWidgets.QToolBox'), \
                 patch('openlp.core.ui.mainwindow.QtWidgets.QMainWindow.addDockWidget'), \
                 patch('openlp.core.ui.mainwindow.ServiceManager'), \
                 patch('openlp.core.ui.mainwindow.ThemeManager'), \
                 patch('openlp.core.ui.mainwindow.ProjectorManager'), \
-                patch('openlp.core.ui.mainwindow.Renderer'), \
                 patch('openlp.core.ui.mainwindow.websockets.WebSocketServer'), \
                 patch('openlp.core.ui.mainwindow.server.HttpServer'):
             self.main_window = MainWindow()
