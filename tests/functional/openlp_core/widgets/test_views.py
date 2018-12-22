@@ -336,8 +336,8 @@ class TestListPreviewWidget(TestCase):
         # Mock text service item
         service_item = MagicMock()
         service_item.is_text.return_value = True
-        service_item.get_frames.return_value = [{'title': None, 'text': None, 'verseTag': CLAPPERBOARD},
-                                                {'title': None, 'text': None, 'verseTag': CLAPPERBOARD}]
+        service_item.get_frames.return_value = [{'title': None, 'text': None, 'verseTag': None},
+                                                {'title': None, 'text': None, 'verseTag': None}]
         # Mock self.cellWidget().children().setMaximumWidth()
         mocked_cellWidget_child = MagicMock()
         mocked_cellWidget_obj = MagicMock()
