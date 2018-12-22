@@ -151,16 +151,16 @@ class TestListPreviewWidget(TestCase):
         mocked_img_service_item.is_media.return_value = False
         mocked_img_service_item.is_command.return_value = False
         mocked_img_service_item.is_capable.return_value = False
-        mocked_img_service_item.get_frames.return_value = [{'title': None, 'path': 'TEST1', 'image': CLAPPERBOARD},
-                                                           {'title': None, 'path': 'TEST2', 'image': CLAPPERBOARD}]
+        mocked_img_service_item.get_frames.return_value = [{'title': None, 'path': 'TEST1', 'image': 'FAIL'},
+                                                           {'title': None, 'path': 'TEST2', 'image': 'FAIL'}]
         # Mock Command service item
         mocked_cmd_service_item = MagicMock()
         mocked_cmd_service_item.is_text.return_value = False
         mocked_cmd_service_item.is_media.return_value = False
         mocked_cmd_service_item.is_command.return_value = True
         mocked_cmd_service_item.is_capable.return_value = True
-        mocked_cmd_service_item.get_frames.return_value = [{'title': None, 'path': 'FAIL', 'image': CLAPPERBOARD},
-                                                           {'title': None, 'path': 'FAIL', 'image': CLAPPERBOARD}]
+        mocked_cmd_service_item.get_frames.return_value = [{'title': None, 'path': 'FAIL', 'image': 'TEST3'},
+                                                           {'title': None, 'path': 'FAIL', 'image': 'TEST4'}]
         # Mock image_manager
         mocked_image_manager.get_image.return_value = QtGui.QImage()
 
@@ -171,7 +171,7 @@ class TestListPreviewWidget(TestCase):
         list_preview_widget.replace_service_item(mocked_img_service_item, 200, 0)
         list_preview_widget.replace_service_item(mocked_cmd_service_item, 200, 0)
 
-        # THEN: The ImageManager should be called in the appriopriate manner for each service item.
+        # THEN: The ImageManager should be called in the appropriate manner for each service item.
         assert mocked_image_manager.get_image.call_count == 4, 'Should be called once for each slide'
         calls = [call('TEST1', ImageSource.ImagePlugin), call('TEST2', ImageSource.ImagePlugin),
                  call('TEST3', ImageSource.CommandPlugins), call('TEST4', ImageSource.CommandPlugins)]
