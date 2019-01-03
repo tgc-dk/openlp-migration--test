@@ -22,7 +22,6 @@
 """
 Package to test the openlp.core.lib.pluginmanager package.
 """
-import gc
 import sys
 from tempfile import mkdtemp
 from unittest import TestCase
@@ -30,6 +29,7 @@ from unittest.mock import MagicMock, patch
 
 from PyQt5 import QtWidgets
 
+from openlp.core.common import is_win
 from openlp.core.common.path import Path
 from openlp.core.common.registry import Registry
 from openlp.core.common.settings import Settings
@@ -61,7 +61,9 @@ class TestPluginManager(TestCase, TestMixin):
         del self.main_window
         # On windows we need to manually garbage collect to close sqlalchemy files
         # to avoid errors when temporary files are deleted.
-        gc.collect()
+        if is_win():
+            import gc
+            gc.collect()
         self.temp_dir_path.rmtree()
 
     @patch('openlp.plugins.songusage.lib.db.init_schema')
@@ -76,7 +78,7 @@ class TestPluginManager(TestCase, TestMixin):
         """
         # GIVEN: A plugin manager
         plugin_manager = PluginManager()
-        plugin_manager.bootstrap_initialise()
+        # plugin_manager.bootstrap_initialise()
 
         # WHEN: We mock out sys.platform to make it return "darwin" and then find the plugins
         old_platform = sys.platform
