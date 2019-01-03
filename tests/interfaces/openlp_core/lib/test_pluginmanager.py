@@ -72,8 +72,7 @@ class TestPluginManager(TestCase, TestMixin):
     @patch('openlp.plugins.images.imagesplugin.Manager')
     @patch('openlp.plugins.custom.customplugin.Manager')
     @patch('openlp.plugins.alerts.alertsplugin.Manager')
-    @patch('openlp.plugins.bibles.bibleplugin.Manager')
-    def test_find_plugins(self, mocked_is1, mocked_is2, mocked_is3, mocked_is4, mocked_is5, mocked_is6):
+    def test_find_plugins(self, mocked_is1, mocked_is2, mocked_is3, mocked_is4, mocked_is5):
         """
         Test the find_plugins() method to ensure it imports the correct plugins
         """
