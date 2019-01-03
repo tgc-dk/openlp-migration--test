@@ -79,11 +79,12 @@ class TestPluginManager(TestCase, TestMixin):
         """
         # GIVEN: A plugin manager
         plugin_manager = PluginManager()
+        plugin_manager.bootstrap_initialise()
 
         # WHEN: We mock out sys.platform to make it return "darwin" and then find the plugins
         old_platform = sys.platform
         sys.platform = 'darwin'
-        plugin_manager.initialise_plugins()
+        #plugin_manager.initialise_plugins()
         sys.platform = old_platform
 
         # THEN: We should find the "Songs", "Bibles", etc in the plugins list
