@@ -33,6 +33,7 @@ from openlp.core.common import is_win
 from openlp.core.common.path import Path
 from openlp.core.common.registry import Registry
 from openlp.core.common.settings import Settings
+from openlp.core.state import State
 from openlp.core.lib.pluginmanager import PluginManager
 from tests.helpers.testmixin import TestMixin
 
@@ -78,7 +79,6 @@ class TestPluginManager(TestCase, TestMixin):
         """
         # GIVEN: A plugin manager
         plugin_manager = PluginManager()
-        # plugin_manager.bootstrap_initialise()
 
         # WHEN: We mock out sys.platform to make it return "darwin" and then find the plugins
         old_platform = sys.platform
@@ -87,7 +87,7 @@ class TestPluginManager(TestCase, TestMixin):
         sys.platform = old_platform
 
         # THEN: We should find the "Songs", "Bibles", etc in the plugins list
-        plugin_names = [plugin.name for plugin in plugin_manager.plugins]
+        plugin_names = [plugin.name for plugin in State().list_plugins()]
         assert 'songs' in plugin_names, 'There should be a "songs" plugin'
         assert 'bibles' in plugin_names, 'There should be a "bibles" plugin'
         assert 'presentations' in plugin_names, 'There should be a "presentations" plugin'
