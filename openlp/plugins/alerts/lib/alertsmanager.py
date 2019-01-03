@@ -38,7 +38,7 @@ class AlertsManager(QtCore.QObject, RegistryBase, LogMixin, RegistryProperties):
     alerts_text = QtCore.pyqtSignal(list)
 
     def __init__(self, parent):
-        super(AlertsManager, self).__init__(parent)
+        super(AlertsManager, self).__init__()
         self.timer_id = 0
         self.alert_list = []
         Registry().register_function('live_display_active', self.generate_alert)
