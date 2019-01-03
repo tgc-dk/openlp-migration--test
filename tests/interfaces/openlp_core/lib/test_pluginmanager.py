@@ -68,11 +68,11 @@ class TestPluginManager(TestCase, TestMixin):
         self.temp_dir_path.rmtree()
 
     @patch('openlp.plugins.songusage.songusageplugin.Manager')
-    @patch('openlp.plugins.songs.lib.db.init_schema')
-    @patch('openlp.plugins.images.lib.db.init_schema')
-    @patch('openlp.plugins.custom.lib.db.init_schema')
-    @patch('openlp.plugins.alerts.lib.db.init_schema')
-    @patch('openlp.plugins.bibles.lib.db.init_schema')
+    @patch('openlp.plugins.songs.songsplugin.Manager')
+    @patch('openlp.plugins.images.imagesplugin.Manager')
+    @patch('openlp.plugins.custom.customplugin.Manager')
+    @patch('openlp.plugins.alerts.alertsplugin.Manager')
+    @patch('openlp.plugins.bibles.biblesplugin.Manager')
     def test_find_plugins(self, mocked_is1, mocked_is2, mocked_is3, mocked_is4, mocked_is5, mocked_is6):
         """
         Test the find_plugins() method to ensure it imports the correct plugins
