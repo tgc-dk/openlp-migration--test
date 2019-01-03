@@ -69,7 +69,7 @@ class TestPluginManager(TestCase, TestMixin):
 
     @patch('openlp.plugins.songusage.songusageplugin.Manager')
     @patch('openlp.plugins.songs.songsplugin.Manager')
-    @patch('openlp.plugins.images.imagesplugin.Manager')
+    @patch('openlp.plugins.images.imageplugin.Manager')
     @patch('openlp.plugins.custom.customplugin.Manager')
     @patch('openlp.plugins.alerts.alertsplugin.Manager')
     def test_find_plugins(self, mocked_is1, mocked_is2, mocked_is3, mocked_is4, mocked_is5):
