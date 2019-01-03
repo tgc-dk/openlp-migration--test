@@ -67,7 +67,7 @@ class TestPluginManager(TestCase, TestMixin):
             gc.collect()
         self.temp_dir_path.rmtree()
 
-    @patch('openlp.plugins.songusage.Manager')
+    @patch('openlp.plugins.songusage.songusageplugin.Manager')
     @patch('openlp.plugins.songs.lib.db.init_schema')
     @patch('openlp.plugins.images.lib.db.init_schema')
     @patch('openlp.plugins.custom.lib.db.init_schema')
