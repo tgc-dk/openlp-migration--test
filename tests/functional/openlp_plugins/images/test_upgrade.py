@@ -70,7 +70,7 @@ class TestImageDBUpgrade(TestCase, TestMixin):
 
         with patch.object(AppLocation, 'get_data_path', return_value=Path('/', 'test', 'dir')):
             # WHEN: Initalising the database manager
-            manager = Manager('images', init_schema, db_file_path=temp_db_name, upgrade_mod=upgrade)
+            manager = Manager('images', init_schema, db_file_path=Path(temp_db_name), upgrade_mod=upgrade)
 
             # THEN: The database should have been upgraded and image_filenames.file_path should return Path objects
             upgraded_results = manager.get_all_objects(ImageFilenames)
