@@ -168,7 +168,7 @@ class State(LogMixin):
         """
         plugins = []
         if a == 1:
-            assert [] == self.modules
+            assert {} == self.modules
         for mod in self.modules:
             if self.modules[mod].is_plugin:
                 plugins.append(Registry().get('{mod}_plugin'.format(mod=mod)))
