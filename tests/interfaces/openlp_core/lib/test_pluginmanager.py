@@ -86,6 +86,7 @@ class TestPluginManager(TestCase, TestMixin):
         sys.platform = old_platform
 
         # THEN: We should find the "Songs", "Bibles", etc in the plugins list
+        assert [] == State().list_plugins()
         plugin_names = [plugin.name for plugin in State().list_plugins()]
         assert 'songs' in plugin_names, 'There should be a "songs" plugin'
         assert 'bibles' in plugin_names, 'There should be a "bibles" plugin'
