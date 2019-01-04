@@ -61,7 +61,7 @@ class OpenLPJobs(object):
     Branch_macOS_Tests = 'Branch-02b-macOS-Tests'
     Branch_Build_Source = 'Branch-03a-Build-Source'
     Branch_Build_macOS = 'Branch-03b-Build-macOS'
-    Branch_Code_Analysis = 'Branch-04a-Code-Analysis'
+    Branch_Code_Analysis = 'Branch-04a-Code-Lint'
     Branch_Test_Coverage = 'Branch-04b-Test-Coverage'
     Branch_Lint_Check = 'Branch-04c-Lint-Check'
     Branch_AppVeyor_Tests = 'Branch-05-AppVeyor-Tests'
