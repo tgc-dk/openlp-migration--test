@@ -168,6 +168,6 @@ class State(LogMixin):
         """
         plugins = []
         for mod in self.modules:
-            if self.modules[mod].is_plugin:
+            if mod and self.modules[mod].is_plugin:
                 plugins.append(Registry().get('{mod}_plugin'.format(mod=mod)))
         return plugins
