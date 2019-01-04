@@ -161,14 +161,12 @@ class State(LogMixin):
             mod = self.modules[name].requires
             return self.modules[mod].pass_preconditions
 
-    def list_plugins(self, a=None):
+    def list_plugins(self):
         """
         Return a list of plugins
         :return: an array of plugins
         """
         plugins = []
-        if a == 1:
-            assert {} == self.modules
         for mod in self.modules:
             if self.modules[mod].is_plugin:
                 plugins.append(Registry().get('{mod}_plugin'.format(mod=mod)))
