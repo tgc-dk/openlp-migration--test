@@ -170,7 +170,7 @@ class PluginManager(RegistryBase, LogMixin, RegistryProperties):
         display_text = ''
         if uninitialised_plugins:
             display_text = translate('OpenLP.PluginManager', 'Unable to initialise the following plugins:') + \
-                           '\n\n'.join(uninitialised_plugins) + '\n\n'
+                '\n\n'.join(uninitialised_plugins) + '\n\n'
         error_text = State().get_text()
         if error_text:
             display_text = display_text + error_text + '\n'
