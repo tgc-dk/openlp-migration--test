@@ -641,8 +641,8 @@ class SongMediaItem(MediaManagerItem):
                 service_item.background_audio = [m.file_path for m in song.media_files]
                 service_item.set_media_length(total_length)
                 service_item.metadata.append('<em>{label}:</em> {media}'.
-                                     format(label=translate('SongsPlugin.MediaItem', 'Media'),
-                                            media=service_item.background_audio))
+                                             format(label=translate('SongsPlugin.MediaItem', 'Media'),
+                                                    media=service_item.background_audio))
             else:
                 critical_error_message_box(
                     translate('SongsPlugin.MediaItem', 'Missing Audio Software'),

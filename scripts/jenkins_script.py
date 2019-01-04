@@ -103,7 +103,7 @@ class JenkinsTrigger(object):
                 job_info = self.server.get_job_info(job_name)
                 self.jobs[job_name] = job_info
                 self.jobs[job_name]['nextBuildUrl'] = '{url}{nextBuildNumber}/'.format(**job_info)
-            except:
+            except Exception:
                 pass
 
     def trigger_build(self):

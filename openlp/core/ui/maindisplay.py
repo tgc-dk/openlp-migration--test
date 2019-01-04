@@ -30,7 +30,7 @@ Some of the code for this form is based on the examples at:
 import html
 import logging
 
-from PyQt5 import QtCore, QtWidgets, QtWebKit, QtWebKitWidgets, QtGui, QtMultimedia
+from PyQt5 import QtCore, QtWidgets, QtWebKit, QtWebKitWidgets, QtGui
 
 from openlp.core.common import is_macosx, is_win
 from openlp.core.common.applocation import AppLocation

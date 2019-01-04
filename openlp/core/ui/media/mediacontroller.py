@@ -474,7 +474,7 @@ class MediaController(RegistryBase, LogMixin, RegistryProperties):
                 file = str(file)
                 if suffix in player.video_extensions_list:
                     if not controller.media_info.is_background or controller.media_info.is_background and \
-                           player.can_background:
+                            player.can_background:
                         self.resize(display, player)
                         if player.load(display, file):
                             self.current_media_players[controller.controller_type] = player

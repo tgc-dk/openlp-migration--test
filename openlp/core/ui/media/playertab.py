@@ -201,7 +201,7 @@ class PlayerTab(SettingsTab):
         """
         if self.saved_used_players:
             self.used_players = self.saved_used_players
-        self.used_players = get_media_players()[0]
+        # self.used_players = get_media_players()[0]
         self.saved_used_players = self.used_players
         settings = Settings()
         settings.beginGroup(self.settings_section)
@@ -219,13 +219,13 @@ class PlayerTab(SettingsTab):
         settings.beginGroup(self.settings_section)
         settings.setValue('background color', self.background_color)
         settings.endGroup()
-        old_players, override_player = get_media_players()
-        if self.used_players != old_players:
-            # clean old Media stuff
-            set_media_players(self.used_players, override_player)
-            self.settings_form.register_post_process('mediaitem_suffix_reset')
-            self.settings_form.register_post_process('mediaitem_media_rebuild')
-            self.settings_form.register_post_process('config_screen_changed')
+        # old_players, override_player = get_media_players()
+        # if self.used_players != old_players:
+        #     # clean old Media stuff
+        #     set_media_players(self.used_players, override_player)
+        #     self.settings_form.register_post_process('mediaitem_suffix_reset')
+        #     self.settings_form.register_post_process('mediaitem_media_rebuild')
+        #     self.settings_form.register_post_process('config_screen_changed')
 
     def post_set_up(self, post_update=False):
         """

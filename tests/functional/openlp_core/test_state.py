@@ -113,7 +113,7 @@ class TestState(TestCase, TestMixin):
     def test_basic_preconditions_fail(self):
         # GIVEN a new state
         State().load_settings()
-        plugin = Registry().register('test_plugin', MagicMock())
+        Registry().register('test_plugin', MagicMock())
 
         # WHEN I add a new services with dependencies and a failed pre condition
         State().add_service("test", 1, 1, PluginStatus.Inactive)
