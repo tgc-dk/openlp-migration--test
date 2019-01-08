@@ -23,8 +23,8 @@
 """
 The :mod:`core` module provides state management
 
-All the core functions of the OpenLP application including the GUI, settings,
-logging and a plugin framework are contained within the openlp.core module.
+All the core functions of the OpenLP application including the GUI, settings, logging and a plugin framework are
+contained within the openlp.core module.
 """
 import logging
 
@@ -39,6 +39,7 @@ log = logging.getLogger()
 class StateModule(LogMixin):
     def __init__(self):
         """
+        Holder of State information per module
         """
         super(StateModule, self).__init__()
         self.name = None
@@ -71,7 +72,7 @@ class State(LogMixin):
 
     def add_service(self, name, order, is_plugin=False, status=PluginStatus.Active, requires=None):
         """
-        Add a module to the array and lod dependancies.  There will only be one item per module
+        Add a module to the array and load dependencies.  There will only be one item per module
         :param name: Module name
         :param order: Order to display
         :param is_plugin: Am I a plugin
@@ -150,10 +151,11 @@ class State(LogMixin):
 
     def check_preconditions(self, name):
         """
-        Checks is a modules preconditions have been met and that of a required by module
+        Checks if a modules preconditions have been met.
 
         :param name: Module name
-        :return: True / False
+        :return: Have the preconditions been met.
+        :rtype: bool
         """
         if self.modules[name].requires is None:
             return self.modules[name].pass_preconditions
