@@ -643,11 +643,6 @@ class SongMediaItem(MediaManagerItem):
                 service_item.metadata.append('<em>{label}:</em> {media}'.
                                              format(label=translate('SongsPlugin.MediaItem', 'Media'),
                                                     media=service_item.background_audio))
-            else:
-                critical_error_message_box(
-                    translate('SongsPlugin.MediaItem', 'Missing Audio Software'),
-                    translate('SongsPlugin.MediaItem',
-                              'Unable to play background music for Song and audio is not configured'))
         return True
 
     def generate_footer(self, item, song):
