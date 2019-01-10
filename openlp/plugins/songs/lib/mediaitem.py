@@ -36,7 +36,7 @@ from openlp.core.lib import ServiceItemContext, check_item_selected, create_sepa
 from openlp.core.lib.mediamanageritem import MediaManagerItem
 from openlp.core.lib.plugin import PluginStatus
 from openlp.core.lib.serviceitem import ItemCapabilities
-from openlp.core.lib.ui import create_widget_action, critical_error_message_box
+from openlp.core.lib.ui import create_widget_action
 from openlp.plugins.songs.forms.editsongform import EditSongForm
 from openlp.plugins.songs.forms.songexportform import SongExportForm
 from openlp.plugins.songs.forms.songimportform import SongImportForm
