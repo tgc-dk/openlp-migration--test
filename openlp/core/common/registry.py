@@ -203,6 +203,7 @@ class RegistryBase(object):
         Registry().register(de_hump(self.__class__.__name__), self)
         Registry().register_function('bootstrap_initialise', self.bootstrap_initialise)
         Registry().register_function('bootstrap_post_set_up', self.bootstrap_post_set_up)
+        Registry().register_function('bootstrap_completion', self.bootstrap_completion)
 
     def bootstrap_initialise(self):
         """
@@ -211,6 +212,12 @@ class RegistryBase(object):
         pass
 
     def bootstrap_post_set_up(self):
+        """
+        Dummy method to be overridden
+        """
+        pass
+
+    def bootstrap_completion(self):
         """
         Dummy method to be overridden
         """

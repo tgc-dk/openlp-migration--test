@@ -27,11 +27,13 @@ from pathlib import Path
 from unittest import TestCase
 from unittest.mock import MagicMock, patch
 
-from PyQt5 import QtCore, QtWidgets
+from PyQt5 import QtGui, QtCore, QtWidgets
 
+from openlp.core.state import State
 from openlp.core.common.i18n import UiStrings
 from openlp.core.common.registry import Registry
 from openlp.core.display.screens import ScreenList
+from openlp.core.lib.plugin import PluginStatus
 from openlp.core.ui.mainwindow import MainWindow
 from tests.helpers.testmixin import TestMixin
 from tests.utils.constants import TEST_RESOURCES_PATH
@@ -68,6 +70,11 @@ class TestMainWindow(TestCase, TestMixin):
         self.add_toolbar_action_patcher = patch('openlp.core.ui.mainwindow.create_action')
         self.mocked_add_toolbar_action = self.add_toolbar_action_patcher.start()
         self.mocked_add_toolbar_action.side_effect = self._create_mock_action
+        mocked_plugin = MagicMock()
+        mocked_plugin.status = PluginStatus.Active
+        mocked_plugin.icon = QtGui.QIcon()
+        Registry().register('mock_plugin', mocked_plugin)
+        State().add_service("mock", 1, is_plugin=True, status=PluginStatus.Active)
         with patch('openlp.core.display.screens.ScreenList.__instance__', spec=ScreenList) as mocked_screen_list:
             mocked_screen_list.current = {'number': 0, 'size': QtCore.QSize(600, 800), 'primary': True}
             self.main_window = MainWindow()
@@ -155,14 +162,12 @@ class TestMainWindow(TestCase, TestMixin):
         # WHEN: you check the started functions
 
         # THEN: the following registry functions should have been registered
-        assert len(self.registry.service_list) == 13, \
-            'The registry should have 12 services, got {}'.format(self.registry.service_list.keys())
-        assert len(self.registry.functions_list) == 19, \
-            'The registry should have 19 functions, got {}'.format(self.registry.functions_list.keys())
+        assert len(self.registry.service_list) == 8, \
+            'The registry should have 8 services, got {}'.format(self.registry.service_list.keys())
+        assert len(self.registry.functions_list) == 5, \
+            'The registry should have 5 functions, got {}'.format(self.registry.functions_list.keys())
         assert 'application' in self.registry.service_list, 'The application should have been registered.'
         assert 'main_window' in self.registry.service_list, 'The main_window should have been registered.'
-        assert 'media_controller' in self.registry.service_list, 'The media_controller should have been registered.'
-        assert 'plugin_manager' in self.registry.service_list, 'The plugin_manager should have been registered.'
 
     def test_projector_manager_hidden_on_startup(self):
         """

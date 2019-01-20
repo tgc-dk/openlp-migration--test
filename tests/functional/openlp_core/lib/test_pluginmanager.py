@@ -25,6 +25,7 @@ Package to test the openlp.core.lib.pluginmanager package.
 from unittest import TestCase
 from unittest.mock import MagicMock, patch
 
+from openlp.core.state import State
 from openlp.core.common.registry import Registry
 from openlp.core.common.settings import Settings
 from openlp.core.lib.plugin import PluginStatus
@@ -46,6 +47,7 @@ class TestPluginManager(TestCase):
         self.mocked_main_window.file_export_menu.return_value = None
         self.mocked_settings_form = MagicMock()
         Registry.create()
+        State().load_settings()
         Registry().register('service_list', MagicMock())
         Registry().register('main_window', self.mocked_main_window)
         Registry().register('settings_form', self.mocked_settings_form)
@@ -57,8 +59,7 @@ class TestPluginManager(TestCase):
         # GIVEN: A plugin manager with some mocked out methods
         manager = PluginManager()
 
-        with patch.object(manager, 'find_plugins') as mocked_find_plugins, \
-                patch.object(manager, 'hook_settings_tabs') as mocked_hook_settings_tabs, \
+        with patch.object(manager, 'hook_settings_tabs') as mocked_hook_settings_tabs, \
                 patch.object(manager, 'hook_media_manager') as mocked_hook_media_manager, \
                 patch.object(manager, 'hook_import_menu') as mocked_hook_import_menu, \
                 patch.object(manager, 'hook_export_menu') as mocked_hook_export_menu, \
@@ -66,9 +67,9 @@ class TestPluginManager(TestCase):
                 patch.object(manager, 'initialise_plugins') as mocked_initialise_plugins:
             # WHEN: bootstrap_initialise() is called
             manager.bootstrap_initialise()
+            manager.bootstrap_post_set_up()
 
         # THEN: The hook methods should have been called
-        mocked_find_plugins.assert_called_with()
         mocked_hook_settings_tabs.assert_called_with()
         mocked_hook_media_manager.assert_called_with()
         mocked_hook_import_menu.assert_called_with()
@@ -84,7 +85,9 @@ class TestPluginManager(TestCase):
         mocked_plugin = MagicMock()
         mocked_plugin.status = PluginStatus.Disabled
         plugin_manager = PluginManager()
-        plugin_manager.plugins = [mocked_plugin]
+        Registry().register('mock_plugin', mocked_plugin)
+        State().add_service("mock", 1, is_plugin=True, status=PluginStatus.Disabled)
+        State().flush_preconditions()
 
         # WHEN: We run hook_media_manager()
         plugin_manager.hook_media_manager()
@@ -101,7 +104,9 @@ class TestPluginManager(TestCase):
         mocked_plugin = MagicMock()
         mocked_plugin.status = PluginStatus.Active
         plugin_manager = PluginManager()
-        plugin_manager.plugins = [mocked_plugin]
+        Registry().register('mock_plugin', mocked_plugin)
+        State().add_service("mock", 1, is_plugin=True, status=PluginStatus.Active)
+        State().flush_preconditions()
 
         # WHEN: We run hook_media_manager()
         plugin_manager.hook_media_manager()
@@ -117,7 +122,9 @@ class TestPluginManager(TestCase):
         mocked_plugin = MagicMock()
         mocked_plugin.status = PluginStatus.Disabled
         plugin_manager = PluginManager()
-        plugin_manager.plugins = [mocked_plugin]
+        Registry().register('mock_plugin', mocked_plugin)
+        State().add_service("mock", 1, is_plugin=True, status=PluginStatus.Active)
+        State().flush_preconditions()
 
         # WHEN: We run hook_settings_tabs()
         plugin_manager.hook_settings_tabs()
@@ -134,10 +141,12 @@ class TestPluginManager(TestCase):
         mocked_plugin = MagicMock()
         mocked_plugin.status = PluginStatus.Disabled
         plugin_manager = PluginManager()
-        plugin_manager.plugins = [mocked_plugin]
+        Registry().register('mock_plugin', mocked_plugin)
         mocked_settings_form = MagicMock()
         # Replace the autoloaded plugin with the version for testing in real code this would error
         mocked_settings_form.plugin_manager = plugin_manager
+        State().add_service("mock", 1, is_plugin=True, status=PluginStatus.Active)
+        State().flush_preconditions()
 
         # WHEN: We run hook_settings_tabs()
         plugin_manager.hook_settings_tabs()
@@ -156,10 +165,12 @@ class TestPluginManager(TestCase):
         mocked_plugin = MagicMock()
         mocked_plugin.status = PluginStatus.Active
         plugin_manager = PluginManager()
-        plugin_manager.plugins = [mocked_plugin]
+        Registry().register('mock_plugin', mocked_plugin)
         mocked_settings_form = MagicMock()
         # Replace the autoloaded plugin with the version for testing in real code this would error
         mocked_settings_form.plugin_manager = plugin_manager
+        State().add_service("mock", 1, is_plugin=True, status=PluginStatus.Active)
+        State().flush_preconditions()
 
         # WHEN: We run hook_settings_tabs()
         plugin_manager.hook_settings_tabs()
@@ -178,7 +189,9 @@ class TestPluginManager(TestCase):
         mocked_plugin = MagicMock()
         mocked_plugin.status = PluginStatus.Active
         plugin_manager = PluginManager()
-        plugin_manager.plugins = [mocked_plugin]
+        Registry().register('mock_plugin', mocked_plugin)
+        State().add_service("mock", 1, is_plugin=True, status=PluginStatus.Active)
+        State().flush_preconditions()
 
         # WHEN: We run hook_settings_tabs()
         plugin_manager.hook_settings_tabs()
@@ -194,7 +207,9 @@ class TestPluginManager(TestCase):
         mocked_plugin = MagicMock()
         mocked_plugin.status = PluginStatus.Disabled
         plugin_manager = PluginManager()
-        plugin_manager.plugins = [mocked_plugin]
+        Registry().register('mock_plugin', mocked_plugin)
+        State().add_service("mock", 1, is_plugin=True, status=PluginStatus.Active)
+        State().flush_preconditions()
 
         # WHEN: We run hook_import_menu()
         plugin_manager.hook_import_menu()
@@ -211,7 +226,9 @@ class TestPluginManager(TestCase):
         mocked_plugin = MagicMock()
         mocked_plugin.status = PluginStatus.Active
         plugin_manager = PluginManager()
-        plugin_manager.plugins = [mocked_plugin]
+        Registry().register('mock_plugin', mocked_plugin)
+        State().add_service("mock", 1, is_plugin=True, status=PluginStatus.Active)
+        State().flush_preconditions()
 
         # WHEN: We run hook_import_menu()
         plugin_manager.hook_import_menu()
@@ -227,7 +244,9 @@ class TestPluginManager(TestCase):
         mocked_plugin = MagicMock()
         mocked_plugin.status = PluginStatus.Disabled
         plugin_manager = PluginManager()
-        plugin_manager.plugins = [mocked_plugin]
+        Registry().register('mock_plugin', mocked_plugin)
+        State().add_service("mock", 1, is_plugin=True, status=PluginStatus.Active)
+        State().flush_preconditions()
 
         # WHEN: We run hook_export_menu()
         plugin_manager.hook_export_menu()
@@ -244,7 +263,9 @@ class TestPluginManager(TestCase):
         mocked_plugin = MagicMock()
         mocked_plugin.status = PluginStatus.Active
         plugin_manager = PluginManager()
-        plugin_manager.plugins = [mocked_plugin]
+        Registry().register('mock_plugin', mocked_plugin)
+        State().add_service("mock", 1, is_plugin=True, status=PluginStatus.Active)
+        State().flush_preconditions()
 
         # WHEN: We run hook_export_menu()
         plugin_manager.hook_export_menu()
@@ -260,7 +281,9 @@ class TestPluginManager(TestCase):
         mocked_plugin = MagicMock()
         mocked_plugin.status = PluginStatus.Disabled
         plugin_manager = PluginManager()
-        plugin_manager.plugins = [mocked_plugin]
+        Registry().register('mock_plugin', mocked_plugin)
+        State().add_service("mock", 1, is_plugin=True, status=PluginStatus.Active)
+        State().flush_preconditions()
         settings = Settings()
 
         # WHEN: We run hook_upgrade_plugin_settings()
@@ -278,7 +301,9 @@ class TestPluginManager(TestCase):
         mocked_plugin = MagicMock()
         mocked_plugin.status = PluginStatus.Active
         plugin_manager = PluginManager()
-        plugin_manager.plugins = [mocked_plugin]
+        Registry().register('mock_plugin', mocked_plugin)
+        State().add_service("mock", 1, is_plugin=True, status=PluginStatus.Active)
+        State().flush_preconditions()
         settings = Settings()
 
         # WHEN: We run hook_upgrade_plugin_settings()
@@ -295,7 +320,9 @@ class TestPluginManager(TestCase):
         mocked_plugin = MagicMock()
         mocked_plugin.status = PluginStatus.Disabled
         plugin_manager = PluginManager()
-        plugin_manager.plugins = [mocked_plugin]
+        Registry().register('mock_plugin', mocked_plugin)
+        State().add_service("mock", 1, is_plugin=True, status=PluginStatus.Active)
+        State().flush_preconditions()
 
         # WHEN: We run hook_tools_menu()
         plugin_manager.hook_tools_menu()
@@ -312,7 +339,9 @@ class TestPluginManager(TestCase):
         mocked_plugin = MagicMock()
         mocked_plugin.status = PluginStatus.Active
         plugin_manager = PluginManager()
-        plugin_manager.plugins = [mocked_plugin]
+        Registry().register('mock_plugin', mocked_plugin)
+        State().add_service("mock", 1, is_plugin=True, status=PluginStatus.Active)
+        State().flush_preconditions()
 
         # WHEN: We run hook_tools_menu()
         plugin_manager.hook_tools_menu()
@@ -329,7 +358,9 @@ class TestPluginManager(TestCase):
         mocked_plugin.status = PluginStatus.Disabled
         mocked_plugin.is_active.return_value = False
         plugin_manager = PluginManager()
-        plugin_manager.plugins = [mocked_plugin]
+        Registry().register('mock_plugin', mocked_plugin)
+        State().add_service("mock", 1, is_plugin=True, status=PluginStatus.Active)
+        State().flush_preconditions()
 
         # WHEN: We run initialise_plugins()
         plugin_manager.initialise_plugins()
@@ -347,7 +378,9 @@ class TestPluginManager(TestCase):
         mocked_plugin.status = PluginStatus.Active
         mocked_plugin.is_active.return_value = True
         plugin_manager = PluginManager()
-        plugin_manager.plugins = [mocked_plugin]
+        Registry().register('mock_plugin', mocked_plugin)
+        State().add_service("mock", 1, is_plugin=True, status=PluginStatus.Active)
+        State().flush_preconditions()
 
         # WHEN: We run initialise_plugins()
         plugin_manager.initialise_plugins()
@@ -365,7 +398,9 @@ class TestPluginManager(TestCase):
         mocked_plugin.status = PluginStatus.Disabled
         mocked_plugin.is_active.return_value = False
         plugin_manager = PluginManager()
-        plugin_manager.plugins = [mocked_plugin]
+        Registry().register('mock_plugin', mocked_plugin)
+        State().add_service("mock", 1, is_plugin=True, status=PluginStatus.Active)
+        State().flush_preconditions()
 
         # WHEN: We run finalise_plugins()
         plugin_manager.finalise_plugins()
@@ -383,7 +418,9 @@ class TestPluginManager(TestCase):
         mocked_plugin.status = PluginStatus.Active
         mocked_plugin.is_active.return_value = True
         plugin_manager = PluginManager()
-        plugin_manager.plugins = [mocked_plugin]
+        Registry().register('mock_plugin', mocked_plugin)
+        State().add_service("mock", 1, is_plugin=True, status=PluginStatus.Active)
+        State().flush_preconditions()
 
         # WHEN: We run finalise_plugins()
         plugin_manager.finalise_plugins()
@@ -400,7 +437,9 @@ class TestPluginManager(TestCase):
         mocked_plugin = MagicMock()
         mocked_plugin.name = 'Mocked Plugin'
         plugin_manager = PluginManager()
-        plugin_manager.plugins = [mocked_plugin]
+        Registry().register('mock_plugin', mocked_plugin)
+        State().add_service("mock", 1, is_plugin=True, status=PluginStatus.Active)
+        State().flush_preconditions()
 
         # WHEN: We run finalise_plugins()
         result = plugin_manager.get_plugin_by_name('Missing Plugin')
@@ -416,7 +455,9 @@ class TestPluginManager(TestCase):
         mocked_plugin = MagicMock()
         mocked_plugin.name = 'Mocked Plugin'
         plugin_manager = PluginManager()
-        plugin_manager.plugins = [mocked_plugin]
+        Registry().register('mock_plugin', mocked_plugin)
+        State().add_service("mock", 1, is_plugin=True, status=PluginStatus.Active)
+        State().flush_preconditions()
 
         # WHEN: We run finalise_plugins()
         result = plugin_manager.get_plugin_by_name('Mocked Plugin')
@@ -433,7 +474,9 @@ class TestPluginManager(TestCase):
         mocked_plugin.status = PluginStatus.Disabled
         mocked_plugin.is_active.return_value = False
         plugin_manager = PluginManager()
-        plugin_manager.plugins = [mocked_plugin]
+        Registry().register('mock_plugin', mocked_plugin)
+        State().add_service("mock", 1, is_plugin=True, status=PluginStatus.Active)
+        State().flush_preconditions()
 
         # WHEN: We run finalise_plugins()
         plugin_manager.new_service_created()
@@ -452,7 +495,9 @@ class TestPluginManager(TestCase):
         mocked_plugin.status = PluginStatus.Active
         mocked_plugin.is_active.return_value = True
         plugin_manager = PluginManager()
-        plugin_manager.plugins = [mocked_plugin]
+        Registry().register('mock_plugin', mocked_plugin)
+        State().add_service("mock", 1, is_plugin=True, status=PluginStatus.Active)
+        State().flush_preconditions()
 
         # WHEN: We run new_service_created()
         plugin_manager.new_service_created()

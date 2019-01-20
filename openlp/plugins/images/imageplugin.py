@@ -24,6 +24,7 @@ import logging
 
 from PyQt5 import QtGui
 
+from openlp.core.state import State
 from openlp.core.api.http import register_endpoint
 from openlp.core.common.i18n import translate
 from openlp.core.ui.icons import UiIcons
@@ -61,6 +62,8 @@ class ImagePlugin(Plugin):
         self.icon = build_icon(self.icon_path)
         register_endpoint(images_endpoint)
         register_endpoint(api_images_endpoint)
+        State().add_service('image', self.weight, is_plugin=True)
+        State().update_pre_conditions('image', self.check_pre_conditions())
 
     @staticmethod
     def about():

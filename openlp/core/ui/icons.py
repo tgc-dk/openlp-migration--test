@@ -78,7 +78,7 @@ class UiIcons(object):
             'book': {'icon': 'fa.book'},
             'bottom': {'icon': 'fa.angle-double-down'},
             'box': {'icon': 'fa.briefcase'},
-            'clapperboard': {'icon': 'fa.chess-board'},
+            'clapperboard': {'icon': 'fa.film'},
             'clock': {'icon': 'fa.clock-o'},
             'clone': {'icon': 'fa.clone'},
             'close': {'icon': 'fa.times-circle-o'},

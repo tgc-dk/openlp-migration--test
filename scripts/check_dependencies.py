@@ -88,7 +88,8 @@ MODULES = [
     'waitress',
     'webob',
     'requests',
-    'qtawesome'
+    'qtawesome',
+    'pymediainfo'
 ]
 
 

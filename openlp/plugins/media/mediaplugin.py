@@ -23,16 +23,13 @@
 The Media plugin
 """
 import logging
-import re
 
 from PyQt5 import QtCore
 
+from openlp.core.state import State
 from openlp.core.api.http import register_endpoint
-from openlp.core.common import check_binary_exists
-from openlp.core.common.applocation import AppLocation
 from openlp.core.common.i18n import translate
 from openlp.core.ui.icons import UiIcons
-from openlp.core.common.path import Path
 from openlp.core.lib import build_icon
 from openlp.core.lib.plugin import Plugin, StringContent
 from openlp.plugins.media.endpoint import api_media_endpoint, media_endpoint
@@ -65,25 +62,14 @@ class MediaPlugin(Plugin):
         self.dnd_id = 'Media'
         register_endpoint(media_endpoint)
         register_endpoint(api_media_endpoint)
+        State().add_service(self.name, self.weight, requires='mediacontroller', is_plugin=True)
+        State().update_pre_conditions(self.name, self.check_pre_conditions())
 
     def initialise(self):
         """
         Override the inherited initialise() method in order to upgrade the media before trying to load it
         """
         super().initialise()
-
-    def check_pre_conditions(self):
-        """
-        Check it we have a valid environment.
-        :return: true or false
-        """
-        log.debug('check_installed Mediainfo')
-        # Try to find mediainfo in the path
-        exists = process_check_binary(Path('mediainfo'))
-        # If mediainfo is not in the path, try to find it in the application folder
-        if not exists:
-            exists = process_check_binary(AppLocation.get_directory(AppLocation.AppDir) / 'mediainfo')
-        return exists
 
     def app_startup(self):
         """
@@ -142,38 +128,3 @@ class MediaPlugin(Plugin):
         log.info('Media Finalising')
         self.media_controller.finalise()
         Plugin.finalise(self)
-
-    def get_display_css(self):
-        """
-        Add css style sheets to htmlbuilder.
-        """
-        return self.media_controller.get_media_display_css()
-
-    def get_display_javascript(self):
-        """
-        Add javascript functions to htmlbuilder.
-        """
-        return self.media_controller.get_media_display_javascript()
-
-    def get_display_html(self):
-        """
-        Add html code to htmlbuilder.
-        """
-        return self.media_controller.get_media_display_html()
-
-
-def process_check_binary(program_path):
-    """
-    Function that checks whether a binary MediaInfo is present
-
-    :param openlp.core.common.path.Path program_path:The full path to the binary to check.
-    :return: If exists or not
-    :rtype: bool
-    """
-    runlog = check_binary_exists(program_path)
-    # Analyse the output to see it the program is mediainfo
-    for line in runlog.splitlines():
-        decoded_line = line.decode()
-        if re.search('MediaInfo Command line', decoded_line, re.IGNORECASE):
-            return True
-    return False

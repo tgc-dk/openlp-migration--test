@@ -30,6 +30,7 @@ from tempfile import gettempdir
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
+from openlp.core.state import State
 from openlp.core.api import websockets
 from openlp.core.api.http import server
 from openlp.core.common import is_win, is_macosx, add_actions
@@ -41,11 +42,8 @@ from openlp.core.common.mixins import LogMixin, RegistryProperties
 from openlp.core.common.path import Path, copyfile, create_paths
 from openlp.core.common.registry import Registry
 from openlp.core.common.settings import Settings
-from openlp.core.display.renderer import Renderer
 from openlp.core.display.screens import ScreenList
-from openlp.core.lib.imagemanager import ImageManager
 from openlp.core.lib.plugin import PluginStatus
-from openlp.core.lib.pluginmanager import PluginManager
 from openlp.core.lib.ui import create_action
 from openlp.core.projectors.manager import ProjectorManager
 from openlp.core.ui.shortcutlistform import ShortcutListForm
@@ -54,10 +52,8 @@ from openlp.core.ui.thememanager import ThemeManager
 from openlp.core.ui.servicemanager import ServiceManager
 from openlp.core.ui.aboutform import AboutForm
 from openlp.core.ui.pluginform import PluginForm
-from openlp.core.ui.slidecontroller import LiveController, PreviewController
 from openlp.core.ui.settingsform import SettingsForm
 from openlp.core.ui.firsttimeform import FirstTimeForm
-from openlp.core.ui.media.mediacontroller import MediaController
 from openlp.core.ui.printserviceform import PrintServiceForm
 from openlp.core.ui.style import PROGRESSBAR_STYLE, get_library_stylesheet
 from openlp.core.version import get_version
@@ -90,9 +86,6 @@ class Ui_MainWindow(object):
         self.control_splitter.setOrientation(QtCore.Qt.Horizontal)
         self.control_splitter.setObjectName('control_splitter')
         self.main_content_layout.addWidget(self.control_splitter)
-        # Create slide controllers
-        PreviewController(self)
-        LiveController(self)
         preview_visible = Settings().value('user interface/preview panel')
         live_visible = Settings().value('user interface/live panel')
         panel_locked = Settings().value('user interface/lock panel')
@@ -501,16 +494,11 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow, LogMixin, RegistryPropert
         self.copy_data = False
         Settings().set_up_default_values()
         self.about_form = AboutForm(self)
-        MediaController()
         self.ws_server = websockets.WebSocketServer()
         self.http_server = server.HttpServer(self)
         SettingsForm(self)
         self.formatting_tag_form = FormattingTagForm(self)
         self.shortcut_form = ShortcutListForm(self)
-        # Set up the path with plugins
-        PluginManager(self)
-        ImageManager()
-        Renderer()
         # Set up the interface
         self.setupUi(self)
         # Define the media Dock Manager
@@ -660,22 +648,12 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow, LogMixin, RegistryPropert
             self.set_view_mode(False, True, False, False, True, True)
             self.mode_live_item.setChecked(True)
 
-    def app_startup(self):
-        """
-        Give all the plugins a chance to perform some tasks at startup
-        """
-        self.application.process_events()
-        for plugin in self.plugin_manager.plugins:
-            if plugin.is_active():
-                plugin.app_startup()
-                self.application.process_events()
-
     def first_time(self):
         """
         Import themes if first time
         """
         self.application.process_events()
-        for plugin in self.plugin_manager.plugins:
+        for plugin in State().list_plugins():
             if hasattr(plugin, 'first_time'):
                 self.application.process_events()
                 plugin.first_time()
@@ -713,7 +691,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow, LogMixin, RegistryPropert
             self.projector_manager_dock.setVisible(True)
         else:
             self.projector_manager_dock.setVisible(False)
-        for plugin in self.plugin_manager.plugins:
+        for plugin in State().list_plugins():
             self.active_plugin = plugin
             old_status = self.active_plugin.status
             self.active_plugin.set_status()
@@ -887,7 +865,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow, LogMixin, RegistryPropert
         setting_sections.extend([self.header_section])
         setting_sections.extend(['crashreport'])
         # Add plugin sections.
-        setting_sections.extend([plugin.name for plugin in self.plugin_manager.plugins])
+        setting_sections.extend([plugin.name for plugin in State().list_plugins()])
         # Copy the settings file to the tmp dir, because we do not want to change the original one.
         temp_dir_path = Path(gettempdir(), 'openlp')
         create_paths(temp_dir_path)

@@ -25,13 +25,19 @@ related to playing media, such as sliders.
 """
 import datetime
 import logging
-import os
 
+try:
+    from pymediainfo import MediaInfo
+    pymediainfo_available = True
+except ImportError:
+    pymediainfo_available = False
+
+from subprocess import check_output
 from PyQt5 import QtCore, QtWidgets
 
+from openlp.core.state import State
 from openlp.core.api.http import register_endpoint
-from openlp.core.common import extension_loader
-from openlp.core.common.i18n import UiStrings, translate
+from openlp.core.common.i18n import translate
 from openlp.core.common.mixins import LogMixin, RegistryProperties
 from openlp.core.common.registry import Registry, RegistryBase
 from openlp.core.common.settings import Settings
@@ -39,11 +45,9 @@ from openlp.core.lib.serviceitem import ItemCapabilities
 from openlp.core.lib.ui import critical_error_message_box
 from openlp.core.ui import DisplayControllerType
 from openlp.core.ui.icons import UiIcons
-from openlp.core.ui.media import MediaState, MediaInfo, MediaType, get_media_players, set_media_players, \
-    parse_optical_path
+from openlp.core.ui.media import MediaState, ItemMediaInfo, MediaType, parse_optical_path
 from openlp.core.ui.media.endpoint import media_endpoint
-from openlp.core.ui.media.mediaplayer import MediaPlayer
-from openlp.core.ui.media.vendor.mediainfoWrapper import MediaInfoWrapper
+from openlp.core.ui.media.vlcplayer import VlcPlayer, get_vlc
 from openlp.core.widgets.toolbar import OpenLPToolbar
 
 log = logging.getLogger(__name__)
@@ -62,7 +66,6 @@ class MediaSlider(QtWidgets.QSlider):
         super(MediaSlider, self).__init__(direction)
         self.manager = manager
         self.controller = controller
-        self.no_matching_player = translate('MediaPlugin.MediaItem', 'File %s not supported using player %s')
 
     def mouseMoveEvent(self, event):
         """
@@ -77,7 +80,6 @@ class MediaSlider(QtWidgets.QSlider):
     def mousePressEvent(self, event):
         """
         Mouse Press event no new functionality
-
         :param event: The triggering event
         """
         QtWidgets.QSlider.mousePressEvent(self, event)
@@ -110,7 +112,9 @@ class MediaController(RegistryBase, LogMixin, RegistryProperties):
         Constructor
         """
         super(MediaController, self).__init__(parent)
-        self.media_players = {}
+
+    def setup(self):
+        self.vlc_player = None
         self.display_controllers = {}
         self.current_media_players = {}
         # Timer for video state
@@ -134,17 +138,8 @@ class MediaController(RegistryBase, LogMixin, RegistryProperties):
         Registry().register_function('songs_hide', self.media_hide)
         Registry().register_function('songs_blank', self.media_blank)
         Registry().register_function('songs_unblank', self.media_unblank)
-        Registry().register_function('mediaitem_media_rebuild', self._set_active_players)
         Registry().register_function('mediaitem_suffixes', self._generate_extensions_lists)
         register_endpoint(media_endpoint)
-
-    def _set_active_players(self):
-        """
-        Set the active players and available media files
-        """
-        saved_players = get_media_players()[0]
-        for player in list(self.media_players.keys()):
-            self.media_players[player].is_active = player in saved_players
 
     def _generate_extensions_lists(self):
         """
@@ -152,52 +147,31 @@ class MediaController(RegistryBase, LogMixin, RegistryProperties):
         """
         suffix_list = []
         self.audio_extensions_list = []
-        for player in list(self.media_players.values()):
-            if player.is_active:
-                for item in player.audio_extensions_list:
-                    if item not in self.audio_extensions_list:
-                        self.audio_extensions_list.append(item)
-                        suffix_list.append(item[2:])
+        if self.vlc_player.is_active:
+            for item in self.vlc_player.audio_extensions_list:
+                if item not in self.audio_extensions_list:
+                    self.audio_extensions_list.append(item)
+                    suffix_list.append(item[2:])
         self.video_extensions_list = []
-        for player in list(self.media_players.values()):
-            if player.is_active:
-                for item in player.video_extensions_list:
-                    if item not in self.video_extensions_list:
-                        self.video_extensions_list.append(item)
-                        suffix_list.append(item[2:])
+        if self.vlc_player.is_active:
+            for item in self.vlc_player.video_extensions_list:
+                if item not in self.video_extensions_list:
+                    self.video_extensions_list.append(item)
+                    suffix_list.append(item[2:])
         self.service_manager.supported_suffixes(suffix_list)
-
-    def register_players(self, player):
-        """
-        Register each media Player (Webkit, Phonon, etc) and store
-        for later use
-
-        :param player: Individual player class which has been enabled
-        """
-        self.media_players[player.name] = player
 
     def bootstrap_initialise(self):
         """
         Check to see if we have any media Player's available.
         """
-        controller_dir = os.path.join('core', 'ui', 'media')
-        # Find all files that do not begin with '.' (lp:#1738047) and end with player.py
-        glob_pattern = os.path.join(controller_dir, '[!.]*player.py')
-        extension_loader(glob_pattern, ['mediaplayer.py'])
-        player_classes = MediaPlayer.__subclasses__()
-        for player_class in player_classes:
-            self.register_players(player_class(self))
-        if not self.media_players:
-            return False
-        saved_players, overridden_player = get_media_players()
-        invalid_media_players = \
-            [media_player for media_player in saved_players if media_player not in self.media_players or
-                not self.media_players[media_player].check_available()]
-        if invalid_media_players:
-            for invalidPlayer in invalid_media_players:
-                saved_players.remove(invalidPlayer)
-            set_media_players(saved_players, overridden_player)
-        self._set_active_players()
+        self.setup()
+        self.vlc_player = VlcPlayer(self)
+        State().add_service("mediacontroller", 0)
+        if get_vlc() and pymediainfo_available:
+            State().update_pre_conditions("mediacontroller", True)
+        else:
+            State().missing_text("mediacontroller", translate('OpenLP.SlideController',
+                                 "VLC or pymediainfo are missing, so you are unable to play any media"))
         self._generate_extensions_lists()
         return True
 
@@ -235,36 +209,6 @@ class MediaController(RegistryBase, LogMixin, RegistryProperties):
             if self.display_controllers[DisplayControllerType.Preview].media_info.can_loop_playback:
                 self.media_play(self.display_controllers[DisplayControllerType.Preview], True)
 
-    def get_media_display_css(self):
-        """
-        Add css style sheets to htmlbuilder
-        """
-        css = ''
-        for player in list(self.media_players.values()):
-            if player.is_active:
-                css += player.get_media_display_css()
-        return css
-
-    def get_media_display_javascript(self):
-        """
-        Add javascript functions to htmlbuilder
-        """
-        js = ''
-        for player in list(self.media_players.values()):
-            if player.is_active:
-                js += player.get_media_display_javascript()
-        return js
-
-    def get_media_display_html(self):
-        """
-        Add html code to htmlbuilder
-        """
-        html = ''
-        for player in list(self.media_players.values()):
-            if player.is_active:
-                html += player.get_media_display_html()
-        return html
-
     def register_controller(self, controller):
         """
         Registers media controls where the players will be placed to run.
@@ -280,7 +224,7 @@ class MediaController(RegistryBase, LogMixin, RegistryProperties):
 
         :param controller:  First element is the controller which should be used
         """
-        controller.media_info = MediaInfo()
+        controller.media_info = ItemMediaInfo()
         # Build a Media ToolBar
         controller.mediabar = OpenLPToolbar(controller)
         controller.mediabar.add_toolbar_action('playbackPlay', text='media_playback_play',
@@ -344,16 +288,12 @@ class MediaController(RegistryBase, LogMixin, RegistryProperties):
         """
         # clean up possible running old media files
         self.finalise()
-        # update player status
-        self._set_active_players()
         display.has_audio = True
         if display.is_live and preview:
             return
         if preview:
             display.has_audio = False
-        for player in list(self.media_players.values()):
-            if player.is_active:
-                player.setup(display)
+        self.vlc_player.setup(display)
 
     def set_controls_visible(self, controller, value):
         """
@@ -366,8 +306,7 @@ class MediaController(RegistryBase, LogMixin, RegistryProperties):
         controller.mediabar.setVisible(value)
         if controller.is_live and controller.display:
             if self.current_media_players and value:
-                if self.current_media_players[controller.controller_type] != self.media_players['webkit']:
-                    controller.display.set_transparency(False)
+                controller.display.set_transparency(False)
 
     @staticmethod
     def resize(display, player):
@@ -388,16 +327,19 @@ class MediaController(RegistryBase, LogMixin, RegistryProperties):
         :param hidden: The player which is doing the playing
         :param video_behind_text: Is the video to be played behind text.
         """
-        is_valid = False
+        is_valid = True
         controller = self.display_controllers[source]
         # stop running videos
         self.media_reset(controller)
-        controller.media_info = MediaInfo()
+        controller.media_info = ItemMediaInfo()
         controller.media_info.volume = controller.volume_slider.value()
         controller.media_info.is_background = video_behind_text
         # background will always loop video.
         controller.media_info.can_loop_playback = video_behind_text
-        controller.media_info.file_info = QtCore.QFileInfo(service_item.get_frame_path())
+        if service_item.is_capable(ItemCapabilities.HasBackgroundAudio):
+            controller.media_info.file_info = service_item.background_audio
+        else:
+            controller.media_info.file_info = [service_item.get_frame_path()]
         display = self._define_display(controller)
         if controller.is_live:
             # if this is an optical device use special handling
@@ -410,7 +352,7 @@ class MediaController(RegistryBase, LogMixin, RegistryProperties):
             else:
                 log.debug('video is not optical and live')
                 controller.media_info.length = service_item.media_length
-                is_valid = self._check_file_type(controller, display, service_item)
+                is_valid = self._check_file_type(controller, display)
             display.override['theme'] = ''
             display.override['video'] = True
             if controller.media_info.is_background:
@@ -430,7 +372,7 @@ class MediaController(RegistryBase, LogMixin, RegistryProperties):
             else:
                 log.debug('video is not optical and preview')
                 controller.media_info.length = service_item.media_length
-                is_valid = self._check_file_type(controller, display, service_item)
+                is_valid = self._check_file_type(controller, display)
         if not is_valid:
             # Media could not be loaded correctly
             critical_error_message_box(translate('MediaPlugin.MediaItem', 'Unsupported File'),
@@ -461,19 +403,21 @@ class MediaController(RegistryBase, LogMixin, RegistryProperties):
         return True
 
     @staticmethod
-    def media_length(service_item):
+    def media_length(media_path):
         """
         Uses Media Info to obtain the media length
 
-        :param service_item: The ServiceItem containing the details to be played.
+        :param media_path: The file path to be checked..
         """
-        media_info = MediaInfo()
-        media_info.volume = 0
-        media_info.file_info = QtCore.QFileInfo(service_item.get_frame_path())
-        media_data = MediaInfoWrapper.parse(service_item.get_frame_path())
+        if MediaInfo.can_parse():
+            media_data = MediaInfo.parse(media_path)
+        else:
+            xml = check_output(['mediainfo', '-f', '--Output=XML', '--Inform=OLDXML', media_path])
+            if not xml.startswith(b'<?xml'):
+                xml = check_output(['mediainfo', '-f', '--Output=XML', media_path])
+            media_data = MediaInfo(xml.decode("utf-8"))
         # duration returns in milli seconds
-        service_item.set_media_length(media_data.tracks[0].duration)
-        return True
+        return media_data.tracks[0].duration
 
     def media_setup_optical(self, filename, title, audio_track, subtitle_track, start, end, display, controller):
         """
@@ -492,7 +436,7 @@ class MediaController(RegistryBase, LogMixin, RegistryProperties):
         # stop running videos
         self.media_reset(controller)
         # Setup media info
-        controller.media_info = MediaInfo()
+        controller.media_info = ItemMediaInfo()
         controller.media_info.file_info = QtCore.QFileInfo(filename)
         if audio_track == -1 and subtitle_track == -1:
             controller.media_info.media_type = MediaType.CD
@@ -507,86 +451,49 @@ class MediaController(RegistryBase, LogMixin, RegistryProperties):
         # When called from mediaitem display is None
         if display is None:
             display = controller.preview_display
-        # Find vlc player
-        used_players = get_media_players()[0]
-        vlc_player = None
-        for title in used_players:
-            player = self.media_players[title]
-            if player.name == 'vlc':
-                vlc_player = player
-        if vlc_player is None:
-            critical_error_message_box(translate('MediaPlugin.MediaItem', 'VLC player required'),
-                                       translate('MediaPlugin.MediaItem',
-                                                 'VLC player required for playback of optical devices'))
-            return False
-        vlc_player.load(display)
-        self.resize(display, vlc_player)
-        self.current_media_players[controller.controller_type] = vlc_player
+        self.vlc_player.load(display)
+        self.resize(display, self.vlc_player)
+        self.current_media_players[controller.controller_type] = self.vlc_player
         if audio_track == -1 and subtitle_track == -1:
             controller.media_info.media_type = MediaType.CD
         else:
             controller.media_info.media_type = MediaType.DVD
         return True
 
-    @staticmethod
-    def _get_used_players(service_item):
-        """
-        Find the player for a given service item
-
-        :param service_item: where the information is about the media and required player
-        :return: player description
-        """
-        used_players = get_media_players()[0]
-        # If no player, we can't play
-        if not used_players:
-            return False
-        default_player = [used_players[0]]
-        if service_item.processor and service_item.processor != UiStrings().Automatic:
-            # check to see if the player is usable else use the default one.
-            if service_item.processor.lower() not in used_players:
-                used_players = default_player
-            else:
-                used_players = [service_item.processor.lower()]
-        return used_players
-
-    def _check_file_type(self, controller, display, service_item):
+    def _check_file_type(self, controller, display):
         """
         Select the correct media Player type from the prioritized Player list
 
         :param controller: First element is the controller which should be used
         :param display: Which display to use
-        :param service_item: The ServiceItem containing the details to be played.
         """
-        used_players = self._get_used_players(service_item)
-        if controller.media_info.file_info.isFile():
-            suffix = '*.%s' % controller.media_info.file_info.suffix().lower()
-            for title in used_players:
-                if not title:
-                    continue
-                player = self.media_players[title]
+        for file in controller.media_info.file_info:
+            if file.is_file:
+                suffix = '*%s' % file.suffix.lower()
+                player = self.vlc_player
+                file = str(file)
                 if suffix in player.video_extensions_list:
                     if not controller.media_info.is_background or controller.media_info.is_background and \
                             player.can_background:
                         self.resize(display, player)
-                        if player.load(display):
+                        if player.load(display, file):
                             self.current_media_players[controller.controller_type] = player
                             controller.media_info.media_type = MediaType.Video
                             return True
                 if suffix in player.audio_extensions_list:
-                    if player.load(display):
+                    if player.load(display, file):
                         self.current_media_players[controller.controller_type] = player
                         controller.media_info.media_type = MediaType.Audio
                         return True
-        else:
-            for title in used_players:
-                player = self.media_players[title]
+            else:
+                player = self.vlc_player
+                file = str(file)
                 if player.can_folder:
                     self.resize(display, player)
-                    if player.load(display):
+                    if player.load(display, file):
                         self.current_media_players[controller.controller_type] = player
                         controller.media_info.media_type = MediaType.Video
                         return True
-        # no valid player found
         return False
 
     def media_play_msg(self, msg, status=True):

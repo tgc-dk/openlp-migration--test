@@ -20,7 +20,7 @@
 # Temple Place, Suite 330, Boston, MA 02111-1307 USA                          #
 ###############################################################################
 """
-The :mod:`~openlp.core.utils.actions` module provides action list classes used
+The :mod:`~openlp.core.common.actions` module provides action list classes used
 by the shortcuts system.
 """
 import logging

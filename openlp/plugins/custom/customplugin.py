@@ -26,6 +26,7 @@ for the Custom Slides plugin.
 
 import logging
 
+from openlp.core.state import State
 from openlp.core.api.http import register_endpoint
 from openlp.core.common.i18n import translate
 from openlp.core.ui.icons import UiIcons
@@ -68,6 +69,8 @@ class CustomPlugin(Plugin):
         self.icon = build_icon(self.icon_path)
         register_endpoint(custom_endpoint)
         register_endpoint(api_custom_endpoint)
+        State().add_service(self.name, self.weight, is_plugin=True)
+        State().update_pre_conditions(self.name, self.check_pre_conditions())
 
     @staticmethod
     def about():

@@ -432,7 +432,6 @@ class TestMediaItem(TestCase, TestMixin):
         song.authors_songs = []
         song.songbook_entries = []
         song.ccli_number = ''
-        song.topics = None
         book1 = MagicMock()
         book1.name = 'My songbook'
         book2 = MagicMock()

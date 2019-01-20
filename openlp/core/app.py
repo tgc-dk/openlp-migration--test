@@ -35,8 +35,10 @@ from traceback import format_exception
 
 from PyQt5 import QtCore, QtWidgets
 
+from openlp.core.state import State
 from openlp.core.common import is_macosx, is_win
 from openlp.core.common.applocation import AppLocation
+from openlp.core.loader import loader
 from openlp.core.common.i18n import LanguageManager, UiStrings, translate
 from openlp.core.common.path import create_paths, copytree
 from openlp.core.common.registry import Registry
@@ -113,8 +115,10 @@ class OpenLP(QtWidgets.QApplication):
         # Check if OpenLP has been upgrade and if a backup of data should be created
         self.backup_on_upgrade(has_run_wizard, can_show_splash)
         # start the main app window
+        loader()
         self.main_window = MainWindow()
         Registry().execute('bootstrap_initialise')
+        State().flush_preconditions()
         Registry().execute('bootstrap_post_set_up')
         Registry().initialise = False
         self.main_window.show()
@@ -132,7 +136,7 @@ class OpenLP(QtWidgets.QApplication):
         if Settings().value('core/update check'):
             check_for_update(self.main_window)
         self.main_window.is_display_blank()
-        self.main_window.app_startup()
+        Registry().execute('bootstrap_completion')
         return self.exec()
 
     @staticmethod

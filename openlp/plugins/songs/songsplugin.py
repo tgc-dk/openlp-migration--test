@@ -31,6 +31,7 @@ from tempfile import gettempdir
 
 from PyQt5 import QtCore, QtWidgets
 
+from openlp.core.state import State
 from openlp.core.api.http import register_endpoint
 from openlp.core.common.actions import ActionList
 from openlp.core.common.i18n import UiStrings, translate
@@ -99,6 +100,8 @@ class SongsPlugin(Plugin):
         self.songselect_form = None
         register_endpoint(songs_endpoint)
         register_endpoint(api_songs_endpoint)
+        State().add_service(self.name, self.weight, is_plugin=True)
+        State().update_pre_conditions(self.name, self.check_pre_conditions())
 
     def check_pre_conditions(self):
         """

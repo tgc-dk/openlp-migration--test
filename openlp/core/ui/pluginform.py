@@ -26,6 +26,7 @@ import logging
 
 from PyQt5 import QtCore, QtWidgets
 
+from openlp.core.state import State
 from openlp.core.common.i18n import translate
 from openlp.core.common.mixins import RegistryProperties
 from openlp.core.lib.plugin import PluginStatus
@@ -45,7 +46,7 @@ class PluginForm(QtWidgets.QDialog, Ui_PluginViewDialog, RegistryProperties):
         super(PluginForm, self).__init__(parent, QtCore.Qt.WindowSystemMenuHint | QtCore.Qt.WindowTitleHint |
                                          QtCore.Qt.WindowCloseButtonHint)
         self.active_plugin = None
-        self.programatic_change = False
+        self.programmatic_change = False
         self.setupUi(self)
         self.load()
         self._clear_details()
@@ -58,30 +59,31 @@ class PluginForm(QtWidgets.QDialog, Ui_PluginViewDialog, RegistryProperties):
         Load the plugin details into the screen
         """
         self.plugin_list_widget.clear()
-        self.programatic_change = True
+        self.programmatic_change = True
         self._clear_details()
-        self.programatic_change = True
+        self.programmatic_change = True
         plugin_list_width = 0
-        for plugin in self.plugin_manager.plugins:
-            item = QtWidgets.QListWidgetItem(self.plugin_list_widget)
-            # We do this just to make 100% sure the status is an integer as
-            # sometimes when it's loaded from the config, it isn't cast to int.
-            plugin.status = int(plugin.status)
-            # Set the little status text in brackets next to the plugin name.
-            if plugin.status == PluginStatus.Disabled:
-                status_text = translate('OpenLP.PluginForm', '{name} (Disabled)')
-            elif plugin.status == PluginStatus.Active:
-                status_text = translate('OpenLP.PluginForm', '{name} (Active)')
-            else:
-                # PluginStatus.Inactive
-                status_text = translate('OpenLP.PluginForm', '{name} (Inactive)')
-            item.setText(status_text.format(name=plugin.name_strings['singular']))
-            # If the plugin has an icon, set it!
-            if plugin.icon:
-                item.setIcon(plugin.icon)
-            self.plugin_list_widget.addItem(item)
-            plugin_list_width = max(plugin_list_width, self.fontMetrics().width(
-                translate('OpenLP.PluginForm', '{name} (Inactive)').format(name=plugin.name_strings['singular'])))
+        for plugin in State().list_plugins():
+            if plugin:
+                item = QtWidgets.QListWidgetItem(self.plugin_list_widget)
+                # We do this just to make 100% sure the status is an integer as
+                # sometimes when it's loaded from the config, it isn't cast to int.
+                plugin.status = int(plugin.status)
+                # Set the little status text in brackets next to the plugin name.
+                if plugin.status == PluginStatus.Disabled:
+                    status_text = translate('OpenLP.PluginForm', '{name} (Disabled)')
+                elif plugin.status == PluginStatus.Active:
+                    status_text = translate('OpenLP.PluginForm', '{name} (Active)')
+                else:
+                    # PluginStatus.Inactive
+                    status_text = translate('OpenLP.PluginForm', '{name} (Inactive)')
+                item.setText(status_text.format(name=plugin.name_strings['singular']))
+                # If the plugin has an icon, set it!
+                if plugin.icon:
+                    item.setIcon(plugin.icon)
+                self.plugin_list_widget.addItem(item)
+                plugin_list_width = max(plugin_list_width, self.fontMetrics().width(
+                    translate('OpenLP.PluginForm', '{name} (Inactive)').format(name=plugin.name_strings['singular'])))
         self.plugin_list_widget.setFixedWidth(plugin_list_width + self.plugin_list_widget.iconSize().width() + 48)
 
     def _clear_details(self):
@@ -98,14 +100,14 @@ class PluginForm(QtWidgets.QDialog, Ui_PluginViewDialog, RegistryProperties):
         """
         log.debug('PluginStatus: {status}'.format(status=str(self.active_plugin.status)))
         self.about_text_browser.setHtml(self.active_plugin.about())
-        self.programatic_change = True
+        self.programmatic_change = True
         if self.active_plugin.status != PluginStatus.Disabled:
             self.status_checkbox.setChecked(self.active_plugin.status == PluginStatus.Active)
             self.status_checkbox.setEnabled(True)
         else:
             self.status_checkbox.setChecked(False)
             self.status_checkbox.setEnabled(False)
-        self.programatic_change = False
+        self.programmatic_change = False
 
     def on_plugin_list_widget_selection_changed(self):
         """
@@ -116,7 +118,7 @@ class PluginForm(QtWidgets.QDialog, Ui_PluginViewDialog, RegistryProperties):
             return
         plugin_name_singular = self.plugin_list_widget.currentItem().text().split('(')[0][:-1]
         self.active_plugin = None
-        for plugin in self.plugin_manager.plugins:
+        for plugin in State().list_plugins():
             if plugin.name_strings['singular'] == plugin_name_singular:
                 self.active_plugin = plugin
                 break
@@ -129,7 +131,7 @@ class PluginForm(QtWidgets.QDialog, Ui_PluginViewDialog, RegistryProperties):
         """
         If the status of a plugin is altered, apply the change
         """
-        if self.programatic_change or self.active_plugin is None:
+        if self.programmatic_change or self.active_plugin is None:
             return
         if status:
             self.application.set_busy_cursor()

@@ -61,7 +61,7 @@ class OpenLPJobs(object):
     Branch_macOS_Tests = 'Branch-02b-macOS-Tests'
     Branch_Build_Source = 'Branch-03a-Build-Source'
     Branch_Build_macOS = 'Branch-03b-Build-macOS'
-    Branch_Code_Analysis = 'Branch-04a-Code-Analysis'
+    Branch_Code_Analysis = 'Branch-04a-Code-Lint'
     Branch_Test_Coverage = 'Branch-04b-Test-Coverage'
     Branch_Lint_Check = 'Branch-04c-Lint-Check'
     Branch_AppVeyor_Tests = 'Branch-05-AppVeyor-Tests'
@@ -83,8 +83,6 @@ class Colour(object):
 class JenkinsTrigger(object):
     """
     A class to trigger builds on Jenkins and print the results.
-
-    :param token: The token we need to trigger the build. If you do not have this token, ask in IRC.
     """
 
     def __init__(self, username, password, can_use_colour):
@@ -101,9 +99,12 @@ class JenkinsTrigger(object):
         Get the job info for all the jobs
         """
         for job_name in OpenLPJobs.Jobs:
-            job_info = self.server.get_job_info(job_name)
-            self.jobs[job_name] = job_info
-            self.jobs[job_name]['nextBuildUrl'] = '{url}{nextBuildNumber}/'.format(**job_info)
+            try:
+                job_info = self.server.get_job_info(job_name)
+                self.jobs[job_name] = job_info
+                self.jobs[job_name]['nextBuildUrl'] = '{url}{nextBuildNumber}/'.format(**job_info)
+            except Exception:
+                pass
 
     def trigger_build(self):
         """

@@ -25,6 +25,7 @@ from datetime import datetime
 
 from PyQt5 import QtCore, QtWidgets
 
+from openlp.core.state import State
 from openlp.core.common.actions import ActionList
 from openlp.core.common.i18n import translate
 from openlp.core.common.registry import Registry
@@ -67,6 +68,8 @@ class SongUsagePlugin(Plugin):
         self.weight = -4
         self.icon = UiIcons().song_usage
         self.song_usage_active = False
+        State().add_service('song_usage', self.weight, is_plugin=True)
+        State().update_pre_conditions('song_usage', self.check_pre_conditions())
 
     def check_pre_conditions(self):
         """

@@ -184,4 +184,4 @@ class TestRegistryBase(TestCase):
         RegistryStub()
 
         # THEN: The bootstrap methods should be registered
-        assert len(Registry().functions_list) == 2, 'The bootstrap functions should be in the dict.'
+        assert len(Registry().functions_list) == 3, 'The bootstrap functions should be in the dict.'

@@ -28,6 +28,7 @@ import os
 
 from PyQt5 import QtCore
 
+from openlp.core.state import State
 from openlp.core.api.http import register_endpoint
 from openlp.core.common import extension_loader
 from openlp.core.common.i18n import translate
@@ -76,6 +77,8 @@ class PresentationPlugin(Plugin):
         self.icon = build_icon(self.icon_path)
         register_endpoint(presentations_endpoint)
         register_endpoint(api_presentations_endpoint)
+        State().add_service('presentation', self.weight, is_plugin=True)
+        State().update_pre_conditions('presentation', self.check_pre_conditions())
 
     def create_settings_tab(self, parent):
         """

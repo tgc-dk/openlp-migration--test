@@ -60,11 +60,12 @@ class MediaPlayer(RegistryProperties):
         """
         pass
 
-    def load(self, display):
+    def load(self, display, file):
         """
         Load a new media file and check if it is valid
 
         :param display: The display to be updated.
+        :param file: The file to be loaded
         """
         return True
 

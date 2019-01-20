@@ -20,29 +20,29 @@
 # Temple Place, Suite 330, Boston, MA 02111-1307 USA                          #
 ###############################################################################
 """
-Package to test the openlp.core.ui.media package.
+The :mod:`~openlp.core.loader` module provides a bootstrap for the singleton classes
 """
-from unittest import TestCase
 
-from openlp.core.ui.media.vendor.mediainfoWrapper import MediaInfoWrapper
-from tests.utils.constants import RESOURCE_PATH
+from openlp.core.state import State
+from openlp.core.ui.media.mediacontroller import MediaController
+from openlp.core.lib.pluginmanager import PluginManager
+from openlp.core.display.renderer import Renderer
+from openlp.core.lib.imagemanager import ImageManager
+from openlp.core.ui.slidecontroller import LiveController, PreviewController
 
-TEST_PATH = RESOURCE_PATH / 'media'
-TEST_MEDIA = [['avi_file.avi', 61495], ['mp3_file.mp3', 134426], ['mpg_file.mpg', 9404], ['mp4_file.mp4', 188336]]
 
+def loader():
+    """
+    God class to load all the components which are registered with the Registry
 
-class TestMediainfoWrapper(TestCase):
-
-    def test_media_length(self):
-        """
-        Test the Media Info basic functionality
-        """
-        for test_data in TEST_MEDIA:
-            # GIVEN: a media file
-            full_path = str(TEST_PATH / test_data[0])
-
-            # WHEN the media data is retrieved
-            results = MediaInfoWrapper.parse(full_path)
-
-            # THEN you can determine the run time
-            assert results.tracks[0].duration == test_data[1], 'The correct duration is returned for ' + test_data[0]
+    :return: None
+    """
+    State().load_settings()
+    MediaController()
+    PluginManager()
+    # Set up the path with plugins
+    ImageManager()
+    Renderer()
+    # Create slide controllers
+    PreviewController()
+    LiveController()

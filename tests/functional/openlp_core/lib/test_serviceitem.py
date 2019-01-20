@@ -26,6 +26,7 @@ import os
 from unittest import TestCase
 from unittest.mock import MagicMock, patch
 
+from openlp.core.state import State
 from openlp.core.common import md5_hash
 from openlp.core.common.path import Path
 from openlp.core.common.registry import Registry
@@ -110,8 +111,11 @@ class TestServiceItem(TestCase, TestMixin):
         service_item.add_icon = MagicMock()
         FormattingTags.load_tags()
 
-        # WHEN: We add a custom from a saved service
+        # WHEN: We add a custom from a saved serviceand set the media state
         line = convert_file_service_item(TEST_PATH, 'serviceitem_custom_1.osj')
+        State().add_service("media", 0)
+        State().update_pre_conditions("media", True)
+        State().flush_preconditions()
         service_item.set_from_service(line)
 
         # THEN: We should get back a valid service item
@@ -158,7 +162,8 @@ class TestServiceItem(TestCase, TestMixin):
         assert os.path.normpath(test_file) == os.path.normpath(service_item.get_rendered_frame(0)), \
             'The first frame should match the path to the image'
         assert frame_array == service_item.get_frames()[0], 'The return should match frame array1'
-        assert test_file == service_item.get_frame_path(0), 'The frame path should match the full path to the image'
+        assert test_file == str(service_item.get_frame_path(0)), \
+            'The frame path should match the full path to the image'
         assert image_name == service_item.get_frame_title(0), 'The frame title should match the image name'
         assert image_name == service_item.get_display_title(), 'The display title should match the first image name'
         assert service_item.is_image() is True, 'This service item should be of an "image" type'
@@ -215,9 +220,9 @@ class TestServiceItem(TestCase, TestMixin):
                 'The Second frame should match the path to the image'
             assert frame_array1 == service_item.get_frames()[0], 'The return should match the frame array1'
             assert frame_array2 == service_item2.get_frames()[0], 'The return should match the frame array2'
-            assert test_file1 == service_item.get_frame_path(0), \
+            assert test_file1 == str(service_item.get_frame_path(0)), \
                 'The frame path should match the full path to the image'
-            assert test_file2 == service_item2.get_frame_path(0), \
+            assert test_file2 == str(service_item2.get_frame_path(0)), \
                 'The frame path should match the full path to the image'
         assert image_name1 == service_item.get_frame_title(0), 'The 1st frame title should match the image name'
         assert image_name2 == service_item2.get_frame_title(0), 'The 2nd frame title should match the image name'

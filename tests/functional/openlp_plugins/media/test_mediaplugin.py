@@ -26,7 +26,7 @@ from unittest import TestCase
 from unittest.mock import patch
 
 from openlp.core.common.registry import Registry
-from openlp.plugins.media.mediaplugin import MediaPlugin, process_check_binary
+from openlp.plugins.media.mediaplugin import MediaPlugin
 from tests.helpers.testmixin import TestMixin
 
 
@@ -58,29 +58,3 @@ class MediaPluginTest(TestCase, TestMixin):
         assert isinstance(MediaPlugin.about(), str)
         # THEN: about() should return a non-empty string
         assert len(MediaPlugin.about()) is not 0
-
-    @patch('openlp.plugins.media.mediaplugin.check_binary_exists')
-    def test_process_check_binary_pass(self, mocked_checked_binary_exists):
-        """
-        Test that the Process check returns true if found
-        """
-        # GIVEN: A media plugin instance
-        # WHEN: function is called with the correct name
-        mocked_checked_binary_exists.return_value = str.encode('MediaInfo Command line')
-        result = process_check_binary('MediaInfo')
-
-        # THEN: The the result should be True
-        assert result is True, 'Mediainfo should have been found'
-
-    @patch('openlp.plugins.media.mediaplugin.check_binary_exists')
-    def test_process_check_binary_fail(self, mocked_checked_binary_exists):
-        """
-        Test that the Process check returns false if not found
-        """
-        # GIVEN: A media plugin instance
-        # WHEN: function is called with the wrong name
-        mocked_checked_binary_exists.return_value = str.encode('MediaInfo1 Command line')
-        result = process_check_binary("MediaInfo1")
-
-        # THEN: The the result should be True
-        assert result is False, "Mediainfo should not have been found"
