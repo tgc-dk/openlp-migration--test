@@ -285,10 +285,10 @@ class TestSongSelectImport(TestCase, TestMixin):
         # WHEN: The search method is called
         results = importer.search('text', 2, mock_callback)
 
-        # THEN: callback was called twice, open was called twice, find_all was called twice, max results returned
+        # THEN: callback was called twice, open was called once, find_all was called once, max results returned
         assert 2 == mock_callback.call_count, 'callback should have been called twice'
-        assert 2 == mocked_opener.open.call_count, 'open should have been called twice'
-        assert 2 == mocked_results_page.find_all.call_count, 'find_all should have been called twice'
+        assert 1 == mocked_opener.open.call_count, 'open should have been called once'
+        assert 1 == mocked_results_page.find_all.call_count, 'find_all should have been called once'
         mocked_results_page.find_all.assert_called_with('div', 'song-result')
         expected_list = [{'title': 'Title 1', 'authors': ['James', 'John'], 'link': BASE_URL + '/url1'},
                          {'title': 'Title 2', 'authors': ['Philip'], 'link': BASE_URL + '/url2'}]
